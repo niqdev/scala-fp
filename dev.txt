@@ -1,0 +1,25 @@
+https://www.youtube.com/watch?v=Dsd4pc99FSY&list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0&index=2&t=0s
+
+val x: Int
+val xs: List[Int]
+
+Int and List[Int] are proper types
+
+In type theory or type system in general
+
+List is a Kind
+
+scala> :k Int
+Int's kind is A
+
+scala> :k List[Int]
+List[Int]'s kind is A
+
+scala> :k List
+List's kind is F[+A]
+
+* List is an Higher Kind type
+* List is a Type Constructor
+* think List like a function that takes a parameter and return a proper type i.e. List[Int]
+
+TODO 3.40
