@@ -1,11 +1,3 @@
-TODO
-
-* commands
-
-```bash
-sbt run
-```
-
 https://medium.com/zendesk-engineering/how-to-create-a-website-like-freshswift-net-using-hugo-travis-ci-and-github-pages-67be6f480298
 http://tpolecat.github.io/tut
 https://www.scala-sbt.org/sbt-site/index.html
