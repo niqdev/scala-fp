@@ -1,6 +1,5 @@
 lazy val root = (project in file("."))
-  // TODO
-  //.enablePlugins(MicrositesPlugin)
+  .enablePlugins(MicrositesPlugin)
   .settings(
     organization := "com.github.niqdev",
     name := "fp",
