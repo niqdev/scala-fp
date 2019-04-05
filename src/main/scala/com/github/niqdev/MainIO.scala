@@ -2,7 +2,7 @@ package com.github.niqdev
 
 import com.github.niqdev.internal.{ConsoleOut, IO}
 
-object Main extends App {
+object MainIO extends App {
 
   val hello = ConsoleOut[IO].println("Hello World")
 
