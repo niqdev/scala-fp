@@ -3,6 +3,7 @@ package internal
 
 // https://github.com/jdegoes/lambdaconf-2014-introgame#the-state-monad
 // https://github.com/alvinj/StateMonadExample/blob/master/src/main/scala/state_monad/State.scala
+// https://earldouglas.com/talks/state-monad/slides.html
 case class State[S, A](run: S => (S, A)) {
 
   def flatMap[B](g: A => State[S, B]): State[S, B] =
