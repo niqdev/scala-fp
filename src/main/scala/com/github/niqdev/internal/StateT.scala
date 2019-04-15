@@ -12,7 +12,7 @@ case class StateT[M[_], S, A](run: S => M[(S, A)]) {
     }
 
   def map[B](f: A => B)(implicit M: Monad[M]): StateT[M, S, B] =
-    flatMap(a => StateT.point(a))
+    flatMap(a => StateT.point(f(a)))
 }
 
 object StateT {

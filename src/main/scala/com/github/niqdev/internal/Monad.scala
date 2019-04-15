@@ -10,7 +10,7 @@ trait Monad[M[_]] {
   def flatMap[A, B](ma: M[A])(f: A => M[B]): M[B]
 
   def map[A, B](ma: M[A])(f: A => B): M[B] =
-    flatMap(ma)(a => lift(a))
+    flatMap(ma)(a => lift[B](f(a)))
 }
 
 object Monad {
