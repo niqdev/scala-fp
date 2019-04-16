@@ -21,4 +21,6 @@ class IO[A] private(run0: => A) {
 object IO {
 
   def apply[A](a: => A): IO[A] = new IO(a)
+
+  def unit: IO[Unit] = IO(())
 }

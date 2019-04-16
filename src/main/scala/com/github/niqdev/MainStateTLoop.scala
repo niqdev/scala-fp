@@ -33,26 +33,28 @@ object MainStateTLoop extends App {
     oldState: SumState =>
       val newValue = i + oldState.i
       val newState = oldState.copy(i = newValue)
-
-      //IO((newState, newValue))
-      //IO(newState -> newValue)
       IO(newState, newValue)
   }
 
   def sumLoop: StateT[IO, SumState, Unit] =
     for {
-      _ <- printlnAsStateT("\n[*] Type a number: ")
-      input <- readLineAsStateT
-      i <- liftIoIntoStateT(IO(fromUnsafeInt(input)))
-      _ <- sumAsStateT(i)
-      _ <- sumLoop
-    } yield Unit
+      _ <- printlnAsStateT[SumState, String]("Type a number, or [q] to quit: ")
+      input <- readLineAsStateT[SumState]
+      _ <- if (input == "q") {
+        liftIoIntoStateT[SumState, Unit](IO.unit)
+      } else for {
+        i <- liftIoIntoStateT[SumState, Int](IO(fromUnsafeInt(input)))
+        _ <- sumAsStateT(i)
+        _ <- sumLoop
+      } yield ()
+    } yield ()
 
   val initialState = SumState(0)
 
   sumLoop
     .run(initialState)
-    .map(tuple => println(s"SumState: ${tuple._1}"))
+    // FIXME remove println
+    .map(tuple => println(s"result: ${tuple._1}"))
     .run
 
 }

@@ -25,9 +25,9 @@ object MainStateT extends App {
 
   val initialState = IntState(3)
   val result: IO[(IntState, Int)] = addAndMultiply.run(initialState)
-  val program: IO[Unit] = result.map(tuple => println(s"IntState: ${tuple._1}"))
+  val program: IO[Unit] = result.map(tuple => println(s"result: ${tuple._1}"))
 
-  // IntState: IntState(48)
+  // result: IntState(48)
   program.run
 
 }
