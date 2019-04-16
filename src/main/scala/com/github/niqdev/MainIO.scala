@@ -1,10 +1,10 @@
 package com.github.niqdev
 
-import com.github.niqdev.internal.{ConsoleOut, IO}
+import com.github.niqdev.internal.{IO, MyConsole}
 
 object MainIO extends App {
 
-  val hello = ConsoleOut[IO].println("Hello World")
+  val hello = MyConsole[IO].println("Hello World")
 
   val program: IO[Unit] =
     for {

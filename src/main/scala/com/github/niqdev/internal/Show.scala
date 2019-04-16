@@ -9,4 +9,7 @@ object Show {
 
   implicit val stringShow: Show[String] =
     (t: String) => t
+
+  implicit val intShow: Show[Int] =
+    (t: Int) => s"$t"
 }
