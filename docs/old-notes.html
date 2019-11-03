@@ -1,0 +1,433 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Old Notes · Scala FP for dummies</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## FAQs"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Old Notes · Scala FP for dummies"/><meta property="og:type" content="website"/><meta property="og:url" content="https://niqdev.github.io/scala-fp/"/><meta property="og:description" content="## FAQs"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/scala-fp/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"/><script src="/scala-fp/js/scrollSpy.js"></script><link rel="stylesheet" href="/scala-fp/css/main.css"/><script src="/scala-fp/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/scala-fp/"><img class="logo" src="/scala-fp/img/favicon.ico" alt="Scala FP for dummies"/><h2 class="headerTitleWithLogo">Scala FP for dummies</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/scala-fp/docs/basic" target="_self">Basic</a></li><li class=""><a href="/scala-fp/docs/fp" target="_self">FP</a></li><li class=""><a href="/scala-fp/docs/ecosystem" target="_self">Ecosystem</a></li><li class="siteNavGroupActive"><a href="/scala-fp/docs/old" target="_self">Old</a></li><li class=""><a href="https://github.com/niqdev/scala-fp" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>old</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">old</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/old">Old Label</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/scala-fp/docs/old-notes">Old Notes Label</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Old Notes</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="faqs"></a><a href="#faqs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQs</h2>
+<ul>
+<li><a href="https://docs.scala-lang.org/tutorials/FAQ">Scala FAQs</a></li>
+</ul>
+<p><em>What is the Scala hierarchy?</em></p>
+<p><img src="/scala-fp/docs/assets/scala-hierarchy.png" alt="scala-hierarchy"></p>
+<p><em>What is the difference between by-name and by-value parameters?</em></p>
+<p>A <strong>by-value</strong> parameter is evaluated before the method is invoked e.g. <code>(x: Int)</code> while a <strong>by-name</strong> parameter is not evaluated before the method is invoked, but each time the parameter is referenced inside the method e.g. <code>(x: =&gt; Int)</code></p>
+<p><em>What are the differences between def val var lazy?</em></p>
+<ul>
+<li><code>def</code> defines a method</li>
+<li><code>val</code> defines a fixed value, it is immmutable and eagerly initialized</li>
+<li><code>var</code> defines a variable reference, it is mutable and it should be avoided</li>
+<li><code>lazy</code> only initialised when required and as late as possible (deferred evaluation), default is strict and is not recomputed like by-name parameters</li>
+</ul>
+<p><em>What are Nothing Nil None Empty Null null Unit?</em></p>
+<ul>
+<li><code>Nothing</code> is a trait that is the bottom subtype of every subtype of <code>Any</code></li>
+<li><code>Nil</code> is an empty list that is defined as a <code>List[Nothing]</code></li>
+<li><code>None</code> is an empty option that is defined as a <code>Option[Nothing]</code></li>
+<li><code>Null</code> is a trait and is the bottom type similiar to <code>Nothing</code> but only for <code>AnyRef</code> not <code>AnyVal</code></li>
+<li><code>null</code> is an instance of the <code>Null</code> trait</li>
+<li><code>Unit</code> is a subtype of <code>AnyVal</code>, it's only value is <code>()</code> and it is not represented by any object in the underlying runtime system. A method with return type <code>Unit</code> is analogous to a Java method which is declared <code>void</code></li>
+</ul>
+<p><em>What is the uniform access principal?</em></p>
+<p>The uniform access principle states that variables, precomputed properties and parameterless functions should be accessed using the same syntax. Therefore not betraying whether they are implemented through storage or through computation. Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions. A parameterless function definition <code>def</code> can be changed to a <code>val</code> or vice versa, without affecting client code</p>
+<p><em>What referentially transparent means?</em></p>
+<p>An expression <code>e</code> is <strong>referentially transparent</strong> if, for all programs <code>p</code>, all occurrences of <code>e</code> in <code>p</code> can be replaced by the result of evaluating <code>e</code> without affecting the meaning of <code>p</code></p>
+<p><em>What is a pure function?</em></p>
+<p>A function <code>f</code> is <strong>pure</strong> if the expression <code>f(x)</code> is referentially transparent for all referentially transparent <code>x</code>. Hence a pure function is <strong>modular</strong> and <strong>composable</strong></p>
+<p><em>What is a higher-order function?</em></p>
+<p>A <strong>higher-order function</strong> is a function that takes other functions as arguments or returns a function as result</p>
+<p><em>What is recursive function?</em></p>
+<p>A <strong>recursive function</strong> is a function which calls itself. With <strong>head recursion</strong>, the recursive call is not the last instruction in the function.</p>
+<p>A <strong>tail recursive function</strong> is a special case of recursion in which the last instruction executed in the method is the recursive call. As long as the recursive call is in tail position, Scala detects and compiles it to the same sort of bytecode as would be emitted for a while loop</p>
+<pre><code class="hljs css language-scala"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">factorial</span></span>(n: <span class="hljs-type">Int</span>): <span class="hljs-type">Int</span> = {
+  <span class="hljs-meta">@tailrec</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">loop</span></span>(index: <span class="hljs-type">Int</span>, result: <span class="hljs-type">Int</span>): <span class="hljs-type">Int</span> = index <span class="hljs-keyword">match</span> {
+    <span class="hljs-keyword">case</span> i <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span> =&gt; loop(<span class="hljs-number">1</span>, <span class="hljs-number">1</span> * result)
+    <span class="hljs-keyword">case</span> i <span class="hljs-keyword">if</span> i &lt; n =&gt; loop(i + <span class="hljs-number">1</span>, i * result)
+    <span class="hljs-keyword">case</span> i =&gt; i * result
+  }
+  loop(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)
+}
+</code></pre>
+<p><em>What is a function literal?</em></p>
+<p><strong>Function literal</strong> is a synonyms for <strong>anonymous function</strong>. Because functions are just ordinary Scala objects, we say that they are <strong>first-class values</strong>. A function literal is syntactic sugar for an object with a method called apply</p>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> lessThan0 = (a: <span class="hljs-type">Int</span>, b: <span class="hljs-type">Int</span>) =&gt; a &lt; b
+<span class="hljs-keyword">val</span> lessThan1 = (a, b) =&gt; a &lt; b
+<span class="hljs-keyword">val</span> lessThan2 = <span class="hljs-keyword">new</span> <span class="hljs-type">Function2</span>[<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Boolean</span>] {
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply</span></span>(a: <span class="hljs-type">Int</span>, b: <span class="hljs-type">Int</span>): <span class="hljs-type">Boolean</span> = a &lt; b
+}
+</code></pre>
+<p><em>What is a variadic function?</em></p>
+<p>A <strong>variadic function</strong> accepts zero or more arguments. It provides a little syntactic sugar for creating and passing a Seq of elements explicitly. The special <code>_*</code> type annotation allows to pass a Seq to a variadic method</p>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">MyList</span>[+<span class="hljs-type">A</span>]</span>
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MyNil</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MyList</span>[<span class="hljs-type">Nothing</span>]</span>
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCons</span>[+<span class="hljs-type">A</span>](<span class="hljs-params">head: <span class="hljs-type">A</span>, tail: <span class="hljs-type">MyList</span>[<span class="hljs-type">A</span>]</span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">MyList</span>[<span class="hljs-type">A</span>]</span>
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MyList</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply</span></span>[<span class="hljs-type">A</span>](list: <span class="hljs-type">A</span>*): <span class="hljs-type">MyList</span>[<span class="hljs-type">A</span>] =
+    <span class="hljs-keyword">if</span> (list.isEmpty) <span class="hljs-type">MyNil</span>
+    <span class="hljs-keyword">else</span> <span class="hljs-type">MyCons</span>(list.head, apply(list.tail: _*))
+}
+
+<span class="hljs-comment">// usage</span>
+<span class="hljs-type">MyList</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>)
+</code></pre>
+<p><em>What is a value class?</em></p>
+<p>The <a href="https://docs.scala-lang.org/overviews/core/value-classes.html">AnyVal</a> class can be used to define a <strong>value class</strong>, which is optimized at compile time to avoid the allocation of an instance</p>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">final</span> <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Price</span>(<span class="hljs-params">value: <span class="hljs-type">BigDecimal</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">AnyVal</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lowerThan</span></span>(p: <span class="hljs-type">Price</span>): <span class="hljs-type">Boolean</span> = <span class="hljs-keyword">this</span>.value &lt; p.value
+}
+</code></pre>
+<p><em>What is autoboxing?</em></p>
+<p>The JVM defines primitive types (<code>boolean</code>, <code>byte</code>, <code>char</code>, <code>float</code>, <code>int</code>, <code>long</code>, <code>short</code> and <code>double</code>) that are <em>stack-allocated</em> rather than <em>heap-allocated</em>. When a generic type is introduced, for example, <code>scala.collection.immutable.List</code>, the JVM references an object equivalent, instead of a primitive type. For example, an instantiated list of integers would be heap-allocated objects rather than integer primitives. The process of converting a primitive to its object equivalent is called <em>boxing</em>, and the reverse process is called <em>unboxing</em>. Boxing is a relevant concern for performance-sensitive programming because boxing involves heap allocation. In performance-sensitive code that performs numerical computations, the cost of <a href="https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html">boxing and unboxing</a> can can create significant performance slowdowns</p>
+<p><em>What is the specialized annotation?</em></p>
+<p><strong>Specialization</strong> with <code>@specialized</code> annotation, refers to the compile-time process of generating duplicate versions of a generic trait or class that refer directly to a primitive type instead of the associated object wrapper. At runtime, the compiler-generated version of the generic class (or, as it is commonly referred to, the specialized version of the class) is instantiated. This process eliminates the runtime cost of boxing primitives, which means that you can define generic abstractions while retaining the performance of a handwritten, specialized implementation although it has some <a href="http://aleksandar-prokopec.com/2013/11/03/specialization-quirks.html">quirks</a></p>
+<p><em>What is the switch annotation?</em></p>
+<p>In scenarios involving simple pattern match statements that directly match a value, using <code>@switch</code> annotation provides a warning at compile time if the switch can't be compiled to a tableswitch or lookupswitch which procides better performance, because it results in a branch table rather than a decision tree</p>
+<p><em>What is an Algebraic Data Type?</em></p>
+<p>In type theory, regular data structures can be described in terms of sums, products and recursive types. This leads to an algebra for describing data structures (and so-called algebraic data types). Such data types are common in statically typed functional languages</p>
+<p>An <strong>algebraic data type</strong> (ADT) is just a data type defined by one or more data constructors, each of which may contain zero or more arguments. We say that the data type is the sum or union of its data constructors, and each data constructor is the product of its arguments, hence the name algebraic data type</p>
+<p>Example</p>
+<ul>
+<li>these types represent a SUM type because Shape is a Circle OR a Rectangle</li>
+<li>Circle is a PRODUCT type because it has a radius</li>
+<li>Rectangle is a PRODUCT type because it has a width AND a height</li>
+</ul>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Shape</span></span>
+<span class="hljs-keyword">final</span> <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span>(<span class="hljs-params">radius: <span class="hljs-type">Double</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">Shape</span></span>
+<span class="hljs-keyword">final</span> <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span>(<span class="hljs-params">width: <span class="hljs-type">Double</span>, height: <span class="hljs-type">Double</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">Shape</span></span>
+</code></pre>
+<p>Sum types and product types provide the necessary abstraction for structuring various data of a domain model. Whereas sum types let model the variations within a particular data type, product types help cluster related data into a larger abstraction.</p>
+<p><em>How for-comprehensions is desugared? (<a href="https://docs.scala-lang.org/tour/for-comprehensions.html">docs</a>)</em></p>
+<pre><code class="hljs css language-scala"><span class="hljs-comment">// (1) works because "foreach" is defined</span>
+scala&gt; <span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)) println(i)
+<span class="hljs-number">1</span>
+<span class="hljs-number">2</span>
+<span class="hljs-number">3</span>
+
+<span class="hljs-comment">// (2) "yield" works because "map" is defined</span>
+scala&gt; <span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)) <span class="hljs-keyword">yield</span> i*<span class="hljs-number">2</span>
+res2: <span class="hljs-type">List</span>[<span class="hljs-type">Int</span>] = <span class="hljs-type">List</span>(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>)
+
+<span class="hljs-comment">// (3) "if" works because "withFilter" is defined</span>
+scala&gt; <span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>); <span class="hljs-keyword">if</span> i%<span class="hljs-number">2</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">yield</span> i*<span class="hljs-number">2</span>
+res3: <span class="hljs-type">List</span>[<span class="hljs-type">Int</span>] = <span class="hljs-type">List</span>(<span class="hljs-number">4</span>, <span class="hljs-number">8</span>)
+
+<span class="hljs-comment">// (4) works because "flatMap" is defined</span>
+scala&gt; <span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>); j &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>); <span class="hljs-keyword">if</span> i == j) <span class="hljs-keyword">yield</span> i
+res4: <span class="hljs-type">List</span>[<span class="hljs-type">Int</span>] = <span class="hljs-type">List</span>(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
+</code></pre>
+<p><em>What is a Typeclass?</em></p>
+<p>A Typeclass is a programming pattern that allow to extend existing libraries with new functionality, without using traditional inheritance and without altering the original library source code using a combination of ad-hoc polymorphism, parametric polymorphism (type parameters) and implicits</p>
+<p><em>What is a Monoid?</em></p>
+<p>A Monoid is an algebraic type with 2 laws, a binary operation over that type, satisfying <em>associativity</em> and an <em>identity</em> element</p>
+<ul>
+<li>associative e.g <code>a + (b + c) == (a + b) + c</code></li>
+<li>identity e.g. for sum is 0, for product is 1, for string is &quot;&quot;</li>
+</ul>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Monoid</span>[<span class="hljs-type">A</span>] </span>{
+  <span class="hljs-comment">// associativity</span>
+  <span class="hljs-comment">// op(op(x, y), z) == op(x, op(y, z))</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">op</span></span>(x: <span class="hljs-type">A</span>, y: <span class="hljs-type">A</span>): <span class="hljs-type">A</span>
+
+  <span class="hljs-comment">// identity</span>
+  <span class="hljs-comment">// op(x, zero) == op(zero, x) == x</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">zero</span></span>: <span class="hljs-type">A</span>
+}
+
+<span class="hljs-comment">// example</span>
+<span class="hljs-keyword">val</span> stringMonoid = <span class="hljs-keyword">new</span> <span class="hljs-type">Monoid</span>[<span class="hljs-type">String</span>] {
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">op</span></span>(x: <span class="hljs-type">String</span>, y: <span class="hljs-type">String</span>): <span class="hljs-type">String</span> = x + y
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">zero</span></span>: <span class="hljs-type">String</span> = <span class="hljs-string">""</span>
+}
+</code></pre>
+<p>Monoids have an intimate connection with lists and arguments of the same type, it doesn't matter if we choose <code>foldLeft</code> or <code>foldRight</code> when folding with a monoid because the laws of associativity and identity hold, hence this allows parallel computation</p>
+<p>The real power of monoids comes from the fact that they compose, this means, for example, that if types A and B are monoids, then the tuple type (A, B) is also a monoid (called their product)</p>
+<pre><code class="hljs css language-scala">scala&gt; <span class="hljs-type">List</span>(<span class="hljs-string">"first"</span>, <span class="hljs-string">"second"</span>, <span class="hljs-string">"third"</span>).foldLeft(stringMonoid.zero)(stringMonoid.op)
+scala&gt; <span class="hljs-type">List</span>(<span class="hljs-string">"first"</span>, <span class="hljs-string">"second"</span>, <span class="hljs-string">"third"</span>).foldRight(stringMonoid.zero)(stringMonoid.op)
+res: <span class="hljs-type">String</span> = firstsecondthird
+</code></pre>
+<p><em>What is a Semigroup?</em></p>
+<p>A Semigroup is just the <code>combine</code> part of a Monoid. While many semigroups are also monoids, there are some data types for which we cannot define an empty element e.g. non-empty sequences and positive integers</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Semigroup</span>[<span class="hljs-type">A</span>] </span>{
+  <span class="hljs-comment">// or op</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">combine</span></span>(x: <span class="hljs-type">A</span>, y: <span class="hljs-type">A</span>): <span class="hljs-type">A</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Monoid</span>[<span class="hljs-type">A</span>] <span class="hljs-keyword">extends</span> <span class="hljs-title">Semigroup</span>[<span class="hljs-type">A</span>] </span>{
+  <span class="hljs-comment">// or zero</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">empty</span></span>: <span class="hljs-type">A</span>
+}
+</code></pre>
+<p><em>What is a Functor?</em></p>
+<p>Informally, a Functor is anything with a <code>map</code> method</p>
+<pre><code class="hljs css language-scala"><span class="hljs-comment">// F is a higher-order type constructor or a higher-kinded type</span>
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Functor</span>[<span class="hljs-type">F</span>[_]] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">B</span>): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]
+}
+</code></pre>
+<p><em>What is a Monad?</em></p>
+<p>Informally, a Monad is anything with a constructor and a flatMap method. A Monad is a mechanism for <em>sequencing computations</em>, all monads are functors but the opposite is not true.</p>
+<p>A Monad is an implementation of one of the minimal sets of monadic combinators, satisfying the laws of associativity and identity</p>
+<ul>
+<li>unit and flatMap</li>
+<li>unit and compose</li>
+<li>unit, map and join</li>
+</ul>
+<p>where the above are defined</p>
+<pre><code class="hljs css language-scala"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">unit</span></span>[<span class="hljs-type">A</span>](a: =&gt; <span class="hljs-type">A</span>): <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](ma: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">B</span>): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">flatMap</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](ma: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compose</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>, <span class="hljs-type">C</span>](f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">F</span>[<span class="hljs-type">B</span>], g: <span class="hljs-type">B</span> =&gt; <span class="hljs-type">F</span>[<span class="hljs-type">C</span>]): <span class="hljs-type">A</span> =&gt; <span class="hljs-type">F</span>[<span class="hljs-type">C</span>]
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">join</span></span>[<span class="hljs-type">A</span>](mma: <span class="hljs-type">F</span>[<span class="hljs-type">F</span>[<span class="hljs-type">A</span>]]): <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]
+
+<span class="hljs-comment">// Identity: compose(unit, f) = f = compose(f, unit)</span>
+<span class="hljs-comment">// Associativity: compose(compose(f, g), h) = compose(f, compose(g, h))</span>
+</code></pre>
+<p>A Monad provide a context for introducing and binding variables and performing variable substitution</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Monad</span> </span>{
+  <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Id</span>[<span class="hljs-type">A</span>](<span class="hljs-params">value: <span class="hljs-type">A</span></span>) </span>{
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map</span></span>[<span class="hljs-type">B</span>](f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">B</span>): <span class="hljs-type">Id</span>[<span class="hljs-type">B</span>] =
+      <span class="hljs-type">Id</span>(f(value))
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">flatMap</span></span>[<span class="hljs-type">B</span>](f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">Id</span>[<span class="hljs-type">B</span>]): <span class="hljs-type">Id</span>[<span class="hljs-type">B</span>] =
+      f(value)
+  }
+
+  <span class="hljs-keyword">val</span> idMonad: <span class="hljs-type">Monad</span>[<span class="hljs-type">Id</span>] = <span class="hljs-keyword">new</span> <span class="hljs-type">Monad</span>[<span class="hljs-type">Id</span>] {
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">unit</span></span>[<span class="hljs-type">A</span>](a: =&gt; <span class="hljs-type">A</span>): <span class="hljs-type">Id</span>[<span class="hljs-type">A</span>] =
+      <span class="hljs-type">Id</span>(a)
+
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">flatMap</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](ma: <span class="hljs-type">Id</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">Id</span>[<span class="hljs-type">B</span>]): <span class="hljs-type">Id</span>[<span class="hljs-type">B</span>] =
+      ma.flatMap(f)
+  }
+}
+
+<span class="hljs-type">Monad</span>.<span class="hljs-type">Id</span>(<span class="hljs-string">"hello "</span>).flatMap(a =&gt; <span class="hljs-type">Monad</span>.<span class="hljs-type">Id</span>(<span class="hljs-string">"world"</span>).flatMap(b =&gt; <span class="hljs-type">Monad</span>.<span class="hljs-type">Id</span>(a + b)))
+
+<span class="hljs-keyword">for</span> {
+  a &lt;- <span class="hljs-type">Monad</span>.<span class="hljs-type">Id</span>(<span class="hljs-string">"hello "</span>)
+  b &lt;- <span class="hljs-type">Monad</span>.<span class="hljs-type">Id</span>(<span class="hljs-string">"world"</span>)
+} <span class="hljs-keyword">yield</span> a + b
+
+res: <span class="hljs-type">Monad</span>.<span class="hljs-type">Id</span>[<span class="hljs-type">String</span>] = <span class="hljs-type">Id</span>(hello world)
+</code></pre>
+<p><em>What is a Semigroupal?</em></p>
+<p>A Semigroupal is a type class that allows to combine contexts. In contrast to flatMap, which imposes a strict order, Semigroupal parameters are independent of one another, which gives more freedom with respect to monads</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Semigroupal</span>[<span class="hljs-type">F</span>[_]] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">product</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>], fb: <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]): <span class="hljs-type">F</span>[(<span class="hljs-type">A</span>, <span class="hljs-type">B</span>)]
+}
+</code></pre>
+<p><em>What is an Applicative?</em></p>
+<ul>
+<li>all applicatives are functors</li>
+<li>all applicatives are a semigroupal</li>
+<li>all monads are applicative functors, viceversa is not true</li>
+</ul>
+<pre><code class="hljs css language-scala"><span class="hljs-comment">// cats definition</span>
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Apply</span>[<span class="hljs-type">F</span>[_]] <span class="hljs-keyword">extends</span> <span class="hljs-title">Semigroupal</span>[<span class="hljs-type">F</span>] <span class="hljs-keyword">with</span> <span class="hljs-title">Functor</span>[<span class="hljs-type">F</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ap</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](ff: <span class="hljs-type">F</span>[<span class="hljs-type">A</span> =&gt; <span class="hljs-type">B</span>])(fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">product</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>], fb: <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]): <span class="hljs-type">F</span>[(<span class="hljs-type">A</span>, <span class="hljs-type">B</span>)] =
+    ap(map(fa)(a =&gt; (b: <span class="hljs-type">B</span>) =&gt; (a, b)))(fb)
+}
+
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Applicative</span>[<span class="hljs-type">F</span>[_]] <span class="hljs-keyword">extends</span> <span class="hljs-title">Apply</span>[<span class="hljs-type">F</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pure</span></span>[<span class="hljs-type">A</span>](a: <span class="hljs-type">A</span>): <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]
+}
+
+<span class="hljs-comment">// red book definition</span>
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Applicative</span>[<span class="hljs-type">F</span>[_]] <span class="hljs-keyword">extends</span> <span class="hljs-title">Functor</span>[<span class="hljs-type">F</span>] </span>{
+  <span class="hljs-comment">// primitive combinators</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map2</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>, <span class="hljs-type">C</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>], fb: <span class="hljs-type">F</span>[<span class="hljs-type">B</span>])(f: (<span class="hljs-type">A</span>, <span class="hljs-type">B</span>) =&gt; <span class="hljs-type">C</span>): <span class="hljs-type">F</span>[<span class="hljs-type">C</span>]
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">unit</span></span>[<span class="hljs-type">A</span>](a: =&gt; <span class="hljs-type">A</span>): <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]
+
+  <span class="hljs-comment">// derived combinators</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">B</span>): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>] =
+    map2(fa, unit(()))((a, _) =&gt; f(a))
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">traverse</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](as: <span class="hljs-type">List</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]): <span class="hljs-type">F</span>[<span class="hljs-type">List</span>[<span class="hljs-type">B</span>]] =
+    as.foldRight(unit(<span class="hljs-type">List</span>[<span class="hljs-type">B</span>]()))((a, fbs) =&gt; map2(f(a), fbs)(_ :: _))
+}
+</code></pre>
+<p><em>What are some of the benefits of Functional Programming?</em></p>
+<ul>
+<li>Pure functions are easier to reason about</li>
+<li>Function signatures are more meaningful</li>
+<li>Parallel/Concurrent programming is easier</li>
+<li>Testing is easier and pure functions lend themselves well to techniques like property-based testing</li>
+<li><a href="https://alvinalexander.com/scala/fp-book/benefits-of-functional-programming">Other benefits</a></li>
+</ul>
+<p><em>What is an effectful computation?</em></p>
+<p>In functional programming, an effect adds some capabilities to a computation. An effect is modeled usually in the form of a <strong>type constructor</strong> that constructs types with these additional capabilities</p>
+<ul>
+<li><code>List[A]</code> adds the effect of aggregation on A</li>
+<li><code>Option[A]</code> adds the capability of optionality for the type A</li>
+<li><code>Try[A]</code> models the effects of exceptions</li>
+</ul>
+<p><em>What are inhabitants of a type?</em></p>
+<p>Inhabitants of a type are values for that types. Algebraig Data Types can be thought of in terms of regular algebraic equations and its result gives the number of inhabitants</p>
+<ul>
+<li>sum types: <code>Either[A, B]</code> or <code>A or B</code> corresponds to the equation <code>A + B</code></li>
+<li>products types: <code>(A, B)</code> (Tuple2) or <code>A and B</code> corresponds to the equation <code>A * B</code></li>
+<li>exponentiation: <code>A -&gt; B</code> (Function1) corresponds to the equation <code>B^A</code> e.g. <code>Boolean -&gt; Boolean</code> is <code>2^2</code></li>
+<li>the <code>Unit</code> data type corresponds to the value 1</li>
+<li>the <code>Void</code> data type corresponds to the value 0</li>
+</ul>
+<p><em>What's the difference between monomorphic and polymorphic?</em></p>
+<p>Only by knowing the types</p>
+<ul>
+<li>Given a monomorphic signature <code>List[Int] -&gt; List[Int]</code>, there are too many possible implementations to say what the function does</li>
+<li>Given a polymorphic/parametrized type signature <code>List[A] -&gt; List[A]</code> it's proven that all elements in the result appear in the input which restricts the possible implementations</li>
+</ul>
+<!--
+<p><em>What is an IO Monad?</em></p>
+<pre><code class="hljs css language-scala">
+</code></pre>
+<p>TODO
+<a href="https://stackoverflow.com/questions/6246719/what-is-a-higher-kinded-type-in-scala">https://stackoverflow.com/questions/6246719/what-is-a-higher-kinded-type-in-scala</a></p>
+<p>Summary</p>
+<ul>
+<li><p>Semigroup: associativity</p></li>
+<li><p>Monoid: associativity + identity</p></li>
+<li><p>Functor: map</p></li>
+<li><p>Monad: any of 3 monadic laws (e.g. unit + flatMap) + associativity and identity (extends Functor)</p></li>
+<li><p>Applicative functor</p></li>
+<li><p>Traversable functor</p></li>
+<li><p>A function having the same argument and return type is sometimes called an endofunction</p></li>
+</ul>
+<p>TODO Functor and Monad</p>
+<ul>
+<li>associative e.g. <code>x.flatMap(f).flatMap(g) == x.flatMap(a =&gt; f(a).flatMap(g))</code></li>
+<li>monadic functions of types like <code>A =&gt; F[B]</code> are called Kleisli arrows</li>
+</ul>
+<p>Laws</p>
+<ul>
+<li>Left and right identity</li>
+<li>Associativity</li>
+<li>Naturality of product</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="best-practices-and-tips"></a><a href="#best-practices-and-tips" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Best practices and tips</h2>
+<pre><code class="hljs"><span class="hljs-comment"># best practices</span>
+<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/stackoverflow.com/questions</span><span class="hljs-regexp">/5827510/how</span>-to-override-apply-in-a-<span class="hljs-keyword">case</span>-<span class="hljs-class"><span class="hljs-keyword">class</span>-<span class="hljs-title">companion</span></span>
+
+<span class="hljs-comment"># type projector</span>
+<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/typelevel.org/blog</span><span class="hljs-regexp">/2015/</span><span class="hljs-number">0</span>7/<span class="hljs-number">13</span>/<span class="hljs-keyword">type</span>-members-parameters.html
+
+<span class="hljs-comment"># jvm stack</span>
+<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.artima.com/insidejvm</span><span class="hljs-regexp">/ed2/jvm</span>8.html
+<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/alvinalexander.com/scala</span><span class="hljs-regexp">/fp-book/recursion</span>-jvm-stacks-stack-frames
+</code></pre>
+<pre><code class="hljs css language-scala"><span class="hljs-comment">// to remember: foldLeft start from left (acc op xFirst) ==&gt; (B, A)</span>
+<span class="hljs-comment">// to remember: foldRight start from right (xLast op acc) ==&gt; (A, B)</span>
+</code></pre>
+<p>In Scala, all methods whose names end in : are right-associative. That is, the expression x :: xs is actually
+the method call xs.::(x) , which in turn calls the data constructor ::(x,xs)</p>
+<ul>
+<li><p>curry function used to assist type inference when passing anonymous functions</p></li>
+<li><p>companion object</p></li>
+<li><p>a <strong>variadic function</strong> accepts zero or more arguments</p></li>
+<li><p>algebraic data type (ADT)</p></li>
+</ul>
+<p>an API should form an algebra — that is, a collection of data types, functions over these data types, and importantly, laws or properties that express relationships between these functions</p>
+<ul>
+<li>volatile</li>
+<li>compare and swap</li>
+<li>javap</li>
+<li>diamond inheritance problem</li>
+<li>variance / covariance of type A</li>
+</ul>
+<pre><code class="hljs css language-scala">
+<span class="hljs-comment">// + covariant</span>
+<span class="hljs-comment">// List[Dog] is considered a subtype of List[Animal], assuming Dog is a subtype of Animal</span>
+<span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">List</span>[+<span class="hljs-type">A</span>]</span>
+<span class="hljs-comment">// Nothing is a subtype of all types</span>
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Nil</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">List</span>[<span class="hljs-type">Nothing</span>]</span>
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cons</span>[+<span class="hljs-type">A</span>](<span class="hljs-params">head: <span class="hljs-type">A</span>, tail: <span class="hljs-type">List</span>[<span class="hljs-type">A</span>]</span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">List</span>[<span class="hljs-type">A</span>]</span>
+</code></pre>
+<p>object PizzaService extends PizzaService</p>
+<p>You can’t call functions on a trait, so you need to create a concrete instance of that trait before you do anything else. This technique is common with the modular pro- gramming approach, and it’s known as “reifying” the trait. (The word reify is defined as, “Taking an abstract concept and making it concrete.”)</p>
+<p>--&gt;</p>
+<!--
+<p>Algebra = Operations + Types</p>
+<p>e.g.</p>
+<ul>
+<li>create is an operation</li>
+<li>A and String is a type</li>
+<li>Db is a piece of Algebra that can be composed or extended</li>
+</ul>
+<p>trait Db[F[_]] {
+def create[A]: F[String]
+def delete(id: String): F[Boolean]
+}</p>
+<p>Interpreter = &quot;Implementation&quot; of an Algebra</p>
+<p>i.e. Materialization for specific type</p>
+<hr>
+<p>they are alternatives:</p>
+<p>(tagless) final encoding: typeclass</p>
+<ul>
+<li>ignore tagless</li>
+<li>final encoding: means that you can describe operations with functions</li>
+</ul>
+<p>initial encoding: free monad</p>
+<ul>
+<li>you can describe operations with case classes</li>
+</ul>
+<p>trait Db {
+case class Create[F[<em>], A](a: A)
+case class Delete[F[</em>]](id: String)
+}</p>
+<hr>
+<p>Tagless Final Encoding == MTL-style program composition</p>
+<p>mtl is now is a final tagless encoding of common effects</p>
+<p>The <code>mtl</code> (Monad Transformer library) library in haskell used to provide the concrete monad transformers types, which are now in <code>transformers</code></p>
+<p>Option, Either, IO are all effect/context/wrapper</p>
+<p>--&gt;</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/scala-fp/docs/old"><span class="arrow-prev">← </span><span>Old Label</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#faqs">FAQs</a></li><li><a href="#best-practices-and-tips">Best practices and tips</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/scala-fp/" class="nav-home"><img src="/scala-fp/img/favicon.ico" alt="Scala FP for dummies" width="66" height="58"/></a><div><h5>Docs</h5><a href="/scala-fp/docs/en/basic.html">TODO Basic</a></div><div><h5>More</h5><a href="https://github.com/niqdev/scala-fp" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 niqdev</section></footer></div></body></html>
