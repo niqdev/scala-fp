@@ -1,4 +1,16 @@
-# fp
+# scala-fp
+
+```bash
+# generate the documentation site
+sbt mdoc
+
+# file watcher with livereload
+sbt "mdoc --watch"
+```
+
+---
+
+> OLD
 
 ```bash
 sbt "show discoveredMainClasses"

@@ -1,1 +1,4 @@
-addSbtPlugin("com.47deg"  % "sbt-microsites" % "0.9.0")
+logLevel := Level.Info
+
+addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.0.0")
+addSbtPlugin("org.scalameta" % "sbt-mdoc" % "2.0.0" )

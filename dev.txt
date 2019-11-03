@@ -1,25 +1,39 @@
-https://www.youtube.com/watch?v=Dsd4pc99FSY&list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0&index=2&t=0s
+# site
+https://scalameta.org/mdoc
+https://docusaurus.io/en
 
-val x: Int
-val xs: List[Int]
+# sources
+* (refactor) https://niqdev.github.io/devops/scala
+* scala-with-cats
+* red-book
+* marc book
+* leanpub.com/pfp-scala
+* scalacheck
+  - https://github.com/alvinj/FPScalaCheck/tree/master/src/test/scala/utils
+  - https://github.com/rickynils/scalacheck/blob/master/doc/UserGuide.md
+  - http://noelmarkham.github.io/practical-scalacheck/index.html#/
+  - https://booksites.artima.com/scalacheck/examples/html/ch06.html
+  - http://jtfmumm.com/blog/2015/09/04/adventures-in-abstract-algebra-part-4-using-scalacheck-to-verify-infinite-algebraic-structures/
 
-Int and List[Int] are proper types
+https://devth.com/2015/monad-laws-in-scala
+https://github.com/barambani/laws
 
-In type theory or type system in general
+---
 
-List is a Kind
+# nvm (node + npm)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+nvm install 12 --lts
+nvm use --lts 12
+node --version
+npm --version
 
-scala> :k Int
-Int's kind is A
+# yarn (with nvm)
+# https://yarnpkg.com/en/docs/install#debian-stable
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install --no-install-recommends yarn
+yarn --version
 
-scala> :k List[Int]
-List[Int]'s kind is A
-
-scala> :k List
-List's kind is F[+A]
-
-* List is an Higher Kind type
-* List is a Type Constructor
-* think List like a function that takes a parameter and return a proper type i.e. List[Int]
-
-TODO 3.40
+# docusaurus
+# https://docusaurus.io
+npx docusaurus-init
