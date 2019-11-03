@@ -4,7 +4,7 @@ const repoUrl = 'https://github.com/niqdev/scala-fp';
 
 const siteConfig = {
   title: 'Scala FP for dummies',
-  tagline: 'A website for testing',
+  tagline: 'A collection of notes and resources',
   url: 'https://niqdev.github.io',
   baseUrl: '/scala-fp/',
 
