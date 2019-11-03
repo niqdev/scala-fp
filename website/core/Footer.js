@@ -28,6 +28,12 @@ class Footer extends React.Component {
             <a href={this.docUrl('basic.html', this.props.language)}>
               TODO Basic
             </a>
+            <a href="https://scalameta.org/mdoc/" target="_blank">
+              mdoc
+            </a>
+            <a href="https://docusaurus.io/en/" target="_blank">
+              Docusaurus
+            </a>
           </div>
           <div>
             <h5>More</h5>
