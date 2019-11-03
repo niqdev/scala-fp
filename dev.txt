@@ -36,4 +36,7 @@ yarn --version
 
 # docusaurus
 # https://docusaurus.io
+# generate skeleton (delete docker files)
 npx docusaurus-init
+# start local site with livereload
+yarn --cwd website/ start

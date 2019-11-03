@@ -5,4 +5,6 @@
 *.iml
 
 target/
-_site/
+
+/website/build/
+/website/node_modules/

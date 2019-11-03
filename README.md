@@ -6,6 +6,12 @@ sbt mdoc
 
 # file watcher with livereload
 sbt "mdoc --watch"
+
+# generate static site
+sbt docusaurusCreateSite
+
+# publish gh-pages locally
+sbt docusaurusPublishGhpages
 ```
 
 ---
