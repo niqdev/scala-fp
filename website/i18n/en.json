@@ -5,23 +5,39 @@
     "previous": "Previous",
     "tagline": "A website for testing",
     "docs": {
-      "doc1": {
-        "title": "Latin-ish",
-        "sidebar_label": "Example Page"
+      "basic": {
+        "title": "Basic",
+        "sidebar_label": "Basic Label"
       },
-      "index": {
-        "title": "Home"
+      "ecosystem": {
+        "title": "Ecosystem",
+        "sidebar_label": "Ecosystem Label"
+      },
+      "fp": {
+        "title": "FP",
+        "sidebar_label": "FP Label"
+      },
+      "old-notes": {
+        "title": "Old Notes",
+        "sidebar_label": "Old Notes Label"
+      },
+      "old": {
+        "title": "Old",
+        "sidebar_label": "Old Label"
       }
     },
     "links": {
-      "Docs": "Docs",
-      "Help": "Help",
-      "Blog": "Blog"
+      "Basic": "Basic",
+      "FP": "FP",
+      "Ecosystem": "Ecosystem",
+      "Old": "Old",
+      "GitHub": "GitHub"
     },
     "categories": {
-      "Docusaurus": "Docusaurus",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "basic": "basic",
+      "fp": "fp",
+      "ecosystem": "ecosystem",
+      "old": "old"
     }
   },
   "pages-strings": {

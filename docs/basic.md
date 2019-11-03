@@ -1,7 +1,7 @@
 ---
-id: doc1
-title: Latin-ish
-sidebar_label: Example Page
+id: basic
+title: Basic
+sidebar_label: Basic Label
 ---
 
 # My Project

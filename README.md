@@ -2,7 +2,7 @@
 
 ```bash
 # generate the documentation site
-sbt mdoc
+sbt clean mdoc
 
 # file watcher with livereload
 sbt "mdoc --watch"

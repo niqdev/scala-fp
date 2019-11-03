@@ -6,7 +6,7 @@ lazy val info = new {
 }
 
 lazy val versions = new {
-  // cats
+  // ecosystem
   val catsCore   = "2.0.0"
   val catsEffect = "2.0.0"
 
@@ -16,9 +16,9 @@ lazy val versions = new {
 }
 
 lazy val dependencies = new {
-  lazy val cats = Seq(
-    "org.typelevel"     %% "cats-core"      % versions.catsCore,
-    "org.typelevel"     %% "cats-effect"    % versions.catsEffect
+  lazy val ecosystem = Seq(
+    "org.typelevel" %% "cats-core" % versions.catsCore,
+    "org.typelevel" %% "cats-effect" % versions.catsEffect
   )
 
   lazy val test = Seq(
@@ -58,11 +58,11 @@ lazy val basic = (project in file("modules/basic"))
       .map(_.withJavadoc)
   )
 
-lazy val cats = (project in file("modules/cats"))
+lazy val ecosystem = (project in file("modules/ecosystem"))
   .settings(commonSettings)
   .settings(
-    name := s"${info.name}-cats",
-    libraryDependencies ++= (dependencies.cats ++ dependencies.test)
+    name := s"${info.name}-ecosystem",
+    libraryDependencies ++= (dependencies.ecosystem ++ dependencies.test)
       .map(_.withSources)
       .map(_.withJavadoc)
   )
@@ -89,7 +89,7 @@ lazy val fp = (project in file("modules/fp"))
 
 lazy val root = project
   .in(file("."))
-  .aggregate(basic, cats, fp, docs)
+  .aggregate(basic, ecosystem, fp, docs)
   .settings(
     name := info.name
   )

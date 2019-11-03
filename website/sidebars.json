@@ -1,10 +1,14 @@
 {
   "docs": {
-    "Docusaurus": ["doc1"],
-    "First Category": ["doc2"],
-    "Second Category": ["doc3"]
+    "basic": ["basic"]
   },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
+  "fp": {
+    "fp": ["fp"]
+  },
+  "ecosystem": {
+    "ecosystem": ["ecosystem"]
+  },
+  "old": {
+    "old": ["old", "old-notes"]
   }
 }
