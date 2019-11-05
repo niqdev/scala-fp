@@ -3,11 +3,15 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "A collection of notes and resources",
+    "tagline": "A collection of notes and resources on Scala and Functional Programming",
     "docs": {
-      "basic": {
-        "title": "Basic",
-        "sidebar_label": "Basic Label"
+      "book": {
+        "title": "Book",
+        "sidebar_label": "Book Label"
+      },
+      "contribute": {
+        "title": "Contribute",
+        "sidebar_label": "How to"
       },
       "ecosystem": {
         "title": "Ecosystem",
@@ -16,6 +20,10 @@
       "fp": {
         "title": "FP",
         "sidebar_label": "FP Label"
+      },
+      "introduction": {
+        "title": "Introduction",
+        "sidebar_label": "Introduction Label"
       },
       "old-notes": {
         "title": "Old Notes",
@@ -27,17 +35,16 @@
       }
     },
     "links": {
-      "Basic": "Basic",
-      "FP": "FP",
-      "Ecosystem": "Ecosystem",
-      "Old": "Old",
+      "Book": "Book",
       "GitHub": "GitHub"
     },
     "categories": {
-      "basic": "basic",
-      "fp": "fp",
-      "ecosystem": "ecosystem",
-      "old": "old"
+      "Book": "Book",
+      "Introduction": "Introduction",
+      "FP": "FP",
+      "Ecosystem": "Ecosystem",
+      "TODO": "TODO",
+      "Contribute": "Contribute"
     }
   },
   "pages-strings": {

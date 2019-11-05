@@ -1,22 +1,8 @@
 # scala-fp
 
-```bash
-# generate the documentation site
-sbt clean mdoc
+>  WIP
 
-# file watcher with livereload
-sbt "mdoc --watch"
-
-# generate static site
-sbt docusaurusCreateSite
-
-# publish gh-pages locally
-sbt docusaurusPublishGhpages
-```
-
----
-
-> OLD
+<!--
 
 ```bash
 sbt "show discoveredMainClasses"
@@ -30,3 +16,5 @@ sbt "runMain com.github.niqdev.MainStateTLoop"
 # serve static docs
 ./docs-local.sh
 ```
+
+-->

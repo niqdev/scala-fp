@@ -48,7 +48,7 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig}/>
           <PromoSection>
-            <Button href={docUrl('old.html')}>TODO</Button>
+            <Button href={docUrl('book.html')}>Read</Button>
             <Button href={siteConfig.repoUrl}>GitHub</Button>
           </PromoSection>
         </div>
@@ -69,8 +69,8 @@ class Index extends React.Component {
       <div
         className="productShowcaseSection paddingBottom"
         style={{ textAlign: 'center' }}>
-        <h2>TODO title</h2>
-        <MarkdownBlock>{content}</MarkdownBlock>
+        <h2>WIP</h2>
+        {/*<MarkdownBlock>{content}</MarkdownBlock>*/}
       </div>
     );
 

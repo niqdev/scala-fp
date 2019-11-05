@@ -24,25 +24,15 @@ class Footer extends React.Component {
             )}
           </a>
           <div>
-            <h5>Docs</h5>
-            <a href={this.docUrl('basic.html', this.props.language)}>
-              TODO Basic
+            <h5>Contribute</h5>
+            <a href={this.docUrl('contribute.html', this.props.language)}>
+              How to
             </a>
-            <a href="https://scalameta.org/mdoc/" target="_blank">
-              mdoc
-            </a>
-            <a href="https://docusaurus.io/en/" target="_blank">
-              Docusaurus
-            </a>
-          </div>
-          <div>
-            <h5>More</h5>
             <a href={this.props.config.repoUrl} target="_blank">
               GitHub
             </a>
           </div>
         </section>
-
         <section className="copyright">{this.props.config.copyright}</section>
       </footer>
     );

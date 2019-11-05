@@ -3,8 +3,8 @@
 const repoUrl = 'https://github.com/niqdev/scala-fp';
 
 const siteConfig = {
-  title: 'Scala FP for dummies',
-  tagline: 'A collection of notes and resources',
+  title: 'scala-fp',
+  tagline: `A collection of notes and resources on Scala and Functional Programming`,
   url: 'https://niqdev.github.io',
   baseUrl: '/scala-fp/',
 
@@ -17,10 +17,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'basic', label: 'Basic'},
-    { doc: 'fp', label: 'FP'},
-    { doc: 'ecosystem', label: 'Ecosystem'},
-    { doc: 'old', label: 'Old'},
+    { doc: 'book', label: 'Book'},
     { href: repoUrl, label: "GitHub" },
   ],
 

@@ -1,7 +1,7 @@
 ---
-id: basic
-title: Basic
-sidebar_label: Basic Label
+id: book
+title: Book
+sidebar_label: Book Label
 ---
 
 # My Project

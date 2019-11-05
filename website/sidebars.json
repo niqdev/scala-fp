@@ -1,14 +1,12 @@
 {
-  "docs": {
-    "basic": ["basic"]
+  "book": {
+    "Book": ["book"],
+    "Introduction": ["introduction"],
+    "FP": ["fp"],
+    "Ecosystem": ["ecosystem"],
+    "TODO": ["old", "old-notes"]
   },
-  "fp": {
-    "fp": ["fp"]
-  },
-  "ecosystem": {
-    "ecosystem": ["ecosystem"]
-  },
-  "old": {
-    "old": ["old", "old-notes"]
+  "contribute": {
+    "Contribute": ["contribute"]
   }
 }
