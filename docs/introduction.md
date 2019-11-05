@@ -1,12 +1,17 @@
 ---
 id: introduction
 title: Introduction
-sidebar_label: Introduction Label
 ---
 
 ## Section 1
 
 hello
+
+```scala mdoc
+val x = 1
+List(x, x)
+List(1, 2).map(_ + 1)
+```
 
 ### Sub-section
 

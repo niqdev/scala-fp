@@ -1,18 +1,11 @@
 ---
 id: book
-title: Book
-sidebar_label: Book Label
+title: Welcome
+sidebar_label: Welcome
 ---
 
-# My Project
+Current version is
 
-To install my project
 ```scala
-libraryDependencies += "com" % "lib" % "@VERSION@"
-```
-
-```scala mdoc
-val x = 1
-List(x, x)
-List(1, 2).map(_ + 1)
+val version = "@VERSION@"
 ```

@@ -12,9 +12,6 @@ sbt "runMain com.github.niqdev.MainIO"
 sbt "runMain com.github.niqdev.MainState"
 sbt "runMain com.github.niqdev.MainStateT"
 sbt "runMain com.github.niqdev.MainStateTLoop"
-
-# serve static docs
-./docs-local.sh
 ```
 
 -->

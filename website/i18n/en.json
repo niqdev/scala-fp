@@ -6,8 +6,8 @@
     "tagline": "A collection of notes and resources on Scala and Functional Programming",
     "docs": {
       "book": {
-        "title": "Book",
-        "sidebar_label": "Book Label"
+        "title": "Welcome",
+        "sidebar_label": "Welcome"
       },
       "contribute": {
         "title": "Contribute",
@@ -22,8 +22,7 @@
         "sidebar_label": "FP Label"
       },
       "introduction": {
-        "title": "Introduction",
-        "sidebar_label": "Introduction Label"
+        "title": "Introduction"
       },
       "old-notes": {
         "title": "Old Notes",
