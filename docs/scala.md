@@ -1,13 +1,23 @@
 ---
 id: scala
-title: Scala
+title: Introduction
 ---
 
 ## Resources
 
-> TODO
+* [Programming in Scala](https://amzn.to/2OAAgc3) (2016)(3rd) by Martin Odersky, Lex Spoon, and Bill Venners (Book)
+* [Scala High Performance Programming](https://amzn.to/2Oy7QiS) (2016) by Vincent Theron, Michael Diamant (Book)
+* [Scala Puzzlers](http://scalapuzzlers.com)
+* [Tour of Scala](https://docs.scala-lang.org/tour/tour-of-scala.html) (Documentation)
+* [Twitter Scala School](https://twitter.github.io/scala_school)
+* [S-99: Ninety-Nine Scala Problems](http://aperiodic.net/phil/scala/s-99)
+* [Scala Exercises](https://www.scala-exercises.org)
+* [Scala for Project Euler](https://pavelfatin.com/scala-for-project-euler)
+* [Scala Collections performance characteristics](https://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
+* [The Neophyte's Guide to Scala](https://danielwestheide.com/scala/neophytes.html)
+* [Scala Compiler Phases with Pictures](https://www.iteratorshq.com/blog/scala-compiler-phases-with-pictures)
 
-## Basic concepts
+## FAQ
 
 ### *What is the Scala hierarchy?*
 
@@ -53,6 +63,12 @@ MyList("a", "b")
 MyList(1, 2, 3)
 ```
 
+### *What is covariance and contravariance?*
+
+* [Covariance and contravariance in Scala](http://blog.kamkor.me/Covariance-And-Contravariance-In-Scala)
+* [The Scala Type System: Parameterized Types and Variances](https://blog.codecentric.de/en/2015/03/scala-type-system-parameterized-types-variances-part-1)
+* [Cheat Codes for Contravariance and Covariance](http://blog.originate.com/blog/2016/08/10/cheat-codes-for-contravariance-and-covariance)
+
 ### *What is autoboxing?*
 
 The JVM defines primitive types (`boolean`, `byte`, `char`, `float`, `int`, `long`, `short` and `double`) that are *stack-allocated* rather than *heap-allocated*. When a generic type is introduced, for example, `scala.collection.immutable.List`, the JVM references an object equivalent, instead of a primitive type. For example, an instantiated list of integers would be heap-allocated objects rather than integer primitives.
@@ -61,7 +77,7 @@ The process of converting a primitive to its object equivalent is called *boxing
 
 ### *What is the `@specialized` annotation?*
 
-**Specialization** with `@specialized` annotation, refers to the compile-time process of generating duplicate versions of a generic trait or class that refer directly to a primitive type instead of the associated object wrapper. At runtime, the compiler-generated version of the generic class (or, as it is commonly referred to, the specialized version of the class) is instantiated.
+Specialization with `@specialized` annotation, refers to the compile-time process of generating duplicate versions of a generic trait or class that refer directly to a primitive type instead of the associated object wrapper. At runtime, the compiler-generated version of the generic class (or, as it is commonly referred to, the specialized version of the class) is instantiated.
 
 This process eliminates the runtime cost of boxing primitives, which means that you can define generic abstractions while retaining the performance of a handwritten, specialized implementation
 

@@ -10,23 +10,7 @@ sidebar_label: Old Label
 
 **Fundamentals**
 
-* [Programming in Scala](https://amzn.to/2OAAgc3) (2016)(3rd) by Martin Odersky, Lex Spoon, and Bill Venners (Book)
-* [Scala High Performance Programming](https://amzn.to/2Oy7QiS) (2016) by Vincent Theron, Michael Diamant (Book)
-* [Akka in Action](https://amzn.to/2vsTesn) (2016) by Raymond Roestenburg, Rob Bakker, and Rob Williams (Book)
 
-* [Tour of Scala](https://docs.scala-lang.org/tour/tour-of-scala.html)
-* [Twitter Scala School](https://twitter.github.io/scala_school)
-* [Scala Puzzlers](http://scalapuzzlers.com)
-* [S-99: Ninety-Nine Scala Problems](http://aperiodic.net/phil/scala/s-99)
-* [Scala Exercises](https://www.scala-exercises.org)
-* [Scala for Project Euler](https://pavelfatin.com/scala-for-project-euler)
-* [Scala Collections](https://docs.scala-lang.org/overviews/collections/introduction.html)
-* [Scala Collections performance characteristics](https://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
-* [The Neophyte's Guide to Scala](https://danielwestheide.com/scala/neophytes.html)
-* [Cheat Codes for Contravariance and Covariance](http://blog.originate.com/blog/2016/08/10/cheat-codes-for-contravariance-and-covariance)
-* [Covariance and contravariance in Scala](http://blog.kamkor.me/Covariance-And-Contravariance-In-Scala)
-* [The Scala Type System: Parameterized Types and Variances](https://blog.codecentric.de/en/2015/03/scala-type-system-parameterized-types-variances-part-1)
-* [Scala Compiler Phases with Pictures](https://www.iteratorshq.com/blog/scala-compiler-phases-with-pictures)
 
 **FP readings**
 

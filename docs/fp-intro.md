@@ -1,37 +1,39 @@
 ---
 id: fp-intro
-title: Functional Programming
+title: Introduction
 ---
 
 ## Resources
 
 * [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw) by Runar Bjarnason (Video)
 
-## Basic concepts
+## FAQ
 
 ### *What is the uniform access principal?*
 
-The uniform access principle states that variables, precomputed properties and parameterless functions should be accessed using the same syntax. Therefore not betraying whether they are implemented through storage or through computation. Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions. A parameterless function definition `def` can be changed to a `val` or vice versa, without affecting client code
+The *uniform access principle* states that variables, precomputed properties and parameterless functions should be accessed using the same syntax. Therefore not betraying whether they are implemented through storage or through computation.
+
+Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions. A parameterless function definition `def` can be changed to a `val` or vice versa, without affecting client code
 
 ### *What referentially transparent means?*
 
-An expression `e` is **referentially transparent** if, for all programs `p`, all occurrences of `e` in `p` can be replaced by the result of evaluating `e` without affecting the meaning of `p`
+An expression `e` is *referentially transparent* if, for all programs `p`, all occurrences of `e` in `p` can be replaced by the result of evaluating `e` without affecting the meaning of `p`
 
-* [Referential Transparency](https://pierangeloc.github.io/blog/2018/06/01/on-RT-and-FP) (Blog)
+* [Referential Transparency](https://pierangeloc.github.io/blog/2018/06/01/on-RT-and-FP)
 
 ### *What is a pure function?*
 
-A function `f` is **pure** if the expression `f(x)` is referentially transparent for all referentially transparent `x`. Hence a pure function is **modular** and **composable**
+A function `f` is *pure* if the expression `f(x)` is referentially transparent for all referentially transparent `x`. Hence a pure function is **modular** and **composable**
 
 ### *What is a higher-order function?*
 
-A **higher-order function** is a function that takes other functions as arguments or returns a function as result
+A *higher-order function* is a function that takes other functions as arguments or returns a function as result
 
 ### *What is a recursive function?*
 
-A **recursive function** is a function which calls itself. With **head recursion**, the recursive call is not the last instruction in the function
+A *recursive function* is a function which calls itself. With *head recursion*, the recursive call is not the last instruction in the function
 
-A **tail recursive function** is a special case of recursion in which the last instruction executed in the method is the recursive call. As long as the recursive call is in tail position, Scala detects and compiles it to the same sort of bytecode as would be emitted for a while loop
+A *tail recursive function* is a special case of recursion in which the last instruction executed in the method is the recursive call. As long as the recursive call is in tail position, Scala detects and compiles it to the same sort of bytecode as would be emitted for a while loop
 
 ```scala mdoc
 def factorial(n: Int): Int = {
@@ -50,7 +52,7 @@ def factorial(n: Int): Int = {
 
 ### *What is a function literal?*
 
-**Function literal** is a synonyms for **anonymous function**. Because functions are just ordinary Scala objects, we say that they are **first-class values**. A function literal is syntactic sugar for an object with a method called apply
+*Function literal* is a synonyms for **anonymous function**. Because functions are just ordinary Scala objects, we say that they are **first-class values**. A function literal is syntactic sugar for an object with a method called apply
 
 ```scala mdoc
 val lessThan0 = (a: Int, b: Int) => a < b

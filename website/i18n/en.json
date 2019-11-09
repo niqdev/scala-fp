@@ -18,7 +18,7 @@
         "sidebar_label": "Ecosystem Label"
       },
       "fp-intro": {
-        "title": "Functional Programming"
+        "title": "Introduction"
       },
       "fp-tc": {
         "title": "Type classes"
@@ -35,7 +35,7 @@
         "sidebar_label": "Old Label"
       },
       "scala": {
-        "title": "Scala"
+        "title": "Introduction"
       }
     },
     "links": {
@@ -44,8 +44,8 @@
     },
     "categories": {
       "Book": "Book",
-      "Introduction": "Introduction",
-      "FP": "FP",
+      "Scala": "Scala",
+      "Functional Programming": "Functional Programming",
       "Ecosystem": "Ecosystem",
       "TODO": "TODO",
       "Contribute": "Contribute"
