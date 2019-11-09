@@ -161,31 +161,11 @@ trait Applicative[F[_]] extends Functor[F] {
 }
 ```
 
-*What are some of the benefits of Functional Programming?*
 
-* Pure functions are easier to reason about
-* Function signatures are more meaningful
-* Parallel/Concurrent programming is easier
-* Testing is easier and pure functions lend themselves well to techniques like property-based testing
-* [Other benefits](https://alvinalexander.com/scala/fp-book/benefits-of-functional-programming)
 
-*What is an effectful computation?*
 
-In functional programming, an effect adds some capabilities to a computation. An effect is modeled usually in the form of a **type constructor** that constructs types with these additional capabilities
 
-* `List[A]` adds the effect of aggregation on A
-* `Option[A]` adds the capability of optionality for the type A
-* `Try[A]` models the effects of exceptions
 
-*What are inhabitants of a type?*
-
-Inhabitants of a type are values for that types. Algebraig Data Types can be thought of in terms of regular algebraic equations and its result gives the number of inhabitants
-
-* sum types: `Either[A, B]` or `A or B` corresponds to the equation `A + B`
-* products types: `(A, B)` (Tuple2) or `A and B` corresponds to the equation `A * B`
-* exponentiation: `A -> B` (Function1) corresponds to the equation `B^A` e.g. `Boolean -> Boolean` is `2^2`
-* the `Unit` data type corresponds to the value 1
-* the `Void` data type corresponds to the value 0
 
 *What's the difference between monomorphic and polymorphic?*
 
@@ -195,12 +175,6 @@ Only by knowing the types
 * Given a polymorphic/parametrized type signature `List[A] -> List[A]` it's proven that all elements in the result appear in the input which restricts the possible implementations
 
 <!--
-
-*What is an IO Monad?*
-
-```scala
-
-```
 
 TODO
 https://stackoverflow.com/questions/6246719/what-is-a-higher-kinded-type-in-scala
@@ -245,22 +219,7 @@ https://alvinalexander.com/scala/fp-book/recursion-jvm-stacks-stack-frames
 // to remember: foldRight start from right (xLast op acc) ==> (A, B)
 ```
 
-In Scala, all methods whose names end in : are right-associative. That is, the expression x :: xs is actually
-the method call xs.::(x) , which in turn calls the data constructor ::(x,xs)
 
-* curry function used to assist type inference when passing anonymous functions
-
-* companion object
-* a **variadic function** accepts zero or more arguments
-* algebraic data type (ADT)
-
-an API should form an algebra — that is, a collection of data types, functions over these data types, and importantly, laws or properties that express relationships between these functions
-
-* volatile
-* compare and swap
-* javap
-* diamond inheritance problem
-* variance / covariance of type A
 
 ```scala
 
@@ -271,10 +230,6 @@ sealed trait List[+A]
 case object Nil extends List[Nothing]
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
 ```
-
-object PizzaService extends PizzaService
-
-You can’t call functions on a trait, so you need to create a concrete instance of that trait before you do anything else. This technique is common with the modular pro- gramming approach, and it’s known as “reifying” the trait. (The word reify is defined as, “Taking an abstract concept and making it concrete.”)
 
 -->
 

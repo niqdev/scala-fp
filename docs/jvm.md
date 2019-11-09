@@ -9,6 +9,11 @@ title: JVM
 
 * [scalac options](https://docs.scala-lang.org/overviews/compiler-options/index.html)
 * [GraalVM](https://www.graalvm.org/)
+* volatile
+* compare and swap
+* javap
+* diamond inheritance problem
+* strong, soft, weak, phantom references
 
 ## Java Memory Management
 

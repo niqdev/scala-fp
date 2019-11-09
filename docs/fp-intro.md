@@ -17,6 +17,14 @@ title: Introduction
 
 ## FAQ
 
+### *What are some of the benefits of Functional Programming?*
+    
+* Pure functions are easier to reason about
+* Function signatures are more meaningful
+* Parallel/Concurrent programming is easier
+* Testing is easier and pure functions lend themselves well to techniques like property-based testing
+* [Other benefits](https://alvinalexander.com/scala/fp-book/benefits-of-functional-programming)
+
 ### *What is the uniform access principal?*
 
 The *uniform access principle* states that variables, precomputed properties and parameterless functions should be accessed using the same syntax. Therefore not betraying whether they are implemented through storage or through computation.
@@ -25,9 +33,9 @@ Scala supports this principle by not allowing parentheses to be placed at call s
 
 ### *What referentially transparent means?*
 
-An expression `e` is *referentially transparent* if, for all programs `p`, all occurrences of `e` in `p` can be replaced by the result of evaluating `e` without affecting the meaning of `p`
-
 * [Referential Transparency](https://pierangeloc.github.io/blog/2018/06/01/on-RT-and-FP)
+
+An expression `e` is *referentially transparent* if, for all programs `p`, all occurrences of `e` in `p` can be replaced by the result of evaluating `e` without affecting the meaning of `p`
 
 ### *What is a pure function?*
 
@@ -70,7 +78,28 @@ val lessThan2 = new Function2[Int, Int, Boolean] {
 }
 ```
 
+### *How for-comprehensions is desugared?*
+
+* [For Comprehensions](https://docs.scala-lang.org/tour/for-comprehensions.html) (Documentation)
+
+```scala mdoc
+// (1) works because "foreach" is defined
+for (i <- List(1, 2, 3)) println(i)
+
+// (2) "yield" works because "map" is defined
+for (i <- List(1, 2, 3)) yield i * 2
+
+// (3) "if" works because "withFilter" is defined
+for (i <- List(1, 2, 3, 4); if i % 2 == 0) yield i*2
+
+// (4) works because "flatMap" is defined
+for (i <- List(1, 2, 3, 4); j <- List(3, 4, 5, 6); if i == j) yield i
+```
+
 ### *What is an Algebraic Data Type?*
+
+* [Algebraic Data Types in Scala](https://alvinalexander.com/scala/fp-book/algebraic-data-types-adts-in-scala)
+* [What the Heck are Algebraic Data Types?](https://merrigrove.blogspot.com/2011/12/another-introduction-to-algebraic-data.html)
 
 In type theory, regular data structures can be described in terms of sums, products and recursive types. This leads to an algebra for describing data structures (and so-called algebraic data types). Such data types are common in statically typed functional languages
 
@@ -90,36 +119,27 @@ final case class Rectangle(width: Double, height: Double) extends Shape
 
 Sum types and product types provide the necessary abstraction for structuring various data of a domain model. Whereas sum types let model the variations within a particular data type, product types help cluster related data into a larger abstraction
 
-* [Algebraic Data Types in Scala](https://alvinalexander.com/scala/fp-book/algebraic-data-types-adts-in-scala)
-* [What the Heck are Algebraic Data Types?](https://merrigrove.blogspot.com/2011/12/another-introduction-to-algebraic-data.html)
+An API should form an algebra — that is, a collection of data types, functions over these data types, and importantly, laws or properties that express relationships between these functions
 
-### *How for-comprehensions is desugared?*
+### *What are inhabitants of a type?*
 
-```scala mdoc
-// (1) works because "foreach" is defined
-for (i <- List(1, 2, 3)) println(i)
+Inhabitants of a type are values for that types. Algebraic Data Types can be thought of in terms of regular algebraic equations and its result gives the number of inhabitants
 
-// (2) "yield" works because "map" is defined
-for (i <- List(1, 2, 3)) yield i * 2
+* sum types: `Either[A, B]` or `A or B` corresponds to the equation `A + B`
+* products types: `(A, B)` or `Tuple2` or `A and B` corresponds to the equation `A * B`
+* exponentiation: `A -> B` or `Function1` corresponds to the equation `B ^ A`
+    * e.g. `Boolean -> Boolean` is `2 ^ 2`
+* the `Unit` data type corresponds to the value `1`
+* the `Void` data type corresponds to the value `0`
 
-// (3) "if" works because "withFilter" is defined
-for (i <- List(1, 2, 3, 4); if i % 2 == 0) yield i*2
+### *What is an effectful computation?*
 
-// (4) works because "flatMap" is defined
-for (i <- List(1, 2, 3, 4); j <- List(3, 4, 5, 6); if i == j) yield i
-```
+In functional programming, an effect adds some capabilities to a computation. An effect is modeled usually in the form of a **type constructor** that constructs types with these additional capabilities
 
-* [For Comprehensions](https://docs.scala-lang.org/tour/for-comprehensions.html) (Documentation)
+* `List[A]` adds the effect of aggregation on A
+* `Option[A]` adds the capability of optionality for the type A
+* `Try[A]` models the effects of exceptions
 
-### *What is a Type Class?*
+### *What does it mean Tagless Final Encoding?*
 
-A *Type Class* is a programming pattern that allow to extend existing libraries with new functionality, without using traditional inheritance and without altering the original library source code using a combination of ad-hoc polymorphism, parametric polymorphism (type parameters) and implicits
-
-* [Type Classes as Objects and Implicits](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf) (Paper)
-* [Type classes in Scala](https://blog.scalac.io/2017/04/19/typeclasses-in-scala.html)
-* [Returning the "Current" Type in Scala](http://tpolecat.github.io/2015/04/29/f-bounds.html)
-* [Typeclass 101: ad hoc polymorphism in scala](https://julien-truffaut.github.io/Typeclass)
-* [All you don't need to know about Typeclasses](http://workday.github.io/assets/scala-exchange-type-classes)
-* [A Small Example of the Typeclass Pattern in Scala](https://web.archive.org/web/20171223221256/http://www.casualmiracles.com/2012/05/03/a-small-example-of-the-typeclass-pattern-in-scala)
-* [Typeclasses 101](http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101)
-* [Scala/Haskell: A simple example of type classes](https://markhneedham.com/blog/2012/05/22/scalahaskell-a-simple-example-of-type-classes)
+> TODO

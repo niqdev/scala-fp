@@ -11,14 +11,14 @@ val version = "@VERSION@"
 
 Scala
 
-* [Introduction](/scala-fp/docs/scala)
-* [JVM](/scala-fp/docs/jvm)
+* [Introduction](https://niqdev.github.io/scala-fp/docs/scala)
+* [JVM](https://niqdev.github.io/scala-fp/docs/jvm)
 
 Functional Programming
 
-* [Introduction](/scala-fp/docs/fp-intro)
-* [Type classes](/scala-fp/docs/fp-tc)
+* [Introduction](https://niqdev.github.io/scala-fp/docs/fp-intro)
+* [Type classes](https://niqdev.github.io/scala-fp/docs/fp-tc)
 
 Ecosystem
 
-* [TODO](/scala-fp/docs/ecosystem)
+* [TODO](https://niqdev.github.io/scala-fp/docs/ecosystem)
