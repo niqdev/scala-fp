@@ -6,8 +6,7 @@
     "tagline": "Resources on Scala and Functional Programming",
     "docs": {
       "book": {
-        "title": "Welcome",
-        "sidebar_label": "Welcome"
+        "title": "Table of contents"
       },
       "contribute": {
         "title": "How to contribute",
