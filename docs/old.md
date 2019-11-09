@@ -4,42 +4,20 @@ title: Old
 sidebar_label: Old Label
 ---
 
-# Scala
+**FP resources**
 
-## Resources
-
-**Fundamentals**
-
-
-
-**FP readings**
-
-* [Functional Programming for Mortals with Scalaz](https://leanpub.com/fpmortals) (2018) by Sam Halliday (Book)
-* [Functional Programming in Scala](https://amzn.to/2OCFpQG) (2014) by Paul Chiusano and Runar Bjarnason (Book)
-* [Functional Programming, Simplified](https://amzn.to/2OCFROS) (2017) by Alvin Alexander (Book)
-* [Scala with Cats](https://underscore.io/books/scala-with-cats) (Book)
-* [The Type Astronaut's Guide to Shapeless](https://underscore.io/books/shapeless-guide) (Book)
-* [Why Functional Programming Matters](https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf) (Paper)
 * [The Essence of the Iterator Pattern](https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf) (Paper)
 * [Applicative programming with effects](http://www.staff.city.ac.uk/~ross/papers/Applicative.pdf) (Paper)
 * [Stack Safety for Free](http://functorial.com/stack-safety-for-free/index.pdf) (Paper)
 * [Stackless Scala With Free Monads](http://blog.higher-order.com/assets/trampolines.pdf) (Paper)
-* [Type Classes as Objects and Implicits](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf) (Paper)
+
 * [Finally Tagless, Partially Evaluated](http://okmij.org/ftp/tagless-final/JFP.pdf) (Paper)
 * [Typed Tagless Final Interpreters](http://okmij.org/ftp/tagless-final/course/lecture.pdf) (Paper)
-* [Cats Infographic](https://github.com/tpolecat/cats-infographic)
 
-**FP resources**
-
-* [Functional Programming Basics](https://pragprog.com/magazines/2013-01/functional-programming-basics)
-* [Functional Programming For The Rest of Us](http://www.defmacro.org/2006/06/19/fp.html)
-* [The Downfall of Imperative Programming](https://www.fpcomplete.com/blog/2012/04/the-downfall-of-imperative-programming)
-* [Parallelism and concurrency need different tools](http://yosefk.com/blog/parallelism-and-concurrency-need-different-tools.html)
 * [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
 * Incremental Purity [[slide](https://git.io/fp017)|[code](https://git.io/fp01d)] (Meetup)
 
-* [Algebraic Data Types in Scala](https://alvinalexander.com/scala/fp-book/algebraic-data-types-adts-in-scala)
-* [What the Heck are Algebraic Data Types?](https://merrigrove.blogspot.com/2011/12/another-introduction-to-algebraic-data.html)
+
 * [More on Sealed Traits in Scala](https://underscore.io/blog/posts/2015/06/04/more-on-sealed.html)
 * [Generalized type constraints in Scala (without a PhD)](http://blog.bruchez.name/2015/11/generalized-type-constraints-in-scala.html)
 
@@ -58,21 +36,19 @@ sidebar_label: Old Label
 * [Functional Web Services with Final Encoding](https://speakerdeck.com/markus1189/functional-web-services-with-final-encoding)
 * [Tagless Final algebras and Streaming](https://typelevel.org/blog/2018/05/09/tagless-final-streaming.html)
 * [MTL-style program composition](https://www.reddit.com/r/scala/comments/90jk2u/mtlstyle_programming/e2qze0c)
-* [Monadic IO: Laziness Makes You Free](https://underscore.io/blog/posts/2015/04/28/monadic-io-laziness-makes-you-free.html)
-* [An IO monad for cats](https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html)
-* [Intro to Functional Game Programming](https://github.com/jdegoes/lambdaconf-2014-introgame)
 * [Advanced Tagless Final - Saying Farewell to Free](https://www.slideshare.net/LukaJacobowitz/advanced-tagless-final-saying-farewell-to-free)
 * [Introduction to Tagless final](http://www.beyondthelines.net/programming/introduction-to-tagless-final)
 * [From Object Algebras to Finally Tagless Interpreters](https://oleksandrmanzyuk.wordpress.com/2014/06/18/from-object-algebras-to-finally-tagless-interpreters-2/)
+
+* [Monadic IO: Laziness Makes You Free](https://underscore.io/blog/posts/2015/04/28/monadic-io-laziness-makes-you-free.html)
+* [An IO monad for cats](https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html)
+* [Intro to Functional Game Programming](https://github.com/jdegoes/lambdaconf-2014-introgame)
 
 * [Free monads - what? and why?](https://softwaremill.com/free-monads)
 * [Free Monad examples](https://github.com/kenbot/free)
 * [Overview of free monad in cats](https://blog.scalac.io/2016/06/02/overview-of-free-monad-in-cats.html)
 * [Rethinking MonadError](https://typelevel.org/blog/2018/04/13/rethinking-monaderror.html)
 * [Stackless Scala](http://www.marcoyuen.com/articles/2016/09/08/stackless-scala-1-the-problem.html)
-
-* [ScalaFP: Firsthand With Scala-Cats](https://www.signifytechnology.com/blog/2018/07/scalafp-firsthand-with-scala-cats-monads-number-1-by-harmeet-singh)
-* [Scala Cats library for dummies](https://medium.com/@abu_nadhr/scala-cats-library-for-dummies-part-1-8ec47af7a144)
 
 * [Type lambdas and kind projector](https://underscore.io/blog/posts/2016/12/05/type-lambdas.html)
 * [Shapeless for Mortals](http://fommil.com/scalax15) (2015) by Sam Halliday (Talk)
@@ -82,15 +58,6 @@ sidebar_label: Old Label
 * [The Evolution of a Scala Programmer](https://medium.com/@olxc/the-evolution-of-a-scala-programmer-1b7a709fb71f)
 * [Types: Never commit too early](https://www.sderosiaux.com/articles/2018/08/15/types-never-commit-too-early-part1/)
 
-**Typeclass**
-
-* [Type classes in Scala](https://blog.scalac.io/2017/04/19/typeclasses-in-scala.html)
-* [Returning the "Current" Type in Scala](http://tpolecat.github.io/2015/04/29/f-bounds.html)
-* [Typeclass 101: ad hoc polymorphism in scala](https://julien-truffaut.github.io/Typeclass)
-* [All you don't need to know about Typeclasses](http://workday.github.io/assets/scala-exchange-type-classes)
-* [Typeclasses 101](http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101)
-* [Scala/Haskell: A simple example of type classes](https://markhneedham.com/blog/2012/05/22/scalahaskell-a-simple-example-of-type-classes)
-* [A Small Example of the Typeclass Pattern in Scala](http://www.casualmiracles.com/2012/05/03/a-small-example-of-the-typeclass-pattern-in-scala)
 
 **Patterns**
 
@@ -119,7 +86,6 @@ sidebar_label: Old Label
 
 **Videos**
 
-* [FP to the Max](https://youtu.be/sxudIMiOo68)
 * [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0)
 * [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
 * [The Death of Final Tagless](https://skillsmatter.com/skillscasts/13247-scala-matters)

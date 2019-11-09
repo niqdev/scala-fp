@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "A collection of notes and resources on Scala and Functional Programming",
+    "tagline": "Resources on Scala and Functional Programming",
     "docs": {
       "book": {
         "title": "Welcome",

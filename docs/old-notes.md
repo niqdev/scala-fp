@@ -4,52 +4,6 @@ title: Old Notes
 sidebar_label: Old Notes Label
 ---
 
-*What is an Algebraic Data Type?*
-
-In type theory, regular data structures can be described in terms of sums, products and recursive types. This leads to an algebra for describing data structures (and so-called algebraic data types). Such data types are common in statically typed functional languages
-
-An **algebraic data type** (ADT) is just a data type defined by one or more data constructors, each of which may contain zero or more arguments. We say that the data type is the sum or union of its data constructors, and each data constructor is the product of its arguments, hence the name algebraic data type
-
-Example
-
-* these types represent a SUM type because Shape is a Circle OR a Rectangle
-* Circle is a PRODUCT type because it has a radius
-* Rectangle is a PRODUCT type because it has a width AND a height
-
-```scala
-sealed trait Shape
-final case class Circle(radius: Double) extends Shape
-final case class Rectangle(width: Double, height: Double) extends Shape
-```
-
-Sum types and product types provide the necessary abstraction for structuring various data of a domain model. Whereas sum types let model the variations within a particular data type, product types help cluster related data into a larger abstraction.
-
-*How for-comprehensions is desugared? ([docs](https://docs.scala-lang.org/tour/for-comprehensions.html))*
-
-```scala
-// (1) works because "foreach" is defined
-scala> for (i <- List(1, 2, 3)) println(i)
-1
-2
-3
-
-// (2) "yield" works because "map" is defined
-scala> for (i <- List(1, 2, 3)) yield i*2
-res2: List[Int] = List(2, 4, 6)
-
-// (3) "if" works because "withFilter" is defined
-scala> for (i <- List(1, 2, 3, 4); if i%2 == 0) yield i*2
-res3: List[Int] = List(4, 8)
-
-// (4) works because "flatMap" is defined
-scala> for (i <- List(1, 2, 3, 4); j <- List(3, 4, 5, 6); if i == j) yield i
-res4: List[Int] = List(3, 4)
-```
-
-*What is a Typeclass?*
-
-A Typeclass is a programming pattern that allow to extend existing libraries with new functionality, without using traditional inheritance and without altering the original library source code using a combination of ad-hoc polymorphism, parametric polymorphism (type parameters) and implicits
-
 *What is a Monoid?*
 
 A Monoid is an algebraic type with 2 laws, a binary operation over that type, satisfying *associativity* and an *identity* element
