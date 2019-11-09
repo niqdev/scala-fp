@@ -4,58 +4,7 @@ title: Old Notes
 sidebar_label: Old Notes Label
 ---
 
-*What is a function literal?*
-
-**Function literal** is a synonyms for **anonymous function**. Because functions are just ordinary Scala objects, we say that they are **first-class values**. A function literal is syntactic sugar for an object with a method called apply
-
-```scala
-val lessThan0 = (a: Int, b: Int) => a < b
-val lessThan1 = (a, b) => a < b
-val lessThan2 = new Function2[Int, Int, Boolean] {
-  override def apply(a: Int, b: Int): Boolean = a < b
-}
-```
-
-*What is a variadic function?*
-
-A **variadic function** accepts zero or more arguments. It provides a little syntactic sugar for creating and passing a Seq of elements explicitly. The special `_*` type annotation allows to pass a Seq to a variadic method
-
-```scala
-sealed trait MyList[+A]
-case object MyNil extends MyList[Nothing]
-case class MyCons[+A](head: A, tail: MyList[A]) extends MyList[A]
-
-object MyList {
-  def apply[A](list: A*): MyList[A] =
-    if (list.isEmpty) MyNil
-    else MyCons(list.head, apply(list.tail: _*))
-}
-
-// usage
-MyList(1, 2, 3, 4, 5)
-```
-
-*What is a value class?*
-
-The [AnyVal](https://docs.scala-lang.org/overviews/core/value-classes.html) class can be used to define a **value class**, which is optimized at compile time to avoid the allocation of an instance
-
-```scala
-final case class Price(value: BigDecimal) extends AnyVal {
-  def lowerThan(p: Price): Boolean = this.value < p.value
-}
-```
-
-*What is autoboxing?*
-
-The JVM defines primitive types (`boolean`, `byte`, `char`, `float`, `int`, `long`, `short` and `double`) that are *stack-allocated* rather than *heap-allocated*. When a generic type is introduced, for example, `scala.collection.immutable.List`, the JVM references an object equivalent, instead of a primitive type. For example, an instantiated list of integers would be heap-allocated objects rather than integer primitives. The process of converting a primitive to its object equivalent is called *boxing*, and the reverse process is called *unboxing*. Boxing is a relevant concern for performance-sensitive programming because boxing involves heap allocation. In performance-sensitive code that performs numerical computations, the cost of [boxing and unboxing](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html) can can create significant performance slowdowns
-
-*What is the specialized annotation?*
-
-**Specialization** with `@specialized` annotation, refers to the compile-time process of generating duplicate versions of a generic trait or class that refer directly to a primitive type instead of the associated object wrapper. At runtime, the compiler-generated version of the generic class (or, as it is commonly referred to, the specialized version of the class) is instantiated. This process eliminates the runtime cost of boxing primitives, which means that you can define generic abstractions while retaining the performance of a handwritten, specialized implementation although it has some [quirks](http://aleksandar-prokopec.com/2013/11/03/specialization-quirks.html)
-
-*What is the switch annotation?*
-
-In scenarios involving simple pattern match statements that directly match a value, using `@switch` annotation provides a warning at compile time if the switch can't be compiled to a tableswitch or lookupswitch which procides better performance, because it results in a branch table rather than a decision tree
+https://docs.scala-lang.org/overviews/compiler-options/index.html
 
 *What is an Algebraic Data Type?*
 
@@ -328,6 +277,10 @@ Laws
 ## Best practices and tips
 
 ```
+https://www.graalvm.org/
+
+
+
 # best practices
 https://stackoverflow.com/questions/5827510/how-to-override-apply-in-a-case-class-companion
 
