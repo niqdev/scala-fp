@@ -182,3 +182,10 @@ final case class Price(value: BigDecimal) extends AnyVal {
   def lowerThan(p: Price): Boolean = this.value < p.value
 }
 ```
+
+### *What is a sealed trait?*
+
+> TODO
+
+* [Everything You Ever Wanted to Know About Sealed Traits in Scala](https://underscore.io/blog/posts/2015/06/02/everything-about-sealed.html)
+* [More on Sealed Traits in Scala](https://underscore.io/blog/posts/2015/06/04/more-on-sealed.html)

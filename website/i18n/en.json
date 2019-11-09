@@ -19,22 +19,17 @@
       "fp-intro": {
         "title": "Introduction"
       },
-      "fp-tc": {
-        "title": "Type classes"
-      },
       "jvm": {
         "title": "JVM"
       },
-      "old-notes": {
-        "title": "Old Notes",
-        "sidebar_label": "Old Notes Label"
-      },
-      "old": {
-        "title": "Old",
-        "sidebar_label": "Old Label"
-      },
       "scala": {
         "title": "Introduction"
+      },
+      "todo": {
+        "title": "TODO"
+      },
+      "type-classes": {
+        "title": "Type Classes"
       }
     },
     "links": {
@@ -46,7 +41,6 @@
       "Scala": "Scala",
       "Functional Programming": "Functional Programming",
       "Ecosystem": "Ecosystem",
-      "TODO": "TODO",
       "Contribute": "Contribute"
     }
   },

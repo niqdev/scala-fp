@@ -2,9 +2,8 @@
   "book": {
     "Book": ["book"],
     "Scala": ["scala", "jvm"],
-    "Functional Programming": ["fp-intro", "fp-tc"],
-    "Ecosystem": ["ecosystem"],
-    "TODO": ["old", "old-notes"]
+    "Functional Programming": ["fp-intro", "type-classes", "todo"],
+    "Ecosystem": ["ecosystem"]
   },
   "contribute": {
     "Contribute": ["contribute"]

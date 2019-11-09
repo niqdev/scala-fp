@@ -3,27 +3,23 @@ id: fp-intro
 title: Introduction
 ---
 
-## Resources
+## FAQ
 
-* [Functional Programming in Scala](https://amzn.to/2OCFpQG) (2014) by Paul Chiusano and Runar Bjarnason (Book)
-* [Functional Programming, Simplified](https://amzn.to/2OCFROS) (2017) by Alvin Alexander (Book)
+### *What are some of the benefits of Functional Programming?*
+
 * [Why Functional Programming Matters](https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf) (Paper)
 * [Functional Programming Basics](https://pragprog.com/magazines/2013-01/functional-programming-basics)
 * [Functional Programming For The Rest of Us](http://www.defmacro.org/2006/06/19/fp.html)
 * [The Downfall of Imperative Programming](https://www.fpcomplete.com/blog/2012/04/the-downfall-of-imperative-programming)
 * [Parallelism and concurrency need different tools](http://yosefk.com/blog/parallelism-and-concurrency-need-different-tools.html)
-* [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw) by Runar Bjarnason (Video)
-* [FP to the Max](https://youtu.be/sxudIMiOo68) (Video)
+* [Benefits of Functional Programming](https://alvinalexander.com/scala/fp-book/benefits-of-functional-programming)
 
-## FAQ
+TL;DR
 
-### *What are some of the benefits of Functional Programming?*
-    
 * Pure functions are easier to reason about
 * Function signatures are more meaningful
 * Parallel/Concurrent programming is easier
 * Testing is easier and pure functions lend themselves well to techniques like property-based testing
-* [Other benefits](https://alvinalexander.com/scala/fp-book/benefits-of-functional-programming)
 
 ### *What is the uniform access principal?*
 
@@ -139,7 +135,3 @@ In functional programming, an effect adds some capabilities to a computation. An
 * `List[A]` adds the effect of aggregation on A
 * `Option[A]` adds the capability of optionality for the type A
 * `Try[A]` models the effects of exceptions
-
-### *What does it mean Tagless Final Encoding?*
-
-> TODO

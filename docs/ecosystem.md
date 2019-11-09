@@ -18,6 +18,7 @@ sidebar_label: Ecosystem Label
 * [ScalaCheck](https://www.scalacheck.org)
 * [shapeless](https://github.com/milessabin/shapeless)
     * [The Type Astronaut's Guide to Shapeless](https://underscore.io/books/shapeless-guide) (Book)
+    * [Shapeless for Mortals](http://fommil.com/scalax15) (2015) by Sam Halliday (Talk)
 * ...
 
 ## Resources

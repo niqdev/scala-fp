@@ -9,6 +9,8 @@ Current version
 val version = "@VERSION@"
 ```
 
+> TODO
+
 Scala
 
 * [Introduction](https://niqdev.github.io/scala-fp/docs/scala)
@@ -17,7 +19,8 @@ Scala
 Functional Programming
 
 * [Introduction](https://niqdev.github.io/scala-fp/docs/fp-intro)
-* [Type classes](https://niqdev.github.io/scala-fp/docs/fp-tc)
+* [Type classes](https://niqdev.github.io/scala-fp/docs/type-classes)
+* [TODO](https://niqdev.github.io/scala-fp/docs/todo)
 
 Ecosystem
 
