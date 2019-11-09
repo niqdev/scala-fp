@@ -17,12 +17,14 @@
         "title": "Ecosystem",
         "sidebar_label": "Ecosystem Label"
       },
-      "fp": {
-        "title": "FP",
-        "sidebar_label": "FP Label"
+      "fp-intro": {
+        "title": "Functional Programming"
       },
-      "introduction": {
-        "title": "Introduction"
+      "fp-tc": {
+        "title": "Type classes"
+      },
+      "jvm": {
+        "title": "JVM"
       },
       "old-notes": {
         "title": "Old Notes",
@@ -31,6 +33,9 @@
       "old": {
         "title": "Old",
         "sidebar_label": "Old Label"
+      },
+      "scala": {
+        "title": "Scala"
       }
     },
     "links": {

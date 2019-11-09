@@ -4,8 +4,6 @@ title: Old Notes
 sidebar_label: Old Notes Label
 ---
 
-https://docs.scala-lang.org/overviews/compiler-options/index.html
-
 *What is an Algebraic Data Type?*
 
 In type theory, regular data structures can be described in terms of sums, products and recursive types. This leads to an algebra for describing data structures (and so-called algebraic data types). Such data types are common in statically typed functional languages
@@ -277,10 +275,6 @@ Laws
 ## Best practices and tips
 
 ```
-https://www.graalvm.org/
-
-
-
 # best practices
 https://stackoverflow.com/questions/5827510/how-to-override-apply-in-a-case-class-companion
 
