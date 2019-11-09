@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Introduction · scala-fp</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## FAQ"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Introduction · scala-fp"/><meta property="og:type" content="website"/><meta property="og:url" content="https://niqdev.github.io/scala-fp/"/><meta property="og:description" content="## FAQ"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/scala-fp/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"/><script src="/scala-fp/js/scrollSpy.js"></script><link rel="stylesheet" href="/scala-fp/css/main.css"/><script src="/scala-fp/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/scala-fp/"><img class="logo" src="/scala-fp/img/favicon.ico" alt="scala-fp"/><h2 class="headerTitleWithLogo">scala-fp</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/scala-fp/docs/book" target="_self">Book</a></li><li class=""><a href="https://github.com/niqdev/scala-fp" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Functional Programming</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Book</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/book">Table of contents</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Scala</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/scala">Introduction</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/jvm">JVM</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Functional Programming</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/scala-fp/docs/fp-intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/type-classes">Type Classes</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/todo">TODO</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Ecosystem</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/ecosystem">Ecosystem Label</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Introduction</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="faq"></a><a href="#faq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQ</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-are-some-of-the-benefits-of-functional-programming"></a><a href="#what-are-some-of-the-benefits-of-functional-programming" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What are some of the benefits of Functional Programming?</em></h3>
+<ul>
+<li><a href="https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf">Why Functional Programming Matters</a> (Paper)</li>
+<li><a href="https://pragprog.com/magazines/2013-01/functional-programming-basics">Functional Programming Basics</a></li>
+<li><a href="http://www.defmacro.org/2006/06/19/fp.html">Functional Programming For The Rest of Us</a></li>
+<li><a href="https://www.fpcomplete.com/blog/2012/04/the-downfall-of-imperative-programming">The Downfall of Imperative Programming</a></li>
+<li><a href="http://yosefk.com/blog/parallelism-and-concurrency-need-different-tools.html">Parallelism and concurrency need different tools</a></li>
+<li><a href="https://alvinalexander.com/scala/fp-book/benefits-of-functional-programming">Benefits of Functional Programming</a></li>
+</ul>
+<p>TL;DR</p>
+<ul>
+<li>Pure functions are easier to reason about</li>
+<li>Function signatures are more meaningful</li>
+<li>Parallel/Concurrent programming is easier</li>
+<li>Testing is easier and pure functions lend themselves well to techniques like property-based testing</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-uniform-access-principal"></a><a href="#what-is-the-uniform-access-principal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is the uniform access principal?</em></h3>
+<p>The <em>uniform access principle</em> states that variables, precomputed properties and parameterless functions should be accessed using the same syntax. Therefore not betraying whether they are implemented through storage or through computation.</p>
+<p>Scala supports this principle by not allowing parentheses to be placed at call sites of parameterless functions. A parameterless function definition <code>def</code> can be changed to a <code>val</code> or vice versa, without affecting client code</p>
+<h3><a class="anchor" aria-hidden="true" id="what-referentially-transparent-means"></a><a href="#what-referentially-transparent-means" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What referentially transparent means?</em></h3>
+<ul>
+<li><a href="https://pierangeloc.github.io/blog/2018/06/01/on-RT-and-FP">Referential Transparency</a></li>
+</ul>
+<p>An expression <code>e</code> is <em>referentially transparent</em> if, for all programs <code>p</code>, all occurrences of <code>e</code> in <code>p</code> can be replaced by the result of evaluating <code>e</code> without affecting the meaning of <code>p</code></p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-a-pure-function"></a><a href="#what-is-a-pure-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is a pure function?</em></h3>
+<p>A function <code>f</code> is <em>pure</em> if the expression <code>f(x)</code> is referentially transparent for all referentially transparent <code>x</code>. Hence a pure function is <strong>modular</strong> and <strong>composable</strong></p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-a-higher-order-function"></a><a href="#what-is-a-higher-order-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is a higher-order function?</em></h3>
+<p>A <em>higher-order function</em> is a function that takes other functions as arguments or returns a function as result</p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-a-recursive-function"></a><a href="#what-is-a-recursive-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is a recursive function?</em></h3>
+<p>A <em>recursive function</em> is a function which calls itself. With <em>head recursion</em>, the recursive call is not the last instruction in the function</p>
+<p>A <em>tail recursive function</em> is a special case of recursion in which the last instruction executed in the method is the recursive call. As long as the recursive call is in tail position, Scala detects and compiles it to the same sort of bytecode as would be emitted for a while loop</p>
+<pre><code class="hljs css language-scala"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">factorial</span></span>(n: <span class="hljs-type">Int</span>): <span class="hljs-type">Int</span> = {
+  <span class="hljs-meta">@scala</span>.annotation.tailrec
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">loop</span></span>(index: <span class="hljs-type">Int</span>, result: <span class="hljs-type">Int</span>): <span class="hljs-type">Int</span> = index <span class="hljs-keyword">match</span> {
+    <span class="hljs-keyword">case</span> i <span class="hljs-keyword">if</span> i == <span class="hljs-number">0</span> =&gt;
+      loop(<span class="hljs-number">1</span>, <span class="hljs-number">1</span> * result)
+    <span class="hljs-keyword">case</span> i <span class="hljs-keyword">if</span> i &lt; n =&gt;
+      loop(i + <span class="hljs-number">1</span>, i * result)
+    <span class="hljs-keyword">case</span> i =&gt;
+      i * result
+  }
+  loop(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="what-is-a-function-literal"></a><a href="#what-is-a-function-literal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is a function literal?</em></h3>
+<p><em>Function literal</em> is a synonyms for <strong>anonymous function</strong>. Because functions are just ordinary Scala objects, we say that they are <strong>first-class values</strong>. A function literal is syntactic sugar for an object with a method called apply</p>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> lessThan0 = (a: <span class="hljs-type">Int</span>, b: <span class="hljs-type">Int</span>) =&gt; a &lt; b
+<span class="hljs-comment">// lessThan0: (Int, Int) =&gt; Boolean = &lt;function2&gt;</span>
+<span class="hljs-keyword">val</span> lessThan1: (<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>) =&gt; <span class="hljs-type">Boolean</span> = (a, b) =&gt; a &lt; b
+<span class="hljs-comment">// lessThan1: (Int, Int) =&gt; Boolean = &lt;function2&gt;</span>
+<span class="hljs-keyword">val</span> lessThan2 = <span class="hljs-keyword">new</span> <span class="hljs-type">Function2</span>[<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Boolean</span>] {
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply</span></span>(a: <span class="hljs-type">Int</span>, b: <span class="hljs-type">Int</span>): <span class="hljs-type">Boolean</span> = a &lt; b
+}
+<span class="hljs-comment">// lessThan2: (Int, Int) =&gt; Boolean = &lt;function2&gt;</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="how-for-comprehensions-is-desugared"></a><a href="#how-for-comprehensions-is-desugared" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>How for-comprehensions is desugared?</em></h3>
+<ul>
+<li><a href="https://docs.scala-lang.org/tour/for-comprehensions.html">For Comprehensions</a> (Documentation)</li>
+</ul>
+<pre><code class="hljs css language-scala"><span class="hljs-comment">// (1) works because "foreach" is defined</span>
+<span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)) println(i)
+<span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span>
+
+<span class="hljs-comment">// (2) "yield" works because "map" is defined</span>
+<span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)) <span class="hljs-keyword">yield</span> i * <span class="hljs-number">2</span>
+<span class="hljs-comment">// res1: List[Int] = List(2, 4, 6)</span>
+
+<span class="hljs-comment">// (3) "if" works because "withFilter" is defined</span>
+<span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>); <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">yield</span> i*<span class="hljs-number">2</span>
+<span class="hljs-comment">// res2: List[Int] = List(4, 8)</span>
+
+<span class="hljs-comment">// (4) works because "flatMap" is defined</span>
+<span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>); j &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>); <span class="hljs-keyword">if</span> i == j) <span class="hljs-keyword">yield</span> i
+<span class="hljs-comment">// res3: List[Int] = List(3, 4)</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="what-is-an-algebraic-data-type"></a><a href="#what-is-an-algebraic-data-type" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is an Algebraic Data Type?</em></h3>
+<ul>
+<li><a href="https://alvinalexander.com/scala/fp-book/algebraic-data-types-adts-in-scala">Algebraic Data Types in Scala</a></li>
+<li><a href="https://merrigrove.blogspot.com/2011/12/another-introduction-to-algebraic-data.html">What the Heck are Algebraic Data Types?</a></li>
+</ul>
+<p>In type theory, regular data structures can be described in terms of sums, products and recursive types. This leads to an algebra for describing data structures (and so-called algebraic data types). Such data types are common in statically typed functional languages</p>
+<p>An <em>algebraic data type</em> (ADT) is just a data type defined by one or more data constructors, each of which may contain zero or more arguments. The data type is the <strong>sum or union</strong> of its data constructors, and each data constructor is the <strong>product</strong> of its arguments, hence the name algebraic data type</p>
+<p><strong>Example</strong></p>
+<ul>
+<li>these types represent a <strong>sum</strong> type because <code>Shape</code> is a <code>Circle</code> <strong><em>or</em></strong> a <code>Rectangle</code></li>
+<li><code>Circle</code> is a <strong>product</strong> type because it has a radius</li>
+<li><code>Rectangle</code> is a <strong>product</strong> type because it has a width <strong><em>and</em></strong> a height</li>
+</ul>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Shape</span></span>
+<span class="hljs-keyword">final</span> <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span>(<span class="hljs-params">radius: <span class="hljs-type">Double</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">Shape</span></span>
+<span class="hljs-keyword">final</span> <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rectangle</span>(<span class="hljs-params">width: <span class="hljs-type">Double</span>, height: <span class="hljs-type">Double</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">Shape</span></span>
+</code></pre>
+<p>Sum types and product types provide the necessary abstraction for structuring various data of a domain model. Whereas sum types let model the variations within a particular data type, product types help cluster related data into a larger abstraction</p>
+<p>An API should form an algebra — that is, a collection of data types, functions over these data types, and importantly, laws or properties that express relationships between these functions</p>
+<h3><a class="anchor" aria-hidden="true" id="what-are-inhabitants-of-a-type"></a><a href="#what-are-inhabitants-of-a-type" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What are inhabitants of a type?</em></h3>
+<p>Inhabitants of a type are values for that types. Algebraic Data Types can be thought of in terms of regular algebraic equations and its result gives the number of inhabitants</p>
+<ul>
+<li>sum types: <code>Either[A, B]</code> or <code>A or B</code> corresponds to the equation <code>A + B</code></li>
+<li>products types: <code>(A, B)</code> or <code>Tuple2</code> or <code>A and B</code> corresponds to the equation <code>A * B</code></li>
+<li>exponentiation: <code>A -&gt; B</code> or <code>Function1</code> corresponds to the equation <code>B ^ A</code>
+<ul>
+<li>e.g. <code>Boolean -&gt; Boolean</code> is <code>2 ^ 2</code></li>
+</ul></li>
+<li>the <code>Unit</code> data type corresponds to the value <code>1</code></li>
+<li>the <code>Void</code> data type corresponds to the value <code>0</code></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="what-is-an-effectful-computation"></a><a href="#what-is-an-effectful-computation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is an effectful computation?</em></h3>
+<p>In functional programming, an effect adds some capabilities to a computation. An effect is modeled usually in the form of a <strong>type constructor</strong> that constructs types with these additional capabilities</p>
+<ul>
+<li><code>List[A]</code> adds the effect of aggregation on A</li>
+<li><code>Option[A]</code> adds the capability of optionality for the type A</li>
+<li><code>Try[A]</code> models the effects of exceptions</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/scala-fp/docs/jvm"><span class="arrow-prev">← </span><span>JVM</span></a><a class="docs-next button" href="/scala-fp/docs/type-classes"><span>Type Classes</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#what-are-some-of-the-benefits-of-functional-programming"><em>What are some of the benefits of Functional Programming?</em></a></li><li><a href="#what-is-the-uniform-access-principal"><em>What is the uniform access principal?</em></a></li><li><a href="#what-referentially-transparent-means"><em>What referentially transparent means?</em></a></li><li><a href="#what-is-a-pure-function"><em>What is a pure function?</em></a></li><li><a href="#what-is-a-higher-order-function"><em>What is a higher-order function?</em></a></li><li><a href="#what-is-a-recursive-function"><em>What is a recursive function?</em></a></li><li><a href="#what-is-a-function-literal"><em>What is a function literal?</em></a></li><li><a href="#how-for-comprehensions-is-desugared"><em>How for-comprehensions is desugared?</em></a></li><li><a href="#what-is-an-algebraic-data-type"><em>What is an Algebraic Data Type?</em></a></li><li><a href="#what-are-inhabitants-of-a-type"><em>What are inhabitants of a type?</em></a></li><li><a href="#what-is-an-effectful-computation"><em>What is an effectful computation?</em></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/scala-fp/" class="nav-home"><img src="/scala-fp/img/favicon.ico" alt="scala-fp" width="66" height="58"/></a><div><h5>Contribute</h5><a href="/scala-fp/docs/en/contribute.html">How to</a><a href="https://github.com/niqdev/scala-fp" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 niqdev</section></footer></div></body></html>

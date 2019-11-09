@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>JVM · scala-fp</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&gt; TODO review old devops notes"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="JVM · scala-fp"/><meta property="og:type" content="website"/><meta property="og:url" content="https://niqdev.github.io/scala-fp/"/><meta property="og:description" content="&gt; TODO review old devops notes"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/scala-fp/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"/><script src="/scala-fp/js/scrollSpy.js"></script><link rel="stylesheet" href="/scala-fp/css/main.css"/><script src="/scala-fp/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/scala-fp/"><img class="logo" src="/scala-fp/img/favicon.ico" alt="scala-fp"/><h2 class="headerTitleWithLogo">scala-fp</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/scala-fp/docs/book" target="_self">Book</a></li><li class=""><a href="https://github.com/niqdev/scala-fp" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Scala</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Book</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/book">Table of contents</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Scala</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/scala">Introduction</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/scala-fp/docs/jvm">JVM</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Functional Programming</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/fp-intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/type-classes">Type Classes</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/todo">TODO</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Ecosystem</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/ecosystem">Ecosystem Label</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">JVM</h1></header><article><div><span><blockquote>
+<p>TODO review old devops notes</p>
+</blockquote>
+<hr>
+<ul>
+<li><a href="https://docs.scala-lang.org/overviews/compiler-options/index.html">scalac options</a></li>
+<li><a href="https://www.graalvm.org/">GraalVM</a></li>
+<li>volatile</li>
+<li>compare and swap</li>
+<li>javap</li>
+<li>diamond inheritance problem</li>
+<li>strong, soft, weak, phantom references</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="java-memory-management"></a><a href="#java-memory-management" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Java Memory Management</h2>
+<p>Resources</p>
+<ul>
+<li><a href="https://docs.oracle.com/javase/specs/index.html">Java Language and Virtual Machine Specifications</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/whitepaper-135217.html">The Java HotSpot Performance Engine Architecture</a></li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/memorymanagement-whitepaper-150215.pdf">Memory Management in the Java HotSpot Virtual Machine</a></li>
+<li><a href="https://blog.takipi.com/jvm-architecture-101-get-to-know-your-virtual-machine">JVM Architecture 101</a></li>
+<li><a href="https://www.artima.com/insidejvm/ed2/index.html">Inside the Java Virtual Machine</a></li>
+<li><a href="http://blog.jamesdbloom.com/JVMInternals.html">JVM Internals</a></li>
+<li><a href="http://blog.jamesdbloom.com/JavaCodeToByteCode_PartOne.html">Java Code to Byte Code</a></li>
+<li><a href="https://www.cubrid.org/blog/understanding-jvm-internals">Understanding JVM Internals</a></li>
+<li><a href="https://www.cubrid.org/blog/understanding-java-garbage-collection">Understanding Java Garbage Collection</a></li>
+<li><a href="http://jd.benow.ca">Java Decompiler</a></li>
+<li><a href="http://jcip.net">Java Concurrency in Practice</a> (Book)</li>
+<li><a href="https://www.baeldung.com/jvm-parameters">Most Important JVM Parameters</a></li>
+<li><a href="https://www.baeldung.com/jvm-garbage-collectors">JVM Garbage Collectors</a></li>
+<li><a href="https://dri.es/files/oopsla07-georges.pdf">Statistically Rigorous Java Performance Evaluation</a> (Paper)</li>
+</ul>
+<p><img src="/scala-fp/docs/assets/jvm-architecture.png" alt="jvm-architecture"></p>
+<h3><a class="anchor" aria-hidden="true" id="stack"></a><a href="#stack" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stack</h3>
+<p>The Stack is a First-In-Last-Out data structure managed by the JVM i.e. push to the top, pull or pop from the top. Every thread has its own Stack and data can be seen only by that thread</p>
+<p>Each time you call a function, Java pushes the local variables for that function onto the Stack. A copy of the value is passed to the methods. When the method returns, all the data are popped or pulled from the Stack</p>
+<p>When you reach a closing curly bracket (not only after a return) any local variables declared inside the block you are leaving is popped from the Stack and destroyed, this is how scope works</p>
+<h3><a class="anchor" aria-hidden="true" id="heap"></a><a href="#heap" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Heap</h3>
+<p>The Heap allows to store data that has a longer lifetime than a single code block or function e.g. objects that need to be shared across multiple methods</p>
+<p>All the memory in the JVM is mainly Heap, is massive compared with the Stack and there is only one Heap shared across all the threads and a number of Stacks (each thread has its own Stack)</p>
+<h3><a class="anchor" aria-hidden="true" id="variables"></a><a href="#variables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Variables</h3>
+<p>How variable are store in Java:</p>
+<ul>
+<li>objects are stored physically on the Heap</li>
+<li>variables are reference to objects</li>
+<li>local variables are stored on the Stack</li>
+<li>primitive variables resides entirely on the Stack</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-keyword">int</span> age = <span class="hljs-number">30</span>
+String name = <span class="hljs-string">"niqdev"</span>
+
+Stack          Heap
+[<span class="hljs-meta">  name* </span>] --&gt; [ <span class="hljs-string">"niqdev"</span> ]
+[<span class="hljs-meta">  age   </span>]
+</code></pre>
+<p>In Java, variable can <em>only</em> be passed by values i.e. a new variable is added on the Stack</p>
+<p>Passing by reference is <em>not</em> possible, but don't confuse that when objects are passed into methods, <em>the <strong>reference</strong> of the object is passed <strong>by value</strong></em></p>
+<p><code>final</code> keyword means that the value can only be assigned once (can be assigned later), but we can change the value referenced by the object. Lack of const correctness in Java: <code>const</code> unfortunately is a reserved keyword and cannot be used, but allows to freeze the whole state of the object internally: <em>mutable states are bad!</em></p>
+<p>Example</p>
+<pre><code class="hljs css language-java"><span class="hljs-keyword">final</span> Customer c = <span class="hljs-keyword">new</span> Customer(<span class="hljs-string">"a"</span>)
+<span class="hljs-comment">// or</span>
+<span class="hljs-keyword">final</span> Customer c
+c = <span class="hljs-keyword">new</span> Customer(<span class="hljs-string">"a"</span>)
+
+<span class="hljs-comment">// this is NOT allowed - compiler error</span>
+c = <span class="hljs-keyword">new</span> Customer(<span class="hljs-string">"b"</span>)
+<span class="hljs-comment">// but this yes</span>
+c.setName(<span class="hljs-string">"b"</span>)
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="string"></a><a href="#string" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>String</h3>
+<p>As a general rule of thumb, all objects are stored on the Heap and only references are stored in the Stack. In reality the JVM for optimization maybe store some objects also in the Stack, but this is not visibile. Strings are immutable and if &quot;short&quot; are stored in a pool on the Heap to be reused.</p>
+<p>When you create a new string with quotes e.g. <code>&quot;hello&quot;</code>, the JVM creates and retrieve the string from a constant pool. To create a new object every time use the <code>new String(&quot;hello&quot;)</code>. To force a lookup in the pool use <code>intern()</code>. Use <code>==</code> to compare the reference (address in memory)</p>
+<pre><code class="hljs css language-java">String s1 = <span class="hljs-string">"hello"</span>;
+String s2 = <span class="hljs-string">"hello"</span>;
+String s3 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"hello"</span>);
+String s4 = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"hello"</span>).intern();
+
+<span class="hljs-comment">// true - 2 strings created using quotes refer to the same object</span>
+System.out.println(s1 == s2);
+<span class="hljs-comment">// false - if you create a string using new operator</span>
+<span class="hljs-comment">// it's not part of the constant pool, so objects are different</span>
+System.out.println(s1 == s3);
+<span class="hljs-comment">// true - if you call intern() method Java adds current string to the string pool</span>
+<span class="hljs-comment">// and 2 string become the same object</span>
+System.out.println(s1 == s4);
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="garbage-collection"></a><a href="#garbage-collection" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Garbage collection</h3>
+<p><strong>Garbage collection</strong> (invented in lisp around 1959) removes object no more referenced on the Heap from the Stack. Most of the objects don't live for long, if an object survives it is likely to live forever. <strong>Mark and sweep</strong> is the algorithm used:</p>
+<ul>
+<li>instead of look for all the objects that must be removed, it looks for the object that need to be retained</li>
+<li>all the threads in the application are paused (stop the world event)</li>
+<li>follow all the references from the Stack and mark it as alive</li>
+<li>full scan on all the Heap and wipe unmarked references</li>
+<li>reorder contiguos memory in order to avoid fragmentation</li>
+<li>it's faster if more objects need to be cleaned because it looks only for what need to be retained</li>
+</ul>
+<p><strong>Generational garbage collection</strong> is a way to organize the Heap into 2 sections to try to avoid freeze the application while garbage collecting the whole Heap:</p>
+<ul>
+<li><p><strong>young generation</strong> is small, so it requires only few fraction of seconds to be scanned</p></li>
+<li><p><strong>old generation</strong> also called <em>Tenured</em>, isn't scanned usually, only if needed i.e. when it's full and requires few seconds</p></li>
+<li><p>young generation is divided in <em>Eden</em>, <em>Survivor0</em> and <em>Survivor1</em></p></li>
+<li><p>new objects are created in the Eden</p></li>
+<li><p>when Eden gets full, objects are moved in the Survivor space and moved amongs the two alternatively to be compacted</p></li>
+<li><p>memory is reserved in the Heap for S0 and S1 even if not used</p></li>
+<li><p>after an object survived 8 generations (default), movement and compaction between Survivor GC, then is stored in the old generation</p></li>
+<li><p>VM can change the number of generations based on the amount of memory available</p></li>
+<li><p>class variables (static variables) are stored as part of the class object associated with that class and stored in the Permanent Generation (PermGen) prior Java 8 or in the MetaSpace</p></li>
+</ul>
+<p><img src="/scala-fp/docs/assets/jvm-gc.png" alt="jvm-gc"></p>
+<p>Run <code>jvisualvm</code> and add <code>Visual GC</code> plugin</p>
+<p>Any object on the Heap which cannot be reached through a reference from the Stack is <em>eligible for garbage collection</em>. <strong>Memory leak</strong> are objects that are not free on the Heap and continue to consume memory after a program finish. Memory leaks are difficult to find and the JVM try to avoid them running the garbage collector. <strong>Soft leak</strong> happens when an object is referenced on the Stack even thought it will never be used again</p>
+<p>You can not clear memory, with <code>Runtime.getRuntime().gc()</code> or <code>System.gc()</code> you can only suggest JVM to run garbage collection, but there is no guarentee. In general, you should never invoke <code>gc()</code> directly. While it is running the application is temporarily suspended and it will pause all the threads. <code>finalize()</code> is invoked when an object is garbage collected, but there is absolutely no guarentee if and when it will happen.
+Is useful to check for example memory leak, as warning, if some resources were not closed properly</p>
+<h3><a class="anchor" aria-hidden="true" id="permgen-and-metaspace"></a><a href="#permgen-and-metaspace" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PermGen and Metaspace</h3>
+<p>Permanent Generation (Heap memory) since Java 6 contains objects that will never garbage collected:</p>
+<ul>
+<li>string pool is in PermGen</li>
+<li>class metadata are stored in PermGen</li>
+</ul>
+<p>If the PermGen run out of space the only solution is to increase the size of memory, otherwise the app will crash. In Java 7 String Pool was moved in the old memory and therefore string can be garbage collected now. In Java 8 MetaSpace replaced PermGen as separeted memory allocated, which is not part of the Heap anymore and is the total available memory</p>
+<h3><a class="anchor" aria-hidden="true" id="tuning"></a><a href="#tuning" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tuning</h3>
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># set the maximum heap size to 512 MB</span>
+-Xmx512m
+<span class="hljs-comment"># set the starting heap size to 150 MB</span>
+-Xms150m
+<span class="hljs-comment"># set the size of the PermGen to 256 MB (PermGen was removed in Java 8)</span>
+-XX:MaxPermSize=256M
+<span class="hljs-comment"># set the size of the young generation to 256 MB</span>
+<span class="hljs-comment"># young generation by default is 1/3 of the max heap size (suggestion between 1/2-1/4)</span>
+-Xmn256m
+</code></pre>
+<p>Oracle JVM has 3 types of garbage collector, it doesn't matter how many threads, the application will be paused anyway:</p>
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># serial uses a single thread to perform gc</span>
+-XX:+UseSerailGC
+<span class="hljs-comment"># parallel performs gc on young generation in parallel</span>
+-XX:+UseParallelGC
+<span class="hljs-comment"># mostly concurrent, closest to real time gc pausing only when marking</span>
+<span class="hljs-comment"># try to minimize the "stop of the world"</span>
+-XX:+UseConcMarkSweepGC
+-XX:+UseG1GC
+</code></pre>
+<p>Debugging</p>
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># print to console when a garbage collection takes place</span>
+-verbose:gc
+<span class="hljs-comment"># creates a heap dump file if app crash</span>
+-XX:HeapDumpOnOutOfMemory
+<span class="hljs-comment"># to find default garbage collector on the machine</span>
+-XX:+PrintCommandLineFlags
+</code></pre>
+<p><em>Parameters are case sensitive</em></p>
+<h3><a class="anchor" aria-hidden="true" id="weak-and-soft-references"></a><a href="#weak-and-soft-references" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Weak and Soft references</h3>
+<p>References from the Stack to the Heap</p>
+<ul>
+<li><strong>Strong</strong> references are always marked as alive (default)</li>
+<li><strong>Soft</strong> references are eligible for garbage collection only if the JVM run out of memory</li>
+<li><strong>Weak</strong> references are always eligible for garbage collection and is up to the JVM to retain it or not</li>
+</ul>
+<p><code>WeakReference&lt;T&gt;</code> and <code>SoftReference&lt;T&gt;</code> are useful for caching scenario, when a reference on the Heap is GC, then the variable in the stack became <code>null</code>. In a WeakHashMap for example, the reference from the stack to the map in the Heap is strong, but the references to key/value pair are eligible for GC, in that case both key and value are removed</p>
+<p><br></p>
+<h2><a class="anchor" aria-hidden="true" id="perfomance"></a><a href="#perfomance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Perfomance</h2>
+<p>Resources</p>
+<ul>
+<li><a href="http://hdrhistogram.org">HdrHistogram</a></li>
+<li><a href="https://aboullaite.me/understanding-jit-compiler-just-in-time-compiler">Understanding JIT compiler</a></li>
+<li><a href="http://www.oracle.com/technetwork/articles/java/architect-evans-pt1-2266278.html">Understanding Java JIT Compilation with JITWatch</a></li>
+<li><a href="https://groups.google.com/forum/#!msg/mechanical-sympathy/icNZJejUHfE/BfDekfBEs_sJ">Coordinated Omission</a></li>
+<li><a href="https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/about.htm#JFRRT107">Java Flight Recorder</a></li>
+<li><a href="http://blog.ragozin.info/2012/10/safepoints-in-hotspot-jvm.html">Safepoints in HotSpot JVM</a></li>
+<li><a href="https://www.hascode.com/2017/10/java-mission-control-jmc-and-flight-recorder-jfr">Java Mission Control (JMC) and Flight Recorder (JFR)</a></li>
+<li><a href="http://openjdk.java.net/projects/code-tools/jmh">JMH</a> and <a href="https://github.com/ktoso/sbt-jmh">sbt-jmh</a></li>
+<li><a href="https://www.journaldev.com/1352/what-is-jmx-mbean-jconsole-tutorial">What is JMX?</a> and <a href="https://jolokia.org">Jolokia</a></li>
+</ul>
+<p><strong>Latency</strong> describes the amount of time that it takes for an observed process to be completed</p>
+<p><strong>Throughput</strong> defines the observed rate at which a process is completed</p>
+<p>A <strong>bottleneck</strong> refers to the slowest part of the system</p>
+<p>A common mistake is to rely on <em>averages</em> to measure the performance of a system because it is a lossy summary statistic.
+A <strong>percentile</strong> is a measurement indicating the value below which a given percentage of observations in a group of observations fall</p>
+<p><strong>Benchmarks</strong> are a black-box kind of measurement. Benchmarks assess a whole system's performance by submitting various kinds of load as input and measuring latency and throughput as system outputs</p>
+<p>A <strong>profiler</strong> enables white-box testing to help you identify bottlenecks by capturing the execution time and resource consumption of each part of your
+program. Most profilers instrument the code under observation, either at compile time or runtime, to inject counters and profiling components. This instrumentation imposes a runtime cost that degrades system throughput and latency</p>
+<p>The <strong>coordinated omission problem</strong> happen we you measure the time required to process a command without taking into account the time the command had to wait to be processed</p>
+<p><strong>Java Flight Recorder (JFR)</strong> is a tool for collecting, diagnosing, and profiling data about a running Java application. It is integrated into the Java Virtual Machine and causes almost no performance overhead and is able to access data outside of <strong>JVM safepoints</strong>. Safepoints are necessary
+to coordinate global JVM activities, including stop-the-world garbage collection</p>
+<p><strong>Java Mission Control (JMC)</strong> allows to connect to a running Java application via JMX and capture runtime information from the Flight Recorder (JFR), executing commands via JMX or displaying reports from JFR sessions</p>
+<p>The <strong>Just-In-Time (JIT)</strong> compiler is a component of the Java Runtime Environment that improves the performance of Java applications at run time. Java programs consists of classes, which contain platform neutral bytecode that can be interpreted by a JVM on many different computer architectures.
+At run time, the JVM loads the class files, determines the semantics of each individual bytecode, and performs the appropriate computation.
+The additional processor and memory usage during interpretation means that a Java application performs more slowly than a native application.
+The JIT compiler helps improve the performance of Java programs by compiling bytecode into native machine code at run time</p>
+<h2><a class="anchor" aria-hidden="true" id="scala"></a><a href="#scala" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Scala</h2>
+<pre><code class="hljs"><span class="hljs-meta"># compiles</span>
+scalac miscellaneous/scala-example.scala -d miscellaneous/
+
+<span class="hljs-meta"># lists compiler phases</span>
+scalac -Xshow-phases
+
+<span class="hljs-meta"># prints for-comprehensions desugared</span>
+scalac -Xprint:parse miscellaneous/scala-example.scala -d miscellaneous/
+
+<span class="hljs-meta"># prints all phases</span>
+scalac -Xprint:all miscellaneous/scala-example.scala -d miscellaneous/
+
+<span class="hljs-meta"># shows bytecode</span>
+javap -v miscellaneous/Example$<span class="hljs-class">.<span class="hljs-keyword">class</span>
+</span></code></pre>
+<pre><code class="hljs"><span class="hljs-comment">// scala-example.scala</span>
+object Example {
+  def helloFor =
+    <span class="hljs-keyword">for</span> {
+      i &lt;- List(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
+      j &lt;- List(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>)
+      <span class="hljs-keyword">if</span> i == j
+    } yield i
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/scala-fp/docs/scala"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/scala-fp/docs/fp-intro"><span>Introduction</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#java-memory-management">Java Memory Management</a><ul class="toc-headings"><li><a href="#stack">Stack</a></li><li><a href="#heap">Heap</a></li><li><a href="#variables">Variables</a></li><li><a href="#string">String</a></li><li><a href="#garbage-collection">Garbage collection</a></li><li><a href="#permgen-and-metaspace">PermGen and Metaspace</a></li><li><a href="#tuning">Tuning</a></li><li><a href="#weak-and-soft-references">Weak and Soft references</a></li></ul></li><li><a href="#perfomance">Perfomance</a></li><li><a href="#scala">Scala</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/scala-fp/" class="nav-home"><img src="/scala-fp/img/favicon.ico" alt="scala-fp" width="66" height="58"/></a><div><h5>Contribute</h5><a href="/scala-fp/docs/en/contribute.html">How to</a><a href="https://github.com/niqdev/scala-fp" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 niqdev</section></footer></div></body></html>

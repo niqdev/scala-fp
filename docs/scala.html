@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Introduction · scala-fp</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Resources"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Introduction · scala-fp"/><meta property="og:type" content="website"/><meta property="og:url" content="https://niqdev.github.io/scala-fp/"/><meta property="og:description" content="## Resources"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/scala-fp/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"/><script src="/scala-fp/js/scrollSpy.js"></script><link rel="stylesheet" href="/scala-fp/css/main.css"/><script src="/scala-fp/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/scala-fp/"><img class="logo" src="/scala-fp/img/favicon.ico" alt="scala-fp"/><h2 class="headerTitleWithLogo">scala-fp</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/scala-fp/docs/book" target="_self">Book</a></li><li class=""><a href="https://github.com/niqdev/scala-fp" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Scala</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Book</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/book">Table of contents</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Scala</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/scala-fp/docs/scala">Introduction</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/jvm">JVM</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Functional Programming</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/fp-intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/type-classes">Type Classes</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/todo">TODO</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Ecosystem</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/ecosystem">Ecosystem Label</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Introduction</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="resources"></a><a href="#resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
+<ul>
+<li><a href="https://amzn.to/2OAAgc3">Programming in Scala</a> (2016)(3rd) by Martin Odersky, Lex Spoon, and Bill Venners (Book)</li>
+<li><a href="https://amzn.to/2Oy7QiS">Scala High Performance Programming</a> (2016) by Vincent Theron, Michael Diamant (Book)</li>
+<li><a href="http://scalapuzzlers.com">Scala Puzzlers</a></li>
+<li><a href="https://docs.scala-lang.org/tour/tour-of-scala.html">Tour of Scala</a> (Documentation)</li>
+<li><a href="https://docs.scala-lang.org/sips/all.html">Scala Improvement Proposals</a></li>
+<li><a href="https://twitter.github.io/scala_school">Twitter Scala School</a></li>
+<li><a href="http://aperiodic.net/phil/scala/s-99">S-99: Ninety-Nine Scala Problems</a></li>
+<li><a href="https://www.scala-exercises.org">Scala Exercises</a></li>
+<li><a href="https://pavelfatin.com/scala-for-project-euler">Scala for Project Euler</a></li>
+<li><a href="https://docs.scala-lang.org/overviews/collections/performance-characteristics.html">Scala Collections performance characteristics</a></li>
+<li><a href="https://danielwestheide.com/scala/neophytes.html">The Neophyte's Guide to Scala</a></li>
+<li><a href="https://www.iteratorshq.com/blog/scala-compiler-phases-with-pictures">Scala Compiler Phases with Pictures</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="related-projects"></a><a href="#related-projects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Related projects</h2>
+<ul>
+<li><a href="https://www.scala-sbt.org/1.x/docs">sbt</a> - The interactive build tool</li>
+<li><a href="http://dotty.epfl.ch">Dotty</a> - A next-generation compiler for Scala</li>
+<li><a href="https://index.scala-lang.org">Scaladex</a> - The Scala Library Index</li>
+<li><a href="https://scalafiddle.io">ScalaFiddle</a> - An online playground for creating, sharing and embedding Scala fiddles</li>
+<li><a href="https://scastie.scala-lang.org">Scastie</a> - Scastie is an interactive playground for Scala with support for sbt configuration</li>
+<li><a href="http://ammonite.io">Ammonite</a> - Scala Scripting</li>
+<li><a href="http://www.scala-native.org/en/latest">Scala Native</a> - An optimizing ahead-of-time compiler and lightweight managed runtime</li>
+<li><a href="https://www.scala-js.org">Scala.js</a> - Optimizes Scala code into highly efficient JavaScript</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="faq"></a><a href="#faq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FAQ</h2>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-scala-hierarchy"></a><a href="#what-is-the-scala-hierarchy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is the Scala hierarchy?</em></h3>
+<p><img src="/scala-fp/docs/assets/scala-hierarchy.png" alt="scala-hierarchy"></p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-difference-between-by-name-and-by-value-parameters"></a><a href="#what-is-the-difference-between-by-name-and-by-value-parameters" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is the difference between by-name and by-value parameters?</em></h3>
+<p>A <em>by-value</em> parameter is evaluated before the method is invoked e.g. <code>(x: Int)</code> while a <em>by-name</em> parameter is not evaluated before the method is invoked, but each time the parameter is referenced inside the method e.g. <code>(x: =&gt; Int)</code></p>
+<h3><a class="anchor" aria-hidden="true" id="what-are-the-differences-between-def-val-var-lazy"></a><a href="#what-are-the-differences-between-def-val-var-lazy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What are the differences between <code>def val var lazy</code>?</em></h3>
+<ul>
+<li><code>def</code> defines a method</li>
+<li><code>val</code> defines a fixed value, it is immmutable and eagerly initialized</li>
+<li><code>var</code> defines a variable reference, it is mutable and <em>it should be avoided</em></li>
+<li><code>lazy</code> only initialised when required and as late as possible (deferred evaluation), default is strict and it's not recomputed like by-name parameters</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="what-are-nothing-nil-none-empty-null-null-unit"></a><a href="#what-are-nothing-nil-none-empty-null-null-unit" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What are <code>Nothing Nil None Empty Null null Unit</code>?</em></h3>
+<ul>
+<li><code>Nothing</code> is a trait that is the bottom subtype of every subtype of <code>Any</code></li>
+<li><code>Nil</code> is an empty list that is defined as a <code>List[Nothing]</code></li>
+<li><code>None</code> is an empty option that is defined as a <code>Option[Nothing]</code></li>
+<li><code>Null</code> is a trait and is the bottom type similar to <code>Nothing</code> but only for <code>AnyRef</code> not <code>AnyVal</code></li>
+<li><code>null</code> is an instance of the <code>Null</code> trait</li>
+<li><code>Unit</code> is a subtype of <code>AnyVal</code>, it's only value is <code>()</code> and it is not represented by any object in the underlying runtime system. A method with return type <code>Unit</code> is analogous to a Java method which is declared <code>void</code></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="what-good-are-right-associative-methods"></a><a href="#what-good-are-right-associative-methods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What good are right-associative methods?</em></h3>
+<p>All methods whose names end in <code>:</code> are <em>right-associative</em>. That is, the expression <code>x :: xs</code> is actually the method call <code>xs.::(x)</code> , which in turn calls the data constructor <code>::(x, xs)</code></p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-a-companion-object"></a><a href="#what-is-a-companion-object" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is a companion object?</em></h3>
+<ul>
+<li><a href="https://docs.scala-lang.org/tour/singleton-objects.html">Singleton Objects</a> (Documentation)</li>
+</ul>
+<p>An object is a class that has exactly one instance. It is created lazily when it is referenced, like a lazy val. An object with the same name as a class is called a <em>companion object</em>. A companion class or object can access the private members of its companion</p>
+<p><code>static</code> members in Java are modeled as ordinary members of a companion object in Scala</p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-type-inference"></a><a href="#what-is-type-inference" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is type inference?</em></h3>
+<ul>
+<li><a href="https://docs.scala-lang.org/tour/type-inference.html">Type inference</a> (Documentation)</li>
+</ul>
+<p>The compiler can often <em>infer</em> the type of an expression so you don't have to declare it explicitly</p>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> myInt = <span class="hljs-number">8</span>
+<span class="hljs-comment">// myInt: Int = 8</span>
+<span class="hljs-keyword">val</span> myString = <span class="hljs-string">"hello"</span>
+<span class="hljs-comment">// myString: String = "hello"</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="what-does-it-mean-reify-a-trait"></a><a href="#what-does-it-mean-reify-a-trait" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What does it mean reify a trait?</em></h3>
+<p>You can't call functions on a trait, so you need to create a concrete instance of that trait before you do anything else. This technique is common with the modular programming approach, and it's known as <em>reifying</em> the trait. The word reify is defined as &quot;Taking an abstract concept and making it concrete&quot;</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">MyTrait</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">myMethod</span> </span>= <span class="hljs-string">"hello"</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MyTrait</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MyTrait</span></span>
+
+<span class="hljs-type">MyTrait</span>.myMethod
+<span class="hljs-comment">// res0: String = "hello"</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-relationship-between-currying-and-partially-applied-function"></a><a href="#what-is-the-relationship-between-currying-and-partially-applied-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is the relationship between currying and partially applied function?</em></h3>
+<ul>
+<li><a href="https://docs.scala-lang.org/tour/currying.html">Currying</a></li>
+<li><a href="https://alvinalexander.com/scala/how-to-use-partially-applied-functions-in-scala-syntax-examples">How to use partially applied functions in Scala</a></li>
+</ul>
+<p>Currying is a means of transforming a function that takes more than one argument into a chain of calls to functions, each of which takes a single argument</p>
+<p>When you call a function that has parameters, you are said to be applying the function to the parameters. When all the parameters are passed to the function, you have <em>fully applied the function</em> to all of the parameters. But when you give only a subset of the parameters to the function, the result of the expression is a <em>partially applied function</em></p>
+<p>When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments</p>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">val</span> sum = (a: <span class="hljs-type">Int</span>, b: <span class="hljs-type">Int</span>, c: <span class="hljs-type">Int</span>) =&gt; a + b + c
+<span class="hljs-comment">// sum: (Int, Int, Int) =&gt; Int = &lt;function3&gt;</span>
+
+<span class="hljs-comment">// fully applied function</span>
+sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+<span class="hljs-comment">// res1: Int = 6</span>
+
+<span class="hljs-comment">// partially applied function</span>
+<span class="hljs-keyword">val</span> f = sum(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, _: <span class="hljs-type">Int</span>)
+<span class="hljs-comment">// f: Int =&gt; Int = &lt;function1&gt;</span>
+
+f(<span class="hljs-number">3</span>)
+<span class="hljs-comment">// res2: Int = 6</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="what-is-a-variadic-function"></a><a href="#what-is-a-variadic-function" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is a variadic function?</em></h3>
+<p>A <em>variadic function</em> accepts zero or more arguments. It provides a little syntactic sugar for creating and passing a Seq of elements explicitly. The special <code>_*</code> type annotation allows to pass a Seq to a variadic method</p>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">MyList</span>[+<span class="hljs-type">A</span>]</span>
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MyNil</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">MyList</span>[<span class="hljs-type">Nothing</span>]</span>
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCons</span>[+<span class="hljs-type">A</span>](<span class="hljs-params">head: <span class="hljs-type">A</span>, tail: <span class="hljs-type">MyList</span>[<span class="hljs-type">A</span>]</span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">MyList</span>[<span class="hljs-type">A</span>]</span>
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MyList</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">apply</span></span>[<span class="hljs-type">A</span>](list: <span class="hljs-type">A</span>*): <span class="hljs-type">MyList</span>[<span class="hljs-type">A</span>] =
+    <span class="hljs-keyword">if</span> (list.isEmpty) <span class="hljs-type">MyNil</span>
+    <span class="hljs-keyword">else</span> <span class="hljs-type">MyCons</span>(list.head, apply(list.tail: _*))
+}
+
+<span class="hljs-type">MyList</span>()
+<span class="hljs-comment">// res3: MyList[Nothing] = MyNil</span>
+<span class="hljs-type">MyList</span>(<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>)
+<span class="hljs-comment">// res4: MyList[String] = MyCons("a", MyCons("b", MyNil))</span>
+<span class="hljs-type">MyList</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+<span class="hljs-comment">// res5: MyList[Int] = MyCons(1, MyCons(2, MyCons(3, MyNil)))</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="what-is-covariance-and-contravariance"></a><a href="#what-is-covariance-and-contravariance" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is covariance and contravariance?</em></h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<ul>
+<li><a href="http://blog.kamkor.me/Covariance-And-Contravariance-In-Scala">Covariance and contravariance in Scala</a></li>
+<li><a href="https://blog.codecentric.de/en/2015/03/scala-type-system-parameterized-types-variances-part-1">The Scala Type System: Parameterized Types and Variances</a></li>
+<li><a href="http://blog.originate.com/blog/2016/08/10/cheat-codes-for-contravariance-and-covariance">Cheat Codes for Contravariance and Covariance</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="what-is-autoboxing"></a><a href="#what-is-autoboxing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is autoboxing?</em></h3>
+<p>The JVM defines primitive types (<code>boolean</code>, <code>byte</code>, <code>char</code>, <code>float</code>, <code>int</code>, <code>long</code>, <code>short</code> and <code>double</code>) that are <em>stack-allocated</em> rather than <em>heap-allocated</em>. When a generic type is introduced, for example, <code>scala.collection.immutable.List</code>, the JVM references an object equivalent, instead of a primitive type. For example, an instantiated list of integers would be heap-allocated objects rather than integer primitives.</p>
+<p>The process of converting a primitive to its object equivalent is called <strong>boxing</strong>, and the reverse process is called <strong>unboxing</strong>. Boxing is a relevant concern for performance-sensitive programming because boxing involves heap allocation. In performance-sensitive code that performs numerical computations, the cost of <a href="https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html">boxing and unboxing</a> can can create significant performance slowdowns</p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-specialized-annotation"></a><a href="#what-is-the-specialized-annotation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is the <code>@specialized</code> annotation?</em></h3>
+<ul>
+<li><a href="https://scalac.io/specialized-generics-object-instantiation">Avoiding unnecessary object instantiation with specialized generics</a></li>
+<li><a href="http://aleksandar-prokopec.com/2013/11/03/specialization-quirks.html">Quirks of Scala Specialization</a></li>
+</ul>
+<p>Specialization with <code>@specialized</code> annotation, refers to the compile-time process of generating duplicate versions of a generic trait or class that refer directly to a primitive type instead of the associated object wrapper. At runtime, the compiler-generated version of the generic class (or, as it is commonly referred to, the specialized version of the class) is instantiated.</p>
+<p>This process eliminates the runtime cost of boxing primitives, which means that you can define generic abstractions while retaining the performance of a handwritten, specialized implementation</p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-switch-annotation"></a><a href="#what-is-the-switch-annotation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is the <code>@switch</code> annotation?</em></h3>
+<p>In scenarios involving simple pattern match statements that directly match a value, using <code>@switch</code> annotation provides a warning at compile time if the switch can't be compiled to a tableswitch or lookupswitch which procides better performance, because it results in a branch table rather than a decision tree</p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-the-inline-annotation"></a><a href="#what-is-the-inline-annotation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is the <code>@inline</code> annotation?</em></h3>
+<ul>
+<li><a href="https://www.lightbend.com/blog/scala-inliner-optimizer">The Scala 2.12 and 2.13 Inliner and Optimizer</a></li>
+</ul>
+<p><em>An annotation on methods that requests that the compiler should try especially hard to inline the annotated method</em></p>
+<p>Inlining a function means that instead of having a function call resulting in parameters being placed on the stack and an invoke operation occurring, the definition of the function is copied at compile time to where the invocation was made, saving the invocation overhead at runtime</p>
+<p>To enable this feature you need to explicitly set the <code>-optimize</code> compiler flag</p>
+<h3><a class="anchor" aria-hidden="true" id="what-is-a-value-class"></a><a href="#what-is-a-value-class" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is a value class?</em></h3>
+<ul>
+<li><a href="https://docs.scala-lang.org/overviews/core/value-classes.html">Value classes</a> (Documentation)</li>
+</ul>
+<p>The <code>AnyVal</code> class can be used to define a <em>value class</em>, which is optimized at compile time to avoid the allocation of an instance</p>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">final</span> <span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Price</span>(<span class="hljs-params">value: <span class="hljs-type">BigDecimal</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">AnyVal</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lowerThan</span></span>(p: <span class="hljs-type">Price</span>): <span class="hljs-type">Boolean</span> = <span class="hljs-keyword">this</span>.value &lt; p.value
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="what-is-a-sealed-trait"></a><a href="#what-is-a-sealed-trait" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is a sealed trait?</em></h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<ul>
+<li><a href="https://underscore.io/blog/posts/2015/06/02/everything-about-sealed.html">Everything You Ever Wanted to Know About Sealed Traits in Scala</a></li>
+<li><a href="https://underscore.io/blog/posts/2015/06/04/more-on-sealed.html">More on Sealed Traits in Scala</a></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/scala-fp/docs/book"><span class="arrow-prev">← </span><span>Table of contents</span></a><a class="docs-next button" href="/scala-fp/docs/jvm"><span>JVM</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#resources">Resources</a></li><li><a href="#related-projects">Related projects</a></li><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#what-is-the-scala-hierarchy"><em>What is the Scala hierarchy?</em></a></li><li><a href="#what-is-the-difference-between-by-name-and-by-value-parameters"><em>What is the difference between by-name and by-value parameters?</em></a></li><li><a href="#what-are-the-differences-between-def-val-var-lazy"><em>What are the differences between <code>def val var lazy</code>?</em></a></li><li><a href="#what-are-nothing-nil-none-empty-null-null-unit"><em>What are <code>Nothing Nil None Empty Null null Unit</code>?</em></a></li><li><a href="#what-good-are-right-associative-methods"><em>What good are right-associative methods?</em></a></li><li><a href="#what-is-a-companion-object"><em>What is a companion object?</em></a></li><li><a href="#what-is-type-inference"><em>What is type inference?</em></a></li><li><a href="#what-does-it-mean-reify-a-trait"><em>What does it mean reify a trait?</em></a></li><li><a href="#what-is-the-relationship-between-currying-and-partially-applied-function"><em>What is the relationship between currying and partially applied function?</em></a></li><li><a href="#what-is-a-variadic-function"><em>What is a variadic function?</em></a></li><li><a href="#what-is-covariance-and-contravariance"><em>What is covariance and contravariance?</em></a></li><li><a href="#what-is-autoboxing"><em>What is autoboxing?</em></a></li><li><a href="#what-is-the-specialized-annotation"><em>What is the <code>@specialized</code> annotation?</em></a></li><li><a href="#what-is-the-switch-annotation"><em>What is the <code>@switch</code> annotation?</em></a></li><li><a href="#what-is-the-inline-annotation"><em>What is the <code>@inline</code> annotation?</em></a></li><li><a href="#what-is-a-value-class"><em>What is a value class?</em></a></li><li><a href="#what-is-a-sealed-trait"><em>What is a sealed trait?</em></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/scala-fp/" class="nav-home"><img src="/scala-fp/img/favicon.ico" alt="scala-fp" width="66" height="58"/></a><div><h5>Contribute</h5><a href="/scala-fp/docs/en/contribute.html">How to</a><a href="https://github.com/niqdev/scala-fp" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 niqdev</section></footer></div></body></html>
