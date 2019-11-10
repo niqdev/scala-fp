@@ -5,6 +5,12 @@ title: Type Classes
 
 > TODO
 
-`[type-class][implementation][test][links]`
+`[name][descrition][implementation][tests][links]`
 
-* Show
+Show
+
+```scala mdoc
+trait Show[T] {
+  def show(value: T): String
+}
+```

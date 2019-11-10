@@ -6,15 +6,13 @@
 # test
 sbt test -jvm-debug 5005
 
-sbt "test:testOnly *PrintableSpec"
-sbt "test:testOnly *chapter01*"
+# specify test
+sbt "test:testOnly *ShowSpec"
 ```
 
 <!--
 
 ```bash
-sbt "show discoveredMainClasses"
-
 # run
 sbt "runMain com.github.niqdev.MainIO"
 sbt "runMain com.github.niqdev.MainState"
