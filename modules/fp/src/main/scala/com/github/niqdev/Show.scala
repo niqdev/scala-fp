@@ -20,6 +20,13 @@ sealed trait ShowInstances {
   implicit val zonedDateTimeShow: Show[ZonedDateTime] =
     Show.showInstance(date => s"${date.format(DateTimeFormatter.ISO_DATE)}")
 
+  implicit def optionShow[T](implicit s: Show[T]): Show[Option[T]] = {
+    case Some(value) =>
+      // intellij complains: required T found Any
+      s.show(value)
+    case None =>
+      "NONE"
+  }
 }
 
 // interface object: defines interface methods

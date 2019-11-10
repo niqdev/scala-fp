@@ -27,6 +27,12 @@ final class ShowSpec extends WordSpecLike with Matchers {
       Show[ZonedDateTime].show(date) shouldBe "2019-11-10Z"
     }
 
+    "verify option instance" in {
+      Show[Option[Person]].show(Some(Person("name", 8))) shouldBe "name=name|age=8"
+      Show[Option[Person]].show(Option.empty[Person]) shouldBe "NONE"
+      Show[Option[String]].show(Option.empty[String]) shouldBe "NONE"
+    }
+
     "verify syntax" in {
       import com.github.niqdev.show.ShowOps
 
