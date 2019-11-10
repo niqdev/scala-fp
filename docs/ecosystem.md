@@ -8,6 +8,7 @@ sidebar_label: Ecosystem Label
 
 * [Cats](https://typelevel.org/cats)
     * [Scala with Cats](https://underscore.io/books/scala-with-cats) (Book)
+    * [herding cats](http://eed3si9n.com/herding-cats/index.html)
     * [Cats Infographic](https://github.com/tpolecat/cats-infographic)
     * [ScalaFP: Firsthand With Scala-Cats](https://www.signifytechnology.com/blog/2018/07/scalafp-firsthand-with-scala-cats-monads-number-1-by-harmeet-singh)
     * [Scala Cats library for dummies](https://medium.com/@abu_nadhr/scala-cats-library-for-dummies-part-1-8ec47af7a144)

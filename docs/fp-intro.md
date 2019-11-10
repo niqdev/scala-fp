@@ -128,6 +128,49 @@ Inhabitants of a type are values for that types. Algebraic Data Types can be tho
 * the `Unit` data type corresponds to the value `1`
 * the `Void` data type corresponds to the value `0`
 
+### *What is polymorphism?*
+
+* [What is polymorphism?](http://eed3si9n.com/herding-cats/polymorphism.html)
+* [Polymorphism, and typeclasses in Scala](http://like-a-boss.net/2013/03/29/polymorphism-and-typeclasses-in-scala.html)
+* [Polymorphism in Scala](https://medium.com/@scelestino/polymorphism-in-scala-part-1-34015f9b5b13)
+* [How to be polymorphic in Scala](http://scala.org.ua/presentations/scala-polymorphism)
+
+A polymorphic type is the one whose operations can be applied to another types
+
+In *Sub-typing Polymorphism* a type (sub-type) is related to another (super-type) in a way where operations that apply to the super-type can also apply to its sub-types i.e. when a type inherits from another
+
+In *Parametric Polymorphism* types, methods or functions can be written generically using Type Parameters so they can handle values without depending on their types
+
+In *Ad-hoc Polymorphism*, known as method or function overloading, the compiler applies argument of different types to functions or methods and decide which implementation is the correct to use, depending on the type of the arguments to which they are applied
+
+### *What is a type class?*
+
+* [Type Classes as Objects and Implicits](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf) (Paper)
+* [Type classes in Scala](https://blog.scalac.io/2017/04/19/typeclasses-in-scala.html)
+* [Returning the "Current" Type in Scala](http://tpolecat.github.io/2015/04/29/f-bounds.html)
+* [Typeclass 101: ad hoc polymorphism in scala](https://julien-truffaut.github.io/Typeclass)
+* [All you don't need to know about Typeclasses](http://workday.github.io/assets/scala-exchange-type-classes)
+* [Scala Implicits : Type Classes Here I Come](http://debasishg.blogspot.com/2010/06/scala-implicits-type-classes-here-i.html)
+* [A Small Example of the Typeclass Pattern in Scala](https://web.archive.org/web/20171223221256/http://www.casualmiracles.com/2012/05/03/a-small-example-of-the-typeclass-pattern-in-scala)
+* [Typeclasses 101](http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101)
+* [Scala/Haskell: A simple example of type classes](https://markhneedham.com/blog/2012/05/22/scalahaskell-a-simple-example-of-type-classes)
+
+A *Type Class* is a type system construct that supports **ad-hoc polymorphism** and is achieved by adding constraints to type variables in parametrically polymorphic types
+
+It's a programming pattern that allow to extend existing libraries with new functionality, without using traditional inheritance and without altering the original library source code using a combination of ad-hoc polymorphism, parametric polymorphism (type parameters) and implicits
+
+### TODO *What is a higher kinded type?*
+
+> TODO
+
+* [What is a higher kinded type in Scala?](https://stackoverflow.com/questions/6246719/what-is-a-higher-kinded-type-in-scala)
+
+### TODO *What is a type lambda?*
+
+> TODO
+
+* [Type Lambda in Scala](http://like-a-boss.net/2014/09/27/type-lambda-in-scala.html)
+
 ### *What is an effectful computation?*
 
 In functional programming, an effect adds some capabilities to a computation. An effect is modeled usually in the form of a **type constructor** that constructs types with these additional capabilities

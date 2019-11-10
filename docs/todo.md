@@ -8,7 +8,8 @@ title: TODO
 * [Functional Programming in Scala](https://amzn.to/2OCFpQG) (2014) by Paul Chiusano and Runar Bjarnason (Book)
 * [Functional Programming, Simplified](https://amzn.to/2OCFROS) (2017) by Alvin Alexander (Book)
 * [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw) by Runar Bjarnason (Video)
-* [FP to the Max](https://youtu.be/sxudIMiOo68) (Video)
+* [Scalaz Presentation](https://vimeo.com/10482466) by Nick Partridge (Video)
+* [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
 
 > TODO Tagless Final Encoding
 
@@ -24,19 +25,6 @@ title: TODO
 * [Introduction to Tagless final](http://www.beyondthelines.net/programming/introduction-to-tagless-final)
 * [From Object Algebras to Finally Tagless Interpreters](https://oleksandrmanzyuk.wordpress.com/2014/06/18/from-object-algebras-to-finally-tagless-interpreters-2/)
 * [The Death of Final Tagless](https://skillsmatter.com/skillscasts/13247-scala-matters) (Video)
-
-> TODO Type classes
-
-A *Type Class* is a programming pattern that allow to extend existing libraries with new functionality, without using traditional inheritance and without altering the original library source code using a combination of ad-hoc polymorphism, parametric polymorphism (type parameters) and implicits
-
-* [Type Classes as Objects and Implicits](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf) (Paper)
-* [Type classes in Scala](https://blog.scalac.io/2017/04/19/typeclasses-in-scala.html)
-* [Returning the "Current" Type in Scala](http://tpolecat.github.io/2015/04/29/f-bounds.html)
-* [Typeclass 101: ad hoc polymorphism in scala](https://julien-truffaut.github.io/Typeclass)
-* [All you don't need to know about Typeclasses](http://workday.github.io/assets/scala-exchange-type-classes)
-* [A Small Example of the Typeclass Pattern in Scala](https://web.archive.org/web/20171223221256/http://www.casualmiracles.com/2012/05/03/a-small-example-of-the-typeclass-pattern-in-scala)
-* [Typeclasses 101](http://learnyouahaskell.com/types-and-typeclasses#typeclasses-101)
-* [Scala/Haskell: A simple example of type classes](https://markhneedham.com/blog/2012/05/22/scalahaskell-a-simple-example-of-type-classes)
 
 > TODO
 
@@ -86,6 +74,8 @@ A *Type Class* is a programming pattern that allow to extend existing libraries 
 * [The Evolution of a Scala Programmer](https://medium.com/@olxc/the-evolution-of-a-scala-programmer-1b7a709fb71f)
 * [Types: Never commit too early](https://www.sderosiaux.com/articles/2018/08/15/types-never-commit-too-early-part1/)
 
+* [Law Enforcement using Discipline](https://typelevel.org/blog/2013/11/17/discipline.html)
+
 **Patterns**
 
 * [The Aux Pattern](https://gigiigig.github.io/posts/2015/09/13/aux-pattern.html)
@@ -115,7 +105,6 @@ A *Type Class* is a programming pattern that allow to extend existing libraries 
 
 * [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0)
 * [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
-
 * [The Making of an IO](https://www.youtube.com/watch?reload=9&v=g_jP47HFpWA)
 * [Scalaz 8 VS Akka actors](https://www.youtube.com/watch?v=Eihz7kqn6mU&t=833s)
 * [Move Over Free Monads: Make Way for Free Applicatives!](https://youtu.be/H28QqxO7Ihc)

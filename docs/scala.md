@@ -94,7 +94,7 @@ MyTrait.myMethod
 
 ### *What is the relationship between currying and partially applied function?*
 
-* [Currying](https://docs.scala-lang.org/tour/currying.html)
+* [Currying](https://docs.scala-lang.org/tour/currying.html) (Documentation)
 * [How to use partially applied functions in Scala](https://alvinalexander.com/scala/how-to-use-partially-applied-functions-in-scala-syntax-examples)
 
 Currying is a means of transforming a function that takes more than one argument into a chain of calls to functions, each of which takes a single argument
@@ -133,6 +133,12 @@ MyList()
 MyList("a", "b")
 MyList(1, 2, 3)
 ```
+
+### *What is type ascription?*
+
+* [Ascription](https://docs.scala-lang.org/style/types.html#ascription) (Documentation)
+
+Ascription is basically just an up-cast performed at compile-time for the sake of the type checker
 
 ### *What is covariance and contravariance?*
 
@@ -205,7 +211,7 @@ final case class Price(value: BigDecimal) extends AnyVal {
 }
 ```
 
-### *What is a sealed trait?*
+### TODO *What is a sealed trait?*
 
 > TODO
 
