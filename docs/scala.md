@@ -59,14 +59,6 @@ A *by-value* parameter is evaluated before the method is invoked e.g. `(x: Int)`
 
 All methods whose names end in `:` are *right-associative*. That is, the expression `x :: xs` is actually the method call `xs.::(x)` , which in turn calls the data constructor `::(x, xs)`
 
-### *What is a companion object?*
-
-* [Singleton Objects](https://docs.scala-lang.org/tour/singleton-objects.html) (Documentation)
-
-An object is a class that has exactly one instance. It is created lazily when it is referenced, like a lazy val. An object with the same name as a class is called a *companion object*. A companion class or object can access the private members of its companion
-
-`static` members in Java are modeled as ordinary members of a companion object in Scala
-
 ### *What is type inference?*
 
 * [Type inference](https://docs.scala-lang.org/tour/type-inference.html) (Documentation)
@@ -77,6 +69,14 @@ The compiler can often *infer* the type of an expression so you don't have to de
 val myInt = 8
 val myString = "hello"
 ```
+
+### *What is a companion object?*
+
+* [Singleton Objects](https://docs.scala-lang.org/tour/singleton-objects.html) (Documentation)
+
+An object is a class that has exactly one instance. It is created lazily when it is referenced, like a lazy val. An object with the same name as a class is called a *companion object*. A companion class or object can access the private members of its companion
+
+`static` members in Java are modeled as ordinary members of a companion object in Scala
 
 ### *What does it mean reify a trait?*
 
@@ -136,11 +136,33 @@ MyList(1, 2, 3)
 
 ### *What is covariance and contravariance?*
 
-> TODO
-
 * [Covariance and contravariance in Scala](http://blog.kamkor.me/Covariance-And-Contravariance-In-Scala)
 * [The Scala Type System: Parameterized Types and Variances](https://blog.codecentric.de/en/2015/03/scala-type-system-parameterized-types-variances-part-1)
 * [Cheat Codes for Contravariance and Covariance](http://blog.originate.com/blog/2016/08/10/cheat-codes-for-contravariance-and-covariance)
+
+Variance relates to subtypes i.e. `B` is a subtype of `A` if we can use a value of type `B` anywhere we expect a value of type `A`. Covariance and contravariance annotations arise when working with **type constructors**
+
+*Covariance* means that the type `F[B]` is a subtype of the type `F[A]` if `B` is a subtype of `A`
+
+```scala
+trait F[+A]
+
+// example
+trait List[+A]
+trait Option[+A]
+```
+
+*Contravariance* means that the type `F[B]` is a subtype of `F[A]` if `A` is a subtype of `B`
+
+```scala
+trait F[-A]
+```
+
+*Invariance* means the types `F[A]` and `F[B]` are never subtypes of one another, no matter what the relationship between `A` and `B`. This is the default semantics for Scala type constructors
+
+```scala
+trait F[A]
+```
 
 ### *What is autoboxing?*
 
