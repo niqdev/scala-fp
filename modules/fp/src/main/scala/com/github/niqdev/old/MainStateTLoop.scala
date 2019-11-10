@@ -1,6 +1,7 @@
-package com.github.niqdev
+/*
+package com.github.niqdev.old
 
-import com.github.niqdev.internal.{IO, MyConsole, Show, StateT}
+import com.github.niqdev.old.internal.{IO, MyConsole, Show, StateT}
 
 import scala.util.{Failure, Success, Try}
 
@@ -58,3 +59,4 @@ object MainStateTLoop extends App {
     .run
 
 }
+*/

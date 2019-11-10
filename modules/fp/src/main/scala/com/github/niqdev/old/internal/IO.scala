@@ -1,5 +1,4 @@
-package com.github.niqdev
-package internal
+package com.github.niqdev.old.internal
 
 // https://github.com/jdegoes/lambdaconf-2014-introgame#effectful-monads
 // https://github.com/alvinj/IOMonad/blob/master/src/main/scala/io_monad/IO.scala

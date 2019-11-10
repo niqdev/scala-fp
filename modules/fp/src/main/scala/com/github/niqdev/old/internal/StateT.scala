@@ -1,5 +1,4 @@
-package com.github.niqdev
-package internal
+package com.github.niqdev.old.internal
 
 // https://github.com/alvinj/FPMonadTransformers/blob/master/src/main/scala/monads/StateT.scala
 case class StateT[M[_], S, A](run: S => M[(S, A)]) {

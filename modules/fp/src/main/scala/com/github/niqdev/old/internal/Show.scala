@@ -1,5 +1,4 @@
-package com.github.niqdev
-package internal
+package com.github.niqdev.old.internal
 
 trait Show[T] {
   def show(t: T): String

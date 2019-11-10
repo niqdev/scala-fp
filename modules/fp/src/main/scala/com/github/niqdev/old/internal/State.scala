@@ -1,5 +1,4 @@
-package com.github.niqdev
-package internal
+package com.github.niqdev.old.internal
 
 // https://github.com/jdegoes/lambdaconf-2014-introgame#the-state-monad
 // https://github.com/alvinj/StateMonadExample/blob/master/src/main/scala/state_monad/State.scala

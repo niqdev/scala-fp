@@ -1,6 +1,6 @@
-package com.github.niqdev
+package com.github.niqdev.old
 
-import com.github.niqdev.internal.State
+import com.github.niqdev.old.internal.State
 
 object MainState extends App {
 

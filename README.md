@@ -2,6 +2,14 @@
 
 >  WIP
 
+```bash
+# test
+sbt test -jvm-debug 5005
+
+sbt "test:testOnly *PrintableSpec"
+sbt "test:testOnly *chapter01*"
+```
+
 <!--
 
 ```bash

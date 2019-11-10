@@ -1,6 +1,7 @@
-package com.github.niqdev
+/*
+package com.github.niqdev.old
 
-import com.github.niqdev.internal.{IO, StateT}
+import com.github.niqdev.old.internal.{IO, StateT}
 
 final case class IntState(i: Int)
 
@@ -31,3 +32,4 @@ object MainStateT extends App {
   program.run
 
 }
+*/

@@ -1,5 +1,4 @@
-package com.github.niqdev
-package internal
+package com.github.niqdev.old.internal
 
 trait MyConsole[F[_]] {
   def println[A: Show](a: A): F[Unit]

@@ -1,6 +1,6 @@
-package com.github.niqdev
+package com.github.niqdev.old
 
-import com.github.niqdev.internal.{IO, MyConsole}
+import com.github.niqdev.old.internal.{IO, MyConsole}
 
 object MainIO extends App {
 

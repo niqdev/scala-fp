@@ -49,15 +49,16 @@ lazy val commonSettings = Seq(
   )
 )
 
-lazy val basic = (project in file("modules/basic"))
+lazy val fp = (project in file("modules/fp"))
   .settings(commonSettings)
   .settings(
-    name := s"${info.name}-basic",
+    name := s"${info.name}-fp",
     libraryDependencies ++= dependencies.test
       .map(_.withSources)
       .map(_.withJavadoc)
   )
 
+// TODO rename ecosystem ???
 lazy val ecosystem = (project in file("modules/ecosystem"))
   .settings(commonSettings)
   .settings(
@@ -78,18 +79,9 @@ lazy val docs = (project in file("modules/docs"))
     )
   )
 
-lazy val fp = (project in file("modules/fp"))
-  .settings(commonSettings)
-  .settings(
-    name := s"${info.name}-fp",
-    libraryDependencies ++= dependencies.test
-      .map(_.withSources)
-      .map(_.withJavadoc)
-  )
-
 lazy val root = project
   .in(file("."))
-  .aggregate(basic, ecosystem, fp, docs)
+  .aggregate(fp, ecosystem, docs)
   .settings(
     name := info.name
   )
