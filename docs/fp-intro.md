@@ -3,6 +3,17 @@ id: fp-intro
 title: Introduction
 ---
 
+## Resources
+
+* [Functional Programming in Scala](https://amzn.to/2OCFpQG) (2014) by Paul Chiusano and Runar Bjarnason (Book)
+* [Functional Programming, Simplified](https://amzn.to/2OCFROS) (2017) by Alvin Alexander (Book)
+* [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw) by Runar Bjarnason (Video)
+* [Scalaz Presentation](https://vimeo.com/10482466) by Nick Partridge (Video)
+* TODO [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0)
+* [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
+* TODO [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
+* [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
+
 ## FAQ
 
 ### *What are some of the benefits of Functional Programming?*
@@ -143,6 +154,40 @@ In *Parametric Polymorphism* types, methods or functions can be written generica
 
 In *Ad-hoc Polymorphism*, known as method or function overloading, the compiler applies argument of different types to functions or methods and decide which implementation is the correct to use, depending on the type of the arguments to which they are applied
 
+### *What is the difference between monomorphic and polymorphic?*
+
+* [Method-level parametric polymorphism](https://milessabin.com/blog/2012/04/27/shapeless-polymorphic-function-values-1/#method-level-parametric-polymorphism)
+
+Monomorphic methods can only be applied to arguments of the fixed types specified in their signatures, whereas polymorphic methods can be applied to arguments of any types which correspond to acceptable choices for their type parameters
+
+```scala mdoc
+// monomorphic methods have type parameter-free signatures
+def monomorphic(s: String): Int = s.length
+
+// only values of type String
+monomorphic("hello")
+
+// polymorphic methods have type parameters in their signatures
+def polymorphic[T](list: List[T]): Int = list.length
+
+polymorphic(List(1, 2, 3))
+polymorphic(List("foo", "bar", "baz"))
+```
+
+Only by knowing the type signature of a method is possible to infer more or less information regarding its underlying implementation
+
+* given a monomorphic signature `List[Int] -> List[Int]`, there are too many possible implementations to say what the function does
+* given a polymorphic/parametrized type signature `List[A] -> List[A]`, it's proven that all elements in the result must appear in the input if there are not side effects, which restricts the number of possible implementations
+
+### TODO *How does the implicit resolution mechanism work?*
+
+> TODO
+
+* [Implicits, type classes, and extension methods](https://kubuszok.com/compiled/implicits-type-classes-and-extension-methods)
+* [revisiting implicits without import tax](http://eed3si9n.com/revisiting-implicits-without-import-tax)
+* [implicit parameter precedence again](http://eed3si9n.com/implicit-parameter-precedence-again)
+* [Where does Scala look for implicits?](https://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits)
+
 ### *What is a type class?*
 
 * [Type Classes as Objects and Implicits](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf) (Paper)
@@ -158,15 +203,6 @@ In *Ad-hoc Polymorphism*, known as method or function overloading, the compiler 
 A *Type Class* is a type system construct that supports **ad-hoc polymorphism** and is achieved by adding constraints to type variables in parametrically polymorphic types
 
 It's a programming pattern that allow to extend existing libraries with new functionality, without using traditional inheritance and without altering the original library source code using a combination of ad-hoc polymorphism, parametric polymorphism (type parameters) and implicits
-
-### TODO *How does the implicit resolution mechanism work?*
-
-> TODO
-
-* [Implicits, type classes, and extension methods](https://kubuszok.com/compiled/implicits-type-classes-and-extension-methods)
-* [revisiting implicits without import tax](http://eed3si9n.com/revisiting-implicits-without-import-tax)
-* [implicit parameter precedence again](http://eed3si9n.com/implicit-parameter-precedence-again)
-* [Where does Scala look for implicits?](https://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits)
 
 ### *What are type constructors and higher-kinded types?*
 
@@ -227,6 +263,7 @@ This is a type constructor that takes type constructor(s): a higher-kinded type.
 
 * [Type lambdas and kind projector](https://underscore.io/blog/posts/2016/12/05/type-lambdas.html)
 * [Type Lambda in Scala](http://like-a-boss.net/2014/09/27/type-lambda-in-scala.html)
+* [What are type lambdas in Scala and what are their benefits?](https://stackoverflow.com/questions/8736164/what-are-type-lambdas-in-scala-and-what-are-their-benefits)
 * [kind-projector](https://github.com/typelevel/kind-projector)
 
 ### *What is an effectful computation?*

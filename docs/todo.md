@@ -3,17 +3,6 @@ id: todo
 title: TODO
 ---
 
-## Resources
-
-* [Functional Programming in Scala](https://amzn.to/2OCFpQG) (2014) by Paul Chiusano and Runar Bjarnason (Book)
-* [Functional Programming, Simplified](https://amzn.to/2OCFROS) (2017) by Alvin Alexander (Book)
-* [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw) by Runar Bjarnason (Video)
-* [Scalaz Presentation](https://vimeo.com/10482466) by Nick Partridge (Video)
-* TODO [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0)
-* [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
-* TODO [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
-* [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
-
 > TODO Tagless Final Encoding
 
 * [Finally Tagless, Partially Evaluated](http://okmij.org/ftp/tagless-final/JFP.pdf) (Paper)
@@ -267,13 +256,6 @@ trait Applicative[F[_]] extends Functor[F] {
 }
 ```
 
-*What's the difference between monomorphic and polymorphic?*
-
-Only by knowing the types
-
-* Given a monomorphic signature `List[Int] -> List[Int]`, there are too many possible implementations to say what the function does
-* Given a polymorphic/parametrized type signature `List[A] -> List[A]` it's proven that all elements in the result appear in the input which restricts the possible implementations
-
 <!--
 
 TODO Morphism, Endomorphism, Isomorphism
@@ -320,16 +302,6 @@ https://alvinalexander.com/scala/fp-book/recursion-jvm-stacks-stack-frames
 ```scala
 // to remember: foldLeft start from left (acc op xFirst) ==> (B, A)
 // to remember: foldRight start from right (xLast op acc) ==> (A, B)
-```
-
-```scala
-
-// + covariant
-// List[Dog] is considered a subtype of List[Animal], assuming Dog is a subtype of Animal
-sealed trait List[+A]
-// Nothing is a subtype of all types
-case object Nil extends List[Nothing]
-case class Cons[+A](head: A, tail: List[A]) extends List[A]
 ```
 
 -->
