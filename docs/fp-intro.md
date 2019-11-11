@@ -171,10 +171,13 @@ It's a programming pattern that allow to extend existing libraries with new func
 ### *What are type constructors and higher-kinded types?*
 
 * [Generics of a Higher Kind](http://adriaanm.github.io/files/higher.pdf) (Paper)
+* [Fighting Bit Rot with Types](http://lampwww.epfl.ch/~odersky/papers/fsttcs2009.pdf) (Paper)
 * [Kinds and some type-foo](http://eed3si9n.com/herding-cats/Kinds.html)
 * [What is a higher kinded type in Scala?](https://stackoverflow.com/questions/6246719/what-is-a-higher-kinded-type-in-scala)
 * [Type Constructor Polymorphism](http://adriaanm.github.io/research/2010/10/06/new-in-scala-2.8-type-constructor-inference)
 * [Scala: Types of a higher kind](https://www.atlassian.com/blog/archives/scala-types-of-a-higher-kind)
+
+![fp-hkt](assets/fp-hkt.jpg)
 
 *Type Constructors* act like functions, but on the type level
 

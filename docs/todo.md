@@ -12,6 +12,7 @@ title: TODO
 * TODO [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0)
 * [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
 * TODO [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
+* [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
 
 > TODO Tagless Final Encoding
 
@@ -53,7 +54,6 @@ title: TODO
 * [The Essence of the Iterator Pattern](https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf) (Paper)
 * [Applicative programming with effects](http://www.staff.city.ac.uk/~ross/papers/Applicative.pdf) (Paper)
 
-* [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
 * [Generalized type constraints in Scala (without a PhD)](http://blog.bruchez.name/2015/11/generalized-type-constraints-in-scala.html)
 * [Scala Tagged types](http://www.vlachjosef.com/tagged-types-introduction)
 * Modern Functional Programming [[part-1](http://degoes.net/articles/modern-fp)|[part-2](http://degoes.net/articles/modern-fp-part-2)]
