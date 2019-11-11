@@ -73,6 +73,8 @@ title: TODO
 
 * [Law Enforcement using Discipline](https://typelevel.org/blog/2013/11/17/discipline.html)
 
+* [Scala for generic programmers](http://ropas.snu.ac.kr/~bruno/papers/ScalaGeneric.pdf) (Paper)
+
 **Patterns**
 
 * [The Aux Pattern](https://gigiigig.github.io/posts/2015/09/13/aux-pattern.html)

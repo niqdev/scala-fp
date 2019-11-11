@@ -168,11 +168,55 @@ It's a programming pattern that allow to extend existing libraries with new func
 * [implicit parameter precedence again](http://eed3si9n.com/implicit-parameter-precedence-again)
 * [Where does Scala look for implicits?](https://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits)
 
-### TODO *What is a higher kinded type?*
+### *What are type constructors and higher-kinded types?*
 
-> TODO
-
+* [Generics of a Higher Kind](http://adriaanm.github.io/files/higher.pdf) (Paper)
+* [Kinds and some type-foo](http://eed3si9n.com/herding-cats/Kinds.html)
 * [What is a higher kinded type in Scala?](https://stackoverflow.com/questions/6246719/what-is-a-higher-kinded-type-in-scala)
+* [Type Constructor Polymorphism](http://adriaanm.github.io/research/2010/10/06/new-in-scala-2.8-type-constructor-inference)
+* [Scala: Types of a higher kind](https://www.atlassian.com/blog/archives/scala-types-of-a-higher-kind)
+
+*Type Constructors* act like functions, but on the type level
+
+* `42` is a proper value
+* `Int` is a proper type `*`
+* `def f[A](a: A) = ???` is a function that takes a type parameter `A`
+    * `f` is a value constructor
+    * `f` has an abstract/polymorphic type parameter `A` of first-order
+    * `A` is of first-order because it cannot abstract over anything e.g. Java generics
+* `List` is a type constructor
+* `List[Int]` is a concrete type
+* `List[+A]` is a type constructor that takes a type parameter `A`
+    * `List` is a first-order-kinded type `* -> *`
+* `Either` is a type constructor that takes two type parameters `A` and `B`
+    * `Either` is a first-order-kinded type `* -> * -> *`
+* `M` is a type constructor that takes a type constructor parameter `F`
+    * `M` is a higher-kinded or higher-order type `(* -> *) -> *`
+
+```shell
+scala> :kind -v Int
+Int's kind is A
+*
+This is a proper type.
+
+scala> :kind -v List
+List's kind is F[+A]
+* -(+)-> *
+This is a type constructor: a 1st-order-kinded type.
+
+scala> :kind -v Either
+Either's kind is F[+A1,+A2]
+* -(+)-> * -(+)-> *
+This is a type constructor: a 1st-order-kinded type.
+
+scala> trait M[F[_]]
+scala> :kind -v M
+M's kind is X[F[A]]
+(* -> *) -> *
+This is a type constructor that takes type constructor(s): a higher-kinded type.
+```
+
+> TODO parallel between curried (function) and type constructor - see Arrows in category theory
 
 ### TODO *What is a type lambda?*
 
