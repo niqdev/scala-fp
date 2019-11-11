@@ -3,17 +3,10 @@ https://scalameta.org/mdoc
 https://docusaurus.io/en
 
 # sources
-* (refactor) https://niqdev.github.io/devops/scala
 * scala-with-cats
 * red-book
 * marc book
 * leanpub.com/pfp-scala
-* scalacheck
-  - https://github.com/alvinj/FPScalaCheck/tree/master/src/test/scala/utils
-  - https://github.com/rickynils/scalacheck/blob/master/doc/UserGuide.md
-  - http://noelmarkham.github.io/practical-scalacheck/index.html#/
-  - https://booksites.artima.com/scalacheck/examples/html/ch06.html
-  - http://jtfmumm.com/blog/2015/09/04/adventures-in-abstract-algebra-part-4-using-scalacheck-to-verify-infinite-algebraic-structures/
 
 https://devth.com/2015/monad-laws-in-scala
 https://github.com/barambani/laws
