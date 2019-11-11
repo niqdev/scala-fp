@@ -159,6 +159,15 @@ A *Type Class* is a type system construct that supports **ad-hoc polymorphism** 
 
 It's a programming pattern that allow to extend existing libraries with new functionality, without using traditional inheritance and without altering the original library source code using a combination of ad-hoc polymorphism, parametric polymorphism (type parameters) and implicits
 
+### TODO *How does the implicit resolution mechanism work?*
+
+> TODO
+
+* [Implicits, type classes, and extension methods](https://kubuszok.com/compiled/implicits-type-classes-and-extension-methods)
+* [revisiting implicits without import tax](http://eed3si9n.com/revisiting-implicits-without-import-tax)
+* [implicit parameter precedence again](http://eed3si9n.com/implicit-parameter-precedence-again)
+* [Where does Scala look for implicits?](https://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits)
+
 ### TODO *What is a higher kinded type?*
 
 > TODO
@@ -169,7 +178,9 @@ It's a programming pattern that allow to extend existing libraries with new func
 
 > TODO
 
+* [Type lambdas and kind projector](https://underscore.io/blog/posts/2016/12/05/type-lambdas.html)
 * [Type Lambda in Scala](http://like-a-boss.net/2014/09/27/type-lambda-in-scala.html)
+* [kind-projector](https://github.com/typelevel/kind-projector)
 
 ### *What is an effectful computation?*
 

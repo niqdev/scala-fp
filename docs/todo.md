@@ -9,7 +9,9 @@ title: TODO
 * [Functional Programming, Simplified](https://amzn.to/2OCFROS) (2017) by Alvin Alexander (Book)
 * [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw) by Runar Bjarnason (Video)
 * [Scalaz Presentation](https://vimeo.com/10482466) by Nick Partridge (Video)
+* TODO [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0)
 * [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
+* TODO [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
 
 > TODO Tagless Final Encoding
 
@@ -33,6 +35,8 @@ title: TODO
 * [Cooking with Monads](https://www.becompany.ch/en/blog/2016/11/08/cooking-with-monads)
 * [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 * [Hands-on category theory](https://earldouglas.com/talks/scala-cats/tutorial.html)
+* Incremental Purity [[slide](https://git.io/fp017)|[code](https://git.io/fp01d)] (Meetup)
+* [Functional Composition](https://benmosheron.gitlab.io/blog/2018/12/24/functional-composition.html)
 
 > TODO free monad
 
@@ -50,12 +54,7 @@ title: TODO
 * [Applicative programming with effects](http://www.staff.city.ac.uk/~ross/papers/Applicative.pdf) (Paper)
 
 * [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
-* Incremental Purity [[slide](https://git.io/fp017)|[code](https://git.io/fp01d)] (Meetup)
-
 * [Generalized type constraints in Scala (without a PhD)](http://blog.bruchez.name/2015/11/generalized-type-constraints-in-scala.html)
-
-* [Functional Composition](https://benmosheron.gitlab.io/blog/2018/12/24/functional-composition.html)
-
 * [Scala Tagged types](http://www.vlachjosef.com/tagged-types-introduction)
 * Modern Functional Programming [[part-1](http://degoes.net/articles/modern-fp)|[part-2](http://degoes.net/articles/modern-fp-part-2)]
 
@@ -65,8 +64,6 @@ title: TODO
 
 * [Rethinking MonadError](https://typelevel.org/blog/2018/04/13/rethinking-monaderror.html)
 * [Stackless Scala](http://www.marcoyuen.com/articles/2016/09/08/stackless-scala-1-the-problem.html)
-
-* [Type lambdas and kind projector](https://underscore.io/blog/posts/2016/12/05/type-lambdas.html)
 
 * [Category Theory for Programmers](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface)
 * [Scala's Modular Roots](http://lambdafoo.com/scala-syd-2015-modules)
@@ -103,8 +100,6 @@ title: TODO
 
 **Videos**
 
-* [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0)
-* [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
 * [The Making of an IO](https://www.youtube.com/watch?reload=9&v=g_jP47HFpWA)
 * [Scalaz 8 VS Akka actors](https://www.youtube.com/watch?v=Eihz7kqn6mU&t=833s)
 * [Move Over Free Monads: Make Way for Free Applicatives!](https://youtu.be/H28QqxO7Ihc)
