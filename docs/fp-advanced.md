@@ -35,6 +35,10 @@ todo
 * [On Monoids](https://apocalisp.wordpress.com/2010/06/14/on-monoids)
 * [Monoid](http://eed3si9n.com/herding-cats/Monoid.html)
 
+### Functor
+
+a class that encapsulates sequencing computations
+
 ## Effects
 
 * [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)

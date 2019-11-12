@@ -1,7 +1,7 @@
 package com.github.niqdev
 
 import com.github.niqdev.Monoid.instances._
-import org.scalacheck.Arbitrary.{arbBool, arbInt, arbString}
+import org.scalacheck.Arbitrary.{arbBool, arbInt, arbOption, arbString}
 import org.scalacheck.Prop.forAll
 import org.scalacheck.{Arbitrary, Properties}
 
@@ -39,3 +39,6 @@ object BooleanOrMonoidLawsProp
 
 object SetUnionMonoidLawsProp
   extends MonoidLawsProp[Set[Int]]("setUnion")(Arbitrary.arbContainer[Set, Int], setUnionMonoid)
+
+object OptionMonoidLawsProp
+  extends MonoidLawsProp[Option[String]]("option")(arbOption, optionMonoid)

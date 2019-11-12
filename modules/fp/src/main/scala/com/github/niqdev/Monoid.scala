@@ -39,6 +39,22 @@ trait MonoidInstances {
 
   implicit def setUnionMonoid[A]: Monoid[Set[A]] =
     Monoid.instance(Set.empty[A])(_ union _)
+
+  implicit def optionMonoid[A](implicit m: Monoid[A]): Monoid[Option[A]] =
+    new Monoid[Option[A]] {
+      override def combine(x: Option[A], y: Option[A]): Option[A] =
+        (x, y) match {
+          case (None, None) =>
+            None
+          case (maybeX, None) =>
+            maybeX
+          case (None, maybeY) =>
+            maybeY
+          case (Some(maybeX), Some(maybeY)) =>
+            Some(m.combine(maybeX, maybeY))
+        }
+      override def empty: Option[A] = None
+    }
 }
 
 trait MonoidLaws[A] extends SemigroupLaws[A] {
