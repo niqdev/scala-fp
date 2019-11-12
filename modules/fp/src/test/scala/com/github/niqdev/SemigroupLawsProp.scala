@@ -12,7 +12,6 @@ sealed abstract class SemigroupLawsProp[A](description: String)
   property("associativity") = forAll { (x: A, y: A, z: A) =>
     SemigroupLaws[A].semigroupAssociativity(x, y, z)
   }
-
 }
 
 object IntAdditionSemigroupLawsProp
