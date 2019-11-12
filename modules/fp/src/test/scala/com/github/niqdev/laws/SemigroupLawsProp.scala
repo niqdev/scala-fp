@@ -1,4 +1,5 @@
 package com.github.niqdev
+package laws
 
 import com.github.niqdev.Semigroup.instances.{intAdditionSemigroup, stringConcatenationSemigroup}
 import org.scalacheck.Arbitrary.{arbInt, arbString}

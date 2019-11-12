@@ -1,4 +1,5 @@
 package com.github.niqdev
+package laws
 
 import com.github.niqdev.Monoid.instances._
 import org.scalacheck.Arbitrary.{arbBool, arbInt, arbOption, arbString}
