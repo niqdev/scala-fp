@@ -39,6 +39,25 @@ todo
 
 a class that encapsulates sequencing computations
 
+the contravariant functor, provides an operation called contramap that represents "prepending" an operation to a chain
+
+Invariant functors implement a method called imap that is informally equivalent to a combination of map and contramap
+
+If F is a covariant functor, wherever we have an F[A] and a conversion A => B we can always convert to an F[B]
+
+If F is a contravariant functor, whenever we have a F[A] and a conversion B => A we can convert to an F[B]
+
+invariant functors capture the case where we can convert from F[A] to F[B] via a func on A => B and vice versa via a func on B => A
+
+```
+trait Contravariant[F[_]] {
+def contramap[A, B](fa: F[A])(f: B => A): F[B]
+}
+trait Invariant[F[_]] {
+def imap[A, B](fa: F[A])(f: A => B)(g: B => A): F[B]
+}
+```
+
 ## Effects
 
 * [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)

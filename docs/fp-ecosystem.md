@@ -28,6 +28,10 @@ title: Ecosystem
     * [The Type Astronaut's Guide to Shapeless](https://underscore.io/books/shapeless-guide) (Book)
     * [Shapeless for Mortals](http://fommil.com/scalax15) (2015) by Sam Halliday (Talk)
     * [First-class polymorphic function values in shapeless](https://milessabin.com/blog/2012/04/27/shapeless-polymorphic-function-values-1)
+* [refined](https://github.com/fthomas/refined)
+* [Enumeratum](https://github.com/lloydmeta/enumeratum)
+* [Monocle](http://julien-truffaut.github.io/Monocle)
+* [circe](https://circe.github.io/circe)
 * ...
 
 ## Resources
