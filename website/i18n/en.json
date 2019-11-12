@@ -12,9 +12,11 @@
         "title": "How to contribute",
         "sidebar_label": "How to"
       },
-      "ecosystem": {
-        "title": "Ecosystem",
-        "sidebar_label": "Ecosystem Label"
+      "fp-advanced": {
+        "title": "Advanced"
+      },
+      "fp-ecosystem": {
+        "title": "Ecosystem"
       },
       "fp-intro": {
         "title": "Introduction"
@@ -27,9 +29,6 @@
       },
       "todo": {
         "title": "TODO"
-      },
-      "type-classes": {
-        "title": "Type Classes"
       }
     },
     "links": {
@@ -40,7 +39,6 @@
       "Book": "Book",
       "Scala": "Scala",
       "Functional Programming": "Functional Programming",
-      "Ecosystem": "Ecosystem",
       "Contribute": "Contribute"
     }
   },

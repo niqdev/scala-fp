@@ -1,7 +1,6 @@
 ---
-id: ecosystem
+id: fp-ecosystem
 title: Ecosystem
-sidebar_label: Ecosystem Label
 ---
 
 > TODO
@@ -12,10 +11,12 @@ sidebar_label: Ecosystem Label
     * [Cats Infographic](https://github.com/tpolecat/cats-infographic)
     * [ScalaFP: Firsthand With Scala-Cats](https://www.signifytechnology.com/blog/2018/07/scalafp-firsthand-with-scala-cats-monads-number-1-by-harmeet-singh)
     * [Scala Cats library for dummies](https://medium.com/@abu_nadhr/scala-cats-library-for-dummies-part-1-8ec47af7a144)
+    * [Practical FP in Scala: A hands-on approach](https://leanpub.com/pfp-scala) (Book)
 * [Cats Effect](https://typelevel.org/cats-effect)
 * [ZIO](https://zio.dev)
 * [FS2](https://fs2.io)
 * [http4s](https://http4s.org)
+    * [Pure functional HTTP APIs in Scala](https://leanpub.com/pfhais) (Book)
 * [ScalaTest](http://www.scalatest.org)
 * [ScalaCheck](https://www.scalacheck.org)
     * [ScalaCheck User Guide](https://github.com/rickynils/scalacheck/blob/master/doc/UserGuide.md)

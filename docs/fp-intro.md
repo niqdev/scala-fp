@@ -3,17 +3,6 @@ id: fp-intro
 title: Introduction
 ---
 
-## Resources
-
-* [Functional Programming in Scala](https://amzn.to/2OCFpQG) (2014) by Paul Chiusano and Runar Bjarnason (Book)
-* [Functional Programming, Simplified](https://amzn.to/2OCFROS) (2017) by Alvin Alexander (Book)
-* [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw) by Runar Bjarnason (Video)
-* [Scalaz Presentation](https://vimeo.com/10482466) by Nick Partridge (Video)
-* TODO [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0)
-* [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
-* TODO [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
-* [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
-
 ## FAQ
 
 ### *What are some of the benefits of Functional Programming?*
