@@ -1,8 +1,5 @@
 package com.github.niqdev
 
-// F stands for effect
-// ev stands for evidence
-
 trait Semigroup[A] {
   def combine(x: A, y: A): A
 }
