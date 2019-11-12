@@ -298,12 +298,6 @@ https://typelevel.org/blog/2015/07/13/type-members-parameters.html
 https://www.artima.com/insidejvm/ed2/jvm8.html
 https://alvinalexander.com/scala/fp-book/recursion-jvm-stacks-stack-frames
 ```
-
-```scala
-// to remember: foldLeft start from left (acc op xFirst) ==> (B, A)
-// to remember: foldRight start from right (xLast op acc) ==> (A, B)
-```
-
 -->
 
 <!--

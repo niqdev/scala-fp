@@ -18,7 +18,7 @@ object MyTree {
 
 trait MyTreeInstances {
 
-  implicit def myTreeFunctor[T]: Functor[MyTree] =
+  implicit val myTreeFunctor: Functor[MyTree] =
     new Functor[MyTree] {
       override def map[A, B](fa: MyTree[A])(f: A => B): MyTree[B] =
         fa match {
