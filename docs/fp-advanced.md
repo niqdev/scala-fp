@@ -14,11 +14,11 @@ title: Advanced
 
 ## Type Classes
 
-> TODO
-
-`[name][descrition][implementation][tests][links]`
+> TODO fix links
 
 ### Show
+
+[[Show](https://niqdev.github.io/scala-fp) | [ShowSpec](https://niqdev.github.io/scala-fp)]
 
 ```scala mdoc
 trait Show[T] {
@@ -26,37 +26,61 @@ trait Show[T] {
 }
 ```
 
+`Show` provides textual representation
+
 ### Semigroup
-todo
+
+[[Semigroup](https://niqdev.github.io/scala-fp) | [SemigroupSpec](https://niqdev.github.io/scala-fp) | [SemigroupLawsProp](https://niqdev.github.io/scala-fp)]
+
+```scala mdoc
+trait Semigroup[A] {
+  def combine(x: A, y: A): A
+}
+```
+
+`Semigroup` provides `combine` which must be associative
 
 ### Monoid
 
-* [fpinscala](https://github.com/fpinscala/fpinscala/wiki/Chapter-10:-Monoids)
+[[Monoid](https://niqdev.github.io/scala-fp) | [MonoidSpec](https://niqdev.github.io/scala-fp) | [MonoidLawsProp](https://niqdev.github.io/scala-fp)]
+
+```scala mdoc
+trait Monoid[A] extends Semigroup[A] {
+  def empty: A
+}
+```
+
+`Monoid` is a `Semigroup` with `empty` which must be an identity element
+
 * [On Monoids](https://apocalisp.wordpress.com/2010/06/14/on-monoids)
-* [Monoid](http://eed3si9n.com/herding-cats/Monoid.html)
+* TODO [fpinscala](https://github.com/fpinscala/fpinscala/wiki/Chapter-10:-Monoids)
+* TODO [Monoid](http://eed3si9n.com/herding-cats/Monoid.html)
 
 ### Functor
 
-a class that encapsulates sequencing computations
+[[Functor](https://niqdev.github.io/scala-fp) | [FunctorSpec](https://niqdev.github.io/scala-fp) | [FunctorLawsProp](https://niqdev.github.io/scala-fp)]
 
-the contravariant functor, provides an operation called contramap that represents "prepending" an operation to a chain
+```scala mdoc
+trait Functor[F[_]] {
+  def map[A, B](fa: F[A])(f: A => B): F[B]
+}
 
-Invariant functors implement a method called imap that is informally equivalent to a combination of map and contramap
-
-If F is a covariant functor, wherever we have an F[A] and a conversion A => B we can always convert to an F[B]
-
-If F is a contravariant functor, whenever we have a F[A] and a conversion B => A we can convert to an F[B]
-
-invariant functors capture the case where we can convert from F[A] to F[B] via a func on A => B and vice versa via a func on B => A
-
-```
+// not implemented
 trait Contravariant[F[_]] {
-def contramap[A, B](fa: F[A])(f: B => A): F[B]
+  def contramap[A, B](fa: F[A])(f: B => A): F[B]
 }
+
+// not implemented
 trait Invariant[F[_]] {
-def imap[A, B](fa: F[A])(f: A => B)(g: B => A): F[B]
+  def imap[A, B](fa: F[A])(f: A => B)(g: B => A): F[B]
 }
 ```
+
+`Functor` provides `map` which encapsulates sequencing computations
+
+The `Contravariant` functor provides an operation called `contramap` that represents prepending an operation to a chain
+
+The `Invariant` functors provides an operation called `imap` that is informally equivalent to a combination of `map` and `contramap`
 
 ## Effects
 

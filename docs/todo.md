@@ -97,69 +97,7 @@ title: TODO
 * [Faculty of Khan](https://www.youtube.com/channel/UCGDanWUzNMbIV11lcNi-yBg/videos)
 * [SystemFw - Talks](http://systemfw.org/talks.html)
 
-> TODO
-
-*What is a Monoid?*
-
-A Monoid is an algebraic type with 2 laws, a binary operation over that type, satisfying *associativity* and an *identity* element
-
-* associative e.g `a + (b + c) == (a + b) + c`
-* identity e.g. for sum is 0, for product is 1, for string is ""
-
-```scala
-trait Monoid[A] {
-  // associativity
-  // op(op(x, y), z) == op(x, op(y, z))
-  def op(x: A, y: A): A
-
-  // identity
-  // op(x, zero) == op(zero, x) == x
-  def zero: A
-}
-
-// example
-val stringMonoid = new Monoid[String] {
-  override def op(x: String, y: String): String = x + y
-  override def zero: String = ""
-}
-```
-
-Monoids have an intimate connection with lists and arguments of the same type, it doesn't matter if we choose `foldLeft` or `foldRight` when folding with a monoid because the laws of associativity and identity hold, hence this allows parallel computation
-
-The real power of monoids comes from the fact that they compose, this means, for example, that if types A and B are monoids, then the tuple type (A, B) is also a monoid (called their product)
-
-```scala
-scala> List("first", "second", "third").foldLeft(stringMonoid.zero)(stringMonoid.op)
-scala> List("first", "second", "third").foldRight(stringMonoid.zero)(stringMonoid.op)
-res: String = firstsecondthird
-```
-
-*What is a Semigroup?*
-
-A Semigroup is just the `combine` part of a Monoid. While many semigroups are also monoids, there are some data types for which we cannot define an empty element e.g. non-empty sequences and positive integers
-
-```scala
-trait Semigroup[A] {
-  // or op
-  def combine(x: A, y: A): A
-}
-
-trait Monoid[A] extends Semigroup[A] {
-  // or zero
-  def empty: A
-}
-```
-
-*What is a Functor?*
-
-Informally, a Functor is anything with a `map` method
-
-```scala
-// F is a higher-order type constructor or a higher-kinded type
-trait Functor[F[_]] {
-  def map[A, B](fa: F[A])(f: A => B): F[B]
-}
-```
+> TODO Kleisli
 
 *What is a Monad?*
 
