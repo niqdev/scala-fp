@@ -18,7 +18,13 @@ object Functor {
 }
 
 trait FunctorInstances {
-  // TODO
+
+  // see catsStdMonadForFunction1
+  implicit def function1Functor[T]: Functor[T => *] =
+    new Functor[Function[T, *]] {
+      override def map[A, B](fa: Function[T, A])(f: A => B): Function[T, B] =
+        fa andThen f
+    }
 }
 
 trait FunctorSyntax {

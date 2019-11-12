@@ -53,6 +53,8 @@ sealed trait MyList[+A] {
 
 object MyList {
 
+  object instances extends MyListInstances
+
   def apply[A](as: A*): MyList[A] =
     if (as.isEmpty) MyNil
     else MyCons(as.head, apply(as.tail: _*))

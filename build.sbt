@@ -13,6 +13,8 @@ lazy val versions = new {
   // test
   val scalatest  = "3.0.8"
   val scalacheck = "1.14.2"
+
+  val kindProjector = "0.11.0"
 }
 
 lazy val dependencies = new {
@@ -46,7 +48,11 @@ lazy val commonSettings = Seq(
     "-Xfatal-warnings", // turn compiler warnings into errors
     "-Ypartial-unification", // allow the compiler to unify type constructors of different arities
     "-language:postfixOps"
-  )
+  ),
+  resolvers ++= Seq(
+    Resolver.sonatypeRepo("releases")
+  ),
+  addCompilerPlugin(dependency = "org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full)
 )
 
 lazy val fp = (project in file("modules/fp"))

@@ -4,7 +4,6 @@ package datatype
 final case class MySome[A](value: A) extends MyOption[A]
 case object MyNone extends MyOption[Nothing]
 
-// TODO
 sealed trait MyOption[+A] {
 
   def map[B](f: A => B): MyOption[B] =
@@ -18,11 +17,18 @@ sealed trait MyOption[+A] {
       case MyNone => MyNone
       case MySome(a) => f(a)
     }
+}
 
-  def getOrElse[B >: A](default: => B): B = ???
+object MyOption {
 
-  def orElse[B >: A](ob: => MyOption[B]): MyOption[B] = ???
+  object instances extends MyOptionInstances
+}
 
-  def filter(f: A => Boolean): MyOption[A] = ???
+trait MyOptionInstances {
 
+  implicit val myOptionFunctor: Functor[MyOption] =
+    new Functor[MyOption] {
+      override def map[A, B](fa: MyOption[A])(f: A => B): MyOption[B] =
+        fa.map(f)
+    }
 }
