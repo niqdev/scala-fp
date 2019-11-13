@@ -55,7 +55,17 @@ lazy val commonSettings = Seq(
   addCompilerPlugin(dependency = "org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full)
 )
 
+lazy val scala = (project in file("modules/scala"))
+  .settings(commonSettings)
+  .settings(
+    name := s"${info.name}-scala",
+    libraryDependencies ++= dependencies.test
+      .map(_.withSources)
+      .map(_.withJavadoc)
+  )
+
 lazy val fp = (project in file("modules/fp"))
+  .dependsOn(scala)
   .settings(commonSettings)
   .settings(
     name := s"${info.name}-fp",
@@ -64,7 +74,6 @@ lazy val fp = (project in file("modules/fp"))
       .map(_.withJavadoc)
   )
 
-// TODO rename ecosystem ???
 lazy val ecosystem = (project in file("modules/ecosystem"))
   .settings(commonSettings)
   .settings(
@@ -87,7 +96,7 @@ lazy val docs = (project in file("modules/docs"))
 
 lazy val root = project
   .in(file("."))
-  .aggregate(fp, ecosystem, docs)
+  .aggregate(scala, fp, ecosystem, docs)
   .settings(
     name := info.name
   )
