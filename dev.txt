@@ -1,7 +1,3 @@
-# site
-https://scalameta.org/mdoc
-https://docusaurus.io/en
-
 # sources
 * scala-with-cats
 * red-book
