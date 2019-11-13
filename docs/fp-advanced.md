@@ -131,7 +131,17 @@ trait MonadError[F[_], E] extends Monad[F] {
 
 ### Eval
 
-> TODO
+One useful property of `Eval` is that its `map` and `flatMap` methods are **trampolined**. This means that calls to `map` and `flatMap` can be nested arbitrarily without consuming stack frames i.e. it's *stack safety*
+
+`Eval` monad is a useful tool to enforce stack safety when working on very large computations and data structures. Trampolining is not free although, it avoids consuming stack by creating a chain of function objects on the heap. There are still limits on how deeply computations can be nested, but they are bounded by the size of the heap rather than the stack
+
+### Writer
+
+`Writer` monad (it's a data type too) lets carry a log along with a computation. It's useful to record messages, errors, or additional data about a computation, and extract the log alongside the final result
+
+### Reader
+
+`Reader` monad allows to sequence operations that depend on some input. One common use for Readers is dependency injection
 
 ## Effects
 

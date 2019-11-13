@@ -49,7 +49,7 @@ A *by-value* parameter is evaluated before the method is invoked e.g. `(x: Int)`
 
 * `def` defines a method, it is lazy and not memoized
 * `val` defines a fixed value, it is immutable, eagerly initialized and memoized
-* `lazy val` is only initialised when required and as late as possible (deferred evaluation), it is not recomputed like by-name parameters i.e. is lazy and memoized
+* `lazy val` is only initialised when required and as late as possible (deferred evaluation), it is not recomputed like by-name parameters i.e. it's lazy and memoized
 * `var` defines a variable reference, it is mutable and *should be avoided*
 
 ### *What are `Nothing Nil None Empty Null null Unit`?*
