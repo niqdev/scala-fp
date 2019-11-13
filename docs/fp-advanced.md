@@ -129,6 +129,10 @@ trait MonadError[F[_], E] extends Monad[F] {
 }
 ```
 
+### Eval
+
+> TODO
+
 ## Effects
 
 * [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)

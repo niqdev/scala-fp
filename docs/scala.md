@@ -39,12 +39,18 @@ title: Introduction
 
 A *by-value* parameter is evaluated before the method is invoked e.g. `(x: Int)` while a *by-name* parameter is not evaluated before the method is invoked, but each time the parameter is referenced inside the method e.g. `(x: => Int)`
 
-### *What are the differences between `def val var lazy`?*
+### *What is the difference between eager, lazy and memoized evaluation?*
 
-* `def` defines a method
-* `val` defines a fixed value, it is immmutable and eagerly initialized
-* `var` defines a variable reference, it is mutable and *it should be avoided*
-* `lazy` only initialised when required and as late as possible (deferred evaluation), default is strict and it's not recomputed like by-name parameters
+* *Eager* computations happen immediately
+* *Lazy* computations happen on access
+* *Memoized* computations are run once on first access, after which the results are cached
+
+### *What are the differences between `def val lazy var`?*
+
+* `def` defines a method, it is lazy and not memoized
+* `val` defines a fixed value, it is immutable, eagerly initialized and memoized
+* `lazy val` is only initialised when required and as late as possible (deferred evaluation), it is not recomputed like by-name parameters i.e. is lazy and memoized
+* `var` defines a variable reference, it is mutable and *should be avoided*
 
 ### *What are `Nothing Nil None Empty Null null Unit`?*
 
