@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "Resources on Scala and Functional Programming",
+    "tagline": "Notes on Scala and Functional Programming",
     "docs": {
       "book": {
         "title": "Table of contents"
@@ -21,14 +21,17 @@
       "fp-intro": {
         "title": "Introduction"
       },
+      "fp-todo": {
+        "title": "TODO"
+      },
       "jvm": {
         "title": "JVM"
       },
+      "scala-todo": {
+        "title": "TODO"
+      },
       "scala": {
         "title": "Introduction"
-      },
-      "todo": {
-        "title": "TODO"
       }
     },
     "links": {

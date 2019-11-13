@@ -9,19 +9,17 @@ Current version
 val version = "@VERSION@"
 ```
 
-> TODO
+> TODO fix links
 
 Scala
 
-* [Introduction](https://niqdev.github.io/scala-fp/docs/scala)
-* [JVM](https://niqdev.github.io/scala-fp/docs/jvm)
+* [Introduction](https://niqdev.github.io/scala-fp)
+* [JVM](https://niqdev.github.io/scala-fp)
+* [TODO](https://niqdev.github.io/scala-fp)
 
 Functional Programming
 
-* [Introduction](https://niqdev.github.io/scala-fp/docs/fp-intro)
-* [Type classes](https://niqdev.github.io/scala-fp/docs/type-classes)
-* [TODO](https://niqdev.github.io/scala-fp/docs/todo)
-
-Ecosystem
-
-* [TODO](https://niqdev.github.io/scala-fp/docs/ecosystem)
+* [Introduction](https://niqdev.github.io/scala-fp)
+* [Advanced](https://niqdev.github.io/scala-fp)
+* [Ecosystem](https://niqdev.github.io/scala-fp)
+* [TODO](https://niqdev.github.io/scala-fp)
