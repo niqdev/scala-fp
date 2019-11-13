@@ -1,8 +1,5 @@
 package com.github.niqdev
 
-import com.github.niqdev.datastructure.{MyBranch, MyLeaf, MyList, MyTree}
-import com.github.niqdev.datatype.{MyEither, MyOption}
-
 // F stands for effect
 // ev stands for evidence
 // F[_]: type constructors and higher-kinded types
