@@ -31,7 +31,7 @@ final class MonadSpec extends WordSpecLike with Matchers {
           b0 <- b // map
         } yield a0 * a0 + b0 * b0
 
-      val expected = 13
+      val expected = Some(13)
       sumSquare(Option(2), Option(3)) shouldBe expected
       sumSquareFor[Option](2.pure[Option], 3.pure[Option]) shouldBe expected
     }

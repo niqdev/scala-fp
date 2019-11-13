@@ -19,7 +19,7 @@ object CatInstances {
   }
 }
 
-// FIXME define outside: conflicts with org.scalactic.TripleEqualsSupport
+// define outside: conflicts with org.scalactic.TripleEqualsSupport
 object EqHelper {
   import cats.syntax.eq.catsSyntaxEq
 
@@ -34,14 +34,12 @@ final class EqSpec extends WordSpecLike with Matchers {
 
   "Eq" should {
 
-    /* FIXME weird compilation error: type mismatch
-    "verify" {
+    "verify" in {
       import cats.instances.int.catsKernelStdOrderForInt
 
       Eq[Int].eqv(123, 123) shouldBe true
-      Eq[Int].neqv(123, 456) shouldBe false
+      Eq[Int].neqv(123, 456) shouldBe true
     }
-    */
 
     "verify instances" in {
       import CatInstances.catEq

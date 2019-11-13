@@ -16,17 +16,15 @@ final class FunctorSpec extends WordSpecLike with Matchers {
       Functor[Option].map(Option.empty[Int])(_.toString) shouldBe None
     }
 
-    /* FIXME weird compilation error: type mismatch
-    "verify function" {
-      import cats.instances.function._
-      import cats.syntax.functor._
+    "verify function" in {
+      import cats.instances.function.catsStdMonadForFunction1
+      import cats.syntax.functor.toFunctorOps
 
       val func1 = (a: Int) => a + 1
       val func2 = (a: Int) => a * 2
       val func3 = (a: Int) => a + "!"
       func1.map(func2).map(func3)(123) shouldBe "248!"
     }
-    */
   }
 
 }
