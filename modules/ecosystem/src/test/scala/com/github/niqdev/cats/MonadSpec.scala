@@ -36,8 +36,50 @@ final class MonadSpec extends WordSpecLike with Matchers {
       sumSquareFor[Option](2.pure[Option], 3.pure[Option]) shouldBe expected
     }
 
-    "verify Id monad" in {
-      // TODO
+    "verify Id" in {
+      import cats.Id
+      import cats.syntax.applicative.catsSyntaxApplicativeId
+      import cats.syntax.flatMap.toFlatMapOps
+      import cats.syntax.functor.toFunctorOps
+
+      Monad[Id].pure(42) shouldBe 42
+      Monad[Id].flatMap(42)(_ / 2) shouldBe 21
+
+      val sum = for {
+        a <- 2.pure[Id]
+        b <- 3.pure[Id]
+        c <- 4.pure[Id]
+      } yield a + b + c
+
+      sum shouldBe 9
+    }
+
+    // fail-fast error handling
+    "verify Either" in {
+      import cats.syntax.either.{catsSyntaxEither, catsSyntaxEitherId, catsSyntaxEitherObject}
+
+      3.asRight[String] shouldBe Right(3)
+      "error".asLeft[Int] shouldBe Left("error")
+
+      Either.catchOnly[NumberFormatException]("error".toInt)
+        .leftMap(_.getMessage) shouldBe Left("For input string: \"error\"")
+      Either.catchNonFatal(sys.error("error"))
+        .leftMap(_.getMessage) shouldBe Left("error")
+      Either.fromTry(scala.util.Try("error".toInt))
+        .leftMap(_.getMessage) shouldBe Left("For input string: \"error\"")
+      Either.fromOption[String, Int](None, "error") shouldBe Left("error")
+
+      "error".asLeft[Int].leftMap(_.reverse) shouldBe Left("rorre")
+      6.asRight[String].bimap(_.reverse, _ * 7) shouldBe Right(42)
+      "error".asLeft[Int].bimap(_.reverse, _ * 7) shouldBe Left("rorre")
+    }
+
+    "verify MonadError" in {
+      import cats.instances.try_.catsStdInstancesForTry
+      import cats.syntax.applicativeError.catsSyntaxApplicativeErrorId
+
+      val exception: Throwable = new RuntimeException("error")
+      exception.raiseError[scala.util.Try, Int] shouldBe scala.util.Failure(exception)
     }
   }
 

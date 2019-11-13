@@ -42,7 +42,7 @@ trait Semigroup[A] {
 
 ### Monoid
 
-[[Monoid](https://niqdev.github.io/scala-fp) | [MonoidSpec](https://niqdev.github.io/scala-fp) | [MonoidLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonoidSpec](https://niqdev.github.io/scala-fp)]]
+[[Monoid](https://niqdev.github.io/scala-fp) | [MonoidSpec](https://niqdev.github.io/scala-fp) | [MonoidLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonoidSpec](https://niqdev.github.io/scala-fp)]
 
 ```scala mdoc
 trait Monoid[A] extends Semigroup[A] {
@@ -51,6 +51,8 @@ trait Monoid[A] extends Semigroup[A] {
 ```
 
 `Monoid` is a `Semigroup` with `empty` which must be an identity element
+
+> TODO resources
 
 * [On Monoids](https://apocalisp.wordpress.com/2010/06/14/on-monoids)
 * TODO [fpinscala](https://github.com/fpinscala/fpinscala/wiki/Chapter-10:-Monoids)
@@ -84,6 +86,8 @@ The `Invariant` functors provides an operation called `imap` that is informally 
 
 ### Monad
 
+[[Monad](https://niqdev.github.io/scala-fp) | [MonadSpec](https://niqdev.github.io/scala-fp) | [MonadLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonadSpec](https://niqdev.github.io/scala-fp)]
+
 ```scala mdoc
 trait Monad[F[_]] {
   // point
@@ -94,6 +98,36 @@ trait Monad[F[_]] {
 ```
 
 A `Monad` is a mechanism for sequencing effects, also called *monadic behaviour*
+
+Everyday monads
+
+* `List`
+* `Option`
+* `Either`
+
+#### Identity
+
+```scala mdoc
+type Id[A] = A
+```
+
+#### MonadError
+
+> TODO ApplicativeError
+
+```scala mdoc
+// not implemented
+trait MonadError[F[_], E] extends Monad[F] {
+  // lift an error into the `F` context
+  def raiseError[A](e: E): F[A]
+
+  // handle an error, potentially recovering from it
+  def handleError[A](fa: F[A])(f: E => A): F[A]
+
+  // test an instance of `F`, failing if the predicate is not satisfied
+  def ensure[A](fa: F[A])(e: E)(f: A => Boolean): F[A]
+}
+```
 
 ## Effects
 
