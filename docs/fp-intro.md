@@ -177,6 +177,21 @@ Only by knowing the type signature of a method is possible to infer more or less
 * [implicit parameter precedence again](http://eed3si9n.com/implicit-parameter-precedence-again)
 * [Where does Scala look for implicits?](https://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits)
 
+### TODO *What is a context bound?*
+
+> TODO
+
+* [What are Scala context bounds?](https://docs.scala-lang.org/tutorials/FAQ/context-bounds.html) (Documentation)
+* [What are Scala context and view bounds?](https://stackoverflow.com/questions/4465948/what-are-scala-context-and-view-bounds)
+
+```scala
+// context bound
+def f[A : Ordering](a: A, b: A) = implicitly[Ordering[A]].compare(a, b)
+
+// implicit evidence
+def f[A](a: A, b: A)(implicit ev: Ordering[A]) = ev.compare(a, b)
+```
+
 ### *What is a type class?*
 
 * [Type Classes as Objects and Implicits](http://ropas.snu.ac.kr/~bruno/papers/TypeClasses.pdf) (Paper)

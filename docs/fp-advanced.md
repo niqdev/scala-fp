@@ -18,7 +18,7 @@ title: Advanced
 
 ### Show
 
-[[Show](https://niqdev.github.io/scala-fp) | [ShowSpec](https://niqdev.github.io/scala-fp)]
+[[Show](https://niqdev.github.io/scala-fp) | [ShowSpec](https://niqdev.github.io/scala-fp) | [cats.ShowSpec](https://niqdev.github.io/scala-fp)]
 
 ```scala mdoc
 trait Show[T] {
@@ -42,7 +42,7 @@ trait Semigroup[A] {
 
 ### Monoid
 
-[[Monoid](https://niqdev.github.io/scala-fp) | [MonoidSpec](https://niqdev.github.io/scala-fp) | [MonoidLawsProp](https://niqdev.github.io/scala-fp)]
+[[Monoid](https://niqdev.github.io/scala-fp) | [MonoidSpec](https://niqdev.github.io/scala-fp) | [MonoidLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonoidSpec](https://niqdev.github.io/scala-fp)]]
 
 ```scala mdoc
 trait Monoid[A] extends Semigroup[A] {
@@ -58,7 +58,7 @@ trait Monoid[A] extends Semigroup[A] {
 
 ### Functor
 
-[[Functor](https://niqdev.github.io/scala-fp) | [FunctorSpec](https://niqdev.github.io/scala-fp) | [FunctorLawsProp](https://niqdev.github.io/scala-fp)]
+[[Functor](https://niqdev.github.io/scala-fp) | [FunctorSpec](https://niqdev.github.io/scala-fp) | [FunctorLawsProp](https://niqdev.github.io/scala-fp) | [cats.FunctorSpec](https://niqdev.github.io/scala-fp)]
 
 ```scala mdoc
 trait Functor[F[_]] {
@@ -76,11 +76,24 @@ trait Invariant[F[_]] {
 }
 ```
 
-`Functor` provides `map` which encapsulates sequencing computations
+`Functor` provides `map` which encapsulates sequencing computations once at the beginning of a sequence
 
 The `Contravariant` functor provides an operation called `contramap` that represents prepending an operation to a chain
 
 The `Invariant` functors provides an operation called `imap` that is informally equivalent to a combination of `map` and `contramap`
+
+### Monad
+
+```scala mdoc
+trait Monad[F[_]] {
+  // point
+  def pure[A](value: A): F[A]
+  // bind or >>=
+  def flatMap[A, B](fa: F[A])(f: A => F[B]): F[B]
+}
+```
+
+A `Monad` is a mechanism for sequencing effects, also called *monadic behaviour*
 
 ## Effects
 
