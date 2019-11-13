@@ -53,18 +53,7 @@ sealed trait MyList[+A] {
 
 object MyList {
 
-  object instances extends MyListInstances
-
   def apply[A](as: A*): MyList[A] =
     if (as.isEmpty) MyNil
     else MyCons(as.head, apply(as.tail: _*))
-}
-
-trait MyListInstances {
-
-  implicit val myListFunctor: Functor[MyList] =
-    new Functor[MyList] {
-      override def map[A, B](fa: MyList[A])(f: A => B): MyList[B] =
-        fa.map(f)
-    }
 }

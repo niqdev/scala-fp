@@ -1,4 +1,5 @@
-package com.github.niqdev.datastructure
+package com.github.niqdev
+package datastructure
 
 import org.scalatest.{Matchers, WordSpecLike}
 

@@ -1,6 +1,7 @@
 package com.github.niqdev
 package laws
 
+import com.github.niqdev.Functor.instances.{myListFunctor, myOptionFunctor, myTreeFunctor}
 import com.github.niqdev.datastructure.{MyList, MyTree}
 import com.github.niqdev.datatype.MyOption
 import org.scalacheck.Prop.forAll
@@ -23,10 +24,10 @@ sealed abstract class FunctorLawsProp[F[_]](description: String)
 }
 
 object MyListFunctorLawsProp
-  extends FunctorLawsProp[MyList]("myList")(MyList.instances.myListFunctor, ArbitraryImplicits.arbMyList)
+  extends FunctorLawsProp[MyList]("myList")(myListFunctor, ArbitraryImplicits.arbMyList)
 
 object MyTreeFunctorLawsProp
-  extends FunctorLawsProp[MyTree]("myTree")(MyTree.instances.myTreeFunctor, ArbitraryImplicits.arbMyTree)
+  extends FunctorLawsProp[MyTree]("myTree")(myTreeFunctor, ArbitraryImplicits.arbMyTree)
 
 object MyOptionFunctorLawsProp
-  extends FunctorLawsProp[MyOption]("myOption")(MyOption.instances.myOptionFunctor, ArbitraryImplicits.arbMyOption)
+  extends FunctorLawsProp[MyOption]("myOption")(myOptionFunctor, ArbitraryImplicits.arbMyOption)

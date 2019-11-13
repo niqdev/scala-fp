@@ -1,5 +1,8 @@
 package com.github.niqdev
 
+import com.github.niqdev.datastructure.{MyBranch, MyLeaf, MyList, MyTree}
+import com.github.niqdev.datatype.{MyEither, MyOption}
+
 // F stands for effect
 // ev stands for evidence
 // F[_]: type constructors and higher-kinded types
@@ -18,6 +21,37 @@ object Functor {
 }
 
 trait FunctorInstances {
+
+  implicit val myListFunctor: Functor[MyList] =
+    new Functor[MyList] {
+      override def map[A, B](fa: MyList[A])(f: A => B): MyList[B] =
+        fa.map(f)
+    }
+
+  implicit val myTreeFunctor: Functor[MyTree] =
+    new Functor[MyTree] {
+      override def map[A, B](fa: MyTree[A])(f: A => B): MyTree[B] =
+        fa match {
+          case MyLeaf(a) =>
+            MyLeaf(f(a))
+          case MyBranch(left, right) =>
+            MyBranch(myTreeFunctor.map(left)(f), myTreeFunctor.map(right)(f))
+        }
+    }
+
+  implicit val myOptionFunctor: Functor[MyOption] =
+    new Functor[MyOption] {
+      override def map[A, B](fa: MyOption[A])(f: A => B): MyOption[B] =
+        fa.map(f)
+    }
+
+  // TODO review test MyEither
+  // * is a kind-projector magic
+  implicit def myEitherFunctor[E]: Functor[MyEither[E, *]] =
+    new Functor[MyEither[E, *]] {
+      override def map[A, B](fa: MyEither[E, A])(f: A => B): MyEither[E, B] =
+        fa.map(f)
+    }
 
   // see catsStdMonadForFunction1
   implicit def function1Functor[T]: Functor[T => *] =

@@ -55,17 +55,17 @@ lazy val commonSettings = Seq(
   addCompilerPlugin(dependency = "org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full)
 )
 
-lazy val scala = (project in file("modules/scala"))
+lazy val common = (project in file("modules/common"))
   .settings(commonSettings)
   .settings(
-    name := s"${info.name}-scala",
+    name := s"${info.name}-common",
     libraryDependencies ++= dependencies.test
       .map(_.withSources)
       .map(_.withJavadoc)
   )
 
 lazy val fp = (project in file("modules/fp"))
-  .dependsOn(scala)
+  .dependsOn(common)
   .settings(commonSettings)
   .settings(
     name := s"${info.name}-fp",
@@ -96,7 +96,7 @@ lazy val docs = (project in file("modules/docs"))
 
 lazy val root = project
   .in(file("."))
-  .aggregate(scala, fp, ecosystem, docs)
+  .aggregate(common, fp, ecosystem, docs)
   .settings(
     name := info.name
   )

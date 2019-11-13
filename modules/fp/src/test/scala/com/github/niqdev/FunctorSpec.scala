@@ -7,7 +7,7 @@ final class FunctorSpec extends WordSpecLike with Matchers {
   "Functor" should {
 
     "verify MyTree" in {
-      import com.github.niqdev.datastructure.MyTree.instances.myTreeFunctor
+      import com.github.niqdev.Functor.instances.myTreeFunctor
       import com.github.niqdev.datastructure.MyTree.{branch, leaf}
       import com.github.niqdev.datastructure.{MyBranch, MyLeaf, MyTree}
 
@@ -22,14 +22,14 @@ final class FunctorSpec extends WordSpecLike with Matchers {
     }
 
     "verify MyList" in {
-      import com.github.niqdev.datastructure.MyList.instances.myListFunctor
+      import com.github.niqdev.Functor.instances.myListFunctor
       import com.github.niqdev.datastructure.MyList
 
       Functor[MyList].map(MyList(1, 2, 3, 4))(_ * 3) shouldBe MyList(3, 6, 9, 12)
     }
 
     "verify MyOption" in {
-      import com.github.niqdev.datatype.MyOption.instances.myOptionFunctor
+      import com.github.niqdev.Functor.instances.myOptionFunctor
       import com.github.niqdev.datatype.{MyNone, MyOption, MySome}
 
       Functor[MyOption].map(MySome(21))(_ * 2) shouldBe MySome(42)
@@ -38,7 +38,7 @@ final class FunctorSpec extends WordSpecLike with Matchers {
 
     /* FIXME kind-projector
     "verify MyEither" in {
-      import com.github.niqdev.datatype.MyEither.instances.myEitherFunctor
+      import com.github.niqdev.Functor.instances.myEitherFunctor
       import com.github.niqdev.datatype.{MyEither, MyLeft, MyRight}
 
       Functor[MyEither].map(MyRight(21))(_ * 2) shouldBe MyRight(42)

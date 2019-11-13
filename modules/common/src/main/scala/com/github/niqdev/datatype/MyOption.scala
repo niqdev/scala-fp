@@ -18,17 +18,3 @@ sealed trait MyOption[+A] {
       case MySome(a) => f(a)
     }
 }
-
-object MyOption {
-
-  object instances extends MyOptionInstances
-}
-
-trait MyOptionInstances {
-
-  implicit val myOptionFunctor: Functor[MyOption] =
-    new Functor[MyOption] {
-      override def map[A, B](fa: MyOption[A])(f: A => B): MyOption[B] =
-        fa.map(f)
-    }
-}

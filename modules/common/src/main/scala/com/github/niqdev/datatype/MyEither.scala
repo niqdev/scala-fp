@@ -20,18 +20,3 @@ sealed trait MyEither[+E, +A] {
       case myLeft@MyLeft(_) => myLeft
     }
 }
-
-object MyEither {
-
-  object instances extends MyEitherInstances
-}
-
-trait MyEitherInstances {
-
-  // * is a kind-projector magic
-  implicit def myEitherFunctor[E]: Functor[Either[E, *]] =
-    new Functor[Either[E, *]] {
-      override def map[A, B](fa: Either[E, A])(f: A => B): Either[E, B] =
-        fa.map(f)
-    }
-}
