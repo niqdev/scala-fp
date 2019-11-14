@@ -279,6 +279,20 @@ class OptionT[F[_], A](value: F[Option[A]])
 
 `OptionT` is a monad transformer for `Option`
 
+### Validated
+
+[[cats.ValidatedSpec](https://niqdev.github.io/scala-fp)]
+
+`Validated` is similar to `Either` but allows to accumulate errors
+
+```scala mdoc
+sealed abstract class Validated[+E, +A]
+case class Valid[+A](a: A) extends Validated[Nothing, A]
+case class Invalid[+E](e: E) extends Validated[E, Nothing]
+```
+
+The `Semigroupal` implementation of `product` for a `Monad` is equivalent to `flatMap`, which explains why `Either`, being a `Monad` provides a fail-fast error handling. On the other side, `Validated` has an instance of `Semigroupal` but *no* instance of `Monad`, hence the implementation of `product` is free to accumulate errors
+
 ## Effects
 
 ### IO
