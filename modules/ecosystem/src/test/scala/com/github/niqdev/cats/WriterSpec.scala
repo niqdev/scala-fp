@@ -1,17 +1,13 @@
 package com.github.niqdev.cats
 
+import cats.data.Writer
 import org.scalatest.{Matchers, WordSpecLike}
 
 final class WriterSpec extends WordSpecLike with Matchers {
 
-  "Monad" should {
+  "Writer" should {
 
-    "verify Writer" in {
-      import cats.data.Writer
-      import cats.instances.vector.catsKernelStdMonoidForVector
-      import cats.syntax.applicative.catsSyntaxApplicativeId
-      import cats.syntax.writer.catsSyntaxWriterId
-
+    "verify examples" in {
       val log = Vector("msg1", "msg2", "msg3")
       val result = 123
 
@@ -19,6 +15,12 @@ final class WriterSpec extends WordSpecLike with Matchers {
       writer.written shouldBe log
       writer.value shouldBe result
       writer.run shouldBe Tuple2(log, result)
+    }
+
+    "verify composition" in {
+      import cats.instances.vector.catsKernelStdMonoidForVector
+      import cats.syntax.applicative.catsSyntaxApplicativeId
+      import cats.syntax.writer.catsSyntaxWriterId
 
       /*
        * The log in a Writer is preserved when we map or flatMap over it.

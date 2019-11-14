@@ -34,7 +34,7 @@ final class EqSpec extends WordSpecLike with Matchers {
 
   "Eq" should {
 
-    "verify" in {
+    "verify examples" in {
       import cats.instances.int.catsKernelStdOrderForInt
 
       Eq[Int].eqv(123, 123) shouldBe true

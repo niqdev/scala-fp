@@ -7,7 +7,7 @@ final class MonadSpec extends WordSpecLike with Matchers {
 
   "Monad" should {
 
-    "verify option" in {
+    "verify Option" in {
       import cats.instances.option.catsStdInstancesForOption
 
       Monad[Option].pure(3) shouldBe Some(3)

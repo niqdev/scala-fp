@@ -1,21 +1,22 @@
 package com.github.niqdev.cats
 
+import cats.Eval
 import org.scalatest.{Matchers, WordSpecLike}
 
 final class EvalSpec extends WordSpecLike with Matchers {
 
-  "Monad" should {
+  "Eval" should {
 
-    "verify Eval" in {
-      import cats.Eval
-
+    "verify examples" in {
       // val is eager and memoized
       Eval.now(math.random + 1000).value should be >= 0.0
       // def is lazy and not memoized
       Eval.always(math.random + 3000).value should be >= 0.0
       // lazy val is lazy and memoized
       Eval.later(math.random + 2000).value should be >= 0.0
+    }
 
+    "verify factorial" in {
       def factorial(n: BigInt): Eval[BigInt] =
         if (n == 1) {
           Eval.now(n)

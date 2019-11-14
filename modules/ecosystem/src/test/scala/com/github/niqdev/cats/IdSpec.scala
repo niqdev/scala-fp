@@ -1,19 +1,23 @@
 package com.github.niqdev.cats
 
+import cats.Id
 import org.scalatest.{Matchers, WordSpecLike}
 
 final class IdSpec extends WordSpecLike with Matchers {
 
-  "Monad" should {
+  "Id" should {
 
-    "verify Id" in {
-      import cats.{Id, Monad}
-      import cats.syntax.applicative.catsSyntaxApplicativeId
-      import cats.syntax.flatMap.toFlatMapOps
-      import cats.syntax.functor.toFunctorOps
+    "verify examples" in {
+      import cats.Monad
 
       Monad[Id].pure(42) shouldBe 42
       Monad[Id].flatMap(42)(_ / 2) shouldBe 21
+    }
+
+    "verify composition" in {
+      import cats.syntax.applicative.catsSyntaxApplicativeId
+      import cats.syntax.flatMap.toFlatMapOps
+      import cats.syntax.functor.toFunctorOps
 
       val sum = for {
         a <- 2.pure[Id]

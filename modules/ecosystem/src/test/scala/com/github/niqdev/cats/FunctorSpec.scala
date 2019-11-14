@@ -6,7 +6,7 @@ final class FunctorSpec extends WordSpecLike with Matchers {
 
   "Functor" should {
 
-    "verify instances" in {
+    "verify examples" in {
       import cats.Functor
       import cats.instances.list.catsStdInstancesForList
       import cats.instances.option.catsStdInstancesForOption
@@ -16,7 +16,7 @@ final class FunctorSpec extends WordSpecLike with Matchers {
       Functor[Option].map(Option.empty[Int])(_.toString) shouldBe None
     }
 
-    "verify function" in {
+    "verify Function1" in {
       import cats.instances.function.catsStdMonadForFunction1
       import cats.syntax.functor.toFunctorOps
 

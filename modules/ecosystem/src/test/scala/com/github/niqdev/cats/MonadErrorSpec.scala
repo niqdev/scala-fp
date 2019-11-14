@@ -4,7 +4,7 @@ import org.scalatest.{Matchers, WordSpecLike}
 
 final class MonadErrorSpec extends WordSpecLike with Matchers {
 
-  "Monad" should {
+  "MonadError" should {
 
     // fail-fast error handling
     "verify Either" in {
@@ -26,7 +26,7 @@ final class MonadErrorSpec extends WordSpecLike with Matchers {
       "error".asLeft[Int].bimap(_.reverse, _ * 7) shouldBe Left("rorre")
     }
 
-    "verify MonadError" in {
+    "verify examples" in {
       import cats.instances.try_.catsStdInstancesForTry
       import cats.syntax.applicativeError.catsSyntaxApplicativeErrorId
 

@@ -4,9 +4,9 @@ import org.scalatest.{Matchers, WordSpecLike}
 
 final class ReaderSpec extends WordSpecLike with Matchers {
 
-  "Monad" should {
+  "Reader" should {
 
-    "verify Reader" in {
+    "verify composition" in {
       import cats.data.Reader
       import cats.syntax.applicative.catsSyntaxApplicativeId
 
