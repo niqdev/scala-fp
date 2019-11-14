@@ -67,7 +67,7 @@ TODO
 
 ## Cryptography
 
-* [Serious Cryptography](https://nostarch.com/seriouscrypto)
+* [Serious Cryptography](https://nostarch.com/seriouscrypto) (2017) by Jean-Philippe Aumasson (Book)
 * [Java Cryptography Architecture](https://www.udemy.com/course/java-cryptography-architecture-hashing-and-secure-password) (Course)
 
 TODO exercises in Scala

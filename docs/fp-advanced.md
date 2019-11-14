@@ -32,7 +32,7 @@ trait Show[T] {
 
 [[cats.EqSpec](https://niqdev.github.io/scala-fp)]
 
-`Eq` provides **equality** between 2 instances of the same type
+`Eq` provides **equality** between two instances of the same type
 
 ```scala mdoc
 trait Eq[A] {
@@ -158,14 +158,20 @@ trait MonadError[F[_], E] extends Monad[F] {
 }
 ```
 
-#### Eval
+## Data Types
+
+> TODO
+
+It is impossible to combine two arbitrary monads (write a general definition of `flatMap`) without knowing something about at lease one of them. **Monad Transformers** to the rescue! By convention their name ends with a `T` suffix
+
+### Eval
 
 [[cats.EvalSpec](https://niqdev.github.io/scala-fp)]
 
 `Eval` monad controls eager, lazy, and memoized **evaluation**
 
 ```scala mdoc
-trait Eval[+A] {
+trait Eval[A] {
   def value: A
   def memoize: Eval[A]
 }
@@ -175,19 +181,19 @@ One useful property of `Eval` is that its `map` and `flatMap` methods are **tram
 
 `Eval` monad is a useful tool to enforce stack safety when working on very large computations and data structures. Trampolining is not free although, it avoids consuming stack by creating a chain of function objects on the heap. There are still limits on how deeply computations can be nested, but they are bounded by the size of the heap rather than the stack
 
-## Data Types
-
 ### State
 
 > TODO transformer
 
-[[TODO](https://niqdev.github.io/scala-fp)]
+[[cats.StateSpec](https://niqdev.github.io/scala-fp)]
 
 A `State[S, A]` represents a monadic wrapper of a function `S => (S, A)`
 
 ```scala mdoc
+// IndexedStateT[Eval, S, S, A]
 type State[S, A] = StateT[Eval, S, A]
 
+// alias
 type StateT[F[_], S, A] = IndexedStateT[F, S, S, A]
 
 class IndexedStateT[F[_], SA, SB, A](val runF: F[SA => F[(SB, A)]])
@@ -220,7 +226,7 @@ class WriterT[F[_], L, V](run: F[(L, V)])
 A `Kleisli[F, A, B]` represents a monadic wrapper of a function `A => F[B]`
 
 ```scala mdoc
-class Kleisli[F[_], -A, B](run: A => F[B])
+class Kleisli[F[_], A, B](run: A => F[B])
 ```
 
 ### Reader
@@ -232,16 +238,32 @@ class Kleisli[F[_], -A, B](run: A => F[B])
 A `Reader[A, B]` represents a monadic wrapper of a function `A => B`
 
 ```scala mdoc
-type Reader[-A, B] = ReaderT[Id, A, B]
+// Kleisli[Id, E, A]
+type Reader[A, B] = ReaderT[Id, A, B]
 
-type ReaderT[F[_], -A, B] = Kleisli[F, A, B]
+// alias
+type ReaderT[F[_], A, B] = Kleisli[F, A, B]
 ```
 
 `Reader` monad allows to sequence operations that depend on some input and one common use is dependency injection
 
-## Effects
+### OptionT
 
-#### OptionT, EitherT, IorT
+[[cats.OptionTSpec](https://niqdev.github.io/scala-fp)]
+
+A `OptionT[F[_], A]` represents a monadic wrapper of a value `F[Option[A]]`
+
+```scala mdoc
+class OptionT[F[_], A](value: F[Option[A]])
+```
+
+`OptionT` is a monad transformer for `Option`
+
+### Validated
+
+> TODO
+
+## Effects
 
 ### IO
 
