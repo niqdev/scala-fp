@@ -3,12 +3,14 @@ id: jvm
 title: JVM
 ---
 
-> TODO review/organize old devops notes
+> TODO review old devops notes
 
 * [Java Memory Management](https://www.udemy.com/course/java-memory-management) (Course)
 * [Multithreading and Parallel Computing in Java](https://www.udemy.com/course/multithreading-and-parallel-computing-in-java) (Course)
 * [scalac options](https://docs.scala-lang.org/overviews/compiler-options/index.html)
-* [GraalVM](https://www.graalvm.org/)
+* [GraalVM](https://www.graalvm.org)
+* [The Java Virtual Machine](https://www.artima.com/insidejvm/ed2/jvm8.html)
+* [JVM Stacks and Stack Frames](https://alvinalexander.com/scala/fp-book/recursion-jvm-stacks-stack-frames)
 * volatile
 * compare and swap
 * javap

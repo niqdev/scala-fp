@@ -79,6 +79,7 @@ val myString = "hello"
 ### *What is a companion object?*
 
 * [Singleton Objects](https://docs.scala-lang.org/tour/singleton-objects.html) (Documentation)
+* [How to override apply in a case class companion?](https://stackoverflow.com/questions/5827510/how-to-override-apply-in-a-case-class-companion)
 
 An object is a class that has exactly one instance. It is created lazily when it is referenced, like a lazy val. An object with the same name as a class is called a *companion object*. A companion class or object can access the private members of its companion
 

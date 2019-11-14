@@ -22,4 +22,4 @@ Functional Programming
 * [Introduction](https://niqdev.github.io/scala-fp)
 * [Advanced](https://niqdev.github.io/scala-fp)
 * [Ecosystem](https://niqdev.github.io/scala-fp)
-* [TODO](https://niqdev.github.io/scala-fp)
+* [More](https://niqdev.github.io/scala-fp)

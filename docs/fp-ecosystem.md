@@ -28,9 +28,12 @@ title: Ecosystem
     * [The Type Astronaut's Guide to Shapeless](https://underscore.io/books/shapeless-guide) (Book)
     * [Shapeless for Mortals](http://fommil.com/scalax15) (2015) by Sam Halliday (Talk)
     * [First-class polymorphic function values in shapeless](https://milessabin.com/blog/2012/04/27/shapeless-polymorphic-function-values-1)
+    * [Scala Tagged types](http://www.vlachjosef.com/tagged-types-introduction)
+    * [Scala's Modular Roots](http://lambdafoo.com/scala-syd-2015-modules)
 * [refined](https://github.com/fthomas/refined)
 * [Enumeratum](https://github.com/lloydmeta/enumeratum)
 * [Monocle](http://julien-truffaut.github.io/Monocle)
+    * [Lens in scala](http://koff.io/posts/292173-lens-in-scala)
 * [circe](https://circe.github.io/circe)
 * ...
 

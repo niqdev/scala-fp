@@ -7,14 +7,17 @@ title: Advanced
 
 * [Functional Programming in Scala](https://amzn.to/2OCFpQG) (2014) by Paul Chiusano and Runar Bjarnason (Book)
 * [Functional Programming, Simplified](https://amzn.to/2OCFROS) (2017) by Alvin Alexander (Book)
+* **TODO** *"FP explained to ..."* by [Marc-Daniel Ortega](https://github.com/globulon) (Book)(Unpublished)
 * [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw) by Runar Bjarnason (Video)
 * [Scalaz Presentation](https://vimeo.com/10482466) by Nick Partridge (Video)
-* TODO [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0)
-* [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
+* **TODO** [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0) (Video)
+* [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A) by Rob Norris (Video)
 
 ## Type Classes
 
 > TODO fix links
+
+* [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 
 ### Show
 
@@ -75,7 +78,7 @@ trait Monoid[A] extends Semigroup[A] {
 
 [[Functor](https://niqdev.github.io/scala-fp) | [FunctorSpec](https://niqdev.github.io/scala-fp) | [FunctorLawsProp](https://niqdev.github.io/scala-fp) | [cats.FunctorSpec](https://niqdev.github.io/scala-fp)]
 
-`Functor` provides **map** which encapsulates sequencing computations
+Covariant `Functor` provides **map** which encapsulates sequencing computations
 
 ```scala mdoc
 trait Functor[F[_]] {
@@ -115,30 +118,48 @@ Parameters `fa` and `fb` are independent effectful values: they can be computed 
 
 ### Apply
 
-> TODO
+`Apply` allows to apply a parameter to a function within a context
 
-### Applicative
+```scala mdoc
+trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
+  def ap[A, B](ff: F[A => B])(fa: F[A]): F[B]
+}
+```
 
-> TODO
+### TODO Applicative Functor
 
-### Monad
+> TODO laws
 
-> TL;DR
+`Applicative` allows to lift a value into a context
+
+```scala mdoc
+trait Applicative[F[_]] extends Apply[F] {
+  def pure[A](a: A): F[A]
+}
+```
+
+* [The Essence of the Iterator Pattern](https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf) (Paper)
+* [Applicative programming with effects](http://www.staff.city.ac.uk/~ross/papers/Applicative.pdf) (Paper)
+
+### TODO Monad
+
+> TODO laws
 
 [[Monad](https://niqdev.github.io/scala-fp) | [MonadSpec](https://niqdev.github.io/scala-fp) | [MonadLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonadSpec](https://niqdev.github.io/scala-fp)]
 
-A `Monad` is a mechanism for sequencing effects, also called *monadic behaviour*
+A `Monad` is a mechanism for strictly sequencing effects, also called *monadic behaviour*
 
 ```scala mdoc
-trait Monad[F[_]] {
-  // point
-  def pure[A](value: A): F[A]
+trait Monad[F[_]] extends Applicative[F] {
   // bind or >>=
   def flatMap[A, B](fa: F[A])(f: A => F[B]): F[B]
 }
 ```
 
-* TODO `def flatten[A](v: F[F[A]]): F[A]`
+* [Monads for functional programming](http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf) (Paper)
+* [First steps with monads in Scala](https://darrenjw.wordpress.com/2016/04/15/first-steps-with-monads-in-scala)
+* [Demystifying the Monad in Scala](https://medium.com/@sinisalouc/demystifying-the-monad-in-scala-cc716bb6f534)
+* [Cooking with Monads](https://www.becompany.ch/en/blog/2016/11/08/cooking-with-monads)
 
 Everyday monads
 
@@ -158,23 +179,37 @@ type Id[A] = A
 
 #### MonadError
 
-> TODO ApplicativeError
-
 [[cats.MonadErrorSpec](https://niqdev.github.io/scala-fp)]
 
 `MonadError` abstracts over Either-like data types that are used for error handling and provides extra operations for raising and handling errors
 
 ```scala mdoc
-trait MonadError[F[_], E] extends Monad[F] {
+trait ApplicativeError[F[_], E] extends Applicative[F] {
   def raiseError[A](e: E): F[A]
   def handleError[A](fa: F[A])(f: E => A): F[A]
+}
+
+trait MonadError[F[_], E] extends ApplicativeError[F, E] with Monad[F] {
   def ensure[A](fa: F[A])(e: E)(f: A => Boolean): F[A]
 }
 ```
 
+* [Rethinking MonadError](https://typelevel.org/blog/2018/04/13/rethinking-monaderror.html)
+
+### Free Monad
+
+* [Stack Safety for Free](http://functorial.com/stack-safety-for-free/index.pdf) (Paper)
+* [Stackless Scala With Free Monads](http://blog.higher-order.com/assets/trampolines.pdf) (Paper)
+* [Move Over Free Monads: Make Way for Free Applicatives!](https://youtu.be/H28QqxO7Ihc) (Video)
+* [Stackless Scala](http://www.marcoyuen.com/articles/2016/09/08/stackless-scala-1-the-problem.html)
+* [Free monads - what? and why?](https://softwaremill.com/free-monads)
+* [Free Monad examples](https://github.com/kenbot/free)
+* [Overview of free monad in cats](https://blog.scalac.io/2016/06/02/overview-of-free-monad-in-cats.html)
+* Modern Functional Programming [[part-1](http://degoes.net/articles/modern-fp)|[part-2](http://degoes.net/articles/modern-fp-part-2)]
+
 ## Data Types
 
-It is impossible to combine two arbitrary monads (write a general definition of `flatMap`) without knowing something about at lease one of them. **Monad Transformers** to the rescue! By convention their name ends with a `T` suffix
+It is impossible to combine two arbitrary monads (write a general definition of `flatMap`) without knowing something about at least one of them. **Monad Transformers** to the rescue! By convention their name ends with a `T` suffix
 
 Common Monad Transformers are
 
@@ -203,8 +238,6 @@ One useful property of `Eval` is that its `map` and `flatMap` methods are **tram
 
 ### State
 
-> TODO transformer
-
 [[cats.StateSpec](https://niqdev.github.io/scala-fp)]
 
 A `State[S, A]` represents a monadic wrapper of a function `S => (S, A)`
@@ -222,8 +255,6 @@ class IndexedStateT[F[_], SA, SB, A](val runF: F[SA => F[(SB, A)]])
 `State` monad allows to model mutable state in a purely functional way, without using mutation
 
 ### Writer
-
-> TODO transformer
 
 [[cats.WriterSpec](https://niqdev.github.io/scala-fp)]
 
@@ -250,8 +281,6 @@ class Kleisli[F[_], A, B](run: A => F[B])
 ```
 
 ### Reader
-
-> TODO
 
 [[cats.ReaderSpec](https://niqdev.github.io/scala-fp)]
 
@@ -293,12 +322,25 @@ case class Invalid[+E](e: E) extends Validated[E, Nothing]
 
 The `Semigroupal` implementation of `product` for a `Monad` is equivalent to `flatMap`, which explains why `Either`, being a `Monad` provides a fail-fast error handling. On the other side, `Validated` has an instance of `Semigroupal` but *no* instance of `Monad`, hence the implementation of `product` is free to accumulate errors
 
+### TODO Arrow
+
+> TODO
+
+* [Functional Composition](https://benmosheron.gitlab.io/blog/2018/12/24/functional-composition.html)
+
 ## Effects
 
-### IO
+* Incremental Purity [[slide](https://git.io/fp017)|[code](https://git.io/fp01d)] (Meetup)
+
+### TODO IO
+
+> TODO
 
 * [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
-* TODO [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
+* [The Making of an IO](https://www.youtube.com/watch?reload=9&v=g_jP47HFpWA) (Video)
+* [Intro to Functional Game Programming](https://github.com/jdegoes/lambdaconf-2014-introgame)
+* [An IO monad for cats](https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html)
+* [Monadic IO: Laziness Makes You Free](https://underscore.io/blog/posts/2015/04/28/monadic-io-laziness-makes-you-free.html)
 
 TODO
 * IO.apply

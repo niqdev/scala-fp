@@ -3,6 +3,10 @@ id: fp-intro
 title: Introduction
 ---
 
+## Resources
+
+* [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
+
 ## FAQ
 
 ### *What are some of the benefits of Functional Programming?*
@@ -276,6 +280,12 @@ This is a type constructor that takes type constructor(s): a higher-kinded type.
 
 > TODO parallel between curried (function) and type constructor - see Arrows in category theory
 
+### TODO *What are type members?*
+
+> TODO
+
+* [Type Parameters and Type Members](http://typelevel.org/blog/2015/07/13/type-members-parameters.html) (type projector ???)
+
 ### TODO *What is a type lambda?*
 
 > TODO
@@ -292,3 +302,12 @@ In functional programming, an effect adds some capabilities to a computation. An
 * `List[A]` adds the effect of aggregation on A
 * `Option[A]` adds the capability of optionality for the type A
 * `Try[A]` models the effects of exceptions
+
+### TODO *What is morphism?*
+
+> TODO
+
+* [Morphism](https://conorfennell.github.io/scala-zen/articles/functional-jargon.html#morphism)
+* [Closures and universal quantification](https://stackoverflow.com/questions/2602276/closures-and-universal-quantification)
+
+A function having the same argument and return type is sometimes called an *endofunction*
