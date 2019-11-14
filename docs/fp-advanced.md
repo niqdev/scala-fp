@@ -20,17 +20,32 @@ title: Advanced
 
 [[Show](https://niqdev.github.io/scala-fp) | [ShowSpec](https://niqdev.github.io/scala-fp) | [cats.ShowSpec](https://niqdev.github.io/scala-fp)]
 
+`Show` provides textual representation
+
 ```scala mdoc
 trait Show[T] {
   def show(value: T): String
 }
 ```
 
-`Show` provides textual representation
+### Eq
+
+[[cats.EqSpec](https://niqdev.github.io/scala-fp)]
+
+`Eq` provides **equality** between 2 instances of the same type
+
+```scala mdoc
+trait Eq[A] {
+  def eqv(x: A, y: A): Boolean
+  def neqv(x: A, y: A): Boolean = !eqv(x, y)
+}
+```
 
 ### Semigroup
 
 [[Semigroup](https://niqdev.github.io/scala-fp) | [SemigroupSpec](https://niqdev.github.io/scala-fp) | [SemigroupLawsProp](https://niqdev.github.io/scala-fp)]
+
+`Semigroup` provides **combine** which must be associative
 
 ```scala mdoc
 trait Semigroup[A] {
@@ -38,19 +53,17 @@ trait Semigroup[A] {
 }
 ```
 
-`Semigroup` provides `combine` which must be associative
-
 ### Monoid
 
 [[Monoid](https://niqdev.github.io/scala-fp) | [MonoidSpec](https://niqdev.github.io/scala-fp) | [MonoidLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonoidSpec](https://niqdev.github.io/scala-fp)]
+
+`Monoid` is a `Semigroup` with **empty** which must be an identity element
 
 ```scala mdoc
 trait Monoid[A] extends Semigroup[A] {
   def empty: A
 }
 ```
-
-`Monoid` is a `Semigroup` with `empty` which must be an identity element
 
 > TODO resources
 
@@ -62,27 +75,29 @@ trait Monoid[A] extends Semigroup[A] {
 
 [[Functor](https://niqdev.github.io/scala-fp) | [FunctorSpec](https://niqdev.github.io/scala-fp) | [FunctorLawsProp](https://niqdev.github.io/scala-fp) | [cats.FunctorSpec](https://niqdev.github.io/scala-fp)]
 
+`Functor` provides **map** which encapsulates sequencing computations
+
 ```scala mdoc
 trait Functor[F[_]] {
   def map[A, B](fa: F[A])(f: A => B): F[B]
 }
+```
 
-// not implemented
+The `Contravariant` functor provides an operation called **contramap** that represents prepending an operation to a chain
+
+```scala mdoc
 trait Contravariant[F[_]] {
   def contramap[A, B](fa: F[A])(f: B => A): F[B]
 }
+```
 
-// not implemented
+The `Invariant` functors provides an operation called **imap** that is informally equivalent to a combination of `map` and `contramap`
+
+```scala mdoc
 trait Invariant[F[_]] {
   def imap[A, B](fa: F[A])(f: A => B)(g: B => A): F[B]
 }
 ```
-
-`Functor` provides `map` which encapsulates sequencing computations once at the beginning of a sequence
-
-The `Contravariant` functor provides an operation called `contramap` that represents prepending an operation to a chain
-
-The `Invariant` functors provides an operation called `imap` that is informally equivalent to a combination of `map` and `contramap`
 
 ### Apply
 
@@ -94,9 +109,13 @@ The `Invariant` functors provides an operation called `imap` that is informally 
 
 ### Monad
 
-> TODO `def flatten[A](v: F[F[A]]): F[A]`
+> TL;DR
 
 [[Monad](https://niqdev.github.io/scala-fp) | [MonadSpec](https://niqdev.github.io/scala-fp) | [MonadLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonadSpec](https://niqdev.github.io/scala-fp)]
+
+* A `Monad` is a mechanism for sequencing effects, also called *monadic behaviour*
+* a monad is wrapper
+* TODO `def flatten[A](v: F[F[A]]): F[A]`
 
 ```scala mdoc
 trait Monad[F[_]] {
@@ -107,8 +126,6 @@ trait Monad[F[_]] {
 }
 ```
 
-A `Monad` is a mechanism for sequencing effects, also called *monadic behaviour*
-
 Everyday monads
 
 * `List`
@@ -116,6 +133,10 @@ Everyday monads
 * `Either`
 
 #### Identity
+
+[[TODO](https://niqdev.github.io/scala-fp)]
+
+`Id` monad allows to call monadic methods using plain values
 
 ```scala mdoc
 type Id[A] = A
@@ -125,29 +146,66 @@ type Id[A] = A
 
 > TODO ApplicativeError
 
+[[TODO](https://niqdev.github.io/scala-fp)]
+
 ```scala mdoc
-// not implemented
 trait MonadError[F[_], E] extends Monad[F] {
-  // lift an error into the `F` context
   def raiseError[A](e: E): F[A]
-
-  // handle an error, potentially recovering from it
   def handleError[A](fa: F[A])(f: E => A): F[A]
-
-  // test an instance of `F`, failing if the predicate is not satisfied
   def ensure[A](fa: F[A])(e: E)(f: A => Boolean): F[A]
 }
 ```
 
 #### Eval
 
-One useful property of `Eval` is that its `map` and `flatMap` methods are **trampolined**. This means that calls to `map` and `flatMap` can be nested arbitrarily without consuming stack frames i.e. it's *stack safety*
+[[TODO](https://niqdev.github.io/scala-fp)]
+
+`Eval` monad controls eager, lazy, and memoized **evaluation**
+
+```scala mdoc
+trait Eval[+A] {
+  def value: A
+  def memoize: Eval[A]
+}
+```
+
+One useful property of `Eval` is that its `map` and `flatMap` methods are **trampolined**. This means that arbitrarily nested calls don't consume stack frames i.e. it's *stack safety*
 
 `Eval` monad is a useful tool to enforce stack safety when working on very large computations and data structures. Trampolining is not free although, it avoids consuming stack by creating a chain of function objects on the heap. There are still limits on how deeply computations can be nested, but they are bounded by the size of the heap rather than the stack
+
+#### State
+
+> TODO transformer
+
+[[TODO](https://niqdev.github.io/scala-fp)]
+
+`State` monad allows to model mutable state in a purely functional way, without using mutation
+
+```scala mdoc
+// represents functions of type `S => (S, A)`
+type State[S, A] = StateT[Eval, S, A]
+
+/**
+ * `StateT[F, S, A]` is similar to `Kleisli[F, S, A]` in that it takes an `S`
+ * argument and produces an `A` value wrapped in `F`. However, it also produces
+ * an `S` value representing the updated state (which is wrapped in the `F`
+ * context along with the `A` value.
+ */
+type StateT[F[_], S, A] = IndexedStateT[F, S, S, A]
+
+/**
+ * `IndexedStateT[F, SA, SB, A]` is a stateful computation in a context `F` yielding
+ * a value of type `A`. The state transitions from a value of type `SA` to a value
+ * of type `SB`.
+ */
+class IndexedStateT[F[_], SA, SB, A](val runF: F[SA => F[(SB, A)]])
+```
 
 #### Writer
 
 > TODO transformer
+
+[[TODO](https://niqdev.github.io/scala-fp)]
 
 ```scala mdoc
 case class WriterT[F[_], L, V](run: F[(L, V)]) {}
@@ -162,6 +220,8 @@ type Writer[L, V] = WriterT[Id, L, V]
 #### Reader
 
 > TODO
+
+[[TODO](https://niqdev.github.io/scala-fp)]
 
 ```scala
 type ReaderT[F[_], -A, B] = Kleisli[F, A, B]
