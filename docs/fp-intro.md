@@ -128,6 +128,15 @@ Inhabitants of a type are values for that types. Algebraic Data Types can be tho
 * the `Unit` data type corresponds to the value `1`
 * the `Void` data type corresponds to the value `0`
 
+### TODO *What is curry?*
+
+> TODO
+
+```scala
+def curry[A,B,C](f: (A, B) => C): A => (B => C) = ???
+def uncurry[A,B,C](f: A => B => C): (A, B) => C = ???
+```
+
 ### *What is polymorphism?*
 
 * [What is polymorphism?](http://eed3si9n.com/herding-cats/polymorphism.html)
@@ -176,6 +185,12 @@ Only by knowing the type signature of a method is possible to infer more or less
 * [revisiting implicits without import tax](http://eed3si9n.com/revisiting-implicits-without-import-tax)
 * [implicit parameter precedence again](http://eed3si9n.com/implicit-parameter-precedence-again)
 * [Where does Scala look for implicits?](https://stackoverflow.com/questions/5598085/where-does-scala-look-for-implicits)
+
+TODO see slides (1)
+* Implicit parameters
+* Implicit values
+* Implicit conversions
+* Implicit classes
 
 ### TODO *What is a context bound?*
 

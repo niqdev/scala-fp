@@ -84,7 +84,17 @@ The `Contravariant` functor provides an operation called `contramap` that repres
 
 The `Invariant` functors provides an operation called `imap` that is informally equivalent to a combination of `map` and `contramap`
 
+### Apply
+
+> TODO
+
+### Applicative
+
+> TODO
+
 ### Monad
+
+> TODO `def flatten[A](v: F[F[A]]): F[A]`
 
 [[Monad](https://niqdev.github.io/scala-fp) | [MonadSpec](https://niqdev.github.io/scala-fp) | [MonadLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonadSpec](https://niqdev.github.io/scala-fp)]
 
@@ -129,21 +139,59 @@ trait MonadError[F[_], E] extends Monad[F] {
 }
 ```
 
-### Eval
+#### Eval
 
 One useful property of `Eval` is that its `map` and `flatMap` methods are **trampolined**. This means that calls to `map` and `flatMap` can be nested arbitrarily without consuming stack frames i.e. it's *stack safety*
 
 `Eval` monad is a useful tool to enforce stack safety when working on very large computations and data structures. Trampolining is not free although, it avoids consuming stack by creating a chain of function objects on the heap. There are still limits on how deeply computations can be nested, but they are bounded by the size of the heap rather than the stack
 
-### Writer
+#### Writer
 
-`Writer` monad (it's a data type too) lets carry a log along with a computation. It's useful to record messages, errors, or additional data about a computation, and extract the log alongside the final result
+> TODO transformer
 
-### Reader
+```scala mdoc
+case class WriterT[F[_], L, V](run: F[(L, V)]) {}
 
-`Reader` monad allows to sequence operations that depend on some input. One common use for Readers is dependency injection
+type Writer[L, V] = WriterT[Id, L, V]
+```
 
-## Effects
+`Writer` monad (data type) lets carry a log along with a computation. It's useful to record messages, errors, or additional data about a computation, and extract the log alongside the final result
+
+### Kleisli
+
+#### Reader
+
+> TODO
+
+```scala
+type ReaderT[F[_], -A, B] = Kleisli[F, A, B]
+
+type Reader[-A, B] = ReaderT[Id, A, B]
+```
+
+`Reader` monad (data type) allows to sequence operations that depend on some input. One common use for Readers is dependency injection
+
+`A Reader[A, B] is just a monadic wrapper over A => B`
+
+Reader is limited over pure functions
+
+`Kleisli[F, A, B] is just a monadic wrapper over A => F[B]`, a monad transformer for Reader, Kleisli is a ReaderT
+
+The goal - to give monadic interface to functions
+
+### TODO
+
+#### OptionT, EitherT, IorT
+
+### IO
 
 * [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
 * TODO [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A)
+
+TODO
+* IO.apply
+* IO.pure & unit
+* IO.map & flatMap
+* IO.raiseError
+* IO.attempt
+* Synx, Async, Effect
