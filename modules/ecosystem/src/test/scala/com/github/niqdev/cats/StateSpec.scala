@@ -167,7 +167,6 @@ final class StateSpec extends WordSpecLike with Matchers {
 
       program2.runA(Nil).value shouldBe 21
     }
-
   }
 
 }

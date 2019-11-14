@@ -57,4 +57,5 @@ final class EqSpec extends WordSpecLike with Matchers {
       EqHelper.verifyNeqvSyntax(Option(cat1), Option(cat2)) shouldBe true
     }
   }
+
 }

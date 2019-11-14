@@ -99,6 +99,20 @@ trait Invariant[F[_]] {
 }
 ```
 
+### Semigroupal
+
+[[cats.SemigroupalSpec](https://niqdev.github.io/scala-fp)]
+
+`Semigroupal` allows to combine contexts (`Semigroup` allows to combine values)
+
+```scala mdoc
+trait Semigroupal[F[_]] {
+  def product[A, B](fa: F[A], fb: F[B]): F[(A, B)]
+}
+```
+
+Parameters `fa` and `fb` are independent effectful values: they can be computed in either order before passing them to product, in contrast to `flatMap` which imposes a strict order on its parameters
+
 ### Apply
 
 > TODO
@@ -160,9 +174,15 @@ trait MonadError[F[_], E] extends Monad[F] {
 
 ## Data Types
 
-> TODO
-
 It is impossible to combine two arbitrary monads (write a general definition of `flatMap`) without knowing something about at lease one of them. **Monad Transformers** to the rescue! By convention their name ends with a `T` suffix
+
+Common Monad Transformers are
+
+* `OptionT` for `Option`
+* `EitherT` for `Either`
+* `ReaderT` for `Reader`
+* `WriterT` for `Writer`
+* `StateT` for `State`
 
 ### Eval
 
@@ -258,10 +278,6 @@ class OptionT[F[_], A](value: F[Option[A]])
 ```
 
 `OptionT` is a monad transformer for `Option`
-
-### Validated
-
-> TODO
 
 ## Effects
 

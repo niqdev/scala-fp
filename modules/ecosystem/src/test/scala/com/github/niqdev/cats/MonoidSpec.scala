@@ -29,4 +29,5 @@ final class MonoidSpec extends WordSpecLike with Matchers {
       add(List(Container("a", 1), Container("b", 2), Container("c", 3))) shouldBe Container("abc", 6)
     }
   }
+
 }

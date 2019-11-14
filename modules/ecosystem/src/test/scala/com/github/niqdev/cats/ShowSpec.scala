@@ -49,4 +49,5 @@ final class ShowSpec extends WordSpecLike with Matchers {
       date.show shouldBe expected
     }
   }
+
 }

@@ -55,4 +55,5 @@ final class OptionTSpec extends WordSpecLike with Matchers {
       }
     }
   }
+
 }
