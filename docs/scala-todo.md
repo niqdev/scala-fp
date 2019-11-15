@@ -5,6 +5,8 @@ title: TODO
 
 > TODO add/review courses and books notes
 
+> TODO fix links
+
 ## Data types
 
 ### Option

@@ -28,7 +28,6 @@ title: More
 * [Generalized type constraints in Scala (without a PhD)](http://blog.bruchez.name/2015/11/generalized-type-constraints-in-scala.html)
 * [The Evolution of a Scala Programmer](https://medium.com/@olxc/the-evolution-of-a-scala-programmer-1b7a709fb71f)
 * [Types: Never commit too early](https://www.sderosiaux.com/articles/2018/08/15/types-never-commit-too-early-part1)
-* [Law Enforcement using Discipline](https://typelevel.org/blog/2013/11/17/discipline.html)
 * [Hands-on category theory](https://earldouglas.com/talks/scala-cats/tutorial.html)
 * [Category Theory for Programmers](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface)
 

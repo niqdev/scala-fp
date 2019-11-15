@@ -12,6 +12,7 @@ title: Ecosystem
     * [ScalaFP: Firsthand With Scala-Cats](https://www.signifytechnology.com/blog/2018/07/scalafp-firsthand-with-scala-cats-monads-number-1-by-harmeet-singh)
     * [Scala Cats library for dummies](https://medium.com/@abu_nadhr/scala-cats-library-for-dummies-part-1-8ec47af7a144)
     * [Practical FP in Scala: A hands-on approach](https://leanpub.com/pfp-scala) (Book)
+    * [Law Enforcement using Discipline](https://typelevel.org/blog/2013/11/17/discipline.html)
 * [Cats Effect](https://typelevel.org/cats-effect)
 * [ZIO](https://zio.dev)
 * [FS2](https://fs2.io)

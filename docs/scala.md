@@ -224,3 +224,25 @@ final case class Price(value: BigDecimal) extends AnyVal {
 
 * [Everything You Ever Wanted to Know About Sealed Traits in Scala](https://underscore.io/blog/posts/2015/06/02/everything-about-sealed.html)
 * [More on Sealed Traits in Scala](https://underscore.io/blog/posts/2015/06/04/more-on-sealed.html)
+
+### *What is the difference between foldLeft and foldRight?*
+
+* `foldLeft` traverses from *left* to *right* (start to finish)
+* `foldLeft` definition `def foldLeft[B](z: B)(f: (B, A) => B): B`
+
+```scala mdoc
+List(1, 2, 3).foldLeft("nil")((accumulator, item) => s"($item operation $accumulator)")
+
+List(1, 2, 3).foldLeft(List.empty[Int])((a, i) => i :: a)
+```
+
+* `foldRight` traverses from *right* to *left* (finish to start)
+* `foldRight` definition `def foldRight[B](z: B)(f: (A, B) => B): B`
+
+```scala mdoc
+List(1, 2, 3).foldRight("nil")((item, accumulator) => s"($item operation $accumulator)")
+
+List(1, 2, 3).foldRight(List.empty[Int])((i, a) => i :: a)
+```
+
+* `foldLeft` and `foldRight` are equivalent if the binary operation is **associative** - see `Monoid`

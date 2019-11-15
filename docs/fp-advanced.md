@@ -198,7 +198,7 @@ trait MonadError[F[_], E] extends ApplicativeError[F, E] with Monad[F] {
 
 ### Free Monad
 
-* [Stack Safety for Free](http://functorial.com/stack-safety-for-free/index.pdf) (Paper)
+* [Stack Safety for Free](https://web.archive.org/web/20190611214133/http://functorial.com/stack-safety-for-free/index.pdf) (Paper)
 * [Stackless Scala With Free Monads](http://blog.higher-order.com/assets/trampolines.pdf) (Paper)
 * [Move Over Free Monads: Make Way for Free Applicatives!](https://youtu.be/H28QqxO7Ihc) (Video)
 * [Stackless Scala](http://www.marcoyuen.com/articles/2016/09/08/stackless-scala-1-the-problem.html)
