@@ -3,7 +3,9 @@ package com.github.niqdev
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-// type class
+/**
+ * Show Type Class
+ */
 trait Show[T] {
   def show(value: T): String
 }

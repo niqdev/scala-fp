@@ -5,6 +5,9 @@ package com.github.niqdev
 // F[_]: type constructors and higher-kinded types
 // import scala.language.higherKinds
 
+/**
+ * Functor Type Class
+ */
 trait Functor[F[_]] {
   def map[A, B](fa: F[A])(f: A => B): F[B]
 }

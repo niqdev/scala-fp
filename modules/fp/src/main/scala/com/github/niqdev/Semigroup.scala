@@ -1,5 +1,8 @@
 package com.github.niqdev
 
+/**
+ * Semigroup Type Class
+ */
 trait Semigroup[A] {
   def combine(x: A, y: A): A
 }

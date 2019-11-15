@@ -1,9 +1,15 @@
 package com.github.niqdev
 
+/**
+ * Semigroupal Type Class
+ */
 trait Semigroupal[F[_]] {
   def product[A, B](fa: F[A], fb: F[B]): F[(A, B)]
 }
 
+/**
+ * Apply Type Class
+ */
 trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
   def ap[A, B](ff: F[A => B])(fa: F[A]): F[B]
 
@@ -19,6 +25,9 @@ trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
 // TODO laws
 // https://en.wikibooks.org/wiki/Haskell/Applicative_functors
 // https://github.com/barambani/laws/blob/master/src/main/scala/ApplicativeModule.scala
+/**
+ * Applicative Type Class
+ */
 trait Applicative[F[_]] extends Apply[F] {
   def pure[A](a: A): F[A]
 
