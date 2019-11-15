@@ -10,6 +10,10 @@ trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
   // Validated uses product to accumulate errors
   override def product[A, B](fa: F[A], fb: F[B]): F[(A, B)] =
     ap(map(fa)(a => (b: B) => (a, b)))(fb)
+
+  // TODO test
+  def map2[A, B, T](fa: F[A], fb: F[B])(f: (A, B) => T): F[T] =
+    map(product(fa, fb))(ab => f(ab._1, ab._2))
 }
 
 // TODO laws

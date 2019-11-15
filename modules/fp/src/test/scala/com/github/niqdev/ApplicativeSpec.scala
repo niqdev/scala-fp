@@ -23,9 +23,9 @@ final class ApplicativeSpec extends WordSpecLike with Matchers {
       Applicative[MyList].ap(myConsF)(myConsInt) shouldBe MyList.cons(8)
 
       Applicative[MyList].product(MyList.cons(8), MyList.cons(42)) shouldBe MyList.cons((8, 42))
-      Applicative[MyList].product(MyList.cons(8), MyList.nil) shouldBe MyList.nil
-      Applicative[MyList].product(MyList.nil, MyList.cons(42)) shouldBe MyList.nil
-      Applicative[MyList].product(MyList.nil, MyList.nil) shouldBe MyList.nil
+      Applicative[MyList].product(MyList.cons(8), MyList.empty) shouldBe MyList.empty
+      Applicative[MyList].product(MyList.empty, MyList.cons(42)) shouldBe MyList.empty
+      Applicative[MyList].product(MyList.empty, MyList.empty) shouldBe MyList.empty
     }
 
     "verify MyTree" in {

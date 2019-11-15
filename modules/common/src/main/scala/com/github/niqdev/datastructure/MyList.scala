@@ -81,6 +81,6 @@ object MyList {
   def cons[A](head: A): MyList[A] =
     cons(head, MyNil)
 
-  def nil[A]: MyList[A] =
+  def empty[A]: MyList[A] =
     MyNil
 }
