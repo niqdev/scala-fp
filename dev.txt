@@ -3,12 +3,6 @@ sbt projects
 sbt ecosystem/console
 ```
 
-# sources
-* scala-with-cats
-* red-book
-* marc book
-* leanpub.com/pfp-scala
-
 https://devth.com/2015/monad-laws-in-scala
 https://github.com/barambani/laws
 
@@ -18,6 +12,7 @@ https://github.com/barambani/laws
 * (fp) com.github.niqdev.FunctorSpec (kind-projector)
 * (fp) com.github.niqdev.FunctorLawsProp (kind-projector)
 * (fp) com.github.niqdev.ApplicativeSpec (missing implicit)
+* (fp) com.github.niqdev.MonadLawsProp
 
 ---
 

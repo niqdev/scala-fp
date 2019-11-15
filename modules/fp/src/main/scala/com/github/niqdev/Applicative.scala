@@ -24,6 +24,7 @@ trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
 
 // TODO laws
 // https://en.wikibooks.org/wiki/Haskell/Applicative_functors
+// https://github.com/typelevel/cats/blob/master/laws/src/main/scala/cats/laws/ApplicativeLaws.scala
 // https://github.com/barambani/laws/blob/master/src/main/scala/ApplicativeModule.scala
 /**
  * Applicative Type Class

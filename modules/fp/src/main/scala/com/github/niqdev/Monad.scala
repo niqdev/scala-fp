@@ -1,7 +1,5 @@
 package com.github.niqdev
 
-// TODO MonadSpec, MonadLaws, MonadLawsProp
-
 /**
  * Monad Type Class
  */
@@ -28,6 +26,8 @@ trait Monad[F[_]] extends Applicative[F] {
 
 object Monad {
 
+  object instances extends MonadInstances
+
   def apply[F[_]](implicit ev: Monad[F]): Monad[F] = ev
 }
 
@@ -46,7 +46,7 @@ trait MonadInstances {
         fa.flatMap(f)
 
       override def pure[A](a: A): MyList[A] =
-        MyList.empty[A]
+        MyList.cons(a)
     }
 
   // TODO
