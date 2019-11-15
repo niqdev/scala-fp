@@ -74,4 +74,13 @@ object MyList {
   def apply[A](as: A*): MyList[A] =
     if (as.isEmpty) MyNil
     else MyCons(as.head, apply(as.tail: _*))
+
+  def cons[A](head: A, tail: MyList[A]): MyList[A] =
+    MyCons(head, tail)
+
+  def cons[A](head: A): MyList[A] =
+    cons(head, MyNil)
+
+  def nil[A]: MyList[A] =
+    MyNil
 }

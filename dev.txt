@@ -17,6 +17,7 @@ https://github.com/barambani/laws
 * (ecosystem) com.github.niqdev.cats.ValidatedSpec (missing imports)
 * (fp) com.github.niqdev.FunctorSpec (kind-projector)
 * (fp) com.github.niqdev.FunctorLawsProp (kind-projector)
+* (fp) com.github.niqdev.ApplicativeSpec (missing implicit)
 
 ---
 

@@ -6,6 +6,12 @@ final class FunctorSpec extends WordSpecLike with Matchers {
 
   "Functor" should {
 
+    "verify MyList" in {
+      import com.github.niqdev.Functor.instances.myListFunctor
+
+      Functor[MyList].map(MyList(1, 2, 3, 4))(_ * 3) shouldBe MyList(3, 6, 9, 12)
+    }
+
     "verify MyTree" in {
       import com.github.niqdev.Functor.instances.myTreeFunctor
 
@@ -17,12 +23,6 @@ final class FunctorSpec extends WordSpecLike with Matchers {
       import com.github.niqdev.Functor.syntax.FunctorOps
       // syntax
       inputTree.map(_ * 3) shouldBe expectedTree
-    }
-
-    "verify MyList" in {
-      import com.github.niqdev.Functor.instances.myListFunctor
-
-      Functor[MyList].map(MyList(1, 2, 3, 4))(_ * 3) shouldBe MyList(3, 6, 9, 12)
     }
 
     "verify MyOption" in {

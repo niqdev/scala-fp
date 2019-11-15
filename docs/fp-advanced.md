@@ -21,7 +21,7 @@ title: Advanced
 
 ### Show
 
-[[Show](https://niqdev.github.io/scala-fp) | [ShowSpec](https://niqdev.github.io/scala-fp) | [cats.ShowSpec](https://niqdev.github.io/scala-fp)]
+[ [Show](https://niqdev.github.io/scala-fp) | [ShowSpec](https://niqdev.github.io/scala-fp) | [cats.ShowSpec](https://niqdev.github.io/scala-fp) ]
 
 `Show` provides textual representation
 
@@ -33,7 +33,7 @@ trait Show[T] {
 
 ### Eq
 
-[[cats.EqSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.EqSpec](https://niqdev.github.io/scala-fp) ]
 
 `Eq` provides **equality** between two instances of the same type
 
@@ -46,7 +46,7 @@ trait Eq[A] {
 
 ### Semigroup
 
-[[Semigroup](https://niqdev.github.io/scala-fp) | [SemigroupSpec](https://niqdev.github.io/scala-fp) | [SemigroupLawsProp](https://niqdev.github.io/scala-fp)]
+[ [Semigroup](https://niqdev.github.io/scala-fp) | [SemigroupSpec](https://niqdev.github.io/scala-fp) | [SemigroupLawsProp](https://niqdev.github.io/scala-fp) ]
 
 `Semigroup` provides **combine** which must be associative
 
@@ -58,7 +58,7 @@ trait Semigroup[A] {
 
 ### Monoid
 
-[[Monoid](https://niqdev.github.io/scala-fp) | [MonoidSpec](https://niqdev.github.io/scala-fp) | [MonoidLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonoidSpec](https://niqdev.github.io/scala-fp)]
+[ [Monoid](https://niqdev.github.io/scala-fp) | [MonoidSpec](https://niqdev.github.io/scala-fp) | [MonoidLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonoidSpec](https://niqdev.github.io/scala-fp) ]
 
 `Monoid` is a `Semigroup` with **empty** which must be an identity element
 
@@ -76,7 +76,7 @@ trait Monoid[A] extends Semigroup[A] {
 
 ### Functor
 
-[[Functor](https://niqdev.github.io/scala-fp) | [FunctorSpec](https://niqdev.github.io/scala-fp) | [FunctorLawsProp](https://niqdev.github.io/scala-fp) | [cats.FunctorSpec](https://niqdev.github.io/scala-fp)]
+[ [Functor](https://niqdev.github.io/scala-fp) | [FunctorSpec](https://niqdev.github.io/scala-fp) | [FunctorLawsProp](https://niqdev.github.io/scala-fp) | [cats.FunctorSpec](https://niqdev.github.io/scala-fp) ]
 
 Covariant `Functor` provides **map** which encapsulates sequencing computations
 
@@ -104,7 +104,7 @@ trait Invariant[F[_]] {
 
 ### Semigroupal
 
-[[cats.SemigroupalSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.SemigroupalSpec](https://niqdev.github.io/scala-fp) ]
 
 `Semigroupal` allows to combine contexts (`Semigroup` allows to combine values)
 
@@ -130,7 +130,7 @@ trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
 
 > TODO laws
 
-[[Applicative](https://niqdev.github.io/scala-fp)]
+[ [Applicative](https://niqdev.github.io/scala-fp) | [ApplicativeSpec](https://niqdev.github.io/scala-fp) ]
 
 `Applicative` allows to lift a value into a context
 
@@ -147,7 +147,7 @@ trait Applicative[F[_]] extends Apply[F] {
 
 > TODO laws
 
-[[Monad](https://niqdev.github.io/scala-fp) | [MonadSpec](https://niqdev.github.io/scala-fp) | [MonadLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonadSpec](https://niqdev.github.io/scala-fp)]
+[ [Monad](https://niqdev.github.io/scala-fp) | [MonadSpec](https://niqdev.github.io/scala-fp) | [MonadLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonadSpec](https://niqdev.github.io/scala-fp) ]
 
 A `Monad` is a mechanism for strictly sequencing effects, also called *monadic behaviour*
 
@@ -171,7 +171,7 @@ Everyday monads
 
 #### Identity
 
-[[cats.IdSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.IdSpec](https://niqdev.github.io/scala-fp) ]
 
 `Id` monad allows to call monadic methods using plain values
 
@@ -181,7 +181,7 @@ type Id[A] = A
 
 #### MonadError
 
-[[cats.MonadErrorSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.MonadErrorSpec](https://niqdev.github.io/scala-fp) ]
 
 `MonadError` abstracts over Either-like data types that are used for error handling and provides extra operations for raising and handling errors
 
@@ -223,7 +223,7 @@ Common Monad Transformers are
 
 ### Eval
 
-[[cats.EvalSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.EvalSpec](https://niqdev.github.io/scala-fp) ]
 
 `Eval` monad controls eager, lazy, and memoized **evaluation**
 
@@ -240,7 +240,7 @@ One useful property of `Eval` is that its `map` and `flatMap` methods are **tram
 
 ### State
 
-[[cats.StateSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.StateSpec](https://niqdev.github.io/scala-fp) ]
 
 A `State[S, A]` represents a monadic wrapper of a function `S => (S, A)`
 
@@ -258,7 +258,7 @@ class IndexedStateT[F[_], SA, SB, A](val runF: F[SA => F[(SB, A)]])
 
 ### Writer
 
-[[cats.WriterSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.WriterSpec](https://niqdev.github.io/scala-fp) ]
 
 A `Writer[L, V]` represents a monadic wrapper of a value `(L, V)`
 
@@ -274,7 +274,7 @@ class WriterT[F[_], L, V](run: F[(L, V)])
 
 > TODO
 
-[[TODO](https://niqdev.github.io/scala-fp)]
+[ [TODO](https://niqdev.github.io/scala-fp) ]
 
 A `Kleisli[F, A, B]` represents a monadic wrapper of a function `A => F[B]`
 
@@ -284,7 +284,7 @@ class Kleisli[F[_], A, B](run: A => F[B])
 
 ### Reader
 
-[[cats.ReaderSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.ReaderSpec](https://niqdev.github.io/scala-fp) ]
 
 A `Reader[A, B]` represents a monadic wrapper of a function `A => B`
 
@@ -300,7 +300,7 @@ type ReaderT[F[_], A, B] = Kleisli[F, A, B]
 
 ### OptionT
 
-[[cats.OptionTSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.OptionTSpec](https://niqdev.github.io/scala-fp) ]
 
 A `OptionT[F[_], A]` represents a monadic wrapper of a value `F[Option[A]]`
 
@@ -312,7 +312,7 @@ class OptionT[F[_], A](value: F[Option[A]])
 
 ### Validated
 
-[[cats.ValidatedSpec](https://niqdev.github.io/scala-fp)]
+[ [cats.ValidatedSpec](https://niqdev.github.io/scala-fp) ]
 
 `Validated` is similar to `Either` but allows to accumulate errors
 

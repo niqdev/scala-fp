@@ -7,6 +7,7 @@ trait Semigroupal[F[_]] {
 trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
   def ap[A, B](ff: F[A => B])(fa: F[A]): F[B]
 
+  // Validated uses product to accumulate errors
   override def product[A, B](fa: F[A], fb: F[B]): F[(A, B)] =
     ap(map(fa)(a => (b: B) => (a, b)))(fb)
 }
@@ -47,7 +48,7 @@ trait ApplicativeInstances {
     }
 
   // TODO
-  implicit val myTreeApplicative: Applicative[MyTree] = ???
+  implicit lazy val myTreeApplicative: Applicative[MyTree] = ???
 
   implicit val myOptionApplicative: Applicative[MyOption] =
     new Applicative[MyOption] {

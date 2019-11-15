@@ -23,4 +23,10 @@ trait SemigroupInstances {
 
   implicit val stringConcatenationSemigroup: Semigroup[String] =
     Semigroup.instance(_ + _)
+
+  implicit def listSemigroup[A]: Semigroup[List[A]] =
+    Semigroup.instance(_ ::: _)
+
+  implicit def myListSemigroup[A]: Semigroup[MyList[A]] =
+    Semigroup.instance(_ appendList _)
 }
