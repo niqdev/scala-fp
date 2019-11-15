@@ -18,3 +18,8 @@ sealed trait MyOption[+A] {
       case MySome(a) => f(a)
     }
 }
+
+object MyOption {
+  def apply[A](a: A): MyOption[A] =
+    if (a == null) MyNone else MySome(a)
+}

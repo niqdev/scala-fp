@@ -130,6 +130,8 @@ trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
 
 > TODO laws
 
+[[Applicative](https://niqdev.github.io/scala-fp)]
+
 `Applicative` allows to lift a value into a context
 
 ```scala mdoc
