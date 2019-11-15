@@ -8,10 +8,11 @@ https://github.com/barambani/laws
 
 # FIX tests
 * (ecosystem) com.github.niqdev.cats.EqSpec (scalactic conflict)
-* (ecosystem) com.github.niqdev.cats.ValidatedSpec (missing imports)
-* (fp) com.github.niqdev.FunctorSpec (kind-projector)
-* (fp) com.github.niqdev.FunctorLawsProp (kind-projector)
-* (fp) com.github.niqdev.ApplicativeSpec (missing implicit)
+* (ecosystem) com.github.niqdev.cats.ValidatedSpec
+* (fp) com.github.niqdev.FunctorSpec
+* (fp) com.github.niqdev.ApplicativeSpec
+* (fp) com.github.niqdev.MonadSpec
+* (fp) com.github.niqdev.FunctorLawsProp
 * (fp) com.github.niqdev.MonadLawsProp
 
 ---

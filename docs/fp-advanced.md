@@ -68,11 +68,8 @@ trait Monoid[A] extends Semigroup[A] {
 }
 ```
 
-> TODO resources
-
 * [On Monoids](https://apocalisp.wordpress.com/2010/06/14/on-monoids)
-* TODO [fpinscala](https://github.com/fpinscala/fpinscala/wiki/Chapter-10:-Monoids)
-* TODO [Monoid](http://eed3si9n.com/herding-cats/Monoid.html)
+* [fpinscala](https://github.com/fpinscala/fpinscala/wiki/Chapter-10:-Monoids)
 
 ### Functor
 
@@ -126,7 +123,7 @@ trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
 }
 ```
 
-### TODO Applicative Functor
+### Applicative Functor
 
 > TODO laws
 
@@ -143,9 +140,7 @@ trait Applicative[F[_]] extends Apply[F] {
 * [The Essence of the Iterator Pattern](https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf) (Paper)
 * [Applicative programming with effects](http://www.staff.city.ac.uk/~ross/papers/Applicative.pdf) (Paper)
 
-### TODO Monad
-
-> TODO laws
+### Monad
 
 [ [Monad](https://niqdev.github.io/scala-fp) | [MonadSpec](https://niqdev.github.io/scala-fp) | [MonadLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonadSpec](https://niqdev.github.io/scala-fp) ]
 
@@ -270,7 +265,7 @@ class WriterT[F[_], L, V](run: F[(L, V)])
 
 `Writer` monad lets carry a log along with a computation. It's useful to record messages, errors, or additional data about a computation, and extract the log alongside the final result
 
-### TODO Kleisli
+### Kleisli
 
 > TODO
 
@@ -324,7 +319,7 @@ case class Invalid[+E](e: E) extends Validated[E, Nothing]
 
 The `Semigroupal` implementation of `product` for a `Monad` is equivalent to `flatMap`, which explains why `Either`, being a `Monad` provides a fail-fast error handling. On the other side, `Validated` has an instance of `Semigroupal` but *no* instance of `Monad`, hence the implementation of `product` is free to accumulate errors
 
-### TODO Arrow
+### Arrow
 
 > TODO
 
@@ -334,7 +329,7 @@ The `Semigroupal` implementation of `product` for a `Monad` is equivalent to `fl
 
 * Incremental Purity [[slide](https://git.io/fp017)|[code](https://git.io/fp01d)] (Meetup)
 
-### TODO IO
+### IO
 
 > TODO
 
