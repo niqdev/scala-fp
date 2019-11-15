@@ -57,6 +57,11 @@ final class MyListSpec extends WordSpecLike with Matchers {
 
       answer shouldBe MyCons(42, MyNil)
     }
+
+    "verify filter" in {
+      // even
+      myList.filter(_ % 2 == 0) shouldBe MyList(2, 4)
+    }
   }
 
 }
