@@ -49,6 +49,16 @@ sealed trait MyList[+A] {
 
   def map[B](f: A => B): MyList[B] =
     foldRight(MyNil: MyList[B])((current, accumulator) => MyCons(f(current), accumulator))
+
+  // covariant type A occurs in controvariant position in type A of value a
+  def append[B >: A](head: B): MyList[B] =
+    foldRight(MyCons(head, MyNil))((newHead, tail) => MyCons(newHead, tail))
+
+  def appendList[B >: A](prefix: MyList[B]): MyList[B] =
+    foldRight(prefix)((head, tail) => MyCons(head, tail))
+
+  def flatMap[B](f: A => MyList[B]): MyList[B] =
+    foldRight(MyNil: MyList[B])((current, accumulator) => f(current).appendList(accumulator))
 }
 
 object MyList {

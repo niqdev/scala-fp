@@ -36,6 +36,27 @@ final class MyListSpec extends WordSpecLike with Matchers {
     "verify map" in {
       myList.map(_ * 3) shouldBe MyList(3, 6, 9, 12)
     }
+
+    "verify append" in {
+      myList.append(5) shouldBe MyList(1, 2, 3, 4, 5)
+    }
+
+    "verify appendList" in {
+      myList.appendList(MyList(5, 6)) shouldBe MyList(1, 2, 3, 4, 5, 6)
+    }
+
+    "verify flatMap" in {
+      def multiplyFour: Int => MyList[Int] = a => MyList(a * 4)
+      def addOne: Int => MyList[Int] = a => MyList(a + 1)
+      def multiplyTwo: Int => MyList[Int] = a => MyList(a * 2)
+
+      val answer = MyList(5)
+        .flatMap(multiplyFour)
+        .flatMap(addOne)
+        .flatMap(multiplyTwo)
+
+      answer shouldBe MyCons(42, MyNil)
+    }
   }
 
 }
