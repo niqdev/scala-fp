@@ -157,6 +157,8 @@ trait Monad[F[_]] extends Applicative[F] {
 * [First steps with monads in Scala](https://darrenjw.wordpress.com/2016/04/15/first-steps-with-monads-in-scala)
 * [Demystifying the Monad in Scala](https://medium.com/@sinisalouc/demystifying-the-monad-in-scala-cc716bb6f534)
 * [Cooking with Monads](https://www.becompany.ch/en/blog/2016/11/08/cooking-with-monads)
+* [Refactoring with Monads](https://typelevel.org/blog/2018/08/07/refactoring-monads.html)
+* [Monad laws in Scala](https://devth.com/2015/monad-laws-in-scala)
 
 Everyday monads
 
@@ -327,17 +329,24 @@ The `Semigroupal` implementation of `product` for a `Monad` is equivalent to `fl
 
 ## Effects
 
-* Incremental Purity [[slide](https://git.io/fp017)|[code](https://git.io/fp01d)] (Meetup)
+Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely-functional way (for `List`you can perform the extraction with `List.head`) then the monad is called **effectful**
+
+* [Cats Effect](https://typelevel.org/cats-effect) (Documentation)
+* [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
+* [Intro to Functional Game Programming](https://github.com/jdegoes/lambdaconf-2014-introgame)
+* [Incremental Purity](https://git.io/fp017)(https://git.io/fp01d)] (Meetup)
+* **TODO** [Shared State in Functional Programming](https://typelevel.org/blog/2018/06/07/shared-state-in-fp.html)
 
 ### IO
 
 > TODO
 
-* [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
+`IO` is data type for encoding side effects as pure values
+
 * [The Making of an IO](https://www.youtube.com/watch?reload=9&v=g_jP47HFpWA) (Video)
-* [Intro to Functional Game Programming](https://github.com/jdegoes/lambdaconf-2014-introgame)
 * [An IO monad for cats](https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html)
 * [Monadic IO: Laziness Makes You Free](https://underscore.io/blog/posts/2015/04/28/monadic-io-laziness-makes-you-free.html)
+
 
 TODO
 * IO.apply

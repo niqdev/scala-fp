@@ -3,9 +3,6 @@ sbt projects
 sbt ecosystem/console
 ```
 
-https://devth.com/2015/monad-laws-in-scala
-https://github.com/barambani/laws
-
 # FIX tests
 * (ecosystem) com.github.niqdev.cats.EqSpec (scalactic conflict)
 * (ecosystem) com.github.niqdev.cats.ValidatedSpec
