@@ -27,8 +27,21 @@ trait Monad[F[_]] extends Applicative[F] {
 object Monad {
 
   object instances extends MonadInstances
+  object syntax extends MonadSyntax
 
   def apply[F[_]](implicit ev: Monad[F]): Monad[F] = ev
+}
+
+trait MonadSyntax {
+
+  implicit class MonadOps[F[_], A](fa: F[A]) {
+
+    def flatMap[B](afb: A => F[B])(implicit F: Monad[F]): F[B] =
+      F.flatMap(fa)(afb)
+
+    def map[B](ab: A => B)(implicit F: Monad[F]): F[B] =
+      F.map(fa)(ab)
+  }
 }
 
 trait MonadInstances {
@@ -73,7 +86,7 @@ trait MonadInstances {
   implicit def function1Monad[T]: Monad[T => *] =
     new Monad[Function[T, *]] {
       override def flatMap[A, B](fa: Function[T, A])(f: A => Function[T, B]): Function[T, B] =
-        (t: T) => (fa andThen f)(t)(t)
+        (t: T) => (fa andThen f) (t)(t)
 
       override def pure[A](a: A): Function[T, A] =
         (_: T) => a

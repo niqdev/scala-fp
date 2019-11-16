@@ -339,13 +339,13 @@ Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely
 
 ### IO
 
-> TODO add more examples
-
 `IO` is data type for encoding side effects as pure values
 
 * [The Making of an IO](https://www.youtube.com/watch?reload=9&v=g_jP47HFpWA) (Video)
 * [An IO monad for cats](https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html)
 * [Monadic IO: Laziness Makes You Free](https://underscore.io/blog/posts/2015/04/28/monadic-io-laziness-makes-you-free.html)
+
+> TODO add more examples
 
 ```bash
 # cats-effect examples
