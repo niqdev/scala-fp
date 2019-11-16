@@ -4,7 +4,7 @@ const repoUrl = 'https://github.com/niqdev/scala-fp';
 
 const siteConfig = {
   title: 'scala-fp',
-  tagline: `Notes on Scala and Functional Programming`,
+  tagline: 'Notes on Scala and Functional Programming',
   url: 'https://niqdev.github.io',
   baseUrl: '/scala-fp/',
 

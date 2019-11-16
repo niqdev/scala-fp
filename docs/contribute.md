@@ -56,7 +56,9 @@ First time only
 npx docusaurus-init
 ```
 
-## Edit
+## Development
+
+Edit documentation
 
 ```bash
 # generate the documentation site
@@ -71,6 +73,16 @@ sbt docusaurusCreateSite
 
 # start local site with livereload (shell #2)
 yarn --cwd website/ start
+```
+
+Edit code
+
+```bash
+# test all
+sbt test -jvm-debug 5005
+
+# specify test
+sbt "test:testOnly *ShowSpec"
 ```
 
 ## Publish
