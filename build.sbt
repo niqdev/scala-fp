@@ -9,6 +9,7 @@ lazy val versions = new {
   // ecosystem
   val catsCore   = "2.0.0"
   val catsEffect = "2.0.0"
+  val http4s = "0.20.13"
 
   // test
   val scalatest  = "3.0.8"
@@ -20,7 +21,11 @@ lazy val versions = new {
 lazy val dependencies = new {
   lazy val ecosystem = Seq(
     "org.typelevel" %% "cats-core" % versions.catsCore,
-    "org.typelevel" %% "cats-effect" % versions.catsEffect
+    "org.typelevel" %% "cats-effect" % versions.catsEffect,
+
+    "org.http4s" %% "http4s-dsl" % versions.http4s,
+    "org.http4s" %% "http4s-blaze-server" % versions.http4s,
+    "org.http4s" %% "http4s-blaze-client" % versions.http4s
   )
 
   lazy val test = Seq(
@@ -98,5 +103,6 @@ lazy val root = project
   .in(file("."))
   .aggregate(common, fp, ecosystem, docs)
   .settings(
-    name := info.name
+    name := info.name,
+    addCommandAlias("build", ";clean;test")
   )
