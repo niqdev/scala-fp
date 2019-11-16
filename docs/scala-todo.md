@@ -5,13 +5,11 @@ title: TODO
 
 > TODO add/review courses and books notes
 
-> TODO fix links
-
 ## Data types
 
 ### Option
 
-[[MyOption](https://niqdev.github.io/scala-fp)]
+[ [MyOption](https://github.com/niqdev/scala-fp/blob/master/modules/common/src/main/scala/com/github/niqdev/datatype/MyOption.scala) ]
 
 ```scala mdoc
 sealed trait MyOption[+A]
@@ -21,7 +19,7 @@ case object MyNone extends MyOption[Nothing]
 
 ### Either
 
-[[MyEither](https://niqdev.github.io/scala-fp)]
+[ [MyEither](https://github.com/niqdev/scala-fp/blob/master/modules/common/src/main/scala/com/github/niqdev/datatype/MyEither.scala) ]
 
 ```scala mdoc
 sealed trait MyEither[+E, +A]
@@ -33,7 +31,7 @@ case class MyLeft[+E](error: E) extends MyEither[E, Nothing]
 
 ### List
 
-[[MyList](https://niqdev.github.io/scala-fp)]
+[ [MyList](https://github.com/niqdev/scala-fp/blob/master/modules/common/src/main/scala/com/github/niqdev/datastructure/MyList.scala) | [MyListSpec](https://github.com/niqdev/scala-fp/blob/master/modules/common/src/test/scala/com/github/niqdev/datastructure/MyListSpec.scala)]
 
 ```scala mdoc
 sealed trait MyList[+A]
@@ -43,7 +41,7 @@ case object MyNil extends MyList[Nothing]
 
 ### Tree
 
-[[MyTree](https://niqdev.github.io/scala-fp)]
+[ [MyTree](https://github.com/niqdev/scala-fp/blob/master/modules/common/src/main/scala/com/github/niqdev/datastructure/MyTree.scala) ]
 
 ```scala mdoc
 sealed trait MyTree[+A]

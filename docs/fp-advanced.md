@@ -15,13 +15,11 @@ title: Advanced
 
 ## Type Classes
 
-> TODO fix links
-
 * [Functors, Applicatives, And Monads In Pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 
 ### Show
 
-[ [Show](https://niqdev.github.io/scala-fp) | [ShowSpec](https://niqdev.github.io/scala-fp) | [cats.ShowSpec](https://niqdev.github.io/scala-fp) ]
+[ [Show](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/Show.scala) | [ShowSpec](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/ShowSpec.scala) | [cats.ShowSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/ShowSpec.scala) ]
 
 `Show` provides textual representation
 
@@ -33,7 +31,7 @@ trait Show[T] {
 
 ### Eq
 
-[ [cats.EqSpec](https://niqdev.github.io/scala-fp) ]
+[ [cats.EqSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/EqSpec.scala) ]
 
 `Eq` provides **equality** between two instances of the same type
 
@@ -46,7 +44,7 @@ trait Eq[A] {
 
 ### Semigroup
 
-[ [Semigroup](https://niqdev.github.io/scala-fp) | [SemigroupSpec](https://niqdev.github.io/scala-fp) | [SemigroupLawsProp](https://niqdev.github.io/scala-fp) ]
+[ [Semigroup](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/Semigroup.scala) | [SemigroupSpec](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/SemigroupSpec.scala) | [SemigroupLaws](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/laws/SemigroupLaws.scala) | [SemigroupLawsProp](http://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/laws/SemigroupLawsProp.scala) ]
 
 `Semigroup` provides **combine** which must be associative
 
@@ -58,7 +56,7 @@ trait Semigroup[A] {
 
 ### Monoid
 
-[ [Monoid](https://niqdev.github.io/scala-fp) | [MonoidSpec](https://niqdev.github.io/scala-fp) | [MonoidLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonoidSpec](https://niqdev.github.io/scala-fp) ]
+[ [Monoid](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/Monoid.scala) | [MonoidSpec](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/MonoidSpec.scala) | [MonoidLaws](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/laws/MonoidLaws.scala) | [MonoidLawsProp](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/laws/MonoidLawsProp.scala) | [cats.MonoidSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/MonoidSpec.scala) ]
 
 `Monoid` is a `Semigroup` with **empty** which must be an identity element
 
@@ -73,7 +71,7 @@ trait Monoid[A] extends Semigroup[A] {
 
 ### Functor
 
-[ [Functor](https://niqdev.github.io/scala-fp) | [FunctorSpec](https://niqdev.github.io/scala-fp) | [FunctorLawsProp](https://niqdev.github.io/scala-fp) | [cats.FunctorSpec](https://niqdev.github.io/scala-fp) ]
+[ [Functor](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/Functor.scala) | [FunctorSpec](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/FunctorSpec.scala) | [FunctorLaws](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/laws/FunctorLaws.scala) | [FunctorLawsProp](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/laws/FunctorLawsProp.scala) | [cats.FunctorSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/FunctorSpec.scala) ]
 
 Covariant `Functor` provides **map** which encapsulates sequencing computations
 
@@ -101,7 +99,7 @@ trait Invariant[F[_]] {
 
 ### Semigroupal
 
-[ [cats.SemigroupalSpec](https://niqdev.github.io/scala-fp) ]
+[ [cats.SemigroupalSpec](http://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/SemigroupalSpec.scala) ]
 
 `Semigroupal` allows to combine contexts (`Semigroup` allows to combine values)
 
@@ -127,7 +125,7 @@ trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
 
 > TODO laws
 
-[ [Applicative](https://niqdev.github.io/scala-fp) | [ApplicativeSpec](https://niqdev.github.io/scala-fp) ]
+[ [Applicative](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/Applicative.scala) | [ApplicativeSpec](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/ApplicativeSpec.scala) ]
 
 `Applicative` allows to lift a value into a context
 
@@ -142,7 +140,7 @@ trait Applicative[F[_]] extends Apply[F] {
 
 ### Monad
 
-[ [Monad](https://niqdev.github.io/scala-fp) | [MonadSpec](https://niqdev.github.io/scala-fp) | [MonadLawsProp](https://niqdev.github.io/scala-fp) | [cats.MonadSpec](https://niqdev.github.io/scala-fp) ]
+[ [Monad](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/Monad.scala) | [MonadSpec](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/MonadSpec.scala) | [MonadLaws](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/laws/MonadLaws.scala) | [MonadLawsProp](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/laws/MonadLawsProp.scala) | [cats.MonadSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/MonadSpec.scala) ]
 
 A `Monad` is a mechanism for strictly sequencing effects, also called *monadic behaviour*
 
@@ -168,7 +166,7 @@ Everyday monads
 
 #### Identity
 
-[ [cats.IdSpec](https://niqdev.github.io/scala-fp) ]
+[ [cats.IdSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/IdSpec.scala) ]
 
 `Id` monad allows to call monadic methods using plain values
 
@@ -178,7 +176,7 @@ type Id[A] = A
 
 #### MonadError
 
-[ [cats.MonadErrorSpec](https://niqdev.github.io/scala-fp) ]
+[ [cats.MonadErrorSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/MonadErrorSpec.scala) ]
 
 `MonadError` abstracts over Either-like data types that are used for error handling and provides extra operations for raising and handling errors
 
@@ -220,7 +218,7 @@ Common Monad Transformers are
 
 ### Eval
 
-[ [cats.EvalSpec](https://niqdev.github.io/scala-fp) ]
+[ [cats.EvalSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/EvalSpec.scala) ]
 
 `Eval` monad controls eager, lazy, and memoized **evaluation**
 
@@ -237,7 +235,8 @@ One useful property of `Eval` is that its `map` and `flatMap` methods are **tram
 
 ### State
 
-[ [State](https://niqdev.github.io/scala-fp) | [StateT](https://niqdev.github.io/scala-fp) | [cats.StateSpec](https://niqdev.github.i/scala-fp) ]
+[ [State](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/State.scala) | [StateT](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/StateT.scala) | [cats.StateSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/StateSpec.scala) ]
+[ [MainState](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/main/MainState.scala) | [MainStateT](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/main/MainStateT.scala) | [MainStateTLoop](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/main/MainStateTLoop.scala) ]
 
 A `State[S, A]` represents a monadic wrapper of a function `S => (S, A)`
 
@@ -261,7 +260,7 @@ sbt "fp/runMain com.github.niqdev.main.MainStateTLoop"
 
 ### Writer
 
-[ [cats.WriterSpec](https://niqdev.github.io/scala-fp) ]
+[ [cats.WriterSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/WriterSpec.scala) ]
 
 A `Writer[L, V]` represents a monadic wrapper of a value `(L, V)`
 
@@ -287,7 +286,7 @@ class Kleisli[F[_], A, B](run: A => F[B])
 
 ### Reader
 
-[ [cats.ReaderSpec](https://niqdev.github.io/scala-fp) ]
+[ [cats.ReaderSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/ReaderSpec.scala) ]
 
 A `Reader[A, B]` represents a monadic wrapper of a function `A => B`
 
@@ -303,7 +302,7 @@ type ReaderT[F[_], A, B] = Kleisli[F, A, B]
 
 ### OptionT
 
-[ [cats.OptionTSpec](https://niqdev.github.io/scala-fp) ]
+[ [cats.OptionTSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/OptionTSpec.scala) ]
 
 A `OptionT[F[_], A]` represents a monadic wrapper of a value `F[Option[A]]`
 
@@ -315,7 +314,7 @@ class OptionT[F[_], A](value: F[Option[A]])
 
 ### Validated
 
-[ [cats.ValidatedSpec](https://niqdev.github.io/scala-fp) ]
+[ [cats.ValidatedSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/ValidatedSpec.scala) ]
 
 `Validated` is similar to `Either` but allows to accumulate errors
 
@@ -345,7 +344,8 @@ Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely
 
 ### IO
 
-[ [IO](https://niqdev.github.io/scala-fp) ]
+[ [IO](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/IO.scala) ]
+[ [MainIO](https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/main/MainIO.scala) | [effect.ExampleIO](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/main/scala/com/github/niqdev/effect/ExampleIO.scala) | [effect.ExampleIOApp](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/main/scala/com/github/niqdev/effect/ExampleIOApp.scala) | [effect.ExampleResource](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/main/scala/com/github/niqdev/effect/ExampleResource.scala) ]
 
 `IO` is data type for encoding side effects as pure values
 
