@@ -14,6 +14,8 @@ object MainIO {
       _ <- Console[F].putStrLn("hello functional programming")
       n <- Random[F].nextInt(42)
       _ <- Console[F].putStrLn(s"random number: $n")
+      value <- Console[F].getStrLn
+      _ <- Console[F].putStrLn(s"user input: $value")
     } yield ()
 
 

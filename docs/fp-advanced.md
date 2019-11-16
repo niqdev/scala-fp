@@ -237,7 +237,7 @@ One useful property of `Eval` is that its `map` and `flatMap` methods are **tram
 
 ### State
 
-[ [cats.StateSpec](https://niqdev.github.io/scala-fp) ]
+[ [State](https://niqdev.github.io/scala-fp) | [cats.StateSpec](https://niqdev.github.i/scala-fp) ]
 
 A `State[S, A]` represents a monadic wrapper of a function `S => (S, A)`
 
@@ -252,6 +252,10 @@ class IndexedStateT[F[_], SA, SB, A](val runF: F[SA => F[(SB, A)]])
 ```
 
 `State` monad allows to model mutable state in a purely functional way, without using mutation
+
+```bash
+sbt "fp/runMain com.github.niqdev.main.MainState"
+```
 
 ### Writer
 
@@ -339,6 +343,8 @@ Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely
 
 ### IO
 
+[ [IO](https://niqdev.github.io/scala-fp) ]
+
 `IO` is data type for encoding side effects as pure values
 
 * [The Making of an IO](https://www.youtube.com/watch?reload=9&v=g_jP47HFpWA) (Video)
@@ -348,6 +354,8 @@ Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely
 > TODO add more examples
 
 ```bash
+sbt "fp/runMain com.github.niqdev.main.MainIO"
+
 # cats-effect examples
 sbt "ecosystem/runMain com.github.niqdev.effect.ExampleIO"
 sbt "ecosystem/runMain com.github.niqdev.effect.ExampleIOApp"
