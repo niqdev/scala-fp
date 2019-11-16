@@ -256,6 +256,7 @@ class IndexedStateT[F[_], SA, SB, A](val runF: F[SA => F[(SB, A)]])
 ```bash
 sbt "fp/runMain com.github.niqdev.main.MainState"
 sbt "fp/runMain com.github.niqdev.main.MainStateT"
+sbt "fp/runMain com.github.niqdev.main.MainStateTLoop"
 ```
 
 ### Writer

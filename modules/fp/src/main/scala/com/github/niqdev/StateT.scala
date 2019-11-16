@@ -24,6 +24,12 @@ final case class StateT[F[_], S, A] private(run: S => F[(S, A)]) {
 }
 
 object StateT {
-  def pure[F[_], S, A](a: A)(implicit F: Monad[F]): StateT[F, S, A] =
+  def pure[F[_], S, A](a: A)(implicit F: Applicative[F]): StateT[F, S, A] =
     StateT(s => F.pure(s -> a))
+
+  def liftF[F[_], S, A](fa: F[A])(implicit F: Functor[F]): StateT[F, S, A] =
+    StateT[F, S, A] { s: S =>
+      // F[(S, A)]
+      F.map(fa)((a: A) => (s, a))
+    }
 }
