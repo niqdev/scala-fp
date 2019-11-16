@@ -339,7 +339,7 @@ Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely
 
 ### IO
 
-> TODO
+> TODO add more examples
 
 `IO` is data type for encoding side effects as pure values
 
@@ -347,11 +347,10 @@ Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely
 * [An IO monad for cats](https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html)
 * [Monadic IO: Laziness Makes You Free](https://underscore.io/blog/posts/2015/04/28/monadic-io-laziness-makes-you-free.html)
 
-
-TODO
-* IO.apply
-* IO.pure & unit
-* IO.map & flatMap
-* IO.raiseError
-* IO.attempt
-* Synx, Async, Effect
+```bash
+# cats-effect examples
+sbt "ecosystem/runMain com.github.niqdev.effect.ExampleIO"
+sbt "ecosystem/runMain com.github.niqdev.effect.ExampleIOApp"
+sbt "ecosystem/runMain com.github.niqdev.effect.ExampleResource"
+sbt "test:testOnly *MyResourceSpec"
+```
