@@ -1,5 +1,8 @@
 package com.github.niqdev
 
+/**
+ * Console Tye Class
+ */
 trait Console[F[_]] {
   def putStrLn[A: Show](a: A): F[Unit]
   def getStrLn: F[String]

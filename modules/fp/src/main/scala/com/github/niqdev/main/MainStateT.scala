@@ -22,7 +22,6 @@ object MainStateT {
       IO(newState -> newValue)
     }
 
-  // 5*4+1*2 + println ???
   val answer: StateIO[Int] =
     for {
       _ <- liftIO(IO(println("hello")))
