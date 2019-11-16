@@ -237,7 +237,7 @@ One useful property of `Eval` is that its `map` and `flatMap` methods are **tram
 
 ### State
 
-[ [State](https://niqdev.github.io/scala-fp) | [cats.StateSpec](https://niqdev.github.i/scala-fp) ]
+[ [State](https://niqdev.github.io/scala-fp) | [StateT](https://niqdev.github.io/scala-fp) | [cats.StateSpec](https://niqdev.github.i/scala-fp) ]
 
 A `State[S, A]` represents a monadic wrapper of a function `S => (S, A)`
 
@@ -255,6 +255,7 @@ class IndexedStateT[F[_], SA, SB, A](val runF: F[SA => F[(SB, A)]])
 
 ```bash
 sbt "fp/runMain com.github.niqdev.main.MainState"
+sbt "fp/runMain com.github.niqdev.main.MainStateT"
 ```
 
 ### Writer
