@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Advanced · scala-fp</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Resources"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Advanced · scala-fp"/><meta property="og:type" content="website"/><meta property="og:url" content="https://niqdev.github.io/scala-fp/"/><meta property="og:description" content="## Resources"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/scala-fp/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"/><script src="/scala-fp/js/scrollSpy.js"></script><link rel="stylesheet" href="/scala-fp/css/main.css"/><script src="/scala-fp/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/scala-fp/"><img class="logo" src="/scala-fp/img/favicon.ico" alt="scala-fp"/><h2 class="headerTitleWithLogo">scala-fp</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/scala-fp/docs/book" target="_self">Book</a></li><li class=""><a href="https://github.com/niqdev/scala-fp" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Functional Programming</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Book</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/book">Table of contents</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Scala</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/scala">Introduction</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/jvm">JVM</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/scala-todo">TODO</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Functional Programming</h3><ul class=""><li class="navListItem"><a class="navItem" href="/scala-fp/docs/fp-intro">Introduction</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/scala-fp/docs/fp-advanced">Advanced</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/fp-ecosystem">Ecosystem</a></li><li class="navListItem"><a class="navItem" href="/scala-fp/docs/fp-more">More</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Advanced</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="resources"></a><a href="#resources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resources</h2>
+<ul>
+<li><a href="https://amzn.to/2OCFpQG">Functional Programming in Scala</a> (2014) by Paul Chiusano and Runar Bjarnason (Book)</li>
+<li><a href="https://amzn.to/2OCFROS">Functional Programming, Simplified</a> (2017) by Alvin Alexander (Book)</li>
+<li><strong>TODO</strong> <em>&quot;FP explained to ...&quot;</em> by <a href="https://github.com/globulon">Marc-Daniel Ortega</a> (Book)(Unpublished)</li>
+<li><a href="https://www.youtube.com/watch?v=GqmsQeSzMdw">Constraints Liberate, Liberties Constrain</a> by Runar Bjarnason (Video)</li>
+<li><a href="https://vimeo.com/10482466">Scalaz Presentation</a> by Nick Partridge (Video)</li>
+<li><strong>TODO</strong> <a href="https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0">Functional Structures in Scala</a> (Video)</li>
+<li><a href="https://www.youtube.com/watch?v=po3wmq4S15A">Functional Programming with Effects</a> by Rob Norris (Video)</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="type-classes"></a><a href="#type-classes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Type Classes</h2>
+<blockquote>
+<p>TODO fix links</p>
+</blockquote>
+<ul>
+<li><a href="http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html">Functors, Applicatives, And Monads In Pictures</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="show"></a><a href="#show" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Show</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">Show</a> | <a href="https://niqdev.github.io/scala-fp">ShowSpec</a> | <a href="https://niqdev.github.io/scala-fp">cats.ShowSpec</a> ]</p>
+<p><code>Show</code> provides textual representation</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Show</span>[<span class="hljs-type">T</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show</span></span>(value: <span class="hljs-type">T</span>): <span class="hljs-type">String</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="eq"></a><a href="#eq" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Eq</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">cats.EqSpec</a> ]</p>
+<p><code>Eq</code> provides <strong>equality</strong> between two instances of the same type</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Eq</span>[<span class="hljs-type">A</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eqv</span></span>(x: <span class="hljs-type">A</span>, y: <span class="hljs-type">A</span>): <span class="hljs-type">Boolean</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">neqv</span></span>(x: <span class="hljs-type">A</span>, y: <span class="hljs-type">A</span>): <span class="hljs-type">Boolean</span> = !eqv(x, y)
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="semigroup"></a><a href="#semigroup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Semigroup</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">Semigroup</a> | <a href="https://niqdev.github.io/scala-fp">SemigroupSpec</a> | <a href="https://niqdev.github.io/scala-fp">SemigroupLawsProp</a> ]</p>
+<p><code>Semigroup</code> provides <strong>combine</strong> which must be associative</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Semigroup</span>[<span class="hljs-type">A</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">combine</span></span>(x: <span class="hljs-type">A</span>, y: <span class="hljs-type">A</span>): <span class="hljs-type">A</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="monoid"></a><a href="#monoid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Monoid</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">Monoid</a> | <a href="https://niqdev.github.io/scala-fp">MonoidSpec</a> | <a href="https://niqdev.github.io/scala-fp">MonoidLawsProp</a> | <a href="https://niqdev.github.io/scala-fp">cats.MonoidSpec</a> ]</p>
+<p><code>Monoid</code> is a <code>Semigroup</code> with <strong>empty</strong> which must be an identity element</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Monoid</span>[<span class="hljs-type">A</span>] <span class="hljs-keyword">extends</span> <span class="hljs-title">Semigroup</span>[<span class="hljs-type">A</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">empty</span></span>: <span class="hljs-type">A</span>
+}
+</code></pre>
+<ul>
+<li><a href="https://apocalisp.wordpress.com/2010/06/14/on-monoids">On Monoids</a></li>
+<li><a href="https://github.com/fpinscala/fpinscala/wiki/Chapter-10:-Monoids">fpinscala</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="functor"></a><a href="#functor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Functor</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">Functor</a> | <a href="https://niqdev.github.io/scala-fp">FunctorSpec</a> | <a href="https://niqdev.github.io/scala-fp">FunctorLawsProp</a> | <a href="https://niqdev.github.io/scala-fp">cats.FunctorSpec</a> ]</p>
+<p>Covariant <code>Functor</code> provides <strong>map</strong> which encapsulates sequencing computations</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Functor</span>[<span class="hljs-type">F</span>[_]] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">map</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">B</span>): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]
+}
+</code></pre>
+<p>The <code>Contravariant</code> functor provides an operation called <strong>contramap</strong> that represents prepending an operation to a chain</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Contravariant</span>[<span class="hljs-type">F</span>[_]] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">contramap</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">B</span> =&gt; <span class="hljs-type">A</span>): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]
+}
+</code></pre>
+<p>The <code>Invariant</code> functors provides an operation called <strong>imap</strong> that is informally equivalent to a combination of <code>map</code> and <code>contramap</code></p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Invariant</span>[<span class="hljs-type">F</span>[_]] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">imap</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">B</span>)(g: <span class="hljs-type">B</span> =&gt; <span class="hljs-type">A</span>): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="semigroupal"></a><a href="#semigroupal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Semigroupal</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">cats.SemigroupalSpec</a> ]</p>
+<p><code>Semigroupal</code> allows to combine contexts (<code>Semigroup</code> allows to combine values)</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Semigroupal</span>[<span class="hljs-type">F</span>[_]] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">product</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>], fb: <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]): <span class="hljs-type">F</span>[(<span class="hljs-type">A</span>, <span class="hljs-type">B</span>)]
+}
+</code></pre>
+<p>Parameters <code>fa</code> and <code>fb</code> are independent effectful values: they can be computed in either order before passing them to product, in contrast to <code>flatMap</code> which imposes a strict order on its parameters</p>
+<h3><a class="anchor" aria-hidden="true" id="apply"></a><a href="#apply" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Apply</h3>
+<p><code>Apply</code> allows to apply a parameter to a function within a context</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Apply</span>[<span class="hljs-type">F</span>[_]] <span class="hljs-keyword">extends</span> <span class="hljs-title">Semigroupal</span>[<span class="hljs-type">F</span>] <span class="hljs-keyword">with</span> <span class="hljs-title">Functor</span>[<span class="hljs-type">F</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ap</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](ff: <span class="hljs-type">F</span>[<span class="hljs-type">A</span> =&gt; <span class="hljs-type">B</span>])(fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="applicative-functor"></a><a href="#applicative-functor" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Applicative Functor</h3>
+<blockquote>
+<p>TODO laws</p>
+</blockquote>
+<p>[ <a href="https://niqdev.github.io/scala-fp">Applicative</a> | <a href="https://niqdev.github.io/scala-fp">ApplicativeSpec</a> ]</p>
+<p><code>Applicative</code> allows to lift a value into a context</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Applicative</span>[<span class="hljs-type">F</span>[_]] <span class="hljs-keyword">extends</span> <span class="hljs-title">Apply</span>[<span class="hljs-type">F</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pure</span></span>[<span class="hljs-type">A</span>](a: <span class="hljs-type">A</span>): <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]
+}
+</code></pre>
+<ul>
+<li><a href="https://www.cs.ox.ac.uk/jeremy.gibbons/publications/iterator.pdf">The Essence of the Iterator Pattern</a> (Paper)</li>
+<li><a href="http://www.staff.city.ac.uk/~ross/papers/Applicative.pdf">Applicative programming with effects</a> (Paper)</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="monad"></a><a href="#monad" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Monad</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">Monad</a> | <a href="https://niqdev.github.io/scala-fp">MonadSpec</a> | <a href="https://niqdev.github.io/scala-fp">MonadLawsProp</a> | <a href="https://niqdev.github.io/scala-fp">cats.MonadSpec</a> ]</p>
+<p>A <code>Monad</code> is a mechanism for strictly sequencing effects, also called <em>monadic behaviour</em></p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Monad</span>[<span class="hljs-type">F</span>[_]] <span class="hljs-keyword">extends</span> <span class="hljs-title">Applicative</span>[<span class="hljs-type">F</span>] </span>{
+  <span class="hljs-comment">// bind or &gt;&gt;=</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">flatMap</span></span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]): <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]
+}
+</code></pre>
+<ul>
+<li><a href="http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf">Monads for functional programming</a> (Paper)</li>
+<li><a href="https://darrenjw.wordpress.com/2016/04/15/first-steps-with-monads-in-scala">First steps with monads in Scala</a></li>
+<li><a href="https://medium.com/@sinisalouc/demystifying-the-monad-in-scala-cc716bb6f534">Demystifying the Monad in Scala</a></li>
+<li><a href="https://www.becompany.ch/en/blog/2016/11/08/cooking-with-monads">Cooking with Monads</a></li>
+<li><a href="https://typelevel.org/blog/2018/08/07/refactoring-monads.html">Refactoring with Monads</a></li>
+<li><a href="https://devth.com/2015/monad-laws-in-scala">Monad laws in Scala</a></li>
+</ul>
+<p>Everyday monads</p>
+<ul>
+<li><code>List</code></li>
+<li><code>Option</code></li>
+<li><code>Either</code></li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="identity"></a><a href="#identity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Identity</h4>
+<p>[ <a href="https://niqdev.github.io/scala-fp">cats.IdSpec</a> ]</p>
+<p><code>Id</code> monad allows to call monadic methods using plain values</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Id</span>[<span class="hljs-type">A</span>] </span>= <span class="hljs-type">A</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="monaderror"></a><a href="#monaderror" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MonadError</h4>
+<p>[ <a href="https://niqdev.github.io/scala-fp">cats.MonadErrorSpec</a> ]</p>
+<p><code>MonadError</code> abstracts over Either-like data types that are used for error handling and provides extra operations for raising and handling errors</p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">ApplicativeError</span>[<span class="hljs-type">F</span>[_], <span class="hljs-title">E</span>] <span class="hljs-keyword">extends</span> <span class="hljs-title">Applicative</span>[<span class="hljs-type">F</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">raiseError</span></span>[<span class="hljs-type">A</span>](e: <span class="hljs-type">E</span>): <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">handleError</span></span>[<span class="hljs-type">A</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(f: <span class="hljs-type">E</span> =&gt; <span class="hljs-type">A</span>): <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]
+}
+
+<span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">MonadError</span>[<span class="hljs-type">F</span>[_], <span class="hljs-title">E</span>] <span class="hljs-keyword">extends</span> <span class="hljs-title">ApplicativeError</span>[<span class="hljs-type">F</span>, <span class="hljs-type">E</span>] <span class="hljs-keyword">with</span> <span class="hljs-title">Monad</span>[<span class="hljs-type">F</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ensure</span></span>[<span class="hljs-type">A</span>](fa: <span class="hljs-type">F</span>[<span class="hljs-type">A</span>])(e: <span class="hljs-type">E</span>)(f: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">Boolean</span>): <span class="hljs-type">F</span>[<span class="hljs-type">A</span>]
+}
+</code></pre>
+<ul>
+<li><a href="https://typelevel.org/blog/2018/04/13/rethinking-monaderror.html">Rethinking MonadError</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="free-monad"></a><a href="#free-monad" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Free Monad</h3>
+<ul>
+<li><a href="https://web.archive.org/web/20190611214133/http://functorial.com/stack-safety-for-free/index.pdf">Stack Safety for Free</a> (Paper)</li>
+<li><a href="http://blog.higher-order.com/assets/trampolines.pdf">Stackless Scala With Free Monads</a> (Paper)</li>
+<li><a href="https://youtu.be/H28QqxO7Ihc">Move Over Free Monads: Make Way for Free Applicatives!</a> (Video)</li>
+<li><a href="http://www.marcoyuen.com/articles/2016/09/08/stackless-scala-1-the-problem.html">Stackless Scala</a></li>
+<li><a href="https://softwaremill.com/free-monads">Free monads - what? and why?</a></li>
+<li><a href="https://github.com/kenbot/free">Free Monad examples</a></li>
+<li><a href="https://blog.scalac.io/2016/06/02/overview-of-free-monad-in-cats.html">Overview of free monad in cats</a></li>
+<li>Modern Functional Programming [<a href="http://degoes.net/articles/modern-fp">part-1</a>|<a href="http://degoes.net/articles/modern-fp-part-2">part-2</a>]</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="data-types"></a><a href="#data-types" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Data Types</h2>
+<p>It is impossible to combine two arbitrary monads (write a general definition of <code>flatMap</code>) without knowing something about at least one of them. <strong>Monad Transformers</strong> to the rescue! By convention their name ends with a <code>T</code> suffix</p>
+<p>Common Monad Transformers are</p>
+<ul>
+<li><code>OptionT</code> for <code>Option</code></li>
+<li><code>EitherT</code> for <code>Either</code></li>
+<li><code>ReaderT</code> for <code>Reader</code></li>
+<li><code>WriterT</code> for <code>Writer</code></li>
+<li><code>StateT</code> for <code>State</code></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="eval"></a><a href="#eval" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Eval</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">cats.EvalSpec</a> ]</p>
+<p><code>Eval</code> monad controls eager, lazy, and memoized <strong>evaluation</strong></p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">trait</span> <span class="hljs-title">Eval</span>[<span class="hljs-type">A</span>] </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">value</span></span>: <span class="hljs-type">A</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">memoize</span></span>: <span class="hljs-type">Eval</span>[<span class="hljs-type">A</span>]
+}
+</code></pre>
+<p>One useful property of <code>Eval</code> is that its <code>map</code> and <code>flatMap</code> methods are <strong>trampolined</strong>. This means that arbitrarily nested calls don't consume stack frames i.e. it's <em>stack safety</em></p>
+<p><code>Eval</code> monad is a useful tool to enforce stack safety when working on very large computations and data structures. Trampolining is not free although, it avoids consuming stack by creating a chain of function objects on the heap. There are still limits on how deeply computations can be nested, but they are bounded by the size of the heap rather than the stack</p>
+<h3><a class="anchor" aria-hidden="true" id="state"></a><a href="#state" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>State</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">State</a> | <a href="https://niqdev.github.io/scala-fp">StateT</a> | <a href="https://niqdev.github.i/scala-fp">cats.StateSpec</a> ]</p>
+<p>A <code>State[S, A]</code> represents a monadic wrapper of a function <code>S =&gt; (S, A)</code></p>
+<pre><code class="hljs css language-scala"><span class="hljs-comment">// IndexedStateT[Eval, S, S, A]</span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">State</span>[<span class="hljs-type">S</span>, <span class="hljs-type">A</span>] </span>= <span class="hljs-type">StateT</span>[<span class="hljs-type">Eval</span>, <span class="hljs-type">S</span>, <span class="hljs-type">A</span>]
+
+<span class="hljs-comment">// alias</span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">StateT</span>[<span class="hljs-type">F</span>[_], <span class="hljs-title">S</span>, <span class="hljs-title">A</span>] </span>= <span class="hljs-type">IndexedStateT</span>[<span class="hljs-type">F</span>, <span class="hljs-type">S</span>, <span class="hljs-type">S</span>, <span class="hljs-type">A</span>]
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IndexedStateT</span>[<span class="hljs-type">F</span>[_], <span class="hljs-title">SA</span>, <span class="hljs-title">SB</span>, <span class="hljs-title">A</span>](<span class="hljs-params">val runF: <span class="hljs-type">F</span>[<span class="hljs-type">SA</span> =&gt; <span class="hljs-type">F</span>[(<span class="hljs-type">SB</span>, <span class="hljs-type">A</span></span>)]])</span>
+</code></pre>
+<p><code>State</code> monad allows to model mutable state in a purely functional way, without using mutation</p>
+<pre><code class="hljs css language-bash">sbt <span class="hljs-string">"fp/runMain com.github.niqdev.main.MainState"</span>
+sbt <span class="hljs-string">"fp/runMain com.github.niqdev.main.MainStateT"</span>
+sbt <span class="hljs-string">"fp/runMain com.github.niqdev.main.MainStateTLoop"</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="writer"></a><a href="#writer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Writer</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">cats.WriterSpec</a> ]</p>
+<p>A <code>Writer[L, V]</code> represents a monadic wrapper of a value <code>(L, V)</code></p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Writer</span>[<span class="hljs-type">L</span>, <span class="hljs-type">V</span>] </span>= <span class="hljs-type">WriterT</span>[<span class="hljs-type">Id</span>, <span class="hljs-type">L</span>, <span class="hljs-type">V</span>]
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WriterT</span>[<span class="hljs-type">F</span>[_], <span class="hljs-title">L</span>, <span class="hljs-title">V</span>](<span class="hljs-params">run: <span class="hljs-type">F</span>[(<span class="hljs-type">L</span>, <span class="hljs-type">V</span></span>)])</span>
+</code></pre>
+<p><code>Writer</code> monad lets carry a log along with a computation. It's useful to record messages, errors, or additional data about a computation, and extract the log alongside the final result</p>
+<h3><a class="anchor" aria-hidden="true" id="kleisli"></a><a href="#kleisli" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kleisli</h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<p>[ <a href="https://niqdev.github.io/scala-fp">TODO</a> ]</p>
+<p>A <code>Kleisli[F, A, B]</code> represents a monadic wrapper of a function <code>A =&gt; F[B]</code></p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Kleisli</span>[<span class="hljs-type">F</span>[_], <span class="hljs-title">A</span>, <span class="hljs-title">B</span>](<span class="hljs-params">run: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]</span>)</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="reader"></a><a href="#reader" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reader</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">cats.ReaderSpec</a> ]</p>
+<p>A <code>Reader[A, B]</code> represents a monadic wrapper of a function <code>A =&gt; B</code></p>
+<pre><code class="hljs css language-scala"><span class="hljs-comment">// Kleisli[Id, E, A]</span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Reader</span>[<span class="hljs-type">A</span>, <span class="hljs-type">B</span>] </span>= <span class="hljs-type">ReaderT</span>[<span class="hljs-type">Id</span>, <span class="hljs-type">A</span>, <span class="hljs-type">B</span>]
+
+<span class="hljs-comment">// alias</span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">ReaderT</span>[<span class="hljs-type">F</span>[_], <span class="hljs-title">A</span>, <span class="hljs-title">B</span>] </span>= <span class="hljs-type">Kleisli</span>[<span class="hljs-type">F</span>, <span class="hljs-type">A</span>, <span class="hljs-type">B</span>]
+</code></pre>
+<p><code>Reader</code> monad allows to sequence operations that depend on some input and one common use is dependency injection</p>
+<h3><a class="anchor" aria-hidden="true" id="optiont"></a><a href="#optiont" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OptionT</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">cats.OptionTSpec</a> ]</p>
+<p>A <code>OptionT[F[_], A]</code> represents a monadic wrapper of a value <code>F[Option[A]]</code></p>
+<pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OptionT</span>[<span class="hljs-type">F</span>[_], <span class="hljs-title">A</span>](<span class="hljs-params">value: <span class="hljs-type">F</span>[<span class="hljs-type">Option</span>[<span class="hljs-type">A</span>]]</span>)</span>
+</code></pre>
+<p><code>OptionT</code> is a monad transformer for <code>Option</code></p>
+<h3><a class="anchor" aria-hidden="true" id="validated"></a><a href="#validated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Validated</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">cats.ValidatedSpec</a> ]</p>
+<p><code>Validated</code> is similar to <code>Either</code> but allows to accumulate errors</p>
+<pre><code class="hljs css language-scala"><span class="hljs-keyword">sealed</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Validated</span>[+<span class="hljs-type">E</span>, +<span class="hljs-type">A</span>]</span>
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Valid</span>[+<span class="hljs-type">A</span>](<span class="hljs-params">a: <span class="hljs-type">A</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">Validated</span>[<span class="hljs-type">Nothing</span>, <span class="hljs-type">A</span>]</span>
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Invalid</span>[+<span class="hljs-type">E</span>](<span class="hljs-params">e: <span class="hljs-type">E</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">Validated</span>[<span class="hljs-type">E</span>, <span class="hljs-type">Nothing</span>]</span>
+</code></pre>
+<p>The <code>Semigroupal</code> implementation of <code>product</code> for a <code>Monad</code> is equivalent to <code>flatMap</code>, which explains why <code>Either</code>, being a <code>Monad</code> provides a fail-fast error handling. On the other side, <code>Validated</code> has an instance of <code>Semigroupal</code> but <em>no</em> instance of <code>Monad</code>, hence the implementation of <code>product</code> is free to accumulate errors</p>
+<h3><a class="anchor" aria-hidden="true" id="arrow"></a><a href="#arrow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Arrow</h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<ul>
+<li><a href="https://benmosheron.gitlab.io/blog/2018/12/24/functional-composition.html">Functional Composition</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="effects"></a><a href="#effects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Effects</h2>
+<p>Given a monad <code>M[A]</code>, if you can <em>not</em> extract the <code>A</code> out of <code>M[A]</code> in a purely-functional way (for <code>List</code>you can perform the extraction with <code>List.head</code>) then the monad is called <strong>effectful</strong></p>
+<ul>
+<li><a href="https://typelevel.org/cats-effect">Cats Effect</a> (Documentation)</li>
+<li><a href="https://youtu.be/sxudIMiOo68">FP to the Max</a> by John De Goes (Video)</li>
+<li><a href="https://github.com/jdegoes/lambdaconf-2014-introgame">Intro to Functional Game Programming</a></li>
+<li><a href="https://git.io/fp017">Incremental Purity</a>(<a href="https://git.io/fp01d)]">https://git.io/fp01d)]</a> (Meetup)</li>
+<li><strong>TODO</strong> <a href="https://typelevel.org/blog/2018/06/07/shared-state-in-fp.html">Shared State in Functional Programming</a></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="io"></a><a href="#io" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IO</h3>
+<p>[ <a href="https://niqdev.github.io/scala-fp">IO</a> ]</p>
+<p><code>IO</code> is data type for encoding side effects as pure values</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?reload=9&amp;v=g_jP47HFpWA">The Making of an IO</a> (Video)</li>
+<li><a href="https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html">An IO monad for cats</a></li>
+<li><a href="https://underscore.io/blog/posts/2015/04/28/monadic-io-laziness-makes-you-free.html">Monadic IO: Laziness Makes You Free</a></li>
+</ul>
+<blockquote>
+<p>TODO add more examples</p>
+</blockquote>
+<pre><code class="hljs css language-bash">sbt <span class="hljs-string">"fp/runMain com.github.niqdev.main.MainIO"</span>
+
+<span class="hljs-comment"># cats-effect examples</span>
+sbt <span class="hljs-string">"ecosystem/runMain com.github.niqdev.effect.ExampleIO"</span>
+sbt <span class="hljs-string">"ecosystem/runMain com.github.niqdev.effect.ExampleIOApp"</span>
+sbt <span class="hljs-string">"ecosystem/runMain com.github.niqdev.effect.ExampleResource"</span>
+sbt <span class="hljs-string">"test:testOnly *MyResourceSpec"</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/scala-fp/docs/fp-intro"><span class="arrow-prev">← </span><span>Introduction</span></a><a class="docs-next button" href="/scala-fp/docs/fp-ecosystem"><span>Ecosystem</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#resources">Resources</a></li><li><a href="#type-classes">Type Classes</a><ul class="toc-headings"><li><a href="#show">Show</a></li><li><a href="#eq">Eq</a></li><li><a href="#semigroup">Semigroup</a></li><li><a href="#monoid">Monoid</a></li><li><a href="#functor">Functor</a></li><li><a href="#semigroupal">Semigroupal</a></li><li><a href="#apply">Apply</a></li><li><a href="#applicative-functor">Applicative Functor</a></li><li><a href="#monad">Monad</a></li><li><a href="#free-monad">Free Monad</a></li></ul></li><li><a href="#data-types">Data Types</a><ul class="toc-headings"><li><a href="#eval">Eval</a></li><li><a href="#state">State</a></li><li><a href="#writer">Writer</a></li><li><a href="#kleisli">Kleisli</a></li><li><a href="#reader">Reader</a></li><li><a href="#optiont">OptionT</a></li><li><a href="#validated">Validated</a></li><li><a href="#arrow">Arrow</a></li></ul></li><li><a href="#effects">Effects</a><ul class="toc-headings"><li><a href="#io">IO</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/scala-fp/" class="nav-home"><img src="/scala-fp/img/favicon.ico" alt="scala-fp" width="66" height="58"/></a><div><h5>Contribute</h5><a href="/scala-fp/docs/en/contribute.html">How to</a><a href="https://github.com/niqdev/scala-fp" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 niqdev</section></footer></div></body></html>
