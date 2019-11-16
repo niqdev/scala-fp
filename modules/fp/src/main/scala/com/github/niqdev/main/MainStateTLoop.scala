@@ -21,27 +21,38 @@ object MainStateTLoop {
       Applicative[F].pure(newState -> newValue)
     }
 
-  def combineLoop[F[_] : Monad : Console, A: Monoid](f: String => A): StateT[F, StateContainer[A], Unit] =
+  def combineLoop[F[_] : Monad : Console, A: Monoid](f: String => A)(message: String): StateT[F, StateContainer[A], Unit] =
     for {
-      _ <- putStrLnAsStateT[F, StateContainer[A], String]("Type a number, or [q] to quit: ")
+      _ <- putStrLnAsStateT[F, StateContainer[A], String](s"Type a $message, or [q] to quit: ")
       input <- getStrLnAsStateT[F, StateContainer[A]]
       _ <- if (input == "q") {
         StateT.liftF[F, StateContainer[A], Unit](Applicative[F].pure(Monoid[A].empty))
       } else for {
         i <- StateT.liftF[F, StateContainer[A], A](Applicative[F].pure(fromUnsafe(input)(f)))
         _ <- combineStateT[F, A](i)
-        _ <- combineLoop[F, A](f)
+        _ <- combineLoop[F, A](f)(message)
       } yield ()
     } yield ()
 
-  def program: StateContainer[Int] = {
-    import com.github.niqdev.Console.instances.ioConsole
-    import com.github.niqdev.IO.instances.ioMonad
-    import com.github.niqdev.Monoid.instances.intAdditionMonoid
+  def programInt[F[_] : Monad : Console]: F[(StateContainer[Int], Unit)] = {
+    import Monoid.instances.intAdditionMonoid
 
-    combineLoop[IO, Int](_.toInt).run(StateContainer(0)).unsafeRun._1
+    combineLoop[F, Int](_.toInt)("number")
+      .run(StateContainer(intAdditionMonoid.empty))
   }
 
-  def main(args: Array[String]): Unit =
-    println(s"StateContainer[Int] = ${program.value}")
+  def programString[F[_] : Monad : Console]: F[(StateContainer[String], Unit)] = {
+    import Monoid.instances.stringConcatenationMonoid
+
+    combineLoop[F, String](s => s)("string")
+      .run(StateContainer(stringConcatenationMonoid.empty))
+  }
+
+  def main(args: Array[String]): Unit = {
+    import com.github.niqdev.Console.instances.ioConsole
+    import com.github.niqdev.IO.instances.ioMonad
+
+    println(s"StateContainer[Int] = ${programInt.unsafeRun._1.value}")
+    println(s"StateContainer[String] = ${programString.unsafeRun._1.value}")
+  }
 }
