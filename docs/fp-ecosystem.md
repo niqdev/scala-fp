@@ -36,7 +36,11 @@ title: Ecosystem
 
 ### Examples
 
-> TODO
+[ [fs2.StreamSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/fs2/StreamSpec.scala) ]
+
+```bash
+sbt "test:testOnly *fs2*"
+```
 
 ## ZIO
 
