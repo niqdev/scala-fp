@@ -36,6 +36,11 @@ object ExampleResource extends IOApp {
       .resource
       .flatMap(result => IO(println(result)))
 
+  // acquire
+  // transform
+  // allocate
+  // release
+  // [step-1|allocate][step-2|acquire][step-3|transform]
   override def run(args: List[String]): IO[ExitCode] =
     program.as(ExitCode.Success)
 
