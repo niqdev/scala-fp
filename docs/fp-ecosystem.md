@@ -26,11 +26,16 @@ title: Ecosystem
 
 ### Examples
 
-> TODO
+> TODO links
 
 ```bash
+# run tests
+sbt "test:testOnly *http4s*"
+
+# start server
 sbt "ecosystem/runMain com.github.niqdev.http4s.ExampleServer"
 
+# test endpoint
 http :8080/hello/scala
 ```
 
@@ -45,6 +50,7 @@ http :8080/hello/scala
 [ [fs2.StreamSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/fs2/StreamSpec.scala) ]
 
 ```bash
+# run tests
 sbt "test:testOnly *fs2*"
 ```
 
