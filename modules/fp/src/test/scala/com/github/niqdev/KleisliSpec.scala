@@ -41,7 +41,7 @@ final class KleisliSpec extends WordSpecLike with Matchers {
         parse.andThen(multiply).andThen(toString)
 
       val toStringComposeMultiplyComposeParse: Kleisli[MyOption, String, String] =
-        toString.compose(multiply.compose(parse))
+        toString.compose(multiply).compose(parse)
 
       parseAndThenMultiplyAndThenToString.run("123") shouldBe MySome("value is: 246.0")
       parseAndThenMultiplyAndThenToString.run("aaa") shouldBe MyNone
