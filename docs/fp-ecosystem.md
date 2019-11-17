@@ -28,6 +28,12 @@ title: Ecosystem
 
 > TODO
 
+```bash
+sbt "ecosystem/runMain com.github.niqdev.http4s.ExampleServer"
+
+http :8080/hello/scala
+```
+
 ## FS2
 
 ### Resources

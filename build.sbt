@@ -11,6 +11,7 @@ lazy val versions = new {
   val catsEffect = "2.0.0"
   val fs2 = "2.1.0"
   val http4s = "0.20.13"
+  val logback = "1.2.3"
 
   // test
   val scalatest  = "3.0.8"
@@ -29,7 +30,9 @@ lazy val dependencies = new {
 
     "org.http4s" %% "http4s-dsl" % versions.http4s,
     "org.http4s" %% "http4s-blaze-server" % versions.http4s,
-    "org.http4s" %% "http4s-blaze-client" % versions.http4s
+    "org.http4s" %% "http4s-blaze-client" % versions.http4s,
+
+    "ch.qos.logback"    % "logback-classic" % versions.logback
   )
 
   lazy val test = Seq(
