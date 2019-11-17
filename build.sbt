@@ -11,6 +11,7 @@ lazy val versions = new {
   val catsEffect = "2.0.0"
   val fs2 = "2.1.0"
   val http4s = "0.20.13"
+  val doobie = "0.8.6"
   val logback = "1.2.3"
 
   // test
@@ -33,7 +34,11 @@ lazy val dependencies = new {
     "org.http4s" %% "http4s-blaze-client" % versions.http4s,
     "org.http4s" %% "http4s-prometheus-metrics" % versions.http4s,
 
-    "ch.qos.logback"    % "logback-classic" % versions.logback
+    "org.tpolecat" %% "doobie-core" % versions.doobie,
+    "org.tpolecat" %% "doobie-h2" % versions.doobie,
+    "org.tpolecat" %% "doobie-scalatest" % versions.doobie % Test,
+
+    "ch.qos.logback" % "logback-classic" % versions.logback
   )
 
   lazy val test = Seq(
