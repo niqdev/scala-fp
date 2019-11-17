@@ -276,13 +276,15 @@ class WriterT[F[_], L, V](run: F[(L, V)])
 
 > TODO
 
-[ [TODO](https://niqdev.github.io/scala-fp) ]
+[ [Kleisli](https://niqdev.github.io/scala-fp) | [KleisliSpec](https://niqdev.github.io/scala-fp) ]
 
 A `Kleisli[F, A, B]` represents a monadic wrapper of a function `A => F[B]`
 
 ```scala mdoc
 class Kleisli[F[_], A, B](run: A => F[B])
 ```
+
+`Kleisli` allows to compose functions that return a monadic value
 
 ### Reader
 
