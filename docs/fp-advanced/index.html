@@ -245,13 +245,11 @@ sbt <span class="hljs-string">"fp/runMain com.github.niqdev.main.MainStateTLoop"
 </code></pre>
 <p><code>Writer</code> monad lets carry a log along with a computation. It's useful to record messages, errors, or additional data about a computation, and extract the log alongside the final result</p>
 <h3><a class="anchor" aria-hidden="true" id="kleisli"></a><a href="#kleisli" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kleisli</h3>
-<blockquote>
-<p>TODO</p>
-</blockquote>
-<p>[ <a href="https://niqdev.github.io/scala-fp">TODO</a> ]</p>
+<p>[ <a href="https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/main/scala/com/github/niqdev/Kleisli.scala">Kleisli</a> | <a href="https://github.com/niqdev/scala-fp/blob/master/modules/fp/src/test/scala/com/github/niqdev/KleisliSpec.scala">KleisliSpec</a> ]</p>
 <p>A <code>Kleisli[F, A, B]</code> represents a monadic wrapper of a function <code>A =&gt; F[B]</code></p>
 <pre><code class="hljs css language-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Kleisli</span>[<span class="hljs-type">F</span>[_], <span class="hljs-title">A</span>, <span class="hljs-title">B</span>](<span class="hljs-params">run: <span class="hljs-type">A</span> =&gt; <span class="hljs-type">F</span>[<span class="hljs-type">B</span>]</span>)</span>
 </code></pre>
+<p><code>Kleisli</code> allows to compose functions that return a monadic value</p>
 <h3><a class="anchor" aria-hidden="true" id="reader"></a><a href="#reader" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reader</h3>
 <p>[ <a href="https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/ReaderSpec.scala">cats.ReaderSpec</a> ]</p>
 <p>A <code>Reader[A, B]</code> represents a monadic wrapper of a function <code>A =&gt; B</code></p>
