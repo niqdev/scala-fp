@@ -102,6 +102,7 @@ MyTrait.myMethod
 ### *What is the relationship between currying and partially applied function?*
 
 * [Currying](https://docs.scala-lang.org/tour/currying.html) (Documentation)
+* [Partially-Applied Functions (and Currying) in Scala](https://alvinalexander.com/scala/fp-book/partially-applied-functions-currying-in-scala)
 * [How to use partially applied functions in Scala](https://alvinalexander.com/scala/how-to-use-partially-applied-functions-in-scala-syntax-examples)
 
 Currying is a means of transforming a function that takes more than one argument into a chain of calls to functions, each of which takes a single argument
@@ -109,6 +110,7 @@ Currying is a means of transforming a function that takes more than one argument
 When you call a function that has parameters, you are said to be applying the function to the parameters. When all the parameters are passed to the function, you have *fully applied the function* to all of the parameters. But when you give only a subset of the parameters to the function, the result of the expression is a *partially applied function*
 
 When a method is called with a fewer number of parameter lists, then this will yield a function taking the missing parameter lists as its arguments
+
 ```scala mdoc
 val sum = (a: Int, b: Int, c: Int) => a + b + c
 
@@ -119,6 +121,11 @@ sum(1, 2, 3)
 val f = sum(1, 2, _: Int)
 
 f(3)
+```
+
+```scala
+def curry[A, B, C](f: (A, B) => C): A => (B => C) = ???
+def uncurry[A, B, C](f: A => B => C): (A, B) => C = ???
 ```
 
 ### *What is a variadic function?*
