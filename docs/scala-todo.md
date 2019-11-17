@@ -31,7 +31,7 @@ case class MyLeft[+E](error: E) extends MyEither[E, Nothing]
 
 ### List
 
-[ [MyList](https://github.com/niqdev/scala-fp/blob/master/modules/common/src/main/scala/com/github/niqdev/datastructure/MyList.scala) | [MyListSpec](https://github.com/niqdev/scala-fp/blob/master/modules/common/src/test/scala/com/github/niqdev/datastructure/MyListSpec.scala)]
+[ [MyList](https://github.com/niqdev/scala-fp/blob/master/modules/common/src/main/scala/com/github/niqdev/datastructure/MyList.scala) | [MyListSpec](https://github.com/niqdev/scala-fp/blob/master/modules/common/src/test/scala/com/github/niqdev/datastructure/MyListSpec.scala) ]
 
 ```scala mdoc
 sealed trait MyList[+A]
