@@ -1,6 +1,6 @@
 package com.github.niqdev.http4s
 
-import cats.effect.{ConcurrentEffect, Effect, ExitCode, IO, IOApp, Resource, Timer}
+import cats.effect.{ConcurrentEffect, ExitCode, IO, IOApp, Resource, Timer}
 import cats.implicits.toSemigroupKOps
 import cats.syntax.functor.toFunctorOps
 import org.http4s.HttpRoutes
@@ -12,11 +12,10 @@ import org.http4s.server.middleware.Metrics
 
 object ExampleServer extends IOApp {
 
-  def server[F[_] : ConcurrentEffect : Timer](implicit F: Effect[F]): Resource[F, ExitCode] =
+  def server[F[_] : ConcurrentEffect : Timer]: Resource[F, ExitCode] =
     for {
-      _ <- Resource.liftF(F.pure("hello"))
-      helloRoute: HttpRoutes[F] = HttpService[F].helloRoute
       prometheusService <- Resource.liftF(PrometheusExportService.build[F])
+      helloRoute: HttpRoutes[F] = HttpService[F].helloRoute
       meteredRoutes <- Resource
         .liftF(Prometheus[F](prometheusService.collectorRegistry, "server")
         .map(Metrics[F](_)(helloRoute)))

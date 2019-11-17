@@ -26,7 +26,11 @@ title: Ecosystem
 
 ### Examples
 
-> TODO links
+> TODO add links
+
+TODO examples
+* add JSON encoder/decoder with circe
+* doobie
 
 ```bash
 # run tests
@@ -35,8 +39,9 @@ sbt "test:testOnly *http4s*"
 # start server
 sbt "ecosystem/runMain com.github.niqdev.http4s.ExampleServer"
 
-# test endpoint
+# verify endpoints
 http :8080/hello/scala
+http :8080/metrics
 ```
 
 ## FS2
