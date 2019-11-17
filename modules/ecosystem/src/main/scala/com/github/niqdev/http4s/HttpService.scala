@@ -8,14 +8,14 @@ import org.http4s.{HttpApp, HttpRoutes}
 private[http4s] sealed abstract class HttpService[F[_] : Sync] extends Http4sDsl[F] {
 
   // HttpRoutes[F] = Kleisli[OptionT[F, ?], Request[F], Response[F]]
-  val helloWorldService: HttpRoutes[F] =
+  val helloRoute: HttpRoutes[F] =
     HttpRoutes.of[F] {
       case GET -> Root / "hello" / name =>
         Ok(s"Hello $name!")
     }
 
   val endpoints: HttpApp[F] =
-    helloWorldService.orNotFound
+    helloRoute.orNotFound
 }
 
 private[http4s] object HttpService {

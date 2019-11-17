@@ -31,6 +31,7 @@ lazy val dependencies = new {
     "org.http4s" %% "http4s-dsl" % versions.http4s,
     "org.http4s" %% "http4s-blaze-server" % versions.http4s,
     "org.http4s" %% "http4s-blaze-client" % versions.http4s,
+    "org.http4s" %% "http4s-prometheus-metrics" % versions.http4s,
 
     "ch.qos.logback"    % "logback-classic" % versions.logback
   )
