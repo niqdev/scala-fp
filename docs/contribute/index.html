@@ -152,9 +152,10 @@ cat /tmp/travis-gh-pages.pub | xclip
 <span class="hljs-comment"># copy base64 encoded secret key (Ubuntu)</span>
 cat /tmp/travis-gh-pages | base64 -w0 | xclip
 </code></pre>
-<p>Every time that a tag starting with <code>v</code> is pushed from master, then a deployment is triggered on Travis</p>
+<p>Every time that a tag starting with <code>v</code> is pushed, then a deployment is triggered on Travis</p>
 <pre><code class="hljs css language-bash"><span class="hljs-comment"># publish using travis</span>
 git tag vX.Y.Z
+git push origin --tags
 
 <span class="hljs-comment"># publish locally</span>
 sbt docusaurusPublishGhpages
