@@ -9,8 +9,6 @@ Current version
 val version = "@VERSION@"
 ```
 
-> TODO fix links
-
 Scala
 
 * [Introduction](https://niqdev.github.io/scala-fp/docs/scala)
@@ -23,3 +21,7 @@ Functional Programming
 * [Advanced](https://niqdev.github.io/scala-fp/docs/fp-advanced)
 * [Ecosystem](https://niqdev.github.io/scala-fp/docs/fp-ecosystem)
 * [More](https://niqdev.github.io/scala-fp/docs/fp-more)
+
+Contribute
+
+* [How to](https://niqdev.github.io/scala-fp/docs/contribute)

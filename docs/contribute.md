@@ -121,11 +121,12 @@ cat /tmp/travis-gh-pages.pub | xclip
 cat /tmp/travis-gh-pages | base64 -w0 | xclip
 ```
 
-Every time that a tag starting with `v` is pushed from master, then a deployment is triggered on Travis
+Every time that a tag starting with `v` is pushed, then a deployment is triggered on Travis
 
 ```bash
 # publish using travis
 git tag vX.Y.Z
+git push origin --tags
 
 # publish locally
 sbt docusaurusPublishGhpages
