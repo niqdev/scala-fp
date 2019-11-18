@@ -24,11 +24,11 @@ object MainStateT {
 
   val answer: StateIO[Int] =
     for {
-      _ <- liftIO(IO(println("hello")))
+      _       <- liftIO(IO(println("hello")))
       state20 <- updateState(oldState => oldState.value * 4)
-      _ <- updateState(oldState => oldState.value + 1)
-      _ <- updateState(oldState => oldState.value * 2)
-      _ <- liftIO(IO(println("magic number")))
+      _       <- updateState(oldState => oldState.value + 1)
+      _       <- updateState(oldState => oldState.value * 2)
+      _       <- liftIO(IO(println("magic number")))
     } yield state20
 
   def main(args: Array[String]): Unit = {

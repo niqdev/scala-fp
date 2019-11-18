@@ -1,6 +1,6 @@
 package com.github.niqdev
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class ApplicativeSpec extends WordSpecLike with Matchers {
 
@@ -18,7 +18,7 @@ final class ApplicativeSpec extends WordSpecLike with Matchers {
       Applicative[MyList].pure(42) shouldBe MyList(42)
 
       val myConsF: MyList[Int => Long] = MyList.cons(_.toLong + 1L)
-      val myConsInt: MyList[Int] = MyList.cons(7)
+      val myConsInt: MyList[Int]       = MyList.cons(7)
 
       Applicative[MyList].ap(myConsF)(myConsInt) shouldBe MyList.cons(8)
 
@@ -41,8 +41,8 @@ final class ApplicativeSpec extends WordSpecLike with Matchers {
 
       val mySomeF: MyOption[Int => Long] = MySome(_.toLong + 1L)
       val myNoneF: MyOption[Int => Long] = MyNone
-      val mySomeInt: MyOption[Int] = MySome(3)
-      val myNoneInt: MyOption[Int] = MyNone
+      val mySomeInt: MyOption[Int]       = MySome(3)
+      val myNoneInt: MyOption[Int]       = MyNone
 
       // apply
       Applicative[MyOption].ap(mySomeF)(mySomeInt) shouldBe MySome(4)
@@ -66,7 +66,7 @@ final class ApplicativeSpec extends WordSpecLike with Matchers {
 
       Applicative[EitherMyListString].pure(8)
     }
-    */
+     */
 
     "verify Function1" in {
       // TODO not implemented

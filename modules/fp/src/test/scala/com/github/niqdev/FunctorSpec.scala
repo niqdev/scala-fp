@@ -1,6 +1,6 @@
 package com.github.niqdev
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class FunctorSpec extends WordSpecLike with Matchers {
 
@@ -15,7 +15,7 @@ final class FunctorSpec extends WordSpecLike with Matchers {
     "verify MyTree" in {
       import com.github.niqdev.Functor.instances.myTreeFunctor
 
-      val inputTree = MyTree.branch(MyTree.leaf(10), MyTree.leaf(20))
+      val inputTree    = MyTree.branch(MyTree.leaf(10), MyTree.leaf(20))
       val expectedTree = MyBranch(MyLeaf(30), MyLeaf(60))
 
       Functor[MyTree].map(inputTree)(_ * 3) shouldBe expectedTree
@@ -39,7 +39,7 @@ final class FunctorSpec extends WordSpecLike with Matchers {
       Functor[MyEither].map(MyRight(21))(_ * 2) shouldBe MyRight(42)
       Functor[MyEither].map(MyLeft("error"))(_ * 2) shouldBe MyLeft("error")
     }
-    */
+     */
 
     /* FIXME kind-projector
     "verify Function1" in {
@@ -50,7 +50,7 @@ final class FunctorSpec extends WordSpecLike with Matchers {
       val func3 = (a: Int) => a + "!"
       val func4 = func1.map(func2).map(func3)
     }
-    */
+   */
   }
 
 }

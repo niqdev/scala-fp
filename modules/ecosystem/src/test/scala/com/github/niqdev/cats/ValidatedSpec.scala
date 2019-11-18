@@ -1,6 +1,6 @@
 package com.github.niqdev.cats
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class ValidatedSpec extends WordSpecLike with Matchers {
 
@@ -22,7 +22,7 @@ final class ValidatedSpec extends WordSpecLike with Matchers {
         Validated.invalid(List("Error 2"))
       )
     }
-    */
+     */
 
     "verify examples" in {
       import cats.data.Validated
@@ -52,7 +52,7 @@ final class ValidatedSpec extends WordSpecLike with Matchers {
       123.pure[Validated[List[String], Int]]
       List("Badness").raiseError[Validated[List[String], Int], Int]
     }
-    */
+     */
 
     "verify helper" in {
       import cats.data.Validated
@@ -77,7 +77,7 @@ final class ValidatedSpec extends WordSpecLike with Matchers {
 
       case class User(name: String, age: Int)
 
-      type FormData = Map[String, String]
+      type FormData    = Map[String, String]
       type FailFast[A] = Either[List[String], A]
       type FailSlow[A] = Validated[List[String], A]
 
@@ -89,7 +89,8 @@ final class ValidatedSpec extends WordSpecLike with Matchers {
       getName(Map.empty) shouldBe Left(List("name field not specified"))
 
       def parseInt(name: String)(data: String): FailFast[Int] =
-        Either.catchOnly[NumberFormatException](data.toInt)
+        Either
+          .catchOnly[NumberFormatException](data.toInt)
           .leftMap(_ => List(s"$name must be an integer"))
 
       parseInt("age")("42") shouldBe Right(42)
@@ -122,7 +123,9 @@ final class ValidatedSpec extends WordSpecLike with Matchers {
           .mapN(User.apply)
 
       readUser(Map("name" -> "myName", "age" -> "42")) shouldBe Validated.valid(User("myName", 42))
-      readUser(Map("age" -> "-1")) shouldBe Validated.invalid(List("name field not specified", "age must be non-negative"))
+      readUser(Map("age" -> "-1")) shouldBe Validated.invalid(
+        List("name field not specified", "age must be non-negative")
+      )
     }
   }
 

@@ -29,7 +29,7 @@ final case class Kleisli[F[_], A, B](run: A => F[B]) {
       val fb: F[B] = self.run(a)
       F.flatMap(fb) { b: B =>
         val k: Kleisli[F, A, C] = f(b)
-        val fc: F[C] = k.run(a)
+        val fc: F[C]            = k.run(a)
         fc
       }
     }

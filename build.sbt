@@ -9,10 +9,10 @@ lazy val versions = new {
   // ecosystem
   val catsCore   = "2.0.0"
   val catsEffect = "2.0.0"
-  val fs2 = "2.1.0"
-  val http4s = "0.20.13"
-  val doobie = "0.8.6"
-  val logback = "1.2.3"
+  val fs2        = "2.1.0"
+  val http4s     = "0.20.13"
+  val doobie     = "0.8.6"
+  val logback    = "1.2.3"
 
   // test
   val scalatest  = "3.0.8"
@@ -23,22 +23,18 @@ lazy val versions = new {
 
 lazy val dependencies = new {
   lazy val ecosystem = Seq(
-    "org.typelevel" %% "cats-core" % versions.catsCore,
-    "org.typelevel" %% "cats-effect" % versions.catsEffect,
-
-    "co.fs2" %% "fs2-core" % versions.fs2,
-    "co.fs2" %% "fs2-io" % versions.fs2,
-
-    "org.http4s" %% "http4s-dsl" % versions.http4s,
-    "org.http4s" %% "http4s-blaze-server" % versions.http4s,
-    "org.http4s" %% "http4s-blaze-client" % versions.http4s,
-    "org.http4s" %% "http4s-prometheus-metrics" % versions.http4s,
-
-    "org.tpolecat" %% "doobie-core" % versions.doobie,
-    "org.tpolecat" %% "doobie-h2" % versions.doobie,
-    "org.tpolecat" %% "doobie-scalatest" % versions.doobie % Test,
-
-    "ch.qos.logback" % "logback-classic" % versions.logback
+    "org.typelevel"  %% "cats-core"                 % versions.catsCore,
+    "org.typelevel"  %% "cats-effect"               % versions.catsEffect,
+    "co.fs2"         %% "fs2-core"                  % versions.fs2,
+    "co.fs2"         %% "fs2-io"                    % versions.fs2,
+    "org.http4s"     %% "http4s-dsl"                % versions.http4s,
+    "org.http4s"     %% "http4s-blaze-server"       % versions.http4s,
+    "org.http4s"     %% "http4s-blaze-client"       % versions.http4s,
+    "org.http4s"     %% "http4s-prometheus-metrics" % versions.http4s,
+    "org.tpolecat"   %% "doobie-core"               % versions.doobie,
+    "org.tpolecat"   %% "doobie-h2"                 % versions.doobie,
+    "org.tpolecat"   %% "doobie-scalatest"          % versions.doobie % Test,
+    "ch.qos.logback" % "logback-classic"            % versions.logback
   )
 
   lazy val test = Seq(
@@ -50,12 +46,12 @@ lazy val dependencies = new {
 lazy val commonSettings = Seq(
   organization := info.organization,
   scalaVersion := info.scalaVersion,
-
   // https://docs.scala-lang.org/overviews/compiler-options/index.html
   // https://tpolecat.github.io/2017/04/25/scalac-flags.html
   // https://github.com/DavidGregory084/sbt-tpolecat
   scalacOptions ++= Seq(
-    "-encoding", "UTF-8", // source files are in UTF-8
+    "-encoding",
+    "UTF-8", // source files are in UTF-8
     "-deprecation", // warn about use of deprecated APIs
     "-unchecked", // warn about unchecked type parameters
     "-feature", // warn about misused language features
@@ -70,7 +66,9 @@ lazy val commonSettings = Seq(
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases")
   ),
-  addCompilerPlugin(dependency = "org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full)
+  addCompilerPlugin(
+    dependency = "org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full
+  )
 )
 
 lazy val common = (project in file("modules/common"))
@@ -106,7 +104,6 @@ lazy val docs = (project in file("modules/docs"))
   .enablePlugins(MdocPlugin, DocusaurusPlugin)
   .settings(
     name := s"${info.name}-docs",
-
     mdocVariables := Map(
       "VERSION" -> version.value
     )

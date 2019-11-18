@@ -1,6 +1,6 @@
 package com.github.niqdev.cats
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class FunctorSpec extends WordSpecLike with Matchers {
 

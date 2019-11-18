@@ -3,8 +3,8 @@ package com.github.niqdev.http4s
 import java.nio.charset.StandardCharsets
 
 import cats.effect.IO
-import org.http4s.{Method, Request, Response, Status, Uri}
-import org.scalatest.{Matchers, WordSpecLike}
+import org.http4s.{ Method, Request, Response, Status, Uri }
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class HttpServiceSpec extends WordSpecLike with Matchers {
 

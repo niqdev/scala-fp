@@ -1,7 +1,7 @@
 package com.github.niqdev.cats
 
 import cats.Monad
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class MonadSpec extends WordSpecLike with Matchers {
 
@@ -21,11 +21,11 @@ final class MonadSpec extends WordSpecLike with Matchers {
       import cats.syntax.flatMap.toFlatMapOps
       import cats.syntax.functor.toFunctorOps
 
-      def sumSquare[F[_] : Monad](a: F[Int], b: F[Int]): F[Int] =
+      def sumSquare[F[_]: Monad](a: F[Int], b: F[Int]): F[Int] =
         a.flatMap(a0 => b.map(b0 => a0 * a0 + b0 * b0))
 
       // context bound
-      def sumSquareFor[F[_] : Monad](a: F[Int], b: F[Int]): F[Int] =
+      def sumSquareFor[F[_]: Monad](a: F[Int], b: F[Int]): F[Int] =
         for {
           a0 <- a // flatMap
           b0 <- b // flatMap

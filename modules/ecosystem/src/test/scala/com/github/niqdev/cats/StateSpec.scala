@@ -1,7 +1,7 @@
 package com.github.niqdev.cats
 
 import cats.data.State
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class StateSpec extends WordSpecLike with Matchers {
 
@@ -39,19 +39,19 @@ final class StateSpec extends WordSpecLike with Matchers {
     "verify composition (1)" in {
       val step1 = State[Int, String] { state =>
         val newState = state * 4
-        val result = s"[step1][before=$state][after$newState]"
+        val result   = s"[step1][before=$state][after$newState]"
         (newState, result)
       }
 
       val step2 = State[Int, String] { state =>
         val newState = state + 1
-        val result = s"[step2][before=$state][after$newState]"
+        val result   = s"[step2][before=$state][after$newState]"
         (newState, result)
       }
 
       val step3 = State[Int, String] { state =>
         val newState = state * 2
-        val result = s"[step3][before=$state][after$newState]"
+        val result   = s"[step3][before=$state][after$newState]"
         (newState, result)
       }
 
@@ -87,17 +87,17 @@ final class StateSpec extends WordSpecLike with Matchers {
     }
 
     /**
-     * (1 + 2) * 3)
-     *
-     * 1 2 + 3 *  // see 1, push onto stack
-     * 2 + 3 *    // see 2, push onto stack
-     * + 3 *      // see +, pop 1 and 2 off of stack,
-     * // push (1 + 2) = 3 in their place
-     * 3 3 *      // see 3, push onto stack
-     * 3 *        // see 3, push onto stack
-     * *          // see *, pop 3 and 3 off of stack,
-     * // push (3 * 3) = 9 in their place
-     */
+      * (1 + 2) * 3)
+      *
+      * 1 2 + 3 *  // see 1, push onto stack
+      * 2 + 3 *    // see 2, push onto stack
+      * + 3 *      // see +, pop 1 and 2 off of stack,
+      * // push (1 + 2) = 3 in their place
+      * 3 3 *      // see 3, push onto stack
+      * 3 *        // see 3, push onto stack
+      * *          // see *, pop 3 and 3 off of stack,
+      * // push (3 * 3) = 9 in their place
+      */
     "verify Post-Order Calculator" in {
       import cats.syntax.applicative.catsSyntaxApplicativeId
 
@@ -122,10 +122,10 @@ final class StateSpec extends WordSpecLike with Matchers {
 
       def evaluateOne(symbol: String): CalculatorState[Int] =
         symbol.trim match {
-          case "+" => operator(_ + _)
-          case "*" => operator(_ * _)
-          case "-" => operator(_ - _)
-          case "/" => operator(_ / _)
+          case "+"   => operator(_ + _)
+          case "*"   => operator(_ * _)
+          case "-"   => operator(_ - _)
+          case "/"   => operator(_ / _)
           case value =>
             // java.lang.NumberFormatException
             operand(value.toInt)
@@ -134,8 +134,8 @@ final class StateSpec extends WordSpecLike with Matchers {
       evaluateOne("42").runA(Nil).value shouldBe 42
 
       val program0 = for {
-        _ <- evaluateOne("1")
-        _ <- evaluateOne("2")
+        _      <- evaluateOne("1")
+        _      <- evaluateOne("2")
         result <- evaluateOne("+")
       } yield result
 
@@ -149,8 +149,8 @@ final class StateSpec extends WordSpecLike with Matchers {
       evaluateAll(List("1", "2", "+", "3", "*")).runA(Nil).value shouldBe 9
 
       val program1 = for {
-        _ <- evaluateAll(List("1", "2", "+"))
-        _ <- evaluateAll(List("3", "4", "+"))
+        _      <- evaluateAll(List("1", "2", "+"))
+        _      <- evaluateAll(List("3", "4", "+"))
         result <- evaluateOne("*")
       } yield result
 
@@ -160,8 +160,8 @@ final class StateSpec extends WordSpecLike with Matchers {
         evaluateAll(input.split(" ").toList)
 
       val program2 = for {
-        _ <- evaluateInput("1 2 +")
-        _ <- evaluateAll(List("3", "4", "+"))
+        _      <- evaluateInput("1 2 +")
+        _      <- evaluateAll(List("3", "4", "+"))
         result <- evaluateOne("*")
       } yield result
 

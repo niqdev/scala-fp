@@ -1,7 +1,7 @@
 package com.github.niqdev.fs2
 
 import cats.effect.IO
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class StreamSpec extends WordSpecLike with Matchers {
 

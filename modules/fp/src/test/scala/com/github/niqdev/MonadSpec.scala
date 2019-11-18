@@ -1,6 +1,6 @@
 package com.github.niqdev
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class MonadSpec extends WordSpecLike with Matchers {
 
@@ -18,10 +18,11 @@ final class MonadSpec extends WordSpecLike with Matchers {
       Monad[MyList].pure(8) shouldBe MyList(8)
 
       def multiplyFour: Int => MyList[Int] = a => MyList(a * 4)
-      def addOne: Int => MyList[Int] = a => MyList(a + 1)
-      def multiplyTwo: Int => MyList[Int] = a => MyList(a * 2)
+      def addOne: Int => MyList[Int]       = a => MyList(a + 1)
+      def multiplyTwo: Int => MyList[Int]  = a => MyList(a * 2)
 
-      val answer = Monad[MyList].pure(5)
+      val answer = Monad[MyList]
+        .pure(5)
         .flatMap(multiplyFour)
         .flatMap(addOne)
         .flatMap(multiplyTwo)
@@ -52,7 +53,7 @@ final class MonadSpec extends WordSpecLike with Matchers {
 
       Monad[MyEither].pure(8)
     }
-    */
+     */
 
     "verify Function1" in {
       // TODO not implemented

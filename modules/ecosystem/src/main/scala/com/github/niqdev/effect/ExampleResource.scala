@@ -1,6 +1,6 @@
 package com.github.niqdev.effect
 
-import cats.effect.{ExitCode, IO, IOApp, Resource, Sync}
+import cats.effect.{ ExitCode, IO, IOApp, Resource, Sync }
 import cats.syntax.apply.catsSyntaxApply
 import cats.syntax.functor.toFunctorOps
 
@@ -26,14 +26,13 @@ sealed abstract class MyResource[F[_]](implicit F: Sync[F]) {
 }
 
 object MyResource {
-  def apply[F[_] : Sync]: MyResource[F] = new MyResource[F] {}
+  def apply[F[_]: Sync]: MyResource[F] = new MyResource[F] {}
 }
 
 object ExampleResource extends IOApp {
 
   def program: IO[Unit] =
-    MyResource[IO]
-      .resource
+    MyResource[IO].resource
       .flatMap(result => IO(println(result)))
 
   // acquire

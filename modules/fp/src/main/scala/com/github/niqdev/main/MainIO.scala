@@ -9,15 +9,14 @@ import com.github.niqdev.Random.instances.ioRandom
 object MainIO {
 
   // Console and Random use the Monad syntax in for-comprehensions i.e. flatMap + map
-  def mainF[F[_] : Monad : Console : Random](args: List[String]): F[Unit] =
+  def mainF[F[_]: Monad: Console: Random](args: List[String]): F[Unit] =
     for {
-      _ <- Console[F].putStrLn("hello functional programming")
-      n <- Random[F].nextInt(42)
-      _ <- Console[F].putStrLn(s"random number: $n")
+      _     <- Console[F].putStrLn("hello functional programming")
+      n     <- Random[F].nextInt(42)
+      _     <- Console[F].putStrLn(s"random number: $n")
       value <- Console[F].getStrLn
-      _ <- Console[F].putStrLn(s"user input: $value")
+      _     <- Console[F].putStrLn(s"user input: $value")
     } yield ()
-
 
   def main(args: Array[String]): Unit =
     mainF[IO](args.toList).unsafeRun

@@ -11,9 +11,9 @@ object MainState {
 
   val program: State[List[String], String] =
     for {
-      _ <- updateListString("apple")
-      _ <- updateListString("banana")
-      _ <- updateListString("pear")
+      _            <- updateListString("apple")
+      _            <- updateListString("banana")
+      _            <- updateListString("pear")
       shoppingList <- updateListString("strawberry")
     } yield shoppingList
 

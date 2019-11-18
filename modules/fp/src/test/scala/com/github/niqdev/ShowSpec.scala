@@ -1,8 +1,8 @@
 package com.github.niqdev
 
-import java.time.{ZoneId, ZonedDateTime}
+import java.time.{ ZoneId, ZonedDateTime }
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class ShowSpec extends WordSpecLike with Matchers {
 
@@ -12,7 +12,7 @@ final class ShowSpec extends WordSpecLike with Matchers {
     implicit val personShow: Show[Person] =
       (value: Person) => {
         val name = Show[String].show(value.name)
-        val age = Show[Int].show(value.age)
+        val age  = Show[Int].show(value.age)
         s"name=$name|age=$age"
       }
   }

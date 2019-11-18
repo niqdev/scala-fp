@@ -4,8 +4,8 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 /**
- * Show Type Class
- */
+  * Show Type Class
+  */
 trait Show[T] {
   def show(value: T): String
 }

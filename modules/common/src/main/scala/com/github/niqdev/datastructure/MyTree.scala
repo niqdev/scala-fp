@@ -3,7 +3,7 @@ package datastructure
 
 sealed trait MyTree[+A]
 final case class MyBranch[A](left: MyTree[A], right: MyTree[A]) extends MyTree[A]
-final case class MyLeaf[A](value: A) extends MyTree[A]
+final case class MyLeaf[A](value: A)                            extends MyTree[A]
 
 object MyTree {
 

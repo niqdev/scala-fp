@@ -1,7 +1,7 @@
 package com.github.niqdev.effect
 
 import cats.effect.IO
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class MyResourceSpec extends WordSpecLike with Matchers {
 

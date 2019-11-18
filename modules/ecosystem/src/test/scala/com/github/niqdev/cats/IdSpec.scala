@@ -1,7 +1,7 @@
 package com.github.niqdev.cats
 
 import cats.Id
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class IdSpec extends WordSpecLike with Matchers {
 

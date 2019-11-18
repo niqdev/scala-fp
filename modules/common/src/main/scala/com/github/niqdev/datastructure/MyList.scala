@@ -4,7 +4,7 @@ package datastructure
 import scala.annotation.tailrec
 
 final case class MyCons[+A](head: A, tail: MyList[A]) extends MyList[A]
-case object MyNil extends MyList[Nothing]
+case object MyNil                                     extends MyList[Nothing]
 
 sealed trait MyList[+A] {
 

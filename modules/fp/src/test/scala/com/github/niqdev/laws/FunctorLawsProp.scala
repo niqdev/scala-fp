@@ -1,16 +1,16 @@
 package com.github.niqdev
 package laws
 
-import com.github.niqdev.Functor.instances.{myEitherFunctor, myListFunctor, myOptionFunctor, myTreeFunctor}
-import com.github.niqdev.datastructure.{MyList, MyTree}
+import com.github.niqdev.Functor.instances.{ myEitherFunctor, myListFunctor, myOptionFunctor, myTreeFunctor }
+import com.github.niqdev.datastructure.{ MyList, MyTree }
 import com.github.niqdev.datatype.MyOption
 import org.scalacheck.Prop.forAll
-import org.scalacheck.{Arbitrary, Properties}
+import org.scalacheck.{ Arbitrary, Properties }
 
-sealed abstract class FunctorLawsProp[F[_]](description: String)
-                                           (implicit ev: Functor[F],
-                                            arbitraryFA: Arbitrary[F[String]])
-  extends Properties(s"FunctorLaws: $description") {
+sealed abstract class FunctorLawsProp[F[_]](description: String)(
+  implicit ev: Functor[F],
+  arbitraryFA: Arbitrary[F[String]]
+) extends Properties(s"FunctorLaws: $description") {
 
   // A fixed
   property("identity") = forAll { fa: F[String] =>
@@ -24,16 +24,16 @@ sealed abstract class FunctorLawsProp[F[_]](description: String)
 }
 
 object MyListFunctorLawsProp
-  extends FunctorLawsProp[MyList]("myList")(myListFunctor, ArbitraryImplicits.arbMyList)
+    extends FunctorLawsProp[MyList]("myList") (myListFunctor, ArbitraryImplicits.arbMyList)
 
 object MyTreeFunctorLawsProp
-  extends FunctorLawsProp[MyTree]("myTree")(myTreeFunctor, ArbitraryImplicits.arbMyTree)
+    extends FunctorLawsProp[MyTree]("myTree") (myTreeFunctor, ArbitraryImplicits.arbMyTree)
 
 object MyOptionFunctorLawsProp
-  extends FunctorLawsProp[MyOption]("myOption")(myOptionFunctor, ArbitraryImplicits.arbMyOption)
+    extends FunctorLawsProp[MyOption]("myOption") (myOptionFunctor, ArbitraryImplicits.arbMyOption)
 
 object MyEitherFunctorLawsProp
-  extends FunctorLawsProp[MyEither[String, *]]("myEither")(myEitherFunctor, ArbitraryImplicits.arbMyEither)
+    extends FunctorLawsProp[MyEither[String, *]]("myEither") (myEitherFunctor, ArbitraryImplicits.arbMyEither)
 
 // FIXME FunctorLaws: Falsified
 //object Function1FunctorLawsProp

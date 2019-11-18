@@ -1,8 +1,8 @@
 package com.github.niqdev
 
 /**
- * Console Tye Class
- */
+  * Console Tye Class
+  */
 trait Console[F[_]] {
   def putStrLn[A: Show](a: A): F[Unit]
   def getStrLn: F[String]
@@ -12,7 +12,7 @@ object Console {
 
   object instances extends ConsoleInstances
 
-  def apply[F[_] : Console]: Console[F] =
+  def apply[F[_]: Console]: Console[F] =
     implicitly[Console[F]]
 }
 

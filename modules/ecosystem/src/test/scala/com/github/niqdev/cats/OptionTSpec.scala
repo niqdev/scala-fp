@@ -1,7 +1,7 @@
 package com.github.niqdev.cats
 
 import cats.data.OptionT
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class OptionTSpec extends WordSpecLike with Matchers {
 
@@ -31,7 +31,7 @@ final class OptionTSpec extends WordSpecLike with Matchers {
 
       import scala.concurrent.ExecutionContext.Implicits.global
       import scala.concurrent.duration.Duration
-      import scala.concurrent.{Await, Future}
+      import scala.concurrent.{ Await, Future }
 
       val futureOption: Future[Option[String]] = Future.successful(Some("hello"))
 
@@ -41,8 +41,8 @@ final class OptionTSpec extends WordSpecLike with Matchers {
 
       val result: OptionT[Future, String] = for {
         fo <- OptionT(futureOption)
-        f <- OptionT.liftF(future)
-        o <- OptionT.fromOption[Future](option)
+        f  <- OptionT.liftF(future)
+        o  <- OptionT.fromOption[Future](option)
       } yield s"$fo $f $o"
 
       result.value.isInstanceOf[Future[Option[String]]] shouldBe true

@@ -6,8 +6,8 @@ package com.github.niqdev
 // import scala.language.higherKinds
 
 /**
- * Functor Type Class
- */
+  * Functor Type Class
+  */
 trait Functor[F[_]] {
   def map[A, B](fa: F[A])(f: A => B): F[B]
 }
@@ -15,7 +15,7 @@ trait Functor[F[_]] {
 object Functor {
 
   object instances extends FunctorInstances
-  object syntax extends FunctorSyntax
+  object syntax    extends FunctorSyntax
 
   def apply[F[_]](implicit ev: Functor[F]): Functor[F] = ev
 }

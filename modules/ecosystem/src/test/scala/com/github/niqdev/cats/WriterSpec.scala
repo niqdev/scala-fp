@@ -1,14 +1,14 @@
 package com.github.niqdev.cats
 
 import cats.data.Writer
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class WriterSpec extends WordSpecLike with Matchers {
 
   "Writer" should {
 
     "verify examples" in {
-      val log = Vector("msg1", "msg2", "msg3")
+      val log    = Vector("msg1", "msg2", "msg3")
       val result = 123
 
       val writer = Writer(log, result)

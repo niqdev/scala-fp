@@ -1,6 +1,6 @@
 package com.github.niqdev.cats
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class MonadErrorSpec extends WordSpecLike with Matchers {
 
@@ -8,16 +8,19 @@ final class MonadErrorSpec extends WordSpecLike with Matchers {
 
     // fail-fast error handling
     "verify Either" in {
-      import cats.syntax.either.{catsSyntaxEither, catsSyntaxEitherId, catsSyntaxEitherObject}
+      import cats.syntax.either.{ catsSyntaxEither, catsSyntaxEitherId, catsSyntaxEitherObject }
 
       3.asRight[String] shouldBe Right(3)
       "error".asLeft[Int] shouldBe Left("error")
 
-      Either.catchOnly[NumberFormatException]("error".toInt)
+      Either
+        .catchOnly[NumberFormatException]("error".toInt)
         .leftMap(_.getMessage) shouldBe Left("For input string: \"error\"")
-      Either.catchNonFatal(sys.error("error"))
+      Either
+        .catchNonFatal(sys.error("error"))
         .leftMap(_.getMessage) shouldBe Left("error")
-      Either.fromTry(scala.util.Try("error".toInt))
+      Either
+        .fromTry(scala.util.Try("error".toInt))
         .leftMap(_.getMessage) shouldBe Left("For input string: \"error\"")
       Either.fromOption[String, Int](None, "error") shouldBe Left("error")
 

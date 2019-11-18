@@ -1,7 +1,12 @@
 package com.github.niqdev
 
-import com.github.niqdev.Semigroup.instances.{intAdditionSemigroup, listSemigroup, myListSemigroup, stringConcatenationSemigroup}
-import org.scalatest.{Matchers, WordSpecLike}
+import com.github.niqdev.Semigroup.instances.{
+  intAdditionSemigroup,
+  listSemigroup,
+  myListSemigroup,
+  stringConcatenationSemigroup
+}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class SemigroupSpec extends WordSpecLike with Matchers {
 

@@ -1,7 +1,7 @@
 package com.github.niqdev
 package datastructure
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class MyListSpec extends WordSpecLike with Matchers {
 
@@ -47,8 +47,8 @@ final class MyListSpec extends WordSpecLike with Matchers {
 
     "verify flatMap" in {
       def multiplyFour: Int => MyList[Int] = a => MyList(a * 4)
-      def addOne: Int => MyList[Int] = a => MyList(a + 1)
-      def multiplyTwo: Int => MyList[Int] = a => MyList(a * 2)
+      def addOne: Int => MyList[Int]       = a => MyList(a + 1)
+      def multiplyTwo: Int => MyList[Int]  = a => MyList(a * 2)
 
       val answer = MyList(5)
         .flatMap(multiplyFour)

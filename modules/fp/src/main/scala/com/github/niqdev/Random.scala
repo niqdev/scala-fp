@@ -1,8 +1,8 @@
 package com.github.niqdev
 
 /**
- * Random Type Class
- */
+  * Random Type Class
+  */
 trait Random[F[_]] {
   def nextInt(n: Int): F[Int]
 }

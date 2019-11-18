@@ -1,7 +1,7 @@
 package com.github.niqdev.cats
 
 import cats.Monoid
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{ Matchers, WordSpecLike }
 
 final class MonoidSpec extends WordSpecLike with Matchers {
 

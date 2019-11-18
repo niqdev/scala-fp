@@ -1,15 +1,15 @@
 package com.github.niqdev
 
 /**
- * Semigroupal Type Class
- */
+  * Semigroupal Type Class
+  */
 trait Semigroupal[F[_]] {
   def product[A, B](fa: F[A], fb: F[B]): F[(A, B)]
 }
 
 /**
- * Apply Type Class
- */
+  * Apply Type Class
+  */
 trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
   def ap[A, B](ff: F[A => B])(fa: F[A]): F[B]
 
@@ -27,8 +27,8 @@ trait Apply[F[_]] extends Semigroupal[F] with Functor[F] {
 // https://github.com/typelevel/cats/blob/master/laws/src/main/scala/cats/laws/ApplicativeLaws.scala
 // https://github.com/barambani/laws/blob/master/src/main/scala/ApplicativeModule.scala
 /**
- * Applicative Type Class
- */
+  * Applicative Type Class
+  */
 trait Applicative[F[_]] extends Apply[F] {
   def pure[A](a: A): F[A]
 
@@ -74,7 +74,7 @@ trait ApplicativeInstances {
     }
 
   // * is a kind-projector magic
-  implicit def myEitherApplicative[E : Semigroup]: Applicative[MyEither[E, *]] =
+  implicit def myEitherApplicative[E: Semigroup]: Applicative[MyEither[E, *]] =
     new Applicative[MyEither[E, *]] {
       override def pure[A](a: A): MyEither[E, A] =
         MyRight(a)
@@ -85,8 +85,8 @@ trait ApplicativeInstances {
             MyRight(f(a))
           case (MyLeft(ef), MyLeft(ea)) =>
             MyLeft(Semigroup[E].combine(ef, ea))
-          case (e@MyLeft(_), _) => e
-          case (_, e@MyLeft(_)) => e
+          case (e @ MyLeft(_), _) => e
+          case (_, e @ MyLeft(_)) => e
         }
     }
 

@@ -1,8 +1,8 @@
 package com.github.niqdev
 
 /**
- * Monoid Type Class
- */
+  * Monoid Type Class
+  */
 trait Monoid[A] extends Semigroup[A] {
   def empty: A
 }
@@ -16,7 +16,7 @@ object Monoid {
   def instance[A](zero: A)(f: (A, A) => A): Monoid[A] =
     new Monoid[A] {
       override def combine(x: A, y: A): A = f(x, y)
-      override def empty: A = zero
+      override def empty: A               = zero
     }
 
   def instanceS[A](zero: A)(implicit ev: Semigroup[A]): Monoid[A] =

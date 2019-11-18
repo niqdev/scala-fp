@@ -2,7 +2,7 @@ package com.github.niqdev
 
 // https://github.com/jdegoes/lambdaconf-2014-introgame#monad-transformers
 // https://github.com/alvinj/FPMonadTransformers/blob/master/src/main/scala/monads/StateT.scala
-final case class StateT[F[_], S, A] private(run: S => F[(S, A)]) {
+final case class StateT[F[_], S, A] private (run: S => F[(S, A)]) {
 
   def get: S => F[(S, A)] = run
 

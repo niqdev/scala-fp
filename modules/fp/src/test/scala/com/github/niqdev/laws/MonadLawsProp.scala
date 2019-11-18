@@ -4,15 +4,15 @@ package laws
 import com.github.niqdev.Monad.instances._
 import com.github.niqdev.laws.ArbitraryImplicits._
 import org.scalacheck.Prop.forAll
-import org.scalacheck.{Arbitrary, Properties}
+import org.scalacheck.{ Arbitrary, Properties }
 
-sealed abstract class MonadLawsProp[F[_], A, B, C](description: String)
-                                                  (implicit ev: Monad[F],
-                                                   arbitraryA: Arbitrary[A],
-                                                   arbitraryFA: Arbitrary[F[A]],
-                                                   arbitraryF: Arbitrary[A => F[B]],
-                                                   arbitraryG: Arbitrary[B => F[C]])
-  extends Properties(s"MonadLaws: $description") {
+sealed abstract class MonadLawsProp[F[_], A, B, C](description: String)(
+  implicit ev: Monad[F],
+  arbitraryA: Arbitrary[A],
+  arbitraryFA: Arbitrary[F[A]],
+  arbitraryF: Arbitrary[A => F[B]],
+  arbitraryG: Arbitrary[B => F[C]]
+) extends Properties(s"MonadLaws: $description") {
 
   property("leftIdentity") = forAll { (a: A, f: A => F[B]) =>
     MonadLaws[F].leftIdentityLaw(a, f)
