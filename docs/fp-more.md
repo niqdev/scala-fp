@@ -61,6 +61,6 @@ title: More
 ### Videos
 
 * [A Crash Course in Categories](https://www.youtube.com/watch?v=5S03zTekRJc) by Rúnar Bjarnason
-* [SystemFw Talks](http://systemfw.org/talks.html)
-* [Scalaz 8 VS Akka actors](https://www.youtube.com/watch?v=Eihz7kqn6mU&t=833s)
+* [SystemFw Talks](http://systemfw.org/talks.html) by Fabio Labella
+* [Scalaz 8 VS Akka actors](https://www.youtube.com/watch?v=Eihz7kqn6mU&t=833s) by John De Goes
 * [Faculty of Khan](https://www.youtube.com/channel/UCGDanWUzNMbIV11lcNi-yBg/videos)

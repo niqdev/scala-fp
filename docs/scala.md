@@ -186,9 +186,11 @@ trait F[A]
 
 ### *What is autoboxing?*
 
+* [Autoboxing and Unboxing](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html)
+
 The JVM defines primitive types (`boolean`, `byte`, `char`, `float`, `int`, `long`, `short` and `double`) that are *stack-allocated* rather than *heap-allocated*. When a generic type is introduced, for example, `scala.collection.immutable.List`, the JVM references an object equivalent, instead of a primitive type. For example, an instantiated list of integers would be heap-allocated objects rather than integer primitives.
 
-The process of converting a primitive to its object equivalent is called **boxing**, and the reverse process is called **unboxing**. Boxing is a relevant concern for performance-sensitive programming because boxing involves heap allocation. In performance-sensitive code that performs numerical computations, the cost of [boxing and unboxing](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html) can can create significant performance slowdowns
+The process of converting a primitive to its object equivalent is called **boxing**, and the reverse process is called **unboxing**. Boxing is a relevant concern for performance-sensitive programming because boxing involves heap allocation. In performance-sensitive code that performs numerical computations, the cost of boxing and unboxing can can create significant performance slowdowns
 
 ### *What is the `@specialized` annotation?*
 

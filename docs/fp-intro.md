@@ -64,6 +64,8 @@ def factorial(n: Int): Int = {
   }
   loop(0, 1)
 }
+
+factorial(5)
 ```
 
 ### *What is a function literal?*
@@ -85,18 +87,27 @@ val lessThan2 = new Function2[Int, Int, Boolean] {
 ```scala mdoc
 // (1) works because "foreach" is defined
 for (i <- List(1, 2, 3)) println(i)
+List(1, 2, 3).foreach(println)
 
 // (2) "yield" works because "map" is defined
 for (i <- List(1, 2, 3)) yield i * 2
+List(1, 2, 3).map(_ * 2)
 
 // (3) "if" works because "withFilter" is defined
-for (i <- List(1, 2, 3, 4); if i % 2 == 0) yield i*2
+for (i <- List(1, 2, 3, 4); if i % 2 == 0) yield i * 2
+List(1, 2, 3, 4).withFilter(_ % 2 == 0).map(_ * 2)
 
 // (4) works because "flatMap" is defined
 for (i <- List(1, 2, 3, 4); j <- List(3, 4, 5, 6); if i == j) yield i
+List(1, 2, 3, 4).flatMap(i =>
+  List(3, 4, 5, 6).flatMap(j =>
+    if (i == j) List(i)
+    else List.empty[Int]
+  )
+).map(i => i)
 ```
 
-### *What is an Algebraic Data Type?*
+### *What is an algebraic data type?*
 
 * [Algebraic Data Types in Scala](https://alvinalexander.com/scala/fp-book/algebraic-data-types-adts-in-scala)
 * [What the Heck are Algebraic Data Types?](https://merrigrove.blogspot.com/2011/12/another-introduction-to-algebraic-data.html)
@@ -132,6 +143,16 @@ Inhabitants of a type are values for that types. Algebraic Data Types can be tho
 * the `Unit` data type corresponds to the value `1`
 * the `Void` data type corresponds to the value `0`
 
+### TODO *What is morphism?*
+
+> TODO
+
+* [Morphism](https://conorfennell.github.io/scala-zen/articles/functional-jargon.html#morphism)
+* [Closures and universal quantification](https://stackoverflow.com/questions/2602276/closures-and-universal-quantification)
+
+A function having the same argument and return type is sometimes called an *endofunction*
+
+
 ### *What is polymorphism?*
 
 * [What is polymorphism?](http://eed3si9n.com/herding-cats/polymorphism.html)
@@ -139,7 +160,7 @@ Inhabitants of a type are values for that types. Algebraic Data Types can be tho
 * [Polymorphism in Scala](https://medium.com/@scelestino/polymorphism-in-scala-part-1-34015f9b5b13)
 * [How to be polymorphic in Scala](http://scala.org.ua/presentations/scala-polymorphism)
 
-A polymorphic type is the one whose operations can be applied to another types
+A polymorphic type is the one whose operations can be applied to other types
 
 In *Sub-typing Polymorphism* a type (sub-type) is related to another (super-type) in a way where operations that apply to the super-type can also apply to its sub-types i.e. when a type inherits from another
 
@@ -243,7 +264,7 @@ It's a programming pattern that allow to extend existing libraries with new func
     * `List` is a first-order-kinded type `* -> *`
 * `Either` is a type constructor that takes two type parameters `A` and `B`
     * `Either` is a first-order-kinded type `* -> * -> *`
-* `M` is a type constructor that takes a type constructor parameter `F`
+* in `M[F[_]]`, the `M` is a type constructor that takes a type constructor parameter `F`
     * `M` is a higher-kinded or higher-order type `(* -> *) -> *`
 
 ```shell
@@ -293,12 +314,3 @@ In functional programming, an effect adds some capabilities to a computation. An
 * `List[A]` adds the effect of aggregation on A
 * `Option[A]` adds the capability of optionality for the type A
 * `Try[A]` models the effects of exceptions
-
-### TODO *What is morphism?*
-
-> TODO
-
-* [Morphism](https://conorfennell.github.io/scala-zen/articles/functional-jargon.html#morphism)
-* [Closures and universal quantification](https://stackoverflow.com/questions/2602276/closures-and-universal-quantification)
-
-A function having the same argument and return type is sometimes called an *endofunction*

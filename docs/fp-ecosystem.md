@@ -9,8 +9,8 @@ title: Ecosystem
 
 * [Cats](https://typelevel.org/cats) (Documentation)
 * [Cats Infographic](https://github.com/tpolecat/cats-infographic)
-* [Scala with Cats](https://underscore.io/books/scala-with-cats) (Book)
-* [Practical FP in Scala: A hands-on approach](https://leanpub.com/pfp-scala) (Book)
+* [Scala with Cats](https://underscore.io/books/scala-with-cats) by Noel Welsh and Dave Gurnell (Book)
+* [Practical FP in Scala: A hands-on approach](https://leanpub.com/pfp-scala) by Gabriel Volpe (Book)
 * **TODO** [herding cats](http://eed3si9n.com/herding-cats/index.html)
 * [ScalaFP: Firsthand With Scala-Cats](https://www.signifytechnology.com/blog/2018/07/scalafp-firsthand-with-scala-cats-monads-number-1-by-harmeet-singh)
 * [Scala Cats library for dummies](https://medium.com/@abu_nadhr/scala-cats-library-for-dummies-part-1-8ec47af7a144)
@@ -22,14 +22,14 @@ title: Ecosystem
 ### Resources
 
 * [http4s](https://http4s.org) (Documentation)
-* [Pure functional HTTP APIs in Scala](https://leanpub.com/pfhais) (Book)
+* [Pure functional HTTP APIs in Scala](https://leanpub.com/pfhais) by Jens Grassel (Book)
 
 ### Examples
 
 > TODO add links
 
 TODO examples
-* add JSON encoder/decoder with circe
+* JSON encoder/decoder with circe
 * doobie
 
 ```bash
@@ -74,7 +74,7 @@ sbt "test:testOnly *fs2*"
 ### Resources
 
 * [shapeless](https://github.com/milessabin/shapeless/wiki) (Documentation)
-* [The Type Astronaut's Guide to Shapeless](https://underscore.io/books/shapeless-guide) (Book)
+* [The Type Astronaut's Guide to Shapeless](https://underscore.io/books/shapeless-guide) by Dave Gurnell (Book)
 * [Shapeless for Mortals](http://fommil.com/scalax15) (2015) by Sam Halliday (Talk)
 * [First-class polymorphic function values in shapeless](https://milessabin.com/blog/2012/04/27/shapeless-polymorphic-function-values-1)
 * [Scala Tagged types](http://www.vlachjosef.com/tagged-types-introduction)

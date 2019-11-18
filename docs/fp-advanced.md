@@ -10,7 +10,7 @@ title: Advanced
 * **TODO** *"FP explained to ..."* by [Marc-Daniel Ortega](https://github.com/globulon) (Book)(Unpublished)
 * [Constraints Liberate, Liberties Constrain](https://www.youtube.com/watch?v=GqmsQeSzMdw) by Runar Bjarnason (Video)
 * [Scalaz Presentation](https://vimeo.com/10482466) by Nick Partridge (Video)
-* **TODO** [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0) (Video)
+* **TODO** [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0) by Michael Pilquist (Video)
 * [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A) by Rob Norris (Video)
 
 ## Type Classes
@@ -197,7 +197,7 @@ trait MonadError[F[_], E] extends ApplicativeError[F, E] with Monad[F] {
 
 * [Stack Safety for Free](https://web.archive.org/web/20190611214133/http://functorial.com/stack-safety-for-free/index.pdf) (Paper)
 * [Stackless Scala With Free Monads](http://blog.higher-order.com/assets/trampolines.pdf) (Paper)
-* [Move Over Free Monads: Make Way for Free Applicatives!](https://youtu.be/H28QqxO7Ihc) (Video)
+* [Move Over Free Monads: Make Way for Free Applicatives!](https://youtu.be/H28QqxO7Ihc) by John de Goes (Video)
 * [Stackless Scala](http://www.marcoyuen.com/articles/2016/09/08/stackless-scala-1-the-problem.html)
 * [Free monads - what? and why?](https://softwaremill.com/free-monads)
 * [Free Monad examples](https://github.com/kenbot/free)
@@ -339,7 +339,7 @@ Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely
 * [Cats Effect](https://typelevel.org/cats-effect) (Documentation)
 * [FP to the Max](https://youtu.be/sxudIMiOo68) by John De Goes (Video)
 * [Intro to Functional Game Programming](https://github.com/jdegoes/lambdaconf-2014-introgame)
-* [Incremental Purity](https://git.io/fp017)(https://git.io/fp01d)] (Meetup)
+* [Incremental Purity](https://git.io/fp017) (Meetup)
 * **TODO** [Shared State in Functional Programming](https://typelevel.org/blog/2018/06/07/shared-state-in-fp.html)
 
 ### IO
@@ -349,7 +349,7 @@ Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely
 
 `IO` is data type for encoding side effects as pure values
 
-* [The Making of an IO](https://www.youtube.com/watch?reload=9&v=g_jP47HFpWA) (Video)
+* [The Making of an IO](https://www.youtube.com/watch?reload=9&v=g_jP47HFpWA) by Daniel Spiewak (Video)
 * [An IO monad for cats](https://typelevel.org/blog/2017/05/02/io-monad-for-cats.html)
 * [Monadic IO: Laziness Makes You Free](https://underscore.io/blog/posts/2015/04/28/monadic-io-laziness-makes-you-free.html)
 
