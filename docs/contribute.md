@@ -79,7 +79,7 @@ sbt docusaurusCreateSite
 yarn --cwd website/ start
 ```
 
-Edit code
+Testing
 
 ```bash
 # test all
@@ -95,14 +95,38 @@ sbt "test:testOnly *ShowSpec"
 * `format` formats sources
 * `update` checks outdated dependencies
 * `build` checks format and runs tests
+* `publish` deploy static site on `gh-pages` branch
 
 ## Publish
 
-> TODO
+* [Travis integration](https://scalameta.org/mdoc/docs/docusaurus.html#publish-to-github-pages-from-ci)
 
-* [travis integration](https://scalameta.org/mdoc/docs/docusaurus.html#publish-to-github-pages-from-ci)
+First time only
 
 ```bash
-# publish gh-pages locally
+# generate ssh keys
+ssh-keygen -t rsa -b 4096 -C "hello@mail.com" -N '' -f /tmp/travis-gh-pages
+
+# add deploy key
+# https://github.com/niqdev/scala-fp/settings/keys
+# name: travis-gh-pages
+# write access: yes
+# copy public key (Ubuntu)
+cat /tmp/travis-gh-pages.pub | xclip
+
+# add environment variable
+# https://travis-ci.org/niqdev/scala-fp/settings
+# name: GITHUB_DEPLOY_KEY
+# copy base64 encoded secret key (Ubuntu)
+cat /tmp/travis-gh-pages | base64 -w0 | xclip
+```
+
+Every time that a tag starting with `v` is pushed from master, then a deployment is triggered on Travis
+
+```bash
+# publish using travis
+git tag vX.Y.Z
+
+# publish locally
 sbt docusaurusPublishGhpages
 ```

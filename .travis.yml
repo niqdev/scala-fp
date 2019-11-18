@@ -7,7 +7,7 @@ services:
 
 jdk:
   - openjdk8
-  - openjdk11
+  - openjdk12
 
 scala:
   - 2.12.10
@@ -21,3 +21,11 @@ cache:
 
 script:
   - sbt ++$TRAVIS_SCALA_VERSION build
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: sbt ++$TRAVIS_SCALA_VERSION publish
+    on:
+      tags: true
+      condition: $TRAVIS_TAG =~ ^v

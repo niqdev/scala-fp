@@ -117,5 +117,6 @@ lazy val root = project
     addCommandAlias("checkFormat", ";scalafmtCheckAll;scalafmtSbtCheck"),
     addCommandAlias("format", ";scalafmtAll;scalafmtSbt"),
     addCommandAlias("update", ";dependencyUpdates;reload plugins;dependencyUpdates;reload return"),
-    addCommandAlias("build", ";checkFormat;clean;test")
+    addCommandAlias("build", ";checkFormat;clean;test"),
+    addCommandAlias("publish", ";mdoc;docusaurusCreateSite;docusaurusPublishGhpages")
   )
