@@ -102,6 +102,9 @@
   }
   loop(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)
 }
+
+factorial(<span class="hljs-number">5</span>)
+<span class="hljs-comment">// res0: Int = 120</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="what-is-a-function-literal"></a><a href="#what-is-a-function-literal" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is a function literal?</em></h3>
 <p><em>Function literal</em> is a synonyms for <strong>anonymous function</strong>. Because functions are just ordinary Scala objects, we say that they are <strong>first-class values</strong>. A function literal is syntactic sugar for an object with a method called apply</p>
@@ -123,20 +126,35 @@
 <span class="hljs-comment">// 1</span>
 <span class="hljs-comment">// 2</span>
 <span class="hljs-comment">// 3</span>
+<span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>).foreach(println)
+<span class="hljs-comment">// 1</span>
+<span class="hljs-comment">// 2</span>
+<span class="hljs-comment">// 3</span>
 
 <span class="hljs-comment">// (2) "yield" works because "map" is defined</span>
 <span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)) <span class="hljs-keyword">yield</span> i * <span class="hljs-number">2</span>
-<span class="hljs-comment">// res1: List[Int] = List(2, 4, 6)</span>
+<span class="hljs-comment">// res3: List[Int] = List(2, 4, 6)</span>
+<span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>).map(_ * <span class="hljs-number">2</span>)
+<span class="hljs-comment">// res4: List[Int] = List(2, 4, 6)</span>
 
 <span class="hljs-comment">// (3) "if" works because "withFilter" is defined</span>
-<span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>); <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">yield</span> i*<span class="hljs-number">2</span>
-<span class="hljs-comment">// res2: List[Int] = List(4, 8)</span>
+<span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>); <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) <span class="hljs-keyword">yield</span> i * <span class="hljs-number">2</span>
+<span class="hljs-comment">// res5: List[Int] = List(4, 8)</span>
+<span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>).withFilter(_ % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>).map(_ * <span class="hljs-number">2</span>)
+<span class="hljs-comment">// res6: List[Int] = List(4, 8)</span>
 
 <span class="hljs-comment">// (4) works because "flatMap" is defined</span>
 <span class="hljs-keyword">for</span> (i &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>); j &lt;- <span class="hljs-type">List</span>(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>); <span class="hljs-keyword">if</span> i == j) <span class="hljs-keyword">yield</span> i
-<span class="hljs-comment">// res3: List[Int] = List(3, 4)</span>
+<span class="hljs-comment">// res7: List[Int] = List(3, 4)</span>
+<span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>).flatMap(i =&gt;
+  <span class="hljs-type">List</span>(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>).flatMap(j =&gt;
+    <span class="hljs-keyword">if</span> (i == j) <span class="hljs-type">List</span>(i)
+    <span class="hljs-keyword">else</span> <span class="hljs-type">List</span>.empty[<span class="hljs-type">Int</span>]
+  )
+).map(i =&gt; i)
+<span class="hljs-comment">// res8: List[Int] = List(3, 4)</span>
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="what-is-an-algebraic-data-type"></a><a href="#what-is-an-algebraic-data-type" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is an Algebraic Data Type?</em></h3>
+<h3><a class="anchor" aria-hidden="true" id="what-is-an-algebraic-data-type"></a><a href="#what-is-an-algebraic-data-type" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is an algebraic data type?</em></h3>
 <ul>
 <li><a href="https://alvinalexander.com/scala/fp-book/algebraic-data-types-adts-in-scala">Algebraic Data Types in Scala</a></li>
 <li><a href="https://merrigrove.blogspot.com/2011/12/another-introduction-to-algebraic-data.html">What the Heck are Algebraic Data Types?</a></li>
@@ -167,6 +185,15 @@
 <li>the <code>Unit</code> data type corresponds to the value <code>1</code></li>
 <li>the <code>Void</code> data type corresponds to the value <code>0</code></li>
 </ul>
+<h3><a class="anchor" aria-hidden="true" id="todo-what-is-morphism"></a><a href="#todo-what-is-morphism" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TODO <em>What is morphism?</em></h3>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<ul>
+<li><a href="https://conorfennell.github.io/scala-zen/articles/functional-jargon.html#morphism">Morphism</a></li>
+<li><a href="https://stackoverflow.com/questions/2602276/closures-and-universal-quantification">Closures and universal quantification</a></li>
+</ul>
+<p>A function having the same argument and return type is sometimes called an <em>endofunction</em></p>
 <h3><a class="anchor" aria-hidden="true" id="what-is-polymorphism"></a><a href="#what-is-polymorphism" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><em>What is polymorphism?</em></h3>
 <ul>
 <li><a href="http://eed3si9n.com/herding-cats/polymorphism.html">What is polymorphism?</a></li>
@@ -174,7 +201,7 @@
 <li><a href="https://medium.com/@scelestino/polymorphism-in-scala-part-1-34015f9b5b13">Polymorphism in Scala</a></li>
 <li><a href="http://scala.org.ua/presentations/scala-polymorphism">How to be polymorphic in Scala</a></li>
 </ul>
-<p>A polymorphic type is the one whose operations can be applied to another types</p>
+<p>A polymorphic type is the one whose operations can be applied to other types</p>
 <p>In <em>Sub-typing Polymorphism</em> a type (sub-type) is related to another (super-type) in a way where operations that apply to the super-type can also apply to its sub-types i.e. when a type inherits from another</p>
 <p>In <em>Parametric Polymorphism</em> types, methods or functions can be written generically using Type Parameters so they can handle values without depending on their types</p>
 <p>In <em>Ad-hoc Polymorphism</em>, known as method or function overloading, the compiler applies argument of different types to functions or methods and decide which implementation is the correct to use, depending on the type of the arguments to which they are applied</p>
@@ -188,15 +215,15 @@
 
 <span class="hljs-comment">// only values of type String</span>
 monomorphic(<span class="hljs-string">"hello"</span>)
-<span class="hljs-comment">// res4: Int = 5</span>
+<span class="hljs-comment">// res9: Int = 5</span>
 
 <span class="hljs-comment">// polymorphic methods have type parameters in their signatures</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">polymorphic</span></span>[<span class="hljs-type">T</span>](list: <span class="hljs-type">List</span>[<span class="hljs-type">T</span>]): <span class="hljs-type">Int</span> = list.length
 
 polymorphic(<span class="hljs-type">List</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>))
-<span class="hljs-comment">// res5: Int = 3</span>
+<span class="hljs-comment">// res10: Int = 3</span>
 polymorphic(<span class="hljs-type">List</span>(<span class="hljs-string">"foo"</span>, <span class="hljs-string">"bar"</span>, <span class="hljs-string">"baz"</span>))
-<span class="hljs-comment">// res6: Int = 3</span>
+<span class="hljs-comment">// res11: Int = 3</span>
 </code></pre>
 <p>Only by knowing the type signature of a method is possible to infer more or less information regarding its underlying implementation</p>
 <ul>
@@ -278,7 +305,7 @@ polymorphic(<span class="hljs-type">List</span>(<span class="hljs-string">"foo"<
 <ul>
 <li><code>Either</code> is a first-order-kinded type <code>* -&gt; * -&gt; *</code></li>
 </ul></li>
-<li><code>M</code> is a type constructor that takes a type constructor parameter <code>F</code>
+<li>in <code>M[F[_]]</code>, the <code>M</code> is a type constructor that takes a type constructor parameter <code>F</code>
 <ul>
 <li><code>M</code> is a higher-kinded or higher-order type <code>(* -&gt; *) -&gt; *</code></li>
 </ul></li>
@@ -331,13 +358,4 @@ This is a type constructor that takes type constructor(s): a higher-kinded type.
 <li><code>Option[A]</code> adds the capability of optionality for the type A</li>
 <li><code>Try[A]</code> models the effects of exceptions</li>
 </ul>
-<h3><a class="anchor" aria-hidden="true" id="todo-what-is-morphism"></a><a href="#todo-what-is-morphism" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TODO <em>What is morphism?</em></h3>
-<blockquote>
-<p>TODO</p>
-</blockquote>
-<ul>
-<li><a href="https://conorfennell.github.io/scala-zen/articles/functional-jargon.html#morphism">Morphism</a></li>
-<li><a href="https://stackoverflow.com/questions/2602276/closures-and-universal-quantification">Closures and universal quantification</a></li>
-</ul>
-<p>A function having the same argument and return type is sometimes called an <em>endofunction</em></p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/scala-fp/docs/scala-todo"><span class="arrow-prev">← </span><span>TODO</span></a><a class="docs-next button" href="/scala-fp/docs/fp-advanced"><span>Advanced</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#resources">Resources</a></li><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#what-are-some-of-the-benefits-of-functional-programming"><em>What are some of the benefits of Functional Programming?</em></a></li><li><a href="#what-is-the-uniform-access-principal"><em>What is the uniform access principal?</em></a></li><li><a href="#what-referentially-transparent-means"><em>What referentially transparent means?</em></a></li><li><a href="#what-is-a-pure-function"><em>What is a pure function?</em></a></li><li><a href="#what-is-a-higher-order-function"><em>What is a higher-order function?</em></a></li><li><a href="#what-is-a-recursive-function"><em>What is a recursive function?</em></a></li><li><a href="#what-is-a-function-literal"><em>What is a function literal?</em></a></li><li><a href="#how-for-comprehensions-is-desugared"><em>How for-comprehensions is desugared?</em></a></li><li><a href="#what-is-an-algebraic-data-type"><em>What is an Algebraic Data Type?</em></a></li><li><a href="#what-are-inhabitants-of-a-type"><em>What are inhabitants of a type?</em></a></li><li><a href="#what-is-polymorphism"><em>What is polymorphism?</em></a></li><li><a href="#what-is-the-difference-between-monomorphic-and-polymorphic"><em>What is the difference between monomorphic and polymorphic?</em></a></li><li><a href="#todo-how-does-the-implicit-resolution-mechanism-work">TODO <em>How does the implicit resolution mechanism work?</em></a></li><li><a href="#todo-what-is-a-context-bound">TODO <em>What is a context bound?</em></a></li><li><a href="#what-is-a-type-class"><em>What is a type class?</em></a></li><li><a href="#what-are-type-constructors-and-higher-kinded-types"><em>What are type constructors and higher-kinded types?</em></a></li><li><a href="#todo-what-are-type-members">TODO <em>What are type members?</em></a></li><li><a href="#todo-what-is-a-type-lambda">TODO <em>What is a type lambda?</em></a></li><li><a href="#what-is-an-effectful-computation"><em>What is an effectful computation?</em></a></li><li><a href="#todo-what-is-morphism">TODO <em>What is morphism?</em></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/scala-fp/" class="nav-home"><img src="/scala-fp/img/favicon.ico" alt="scala-fp" width="66" height="58"/></a><div><h5>Contribute</h5><a href="/scala-fp/docs/en/contribute.html">How to</a><a href="https://github.com/niqdev/scala-fp" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 niqdev</section></footer></div></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/scala-fp/docs/scala-todo"><span class="arrow-prev">← </span><span>TODO</span></a><a class="docs-next button" href="/scala-fp/docs/fp-advanced"><span>Advanced</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#resources">Resources</a></li><li><a href="#faq">FAQ</a><ul class="toc-headings"><li><a href="#what-are-some-of-the-benefits-of-functional-programming"><em>What are some of the benefits of Functional Programming?</em></a></li><li><a href="#what-is-the-uniform-access-principal"><em>What is the uniform access principal?</em></a></li><li><a href="#what-referentially-transparent-means"><em>What referentially transparent means?</em></a></li><li><a href="#what-is-a-pure-function"><em>What is a pure function?</em></a></li><li><a href="#what-is-a-higher-order-function"><em>What is a higher-order function?</em></a></li><li><a href="#what-is-a-recursive-function"><em>What is a recursive function?</em></a></li><li><a href="#what-is-a-function-literal"><em>What is a function literal?</em></a></li><li><a href="#how-for-comprehensions-is-desugared"><em>How for-comprehensions is desugared?</em></a></li><li><a href="#what-is-an-algebraic-data-type"><em>What is an algebraic data type?</em></a></li><li><a href="#what-are-inhabitants-of-a-type"><em>What are inhabitants of a type?</em></a></li><li><a href="#todo-what-is-morphism">TODO <em>What is morphism?</em></a></li><li><a href="#what-is-polymorphism"><em>What is polymorphism?</em></a></li><li><a href="#what-is-the-difference-between-monomorphic-and-polymorphic"><em>What is the difference between monomorphic and polymorphic?</em></a></li><li><a href="#todo-how-does-the-implicit-resolution-mechanism-work">TODO <em>How does the implicit resolution mechanism work?</em></a></li><li><a href="#todo-what-is-a-context-bound">TODO <em>What is a context bound?</em></a></li><li><a href="#what-is-a-type-class"><em>What is a type class?</em></a></li><li><a href="#what-are-type-constructors-and-higher-kinded-types"><em>What are type constructors and higher-kinded types?</em></a></li><li><a href="#todo-what-are-type-members">TODO <em>What are type members?</em></a></li><li><a href="#todo-what-is-a-type-lambda">TODO <em>What is a type lambda?</em></a></li><li><a href="#what-is-an-effectful-computation"><em>What is an effectful computation?</em></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/scala-fp/" class="nav-home"><img src="/scala-fp/img/favicon.ico" alt="scala-fp" width="66" height="58"/></a><div><h5>Contribute</h5><a href="/scala-fp/docs/contribute.html">How to</a><a href="https://github.com/niqdev/scala-fp" target="_blank">GitHub</a></div></section><section class="copyright">Copyright © 2019 niqdev</section></footer></div></body></html>
