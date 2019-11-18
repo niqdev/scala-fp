@@ -116,5 +116,6 @@ lazy val root = project
     name := info.name,
     addCommandAlias("checkFormat", ";scalafmtCheckAll;scalafmtSbtCheck"),
     addCommandAlias("format", ";scalafmtAll;scalafmtSbt"),
+    addCommandAlias("update", ";dependencyUpdates;reload plugins;dependencyUpdates;reload return"),
     addCommandAlias("build", ";checkFormat;clean;test")
   )
