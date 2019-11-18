@@ -11,7 +11,11 @@ This website is built using
 
 ## Setup
 
-Install [Node.js](https://nodejs.org) using [`nvm`](https://github.com/nvm-sh/nvm)
+* [Node.js](https://nodejs.org)
+* [nvm](https://github.com/nvm-sh/nvm)
+* [Yarn](https://yarnpkg.com)
+
+Install Node.js using nvm
 
 ```bash
 # install or update nvm
@@ -28,7 +32,7 @@ node --version
 npm --version
 ```
 
-Install [Yarn](https://yarnpkg.com)
+Install Yarn
 
 ```bash
 ### on Debian / Ubuntu
@@ -84,6 +88,12 @@ sbt test -jvm-debug 5005
 # specify test
 sbt "test:testOnly *ShowSpec"
 ```
+
+**sbt aliases**
+
+* `checkFormat` checks format
+* `format` formats sources
+* `build` checks format and runs tests
 
 ## Publish
 

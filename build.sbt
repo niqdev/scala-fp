@@ -117,5 +117,7 @@ lazy val root = project
   .aggregate(common, fp, ecosystem, docs)
   .settings(
     name := info.name,
-    addCommandAlias("build", ";clean;test")
+    addCommandAlias("checkFormat", ";scalafmtCheckAll;scalafmtSbtCheck"),
+    addCommandAlias("format", ";scalafmtAll;scalafmtSbt"),
+    addCommandAlias("build", ";checkFormat;clean;test")
   )
