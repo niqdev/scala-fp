@@ -33,7 +33,7 @@ title: More
 
 ### Category Theory
 
-* [Category Theory](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_) by by Bartosz Milewski (Video)
+* [Category Theory](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_) by Bartosz Milewski (Video)
 * [Category Theory for Programmers](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface)
 * [A Crash Course in Categories](https://www.youtube.com/watch?v=5S03zTekRJc) by Rúnar Bjarnason
 * [Hands-on category theory](https://earldouglas.com/talks/scala-cats/tutorial.html)
