@@ -49,6 +49,7 @@ lazy val commonSettings = Seq(
   // https://docs.scala-lang.org/overviews/compiler-options/index.html
   // https://tpolecat.github.io/2017/04/25/scalac-flags.html
   // https://github.com/DavidGregory084/sbt-tpolecat
+  // https://nathankleyn.com/2019/05/13/recommended-scalac-flags-for-2-13
   scalacOptions ++= Seq(
     "-encoding",
     "UTF-8", // source files are in UTF-8
