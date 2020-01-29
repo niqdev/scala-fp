@@ -16,7 +16,7 @@ lazy val versions = new {
 
   // test
   val scalatest  = "3.0.8"
-  val scalacheck = "1.14.2"
+  val scalacheck = "1.14.3"
 
   val kindProjector = "0.11.0"
 }
