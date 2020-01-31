@@ -258,6 +258,8 @@ sbt "fp/runMain com.github.niqdev.main.MainStateT"
 sbt "fp/runMain com.github.niqdev.main.MainStateTLoop"
 ```
 
+* [... And Monads for (Almost) All: The State Monad](http://rcardin.github.io/design/programming/fp/monad/2018/11/22/and-monads-for-all-state-monad.html)
+
 ### Writer
 
 [ [cats.WriterSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/cats/WriterSpec.scala) ]
