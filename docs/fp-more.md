@@ -44,7 +44,12 @@ title: More
 * [Aux Pattern Evolution](http://www.vlachjosef.com/aux-pattern-evolution/)
 * [Cake pattern](https://medium.com/@itseranga/scala-cake-pattern-e0cd894dae4e)
 * [Magnet pattern](http://spray.io/blog/2012-12-13-the-magnet-pattern)
-* `newtype` [The High Cost of AnyVal subclasses](https://failex.blogspot.com/2017/04/the-high-cost-of-anyval-subclasses.html)
+* [Type safe builder in Scala using type constraints](https://www.tikalk.com/posts/2010/11/08/type-safe-builder-in-scala-using-type-constraints)
+* **TODO** `newtype`
+    * [The High Cost of AnyVal subclasses](https://failex.blogspot.com/2017/04/the-high-cost-of-anyval-subclasses.html)
+    * [vitorsvieira/dilate](https://github.com/vitorsvieira/dilate)
+    * [estatico/scala-newtype](https://github.com/estatico/scala-newtype)
+    * [barambani/http4s-poc-api](https://github.com/barambani/http4s-poc-api/blob/master/src/main/scala/external/library/newtype.scala)
 
 ### Other FP languages
 
