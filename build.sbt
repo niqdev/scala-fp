@@ -10,7 +10,7 @@ lazy val versions = new {
   val catsCore   = "2.0.0"
   val catsEffect = "2.0.0"
   val fs2        = "2.1.0"
-  val http4s     = "0.20.13"
+  val http4s     = "0.20.18"
   val doobie     = "0.8.6"
   val logback    = "1.2.3"
 
