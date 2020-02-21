@@ -6,9 +6,10 @@ import com.github.niqdev.Semigroup.instances.{
   myListSemigroup,
   stringConcatenationSemigroup
 }
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class SemigroupSpec extends WordSpecLike with Matchers {
+final class SemigroupSpec extends AnyWordSpecLike with Matchers {
 
   "Semigroup" should {
 

@@ -1,9 +1,10 @@
 package com.github.niqdev.cats
 
 import cats.data.OptionT
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class OptionTSpec extends WordSpecLike with Matchers {
+final class OptionTSpec extends AnyWordSpecLike with Matchers {
 
   "OptionT" should {
 

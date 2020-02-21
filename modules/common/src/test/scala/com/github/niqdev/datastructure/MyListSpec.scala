@@ -1,9 +1,10 @@
 package com.github.niqdev
 package datastructure
 
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class MyListSpec extends WordSpecLike with Matchers {
+final class MyListSpec extends AnyWordSpecLike with Matchers {
 
   private[this] val myList = MyList(1, 2, 3, 4)
 

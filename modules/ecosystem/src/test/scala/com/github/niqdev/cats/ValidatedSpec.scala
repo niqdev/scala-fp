@@ -1,8 +1,9 @@
 package com.github.niqdev.cats
 
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class ValidatedSpec extends WordSpecLike with Matchers {
+final class ValidatedSpec extends AnyWordSpecLike with Matchers {
 
   "Validated" should {
 

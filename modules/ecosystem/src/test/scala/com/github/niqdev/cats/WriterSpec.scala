@@ -1,9 +1,10 @@
 package com.github.niqdev.cats
 
 import cats.data.Writer
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class WriterSpec extends WordSpecLike with Matchers {
+final class WriterSpec extends AnyWordSpecLike with Matchers {
 
   "Writer" should {
 

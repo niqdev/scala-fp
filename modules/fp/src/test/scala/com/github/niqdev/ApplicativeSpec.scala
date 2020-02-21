@@ -1,8 +1,9 @@
 package com.github.niqdev
 
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class ApplicativeSpec extends WordSpecLike with Matchers {
+final class ApplicativeSpec extends AnyWordSpecLike with Matchers {
 
   "Applicative" should {
 

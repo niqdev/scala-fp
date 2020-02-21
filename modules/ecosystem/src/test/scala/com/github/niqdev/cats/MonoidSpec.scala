@@ -1,9 +1,10 @@
 package com.github.niqdev.cats
 
 import cats.Monoid
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class MonoidSpec extends WordSpecLike with Matchers {
+final class MonoidSpec extends AnyWordSpecLike with Matchers {
 
   "Monoid" should {
 

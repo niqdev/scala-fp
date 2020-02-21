@@ -1,7 +1,8 @@
 package com.github.niqdev.cats
 
 import cats.Eq
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
 final case class Cat(name: String, age: Int, color: String)
 
@@ -30,7 +31,7 @@ object EqHelper {
     x =!= y
 }
 
-final class EqSpec extends WordSpecLike with Matchers {
+final class EqSpec extends AnyWordSpecLike with Matchers {
 
   "Eq" should {
 
