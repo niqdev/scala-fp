@@ -7,8 +7,8 @@ lazy val info = new {
 
 lazy val versions = new {
   // ecosystem
-  val catsCore   = "2.1.1"
-  val catsEffect = "2.1.1"
+  val catsCore   = "2.0.0"
+  val catsEffect = "2.1.2"
   val fs2        = "2.1.0"
   val http4s     = "0.20.13"
   val doobie     = "0.8.6"

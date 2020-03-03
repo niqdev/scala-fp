@@ -49,6 +49,8 @@ title: More
     * [The High Cost of AnyVal subclasses](https://failex.blogspot.com/2017/04/the-high-cost-of-anyval-subclasses.html)
     * [vitorsvieira/dilate](https://github.com/vitorsvieira/dilate)
     * [estatico/scala-newtype](https://github.com/estatico/scala-newtype)
+    * [milessabin/newtype](https://gist.github.com/milessabin/89c9b47a91017973a35f)
+    * [softwaremill/tagging](https://github.com/softwaremill/scala-common/tree/master/tagging/src/main/scala/com/softwaremill/tagging)
     * [barambani/http4s-poc-api](https://github.com/barambani/http4s-poc-api/blob/master/src/main/scala/external/library/newtype.scala)
 * [Scala and the visitor pattern](https://meta.plasm.us/posts/2019/09/23/scala-and-the-visitor-pattern)
 
