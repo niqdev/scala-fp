@@ -96,6 +96,24 @@ sbt "test:testOnly *fs2*"
 * [Code Examples](https://booksites.artima.com/scalacheck/examples/index.html)
 * [Using ScalaCheck to Verify Infinite Algebraic Structures](http://jtfmumm.com/blog/2015/09/04/adventures-in-abstract-algebra-part-4-using-scalacheck-to-verify-infinite-algebraic-structures/)
 
+## GraphQL
+
+### Resources
+
+* [GraphQL](https://graphql.org) (Documentation)
+* [Specification](http://spec.graphql.org)
+* [The Fullstack Tutorial for GraphQL](https://www.howtographql.com)
+* [Sangria](https://sangria-graphql.org)
+* [Building GraphQL API with Sangria](https://www.youtube.com/watch?v=ymILgZAdfnA) by Oleg Ilyenko (Video)
+* [GraphQL at Twitter](https://about.sourcegraph.com/graphql/graphql-at-twitter)
+* [Caliban](https://ghostdogpr.github.io/caliban)
+* [Caliban: Designing a Functional GraphQL Library](https://www.youtube.com/watch?v=OC8PbviYUlQ) by Pierre Ricadat (Video)
+* [GraphQL in Scala with Caliban](https://medium.com/@ghostdogpr/graphql-in-scala-with-caliban-part-1-8ceb6099c3c2)
+
+### Examples
+
+> TODO
+
 ## TODO More libraries
 
 * [refined](https://github.com/fthomas/refined)
