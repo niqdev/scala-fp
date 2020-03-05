@@ -9,6 +9,7 @@ lazy val versions = new {
   // ecosystem
   val catsCore   = "2.0.0"
   val catsEffect = "2.1.2"
+  val zio        = "1.0.0-RC18-1"
   val fs2        = "2.1.0"
   val http4s     = "0.20.13"
   val doobie     = "0.8.6"
@@ -25,6 +26,8 @@ lazy val dependencies = new {
   lazy val ecosystem = Seq(
     "org.typelevel"  %% "cats-core"                 % versions.catsCore,
     "org.typelevel"  %% "cats-effect"               % versions.catsEffect,
+    "dev.zio"        %% "zio"                       % versions.zio,
+    "dev.zio"        %% "zio-streams"               % versions.zio,
     "co.fs2"         %% "fs2-core"                  % versions.fs2,
     "co.fs2"         %% "fs2-io"                    % versions.fs2,
     "org.http4s"     %% "http4s-dsl"                % versions.http4s,
@@ -33,13 +36,13 @@ lazy val dependencies = new {
     "org.http4s"     %% "http4s-prometheus-metrics" % versions.http4s,
     "org.tpolecat"   %% "doobie-core"               % versions.doobie,
     "org.tpolecat"   %% "doobie-h2"                 % versions.doobie,
-    "org.tpolecat"   %% "doobie-scalatest"          % versions.doobie % Test,
     "ch.qos.logback" % "logback-classic"            % versions.logback
   )
 
   lazy val test = Seq(
-    "org.scalatest"  %% "scalatest"  % versions.scalatest  % Test,
-    "org.scalacheck" %% "scalacheck" % versions.scalacheck % Test
+    "org.scalatest"  %% "scalatest"        % versions.scalatest  % Test,
+    "org.tpolecat"   %% "doobie-scalatest" % versions.doobie     % Test,
+    "org.scalacheck" %% "scalacheck"       % versions.scalacheck % Test
   )
 }
 
