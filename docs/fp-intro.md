@@ -314,3 +314,15 @@ In functional programming, an effect adds some capabilities to a computation. An
 * `List[A]` adds the effect of aggregation on A
 * `Option[A]` adds the capability of optionality for the type A
 * `Try[A]` models the effects of exceptions
+
+### TODO *What are existential types?*
+
+> TODO
+
+* [Existential types](http://scalada.blogspot.com/2008/01/existential-types.html)
+
+### TODO *What are phantom types?*
+
+> TODO
+
+* [Phantom Types in Scala](https://blog.codecentric.de/en/2016/02/phantom-types-scala)
