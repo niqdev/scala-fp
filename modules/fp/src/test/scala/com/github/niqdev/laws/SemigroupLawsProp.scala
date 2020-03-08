@@ -17,7 +17,7 @@ sealed abstract class SemigroupLawsProp[A](description: String)(
 }
 
 object IntAdditionSemigroupLawsProp
-    extends SemigroupLawsProp[Int]("intAddition") (arbInt, intAdditionSemigroup)
+    extends SemigroupLawsProp[Int]("intAddition")(arbInt, intAdditionSemigroup)
 
 object StringConcatenationSemigroupLawsProp
-    extends SemigroupLawsProp[String]("stringConcatenation") (arbString, stringConcatenationSemigroup)
+    extends SemigroupLawsProp[String]("stringConcatenation")(arbString, stringConcatenationSemigroup)
