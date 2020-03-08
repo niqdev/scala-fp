@@ -24,16 +24,16 @@ sealed abstract class FunctorLawsProp[F[_]](description: String)(
 }
 
 object MyListFunctorLawsProp
-    extends FunctorLawsProp[MyList]("myList") (myListFunctor, ArbitraryImplicits.arbMyList)
+    extends FunctorLawsProp[MyList]("myList")(myListFunctor, ArbitraryImplicits.arbMyList)
 
 object MyTreeFunctorLawsProp
-    extends FunctorLawsProp[MyTree]("myTree") (myTreeFunctor, ArbitraryImplicits.arbMyTree)
+    extends FunctorLawsProp[MyTree]("myTree")(myTreeFunctor, ArbitraryImplicits.arbMyTree)
 
 object MyOptionFunctorLawsProp
-    extends FunctorLawsProp[MyOption]("myOption") (myOptionFunctor, ArbitraryImplicits.arbMyOption)
+    extends FunctorLawsProp[MyOption]("myOption")(myOptionFunctor, ArbitraryImplicits.arbMyOption)
 
 object MyEitherFunctorLawsProp
-    extends FunctorLawsProp[MyEither[String, *]]("myEither") (myEitherFunctor, ArbitraryImplicits.arbMyEither)
+    extends FunctorLawsProp[MyEither[String, *]]("myEither")(myEitherFunctor, ArbitraryImplicits.arbMyEither)
 
 // FIXME FunctorLaws: Falsified
 //object Function1FunctorLawsProp
