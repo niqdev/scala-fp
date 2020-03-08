@@ -22,19 +22,19 @@ sealed abstract class MonoidLawsProp[A](description: String)(implicit arbitrary:
   }
 }
 
-object IntAdditionMonoidLawsProp extends MonoidLawsProp[Int]("intAddition") (arbInt, intAdditionMonoid)
+object IntAdditionMonoidLawsProp extends MonoidLawsProp[Int]("intAddition")(arbInt, intAdditionMonoid)
 
 object IntMultiplicationMonoidLawsProp
-    extends MonoidLawsProp[Int]("intMultiplication") (arbInt, intMultiplicationMonoid)
+    extends MonoidLawsProp[Int]("intMultiplication")(arbInt, intMultiplicationMonoid)
 
 object StringConcatenationMonoidLawsProp
-    extends MonoidLawsProp[String]("stringConcatenation") (arbString, stringConcatenationMonoid)
+    extends MonoidLawsProp[String]("stringConcatenation")(arbString, stringConcatenationMonoid)
 
-object BooleanAndMonoidLawsProp extends MonoidLawsProp[Boolean]("booleanAnd") (arbBool, booleanAndMonoid)
+object BooleanAndMonoidLawsProp extends MonoidLawsProp[Boolean]("booleanAnd")(arbBool, booleanAndMonoid)
 
-object BooleanOrMonoidLawsProp extends MonoidLawsProp[Boolean]("booleanOr") (arbBool, booleanOrMonoid)
+object BooleanOrMonoidLawsProp extends MonoidLawsProp[Boolean]("booleanOr")(arbBool, booleanOrMonoid)
 
 object SetUnionMonoidLawsProp
-    extends MonoidLawsProp[Set[Int]]("setUnion") (Arbitrary.arbContainer[Set, Int], setUnionMonoid)
+    extends MonoidLawsProp[Set[Int]]("setUnion")(Arbitrary.arbContainer[Set, Int], setUnionMonoid)
 
-object OptionMonoidLawsProp extends MonoidLawsProp[Option[String]]("option") (arbOption, optionMonoid)
+object OptionMonoidLawsProp extends MonoidLawsProp[Option[String]]("option")(arbOption, optionMonoid)

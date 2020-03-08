@@ -17,6 +17,19 @@ title: Ecosystem
 * [A comprehensive introduction to Cats-mtl](https://typelevel.org/blog/2018/10/06/intro-to-mtl.html)
 * [Law Enforcement using Discipline](https://typelevel.org/blog/2013/11/17/discipline.html)
 
+## ZIO
+
+### Resources
+
+* [ZIO](https://zio.dev) (Documentation)
+
+### Examples
+
+```bash
+# run
+sbt "ecosystem/runMain com.github.niqdev.zio.ExampleZIOApp"
+```
+
 ## http4s
 
 ### Resources
@@ -59,16 +72,6 @@ http :8080/metrics
 sbt "test:testOnly *fs2*"
 ```
 
-## ZIO
-
-### Resources
-
-* [ZIO](https://zio.dev) (Documentation)
-
-### Examples
-
-> TODO
-
 ## shapeless
 
 ### Resources
@@ -79,10 +82,6 @@ sbt "test:testOnly *fs2*"
 * [First-class polymorphic function values in shapeless](https://milessabin.com/blog/2012/04/27/shapeless-polymorphic-function-values-1)
 * [Scala Tagged types](http://www.vlachjosef.com/tagged-types-introduction)
 * [Scala's Modular Roots](http://lambdafoo.com/scala-syd-2015-modules)
-
-### Examples
-
-> TODO
 
 ## ScalaTest and ScalaCheck
 
@@ -95,6 +94,21 @@ sbt "test:testOnly *fs2*"
 * [ScalaCheck lesson](https://github.com/alvinj/FPScalaCheck)
 * [Code Examples](https://booksites.artima.com/scalacheck/examples/index.html)
 * [Using ScalaCheck to Verify Infinite Algebraic Structures](http://jtfmumm.com/blog/2015/09/04/adventures-in-abstract-algebra-part-4-using-scalacheck-to-verify-infinite-algebraic-structures/)
+
+## GraphQL
+
+### Resources
+
+* [GraphQL](https://graphql.org) (Documentation)
+* [Specification](http://spec.graphql.org)
+* [GraphQL Playground](https://www.graphqlbin.com)
+* [The Fullstack Tutorial for GraphQL](https://www.howtographql.com)
+* [Sangria](https://sangria-graphql.org)
+* [Building GraphQL API with Sangria](https://www.youtube.com/watch?v=ymILgZAdfnA) by Oleg Ilyenko (Video)
+* [GraphQL at Twitter](https://about.sourcegraph.com/graphql/graphql-at-twitter)
+* [Caliban](https://ghostdogpr.github.io/caliban)
+* [Caliban: Designing a Functional GraphQL Library](https://www.youtube.com/watch?v=OC8PbviYUlQ) by Pierre Ricadat (Video)
+* [GraphQL in Scala with Caliban](https://medium.com/@ghostdogpr/graphql-in-scala-with-caliban-part-1-8ceb6099c3c2)
 
 ## TODO More libraries
 
