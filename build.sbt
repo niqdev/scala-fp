@@ -11,7 +11,7 @@ lazy val versions = new {
   val catsEffect = "2.1.2"
   val zio        = "1.0.0-RC18-1"
   val fs2        = "2.1.0"
-  val http4s     = "0.20.13"
+  val http4s     = "0.20.19"
   val doobie     = "0.8.6"
   val logback    = "1.2.3"
 
