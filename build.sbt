@@ -9,6 +9,7 @@ lazy val versions = new {
   // ecosystem
   val catsCore   = "2.1.1"
   val catsEffect = "2.1.2"
+  val catsRetry  = "1.1.0"
   val zio        = "1.0.0-RC18-1"
   val fs2        = "2.1.0"
   val http4s     = "0.20.19"
@@ -24,19 +25,20 @@ lazy val versions = new {
 
 lazy val dependencies = new {
   lazy val ecosystem = Seq(
-    "org.typelevel"  %% "cats-core"                 % versions.catsCore,
-    "org.typelevel"  %% "cats-effect"               % versions.catsEffect,
-    "dev.zio"        %% "zio"                       % versions.zio,
-    "dev.zio"        %% "zio-streams"               % versions.zio,
-    "co.fs2"         %% "fs2-core"                  % versions.fs2,
-    "co.fs2"         %% "fs2-io"                    % versions.fs2,
-    "org.http4s"     %% "http4s-dsl"                % versions.http4s,
-    "org.http4s"     %% "http4s-blaze-server"       % versions.http4s,
-    "org.http4s"     %% "http4s-blaze-client"       % versions.http4s,
-    "org.http4s"     %% "http4s-prometheus-metrics" % versions.http4s,
-    "org.tpolecat"   %% "doobie-core"               % versions.doobie,
-    "org.tpolecat"   %% "doobie-h2"                 % versions.doobie,
-    "ch.qos.logback" % "logback-classic"            % versions.logback
+    "org.typelevel"    %% "cats-core"                 % versions.catsCore,
+    "org.typelevel"    %% "cats-effect"               % versions.catsEffect,
+    "com.github.cb372" %% "cats-retry"                % versions.catsRetry,
+    "dev.zio"          %% "zio"                       % versions.zio,
+    "dev.zio"          %% "zio-streams"               % versions.zio,
+    "co.fs2"           %% "fs2-core"                  % versions.fs2,
+    "co.fs2"           %% "fs2-io"                    % versions.fs2,
+    "org.http4s"       %% "http4s-dsl"                % versions.http4s,
+    "org.http4s"       %% "http4s-blaze-server"       % versions.http4s,
+    "org.http4s"       %% "http4s-blaze-client"       % versions.http4s,
+    "org.http4s"       %% "http4s-prometheus-metrics" % versions.http4s,
+    "org.tpolecat"     %% "doobie-core"               % versions.doobie,
+    "org.tpolecat"     %% "doobie-h2"                 % versions.doobie,
+    "ch.qos.logback"   % "logback-classic"            % versions.logback
   )
 
   lazy val test = Seq(

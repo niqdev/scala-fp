@@ -39,11 +39,10 @@ sbt "ecosystem/runMain com.github.niqdev.zio.ExampleZIOApp"
 
 ### Examples
 
-> TODO add links
+> TODO examples
 
-TODO examples
 * JSON encoder/decoder with circe
-* doobie
+* integration with doobie
 
 ```bash
 # run tests
@@ -71,6 +70,13 @@ http :8080/metrics
 # run tests
 sbt "test:testOnly *fs2*"
 ```
+
+## Doobie
+
+### Resources
+
+* [doobie](https://tpolecat.github.io/doobie) (Documentation)
+* [Pure Functional Database Programming with Fixpoint Types](https://www.youtube.com/watch?v=7xSfLPD6tiQ) by Rob Norris (video)
 
 ## shapeless
 
@@ -110,6 +116,17 @@ sbt "test:testOnly *fs2*"
 * [Caliban: Designing a Functional GraphQL Library](https://www.youtube.com/watch?v=OC8PbviYUlQ) by Pierre Ricadat (Video)
 * [GraphQL in Scala with Caliban](https://medium.com/@ghostdogpr/graphql-in-scala-with-caliban-part-1-8ceb6099c3c2)
 
+## cats-retry
+
+* [cats-retry](https://cb372.github.io/cats-retry/docs) (Documentation)
+
+### Examples
+
+```bash
+# run
+sbt "ecosystem/runMain com.github.niqdev.retry.ExampleRetry"
+```
+
 ## TODO More libraries
 
 * [refined](https://github.com/fthomas/refined)
@@ -119,4 +136,3 @@ sbt "test:testOnly *fs2*"
     * [Example](https://github.com/jdegoes/lambdaconf-2014-introgame#a-simple-lens)
 * [circe](https://circe.github.io/circe)
 * [Ciris](https://cir.is)
-* [doobie](https://tpolecat.github.io/doobie)
