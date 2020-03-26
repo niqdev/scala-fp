@@ -7,6 +7,7 @@ lazy val info = new {
 
 lazy val versions = new {
   // ecosystem
+  val shapeless  = "2.3.3"
   val catsCore   = "2.1.1"
   val catsEffect = "2.1.2"
   val catsRetry  = "1.1.0"
@@ -25,6 +26,7 @@ lazy val versions = new {
 
 lazy val dependencies = new {
   lazy val ecosystem = Seq(
+    "com.chuusai"      %% "shapeless"                 % versions.shapeless,
     "org.typelevel"    %% "cats-core"                 % versions.catsCore,
     "org.typelevel"    %% "cats-effect"               % versions.catsEffect,
     "com.github.cb372" %% "cats-retry"                % versions.catsRetry,
