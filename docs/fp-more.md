@@ -30,6 +30,7 @@ title: More
 * [The Evolution of a Scala Programmer](https://medium.com/@olxc/the-evolution-of-a-scala-programmer-1b7a709fb71f)
 * [Types: Never commit too early](https://www.sderosiaux.com/articles/2018/08/15/types-never-commit-too-early-part1)
 * [Functional Programming for Mortals with Scalaz](https://leanpub.com/fpmortals) (2018) by Sam Halliday (Book)
+* [Streams for (Co)Free!](https://www.slideshare.net/jdegoes/streams-for-cofree)
 
 ### Category Theory
 

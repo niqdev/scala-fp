@@ -53,3 +53,10 @@ Tagless Final Encoding == MTL-style program composition
 mtl is now is a final tagless encoding of common effects
 The `mtl` (Monad Transformer library) library in haskell used to provide the concrete monad transformers types, which are now in `transformers`
 Option, Either, IO are all effect/context/wrapper
+
+---
+
+# tracing
+* https://speakerdeck.com/kubukoz/keep-your-sanity-with-compositional-tracing
+* https://github.com/kubukoz/talks/tree/master/compositional-tracing
+* https://github.com/tpolecat/natchez

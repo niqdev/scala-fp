@@ -334,6 +334,12 @@ The `Semigroupal` implementation of `product` for a `Monad` is equivalent to `fl
 
 * [Functional Composition](https://benmosheron.gitlab.io/blog/2018/12/24/functional-composition.html)
 
+### Comonad
+
+> TODO
+
+* [A Scala Comonad Tutorial](http://blog.higher-order.com/blog/2015/06/23/a-scala-comonad-tutorial)
+
 ## Effects
 
 Given a monad `M[A]`, if you can *not* extract the `A` out of `M[A]` in a purely-functional way (for `List`you can perform the extraction with `List.head`) then the monad is called **effectful**

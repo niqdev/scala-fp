@@ -114,7 +114,7 @@ List(1, 2, 3, 4).flatMap(i =>
 
 In type theory, regular data structures can be described in terms of sums, products and recursive types. This leads to an algebra for describing data structures (and so-called algebraic data types). Such data types are common in statically typed functional languages
 
-An *algebraic data type* (ADT) is just a data type defined by one or more data constructors, each of which may contain zero or more arguments. The data type is the **sum or union** of its data constructors, and each data constructor is the **product** of its arguments, hence the name algebraic data type
+An *algebraic data type* (ADT) is just a data type defined by one or more data constructors, each of which may contain zero or more arguments. The *data type* is the **sum / union / coproduct** of its data constructors usually represented using *sealed traits*, and each *data constructor* is the **product** of its arguments typically represented using *case classes*, hence the name algebraic data type
 
 **Example**
 
@@ -314,3 +314,15 @@ In functional programming, an effect adds some capabilities to a computation. An
 * `List[A]` adds the effect of aggregation on A
 * `Option[A]` adds the capability of optionality for the type A
 * `Try[A]` models the effects of exceptions
+
+### TODO *What are existential types?*
+
+> TODO
+
+* [Existential types](http://scalada.blogspot.com/2008/01/existential-types.html)
+
+### TODO *What are phantom types?*
+
+> TODO
+
+* [Phantom Types in Scala](https://blog.codecentric.de/en/2016/02/phantom-types-scala)
