@@ -6,7 +6,7 @@ final class ExampleApiSpec extends WordSpecLike with Matchers {
 
   "ExampleApi" should {
 
-    "verify" in {
+    "verify schema" in {
       val schema =
         """|schema {
           |  query: Queries

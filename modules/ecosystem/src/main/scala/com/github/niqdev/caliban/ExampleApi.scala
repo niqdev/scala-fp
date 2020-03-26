@@ -32,5 +32,6 @@ object ExampleApi {
     args => ExampleService.getModel(args.id)
   )
 
-  val api = GraphQL.graphQL(RootResolver(queries))
+  val api: GraphQL[Any] =
+    GraphQL.graphQL(RootResolver(queries))
 }

@@ -120,6 +120,9 @@ sbt "test:testOnly *fs2*"
     - [graphiql](https://github.com/friendsofgo/graphiql) (Docker)
 
 ```bash
+# run
+sbt "ecosystem/runMain com.github.niqdev.caliban.CalibanZIOApp"
+
 # run tests
 sbt "test:testOnly *caliban*"
 ```
