@@ -26,5 +26,9 @@ final class ExampleApiSpec extends WordSpecLike with Matchers {
 
       ExampleApi.api.render shouldBe schema
     }
+
+    "verify query" in {
+      // TODO
+    }
   }
 }
