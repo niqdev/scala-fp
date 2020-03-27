@@ -21,7 +21,9 @@ object CalibanCatsHttp4sApp extends IOApp {
   def server[F[_]: ConcurrentEffect: Timer]: Resource[F, Unit] =
     for {
       interpreter <- Resource.liftF(ExampleApi.api.interpreterAsync)
-      httpApp = Router("/api/graphql" -> Http4sAdapter.makeHttpServiceF(interpreter)).orNotFound
+      httpApp = Router(
+        "/api/graphql" -> Http4sAdapter.makeHttpServiceF(interpreter)
+      ).orNotFound
       _ <- BlazeServerBuilder[F]
         .bindLocal(8080)
         .withHttpApp(httpApp)

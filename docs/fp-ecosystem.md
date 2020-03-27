@@ -122,8 +122,6 @@ sbt "test:testOnly *fs2*"
 ```bash
 # run
 sbt "ecosystem/runMain com.github.niqdev.caliban.CalibanZIOApp"
-
-# start server
 sbt "ecosystem/runMain com.github.niqdev.caliban.CalibanCatsHttp4sApp"
 
 # verify
