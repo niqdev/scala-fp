@@ -2,7 +2,7 @@ package com.github.niqdev.http4s
 
 import cats.effect.Sync
 import org.http4s.dsl.Http4sDsl
-import org.http4s.implicits.http4sKleisliResponseSyntax
+import org.http4s.syntax.kleisli.http4sKleisliResponseSyntaxOptionT
 import org.http4s.{ HttpApp, HttpRoutes }
 
 private[http4s] sealed abstract class HttpService[F[_]: Sync] extends Http4sDsl[F] {

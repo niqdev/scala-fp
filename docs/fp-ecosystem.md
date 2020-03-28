@@ -115,6 +115,21 @@ sbt "test:testOnly *fs2*"
 * [Caliban](https://ghostdogpr.github.io/caliban)
 * [Caliban: Designing a Functional GraphQL Library](https://www.youtube.com/watch?v=OC8PbviYUlQ) by Pierre Ricadat (Video)
 * [GraphQL in Scala with Caliban](https://medium.com/@ghostdogpr/graphql-in-scala-with-caliban-part-1-8ceb6099c3c2)
+* [GraphiQL](https://github.com/graphql/graphiql)
+    - [graphiql-app](https://github.com/skevy/graphiql-app) (GUI)
+    - [graphiql](https://github.com/friendsofgo/graphiql) (Docker)
+
+```bash
+# run
+sbt "ecosystem/runMain com.github.niqdev.caliban.CalibanZIOApp"
+sbt "ecosystem/runMain com.github.niqdev.caliban.CalibanCatsHttp4sApp"
+
+# verify
+http -v :8080/api/graphql query='{models{id}model(id:"model-8"){description,count,valid}}'
+
+# run tests
+sbt "test:testOnly *caliban*"
+```
 
 ## cats-retry
 

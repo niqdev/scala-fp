@@ -7,14 +7,18 @@ lazy val info = new {
 
 lazy val versions = new {
   // ecosystem
-  val catsCore   = "2.1.1"
-  val catsEffect = "2.1.2"
-  val catsRetry  = "1.1.0"
-  val zio        = "1.0.0-RC18-1"
-  val fs2        = "2.1.0"
-  val http4s     = "0.20.20"
-  val doobie     = "0.8.6"
-  val logback    = "1.2.3"
+  val shapeless      = "2.3.3"
+  val catsCore       = "2.1.1"
+  val catsEffect     = "2.1.2"
+  val catsRetry      = "1.1.0"
+  val zio            = "1.0.0-RC18-2"
+  val zioInteropCats = "2.0.0.0-RC12"
+  val refined        = "0.9.13"
+  val fs2            = "2.1.0"
+  val http4s         = "0.20.19"
+  val doobie         = "0.8.6"
+  val caliban        = "0.7.3"
+  val logback        = "1.2.3"
 
   // test
   val scalatest  = "3.0.8"
@@ -25,20 +29,26 @@ lazy val versions = new {
 
 lazy val dependencies = new {
   lazy val ecosystem = Seq(
-    "org.typelevel"    %% "cats-core"                 % versions.catsCore,
-    "org.typelevel"    %% "cats-effect"               % versions.catsEffect,
-    "com.github.cb372" %% "cats-retry"                % versions.catsRetry,
-    "dev.zio"          %% "zio"                       % versions.zio,
-    "dev.zio"          %% "zio-streams"               % versions.zio,
-    "co.fs2"           %% "fs2-core"                  % versions.fs2,
-    "co.fs2"           %% "fs2-io"                    % versions.fs2,
-    "org.http4s"       %% "http4s-dsl"                % versions.http4s,
-    "org.http4s"       %% "http4s-blaze-server"       % versions.http4s,
-    "org.http4s"       %% "http4s-blaze-client"       % versions.http4s,
-    "org.http4s"       %% "http4s-prometheus-metrics" % versions.http4s,
-    "org.tpolecat"     %% "doobie-core"               % versions.doobie,
-    "org.tpolecat"     %% "doobie-h2"                 % versions.doobie,
-    "ch.qos.logback"   % "logback-classic"            % versions.logback
+    "com.chuusai"           %% "shapeless"                 % versions.shapeless,
+    "org.typelevel"         %% "cats-core"                 % versions.catsCore,
+    "org.typelevel"         %% "cats-effect"               % versions.catsEffect,
+    "com.github.cb372"      %% "cats-retry"                % versions.catsRetry,
+    "dev.zio"               %% "zio"                       % versions.zio,
+    "dev.zio"               %% "zio-streams"               % versions.zio,
+    "dev.zio"               %% "zio-interop-cats"          % versions.zioInteropCats,
+    "eu.timepit"            %% "refined"                   % versions.refined,
+    "co.fs2"                %% "fs2-core"                  % versions.fs2,
+    "co.fs2"                %% "fs2-io"                    % versions.fs2,
+    "org.http4s"            %% "http4s-dsl"                % versions.http4s,
+    "org.http4s"            %% "http4s-blaze-server"       % versions.http4s,
+    "org.http4s"            %% "http4s-blaze-client"       % versions.http4s,
+    "org.http4s"            %% "http4s-prometheus-metrics" % versions.http4s,
+    "org.tpolecat"          %% "doobie-core"               % versions.doobie,
+    "org.tpolecat"          %% "doobie-h2"                 % versions.doobie,
+    "com.github.ghostdogpr" %% "caliban"                   % versions.caliban,
+    "com.github.ghostdogpr" %% "caliban-http4s"            % versions.caliban,
+    "com.github.ghostdogpr" %% "caliban-cats"              % versions.caliban,
+    "ch.qos.logback"        % "logback-classic"            % versions.logback
   )
 
   lazy val test = Seq(

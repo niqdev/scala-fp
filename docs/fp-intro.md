@@ -114,7 +114,7 @@ List(1, 2, 3, 4).flatMap(i =>
 
 In type theory, regular data structures can be described in terms of sums, products and recursive types. This leads to an algebra for describing data structures (and so-called algebraic data types). Such data types are common in statically typed functional languages
 
-An *algebraic data type* (ADT) is just a data type defined by one or more data constructors, each of which may contain zero or more arguments. The data type is the **sum or union** of its data constructors, and each data constructor is the **product** of its arguments, hence the name algebraic data type
+An *algebraic data type* (ADT) is just a data type defined by one or more data constructors, each of which may contain zero or more arguments. The *data type* is the **sum / union / coproduct** of its data constructors usually represented using *sealed traits*, and each *data constructor* is the **product** of its arguments typically represented using *case classes*, hence the name algebraic data type
 
 **Example**
 
@@ -326,3 +326,35 @@ In functional programming, an effect adds some capabilities to a computation. An
 > TODO
 
 * [Phantom Types in Scala](https://blog.codecentric.de/en/2016/02/phantom-types-scala)
+
+### TODO *What is type erasure?*
+
+> TODO
+
+* [Overcoming type erasure in Scala](https://medium.com/@sinisalouc/overcoming-type-erasure-in-scala-8f2422070d20)
+* [Type Erasure in Scala](http://squidarth.com/scala/types/2019/01/11/type-erasure-scala.html)
+
+```scala mdoc
+trait Test
+case class Test1() extends Test
+case class Test2() extends Test
+
+def check1[T <: Test](test: Test):Boolean =
+  test.isInstanceOf[T]
+
+def check2[T <: Test: scala.reflect.ClassTag](test: Test): Boolean =
+  test match {
+    case _: T => true
+    case _ => false
+  }
+
+// it does NOT work
+check1[Test1](Test1())
+check1[Test1](Test2()) // should be false
+check1[Test2](Test1()) // should be false
+
+// it works
+check2[Test1](Test1())
+check2[Test1](Test2())
+check2[Test2](Test1())
+```
