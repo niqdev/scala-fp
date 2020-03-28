@@ -26,5 +26,32 @@ final class ExampleApiSpec extends WordSpecLike with Matchers {
 
       ExampleApi.api.render shouldBe schema
     }
+
+    "verify query" in {
+      val query =
+        """
+          |{
+          |  models {
+          |    id
+          |  }
+          |  model(id: "model-8") {
+          |    id
+          |    description
+          |    count
+          |    valid
+          |  }
+          |}
+          |""".stripMargin
+
+      val data = for {
+        interpreter <- ExampleApi.api.interpreter
+        result      <- interpreter.execute(query)
+        _           <- zio.console.putStrLn(s"${result.data}")
+      } yield result.data.toString
+
+      // TODO use zio tests - no scalatest
+      // https://zio.dev/docs/howto/howto_test_effects
+      data.provideLayer(zio.console.Console.live) shouldBe "FIXME"
+    }
   }
 }

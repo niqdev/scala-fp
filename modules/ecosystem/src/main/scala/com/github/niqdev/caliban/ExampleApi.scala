@@ -9,9 +9,11 @@ import eu.timepit.refined.types.string.NonEmptyString
 
 object ExampleApi {
 
+  // used by ExampleModel.id
   implicit val nonEmptyStringSchema: Schema[Any, NonEmptyString] =
     Schema.stringSchema.contramap(_.value)
 
+  // used by ModelId.id
   implicit val string: ArgBuilder[NonEmptyString] = {
     case StringValue(value) =>
       NonEmptyString.from(value).leftMap(msg => ExecutionError(msg))
