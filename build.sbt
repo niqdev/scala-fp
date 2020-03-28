@@ -7,17 +7,18 @@ lazy val info = new {
 
 lazy val versions = new {
   // ecosystem
-  val shapeless  = "2.3.3"
-  val catsCore   = "2.1.1"
-  val catsEffect = "2.1.2"
-  val catsRetry  = "1.1.0"
-  val zio        = "1.0.0-RC18-1"
-  val refined    = "0.9.13"
-  val fs2        = "2.3.0"
-  val http4s     = "0.20.19"
-  val doobie     = "0.8.6"
-  val caliban    = "0.7.3"
-  val logback    = "1.2.3"
+  val shapeless      = "2.3.3"
+  val catsCore       = "2.1.1"
+  val catsEffect     = "2.1.2"
+  val catsRetry      = "1.1.0"
+  val zio            = "1.0.0-RC18-2"
+  val zioInteropCats = "2.0.0.0-RC12"
+  val refined        = "0.9.13"
+  val fs2            = "2.1.0"
+  val http4s         = "0.20.19"
+  val doobie         = "0.8.6"
+  val caliban        = "0.7.3"
+  val logback        = "1.2.3"
 
   // test
   val scalatest  = "3.0.8"
@@ -34,6 +35,7 @@ lazy val dependencies = new {
     "com.github.cb372"      %% "cats-retry"                % versions.catsRetry,
     "dev.zio"               %% "zio"                       % versions.zio,
     "dev.zio"               %% "zio-streams"               % versions.zio,
+    "dev.zio"               %% "zio-interop-cats"          % versions.zioInteropCats,
     "eu.timepit"            %% "refined"                   % versions.refined,
     "co.fs2"                %% "fs2-core"                  % versions.fs2,
     "co.fs2"                %% "fs2-io"                    % versions.fs2,

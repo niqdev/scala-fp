@@ -122,6 +122,10 @@ sbt "test:testOnly *fs2*"
 ```bash
 # run
 sbt "ecosystem/runMain com.github.niqdev.caliban.CalibanZIOApp"
+sbt "ecosystem/runMain com.github.niqdev.caliban.CalibanCatsHttp4sApp"
+
+# verify
+http -v :8080/api/graphql query='{models{id}model(id:"model-8"){description,count,valid}}'
 
 # run tests
 sbt "test:testOnly *caliban*"

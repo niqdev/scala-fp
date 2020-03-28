@@ -326,3 +326,35 @@ In functional programming, an effect adds some capabilities to a computation. An
 > TODO
 
 * [Phantom Types in Scala](https://blog.codecentric.de/en/2016/02/phantom-types-scala)
+
+### TODO *What is type erasure?*
+
+> TODO
+
+* [Overcoming type erasure in Scala](https://medium.com/@sinisalouc/overcoming-type-erasure-in-scala-8f2422070d20)
+* [Type Erasure in Scala](http://squidarth.com/scala/types/2019/01/11/type-erasure-scala.html)
+
+```scala mdoc
+trait Test
+case class Test1() extends Test
+case class Test2() extends Test
+
+def check1[T <: Test](test: Test):Boolean =
+  test.isInstanceOf[T]
+
+def check2[T <: Test: scala.reflect.ClassTag](test: Test): Boolean =
+  test match {
+    case _: T => true
+    case _ => false
+  }
+
+// it does NOT work
+check1[Test1](Test1())
+check1[Test1](Test2()) // should be false
+check1[Test2](Test1()) // should be false
+
+// it works
+check2[Test1](Test1())
+check2[Test1](Test2())
+check2[Test2](Test1())
+```
