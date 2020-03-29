@@ -1,8 +1,9 @@
 package com.github.niqdev.caliban
 
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class ExampleApiSpec extends WordSpecLike with Matchers {
+final class ExampleApiSpec extends AnyWordSpecLike with Matchers {
 
   "ExampleApi" should {
 
