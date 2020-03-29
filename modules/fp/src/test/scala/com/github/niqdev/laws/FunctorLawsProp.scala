@@ -13,9 +13,7 @@ sealed abstract class FunctorLawsProp[F[_]](description: String)(
 ) extends Properties(s"FunctorLaws: $description") {
 
   // A fixed
-  property("identity") = forAll { fa: F[String] =>
-    FunctorLaws[F].identityLaw(fa)
-  }
+  property("identity") = forAll { fa: F[String] => FunctorLaws[F].identityLaw(fa) }
 
   // A, B, C fixed
   property("composition") = forAll { (fa: F[String], f: String => Int, g: Int => Double) =>

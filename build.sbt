@@ -25,7 +25,7 @@ lazy val versions = new {
   val scalacheck = "1.14.3"
 
   val kindProjector = "0.11.0"
-  val silencer = "1.6.0"
+  val silencer      = "1.6.0"
 }
 
 lazy val dependencies = new {

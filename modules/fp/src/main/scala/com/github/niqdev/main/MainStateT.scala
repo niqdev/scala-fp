@@ -10,9 +10,7 @@ object MainStateT {
   type StateIO[A] = StateT[IO, IntState, A]
 
   def liftIO[A](io: IO[A]): StateIO[A] =
-    StateT[IO, IntState, A] { s: IntState =>
-      io.map(a => (s, a))
-    }
+    StateT[IO, IntState, A] { s: IntState => io.map(a => (s, a)) }
 
   def updateState(f: IntState => Int): StateIO[Int] =
     StateT[IO, IntState, Int] { oldState: IntState =>

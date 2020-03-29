@@ -14,13 +14,9 @@ sealed abstract class MonadLawsProp[F[_], A, B, C](description: String)(
   arbitraryG: Arbitrary[B => F[C]]
 ) extends Properties(s"MonadLaws: $description") {
 
-  property("leftIdentity") = forAll { (a: A, f: A => F[B]) =>
-    MonadLaws[F].leftIdentityLaw(a, f)
-  }
+  property("leftIdentity") = forAll { (a: A, f: A => F[B]) => MonadLaws[F].leftIdentityLaw(a, f) }
 
-  property("rightIdentity") = forAll { fa: F[A] =>
-    MonadLaws[F].rightIdentityLaw(fa)
-  }
+  property("rightIdentity") = forAll { fa: F[A] => MonadLaws[F].rightIdentityLaw(fa) }
 
   property("associativity") = forAll { (fa: F[A], f: A => F[B], g: B => F[C]) =>
     MonadLaws[F].associativityLaw(fa, f, g)
