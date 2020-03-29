@@ -1,9 +1,10 @@
 package com.github.niqdev.cats
 
 import cats.Eval
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class EvalSpec extends WordSpecLike with Matchers {
+final class EvalSpec extends AnyWordSpecLike with Matchers {
 
   "Eval" should {
 

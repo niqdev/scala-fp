@@ -4,9 +4,10 @@ import java.nio.charset.StandardCharsets
 
 import cats.effect.IO
 import org.http4s.{ Method, Request, Response, Status, Uri }
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class HttpServiceSpec extends WordSpecLike with Matchers {
+final class HttpServiceSpec extends AnyWordSpecLike with Matchers {
 
   "HttpService" should {
 

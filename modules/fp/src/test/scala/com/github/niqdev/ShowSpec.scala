@@ -2,9 +2,10 @@ package com.github.niqdev
 
 import java.time.{ ZoneId, ZonedDateTime }
 
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class ShowSpec extends WordSpecLike with Matchers {
+final class ShowSpec extends AnyWordSpecLike with Matchers {
 
   case class Person(name: String, age: Int)
 

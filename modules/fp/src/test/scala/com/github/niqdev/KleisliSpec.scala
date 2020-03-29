@@ -1,8 +1,9 @@
 package com.github.niqdev
 
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class KleisliSpec extends WordSpecLike with Matchers {
+final class KleisliSpec extends AnyWordSpecLike with Matchers {
 
   "Kleisli" should {
 

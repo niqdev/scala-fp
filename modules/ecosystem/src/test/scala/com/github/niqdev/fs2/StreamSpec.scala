@@ -1,9 +1,10 @@
 package com.github.niqdev.fs2
 
 import cats.effect.IO
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class StreamSpec extends WordSpecLike with Matchers {
+final class StreamSpec extends AnyWordSpecLike with Matchers {
 
   "Stream" should {
 

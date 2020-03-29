@@ -1,9 +1,10 @@
 package com.github.niqdev.cats
 
 import cats.data.State
-import org.scalatest.{ Matchers, WordSpecLike }
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 
-final class StateSpec extends WordSpecLike with Matchers {
+final class StateSpec extends AnyWordSpecLike with Matchers {
 
   "State" should {
 
