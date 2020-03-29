@@ -6,6 +6,7 @@ title: Introduction
 ## Resources
 
 * [Scala's Types of Types](https://ktoso.github.io/scala-types-of-types)
+* [A Glossary of Functional Programming](http://degoes.net/articles/fp-glossary)
 
 ## FAQ
 
