@@ -25,6 +25,7 @@ lazy val versions = new {
   val scalacheck = "1.14.3"
 
   val kindProjector = "0.11.0"
+  val silencer = "1.6.0"
 }
 
 lazy val dependencies = new {
@@ -82,8 +83,10 @@ lazy val commonSettings = Seq(
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases")
   ),
-  addCompilerPlugin(
-    dependency = "org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full
+  addCompilerPlugin("org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full),
+  libraryDependencies ++= Seq(
+    compilerPlugin("com.github.ghik" % "silencer-plugin" % versions.silencer cross CrossVersion.full),
+    "com.github.ghik" % "silencer-lib" % versions.silencer % Provided cross CrossVersion.full
   )
 )
 

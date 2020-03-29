@@ -340,6 +340,7 @@ trait Test
 case class Test1() extends Test
 case class Test2() extends Test
 
+@com.github.ghik.silencer.silent
 def check1[T <: Test](test: Test):Boolean =
   test.isInstanceOf[T]
 
@@ -351,8 +352,8 @@ def check2[T <: Test: scala.reflect.ClassTag](test: Test): Boolean =
 
 // it does NOT work
 check1[Test1](Test1())
-check1[Test1](Test2()) // should be false
-check1[Test2](Test1()) // should be false
+check1[Test1](Test2())
+check1[Test2](Test1())
 
 // it works
 check2[Test1](Test1())

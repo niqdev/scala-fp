@@ -77,6 +77,9 @@ sbt docusaurusCreateSite
 
 # start local site with livereload (shell #2)
 yarn --cwd website/ start
+
+# upgrade all dependencies
+yarn --cwd website/ upgrade --latest
 ```
 
 Testing
