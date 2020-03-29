@@ -9,6 +9,9 @@ final class EvalSpec extends AnyWordSpecLike with Matchers {
   "Eval" should {
 
     "verify examples" in {
+
+      implicit val order = Ordering.Double.TotalOrdering
+
       // val is eager and memoized
       Eval.now(math.random + 1000).value should be >= 0.0
       // def is lazy and not memoized

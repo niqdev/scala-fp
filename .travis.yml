@@ -7,10 +7,10 @@ services:
 
 jdk:
   - openjdk8
-  - openjdk12
+  - openjdk11
 
 scala:
-  - 2.12.10
+  - 2.13.1
 
 cache:
   directories:

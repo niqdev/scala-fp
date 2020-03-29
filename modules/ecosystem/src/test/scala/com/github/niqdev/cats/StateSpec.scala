@@ -30,7 +30,7 @@ final class StateSpec extends AnyWordSpecLike with Matchers {
       // ignores the state and returns a supplied result
       State.pure[Int, String]("result").run(8).value shouldBe Tuple2(8, "result")
       // extracts the state via a transformation function
-      State.inspect[Int, String](_ + "!").run(8).value shouldBe Tuple2(8, "8!")
+      State.inspect[Int, String](value => s"$value!").run(8).value shouldBe Tuple2(8, "8!")
       // updates the state using an update function
       State.modify[Int](_ + 1).run(7).value shouldBe Tuple2(8, ())
     }

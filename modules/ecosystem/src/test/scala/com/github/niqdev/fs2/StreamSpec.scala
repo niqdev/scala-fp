@@ -53,9 +53,9 @@ final class StreamSpec extends AnyWordSpecLike with Matchers {
 
       val effectfulError = for {
         a <- fs2.Stream.eval(IO(1))
-        b <- fs2.Stream.raiseError[IO](new Exception("error"))
+        _ <- fs2.Stream.raiseError[IO](new Exception("error"))
         c <- fs2.Stream.eval(IO(3))
-      } yield a + b + c
+      } yield a + c
 
       scala.util.Try(effectfulError.compile.toList.unsafeRunSync) match {
         case scala.util.Failure(error) =>

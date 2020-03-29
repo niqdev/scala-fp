@@ -14,13 +14,11 @@ object ExampleServer extends IOApp {
 
   def server[F[_]: ConcurrentEffect: Timer]: Resource[F, ExitCode] =
     for {
-      prometheusService <- Resource.liftF(PrometheusExportService.build[F])
+      prometheusService <- PrometheusExportService.build[F]
       helloRoute: HttpRoutes[F] = HttpService[F].helloRoute
-      meteredRoutes <- Resource
-        .liftF(
-          Prometheus[F](prometheusService.collectorRegistry, "server")
-            .map(Metrics[F](_)(helloRoute))
-        )
+      meteredRoutes <- Prometheus
+        .metricsOps[F](prometheusService.collectorRegistry, "server")
+        .map(Metrics[F](_)(helloRoute))
       allRoutes = meteredRoutes <+> prometheusService.routes
       httpApp   = Router("/" -> allRoutes).orNotFound
       exitCode <- Resource.liftF(

@@ -2,7 +2,7 @@ lazy val info = new {
   val maintainer   = "niqdev"
   val organization = "com.github.niqdev"
   val name         = "scala-fp"
-  val scalaVersion = "2.12.10"
+  val scalaVersion = "2.13.1"
 }
 
 lazy val versions = new {
@@ -15,7 +15,7 @@ lazy val versions = new {
   val zioInteropCats = "2.0.0.0-RC12"
   val refined        = "0.9.13"
   val fs2            = "2.3.0"
-  val http4s         = "0.20.19"
+  val http4s         = "0.21.1"
   val doobie         = "0.8.8"
   val caliban        = "0.7.3"
   val logback        = "1.2.3"
@@ -24,6 +24,7 @@ lazy val versions = new {
   val scalatest  = "3.1.1"
   val scalacheck = "1.14.3"
 
+  // common
   val kindProjector = "0.11.0"
   val silencer      = "1.6.0"
 }
@@ -69,16 +70,18 @@ lazy val commonSettings = Seq(
   scalacOptions ++= Seq(
     "-encoding",
     "UTF-8", // source files are in UTF-8
+    "-unchecked", // Enable additional warnings where generated code depends on assumptions.
     "-deprecation", // warn about use of deprecated APIs
     "-unchecked", // warn about unchecked type parameters
     "-feature", // warn about misused language features
-    "-language:existentials", // Existential types (besides wildcard types) can be written and inferred
+    "-explaintypes", // explain type errors in more detail
+    "-language:existentials", // existential types (besides wildcard types) can be written and inferred
     "-language:higherKinds", // allow higher kinded types without `import scala.language.higherKinds`
-    "-language:implicitConversions", // Allow definition of implicit functions called views
+    "-language:implicitConversions", // allow definition of implicit functions called views
     "-Xlint", // enable handy linter warnings
     "-Xfatal-warnings", // turn compiler warnings into errors
-    "-Ypartial-unification", // allow the compiler to unify type constructors of different arities
-    "-language:postfixOps"
+    "-Ywarn-unused:imports", // warn if an import selector is not referenced
+    "-Xsource:2.13"
   ),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases")
