@@ -1,5 +1,7 @@
-package com.github.niqdev.scalacheck
+package com.github.niqdev
+package scalacheck
 
+import com.github.niqdev.model._
 import org.scalacheck.Gen
 
 object Generators extends CommonGenerators with EnumeratumGenerators with SquantsGenerators {

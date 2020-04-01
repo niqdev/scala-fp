@@ -1,5 +1,6 @@
 package com.github.niqdev.scalacheck
 
+import com.github.niqdev.model.models._
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 
@@ -14,7 +15,7 @@ final class ModelSpec extends AnyWordSpecLike with Matchers {
     }
 
     "generate Person as Json" in {
-      Generators.genJson[models.Person](Generators.genPerson).sample.collect {
+      Generators.genJson[Person](Generators.genPerson).sample.collect {
         case personJson => println(personJson)
       }
     }
