@@ -89,6 +89,13 @@ sbt "test:testOnly *fs2*"
 * [Scala Tagged types](http://www.vlachjosef.com/tagged-types-introduction)
 * [Scala's Modular Roots](http://lambdafoo.com/scala-syd-2015-modules)
 
+### Examples
+
+```bash
+# run tests
+sbt "test:testOnly *shapeless*"
+```
+
 ## ScalaTest and ScalaCheck
 
 ### Resources
@@ -100,6 +107,13 @@ sbt "test:testOnly *fs2*"
 * [ScalaCheck lesson](https://github.com/alvinj/FPScalaCheck)
 * [Code Examples](https://booksites.artima.com/scalacheck/examples/index.html)
 * [Using ScalaCheck to Verify Infinite Algebraic Structures](http://jtfmumm.com/blog/2015/09/04/adventures-in-abstract-algebra-part-4-using-scalacheck-to-verify-infinite-algebraic-structures/)
+
+### Examples
+
+```bash
+# run tests
+sbt "test:testOnly *scalacheck*"
+```
 
 ## GraphQL
 
@@ -118,6 +132,8 @@ sbt "test:testOnly *fs2*"
 * [GraphiQL](https://github.com/graphql/graphiql)
     - [graphiql-app](https://github.com/skevy/graphiql-app) (GUI)
     - [graphiql](https://github.com/friendsofgo/graphiql) (Docker)
+
+### Examples
 
 ```bash
 # run
@@ -142,7 +158,7 @@ sbt "test:testOnly *caliban*"
 sbt "ecosystem/runMain com.github.niqdev.retry.ExampleRetry"
 ```
 
-## TODO More libraries
+## More libraries
 
 * [refined](https://github.com/fthomas/refined)
 * [Enumeratum](https://github.com/lloydmeta/enumeratum)
