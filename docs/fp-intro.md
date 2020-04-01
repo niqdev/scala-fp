@@ -293,11 +293,66 @@ This is a type constructor that takes type constructor(s): a higher-kinded type.
 
 > TODO parallel between curried (function) and type constructor - see Arrows in category theory
 
-### TODO *What are type members?*
+### *What are singleton types?*
+
+In a companion object
+
+```scala mdoc
+object Foo
+Foo
+```
+
+The *singleton type* `Foo.type` is the type of `Foo`, and `Foo` is the **only value** with that type
+
+###  *What are literal types?*
+
+A Scala literal value may have multi􏰀ple types
+
+```scala mdoc
+"foo": String
+"foo": AnyRef
+"foo": Any
+```
+
+Literal values have also another type: a **singleton type** that belongs exclusively to that one value. Singleton types applied to literal values are called *literal types*
+
+Unfortunately the default behaviour of the compiler is to **widen** literals to their nearest non-singleton type, making these two expressions equivalent
+
+```scala mdoc
+"foo"
+"foo" : String
+```
+
+It's possible to convert a literal expression to a singleton-typed literal expression with `narrow`
+
+```scala mdoc
+import shapeless.syntax.singleton.mkSingletonOps
+
+"foo".narrow
+```
+
+### TODO *What are phantom types and type tagging?*
 
 > TODO
 
-* [Type Parameters and Type Members](http://typelevel.org/blog/2015/07/13/type-members-parameters.html) (type projector ???)
+* [Phantom Types in Scala](https://blog.codecentric.de/en/2016/02/phantom-types-scala)
+
+A literal number is an `Int` in two worlds: at run􏰀time, where it has an actual value and methods that can be called, and at compile ti􏰀me, where the compiler uses the type to calculate which pieces of code work together and to search for implicits
+
+```scala mdoc
+val number = 42
+
+trait Answer
+val myAnswer = number.asInstanceOf[Int with Answer]
+```
+
+It's possible to modify the type of `number` at compile ti􏰀me without modifying its runtime behaviour by **tagging** it with a *phantom type*. Phantom types are types with no runtime semantics
+
+### TODO *What are existential types?*
+
+> TODO
+
+* [Existential types](http://scalada.blogspot.com/2008/01/existential-types.html)
 
 ### TODO *What is a type lambda?*
 
@@ -308,32 +363,17 @@ This is a type constructor that takes type constructor(s): a higher-kinded type.
 * [What are type lambdas in Scala and what are their benefits?](https://stackoverflow.com/questions/8736164/what-are-type-lambdas-in-scala-and-what-are-their-benefits)
 * [kind-projector](https://github.com/typelevel/kind-projector)
 
-### *What is an effectful computation?*
-
-In functional programming, an effect adds some capabilities to a computation. An effect is modeled usually in the form of a **type constructor** that constructs types with these additional capabilities
-
-* `List[A]` adds the effect of aggregation on A
-* `Option[A]` adds the capability of optionality for the type A
-* `Try[A]` models the effects of exceptions
-
-### TODO *What are existential types?*
+### TODO *What are type members?*
 
 > TODO
 
-* [Existential types](http://scalada.blogspot.com/2008/01/existential-types.html)
-
-### TODO *What are phantom types?*
-
-> TODO
-
-* [Phantom Types in Scala](https://blog.codecentric.de/en/2016/02/phantom-types-scala)
+* [Type Parameters and Type Members](http://typelevel.org/blog/2015/07/13/type-members-parameters.html) (type projector ???)
 
 ### *What are dependent types?*
 
 * [Dependent Types in Scala](http://wheaties.github.io/Presentations/Scala-Dep-Types/dependent-types.html)
 
-Given
-```
+```scala mdoc
 trait Generic[A] {
   type R
   def to(value: A): R
@@ -344,7 +384,8 @@ object Generic {
   def getR[A](value: A)(implicit gen: Generic[A]) = gen.to(value)
 }
 ```
-where `A` is a type parameter and `R` is a type member, `getR` will return a type that depends on `gen` instance i.e. its value parameter via the type member
+
+Given the definition above, where `A` is a type parameter and `R` is a type member, `getR` will return a type that depends on `gen` instance i.e. its value parameter via the type member
 
 ### TODO *What is type erasure?*
 
@@ -378,3 +419,11 @@ check2[Test1](Test1())
 check2[Test1](Test2())
 check2[Test2](Test1())
 ```
+
+### *What is an effectful computation?*
+
+In functional programming, an effect adds some capabilities to a computation. An effect is modeled usually in the form of a **type constructor** that constructs types with these additional capabilities
+
+* `List[A]` adds the effect of aggregation on A
+* `Option[A]` adds the capability of optionality for the type A
+* `Try[A]` models the effects of exceptions
