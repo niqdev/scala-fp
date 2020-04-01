@@ -19,7 +19,8 @@ object models {
     info: Map[NonEmptyString, String],
     active: Boolean
   )
-  object Person {
+  object Person extends PersonCodec
+  trait PersonCodec {
     import io.circe.refined.{ refinedDecoder, refinedEncoder }
 
 //    implicit val lengthEncoder: Encoder[Length] =
