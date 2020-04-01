@@ -2,7 +2,7 @@ package com.github.niqdev.shapeless
 
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
-import shapeless.{Generic, HNil, Inl, Inr}
+import shapeless.{ Generic, HNil, Inl, Inr }
 
 final class GenericSpec extends AnyWordSpecLike with Matchers {
 
@@ -13,7 +13,7 @@ final class GenericSpec extends AnyWordSpecLike with Matchers {
   // COPRODUCT / SUM / OR / SEALED TRAIT => :+: / Inl / Inr / CNil
   sealed trait Shape
   case class Rectangle(width: Double, height: Double) extends Shape
-  case class Circle(radius: Double) extends Shape
+  case class Circle(radius: Double)                   extends Shape
 
   "Generic" should {
 

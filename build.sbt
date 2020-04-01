@@ -13,6 +13,7 @@ lazy val versions = new {
   val zio            = "1.0.0-RC18-2"
   val zioInteropCats = "2.0.0.0-RC12"
   val refined        = "0.9.13"
+  val circe          = "0.13.0"
   val fs2            = "2.3.0"
   val http4s         = "0.21.2"
   val doobie         = "0.8.8"
@@ -38,6 +39,9 @@ lazy val dependencies = new {
     "dev.zio"               %% "zio-streams"               % versions.zio,
     "dev.zio"               %% "zio-interop-cats"          % versions.zioInteropCats,
     "eu.timepit"            %% "refined"                   % versions.refined,
+    "io.circe"              %% "circe-core"                % versions.circe,
+    "io.circe"              %% "circe-generic"             % versions.circe,
+    "io.circe"              %% "circe-parser"              % versions.circe,
     "co.fs2"                %% "fs2-core"                  % versions.fs2,
     "co.fs2"                %% "fs2-io"                    % versions.fs2,
     "org.http4s"            %% "http4s-dsl"                % versions.http4s,
