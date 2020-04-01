@@ -6,23 +6,27 @@ lazy val info = new {
 
 lazy val versions = new {
   // ecosystem
-  val shapeless      = "2.3.3"
-  val catsCore       = "2.1.1"
-  val catsEffect     = "2.1.2"
-  val catsRetry      = "1.1.0"
-  val zio            = "1.0.0-RC18-2"
-  val zioInteropCats = "2.0.0.0-RC12"
-  val refined        = "0.9.13"
-  val circe          = "0.13.0"
-  val fs2            = "2.3.0"
-  val http4s         = "0.21.2"
-  val doobie         = "0.8.8"
-  val caliban        = "0.7.3"
-  val logback        = "1.2.3"
+  val shapeless        = "2.3.3"
+  val catsCore         = "2.1.1"
+  val catsEffect       = "2.1.2"
+  val catsRetry        = "1.1.0"
+  val zio              = "1.0.0-RC18-2"
+  val zioInteropCats   = "2.0.0.0-RC12"
+  val circe            = "0.13.0"
+  val refined          = "0.9.13"
+  val enumeratum       = "1.5.15"
+  val enumeratumCirce  = "1.5.23"
+  val enumeratumDoobie = "1.5.17"
+  val fs2              = "2.3.0"
+  val http4s           = "0.21.2"
+  val doobie           = "0.8.8"
+  val caliban          = "0.7.3"
+  val logback          = "1.2.3"
 
   // test
-  val scalatest  = "3.1.1"
-  val scalacheck = "1.14.3"
+  val scalatest            = "3.1.1"
+  val scalacheck           = "1.14.3"
+  val enumeratumScalacheck = "1.5.16"
 
   // common
   val kindProjector = "0.11.0"
@@ -38,10 +42,13 @@ lazy val dependencies = new {
     "dev.zio"               %% "zio"                       % versions.zio,
     "dev.zio"               %% "zio-streams"               % versions.zio,
     "dev.zio"               %% "zio-interop-cats"          % versions.zioInteropCats,
-    "eu.timepit"            %% "refined"                   % versions.refined,
     "io.circe"              %% "circe-core"                % versions.circe,
     "io.circe"              %% "circe-generic"             % versions.circe,
     "io.circe"              %% "circe-parser"              % versions.circe,
+    "eu.timepit"            %% "refined"                   % versions.refined,
+    "com.beachape"          %% "enumeratum"                % versions.enumeratum,
+    "com.beachape"          %% "enumeratum-circe"          % versions.enumeratumCirce,
+    "com.beachape"          %% "enumeratum-doobie"         % versions.enumeratumDoobie,
     "co.fs2"                %% "fs2-core"                  % versions.fs2,
     "co.fs2"                %% "fs2-io"                    % versions.fs2,
     "org.http4s"            %% "http4s-dsl"                % versions.http4s,
@@ -57,9 +64,10 @@ lazy val dependencies = new {
   )
 
   lazy val test = Seq(
-    "org.scalatest"  %% "scalatest"        % versions.scalatest  % Test,
-    "org.tpolecat"   %% "doobie-scalatest" % versions.doobie     % Test,
-    "org.scalacheck" %% "scalacheck"       % versions.scalacheck % Test
+    "org.scalatest"  %% "scalatest"             % versions.scalatest            % Test,
+    "org.tpolecat"   %% "doobie-scalatest"      % versions.doobie               % Test,
+    "org.scalacheck" %% "scalacheck"            % versions.scalacheck           % Test,
+    "com.beachape"   %% "enumeratum-scalacheck" % versions.enumeratumScalacheck % Test
   )
 }
 
