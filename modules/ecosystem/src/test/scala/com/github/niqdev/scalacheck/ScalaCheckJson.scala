@@ -65,7 +65,8 @@ object Hello {
 
   // TODO allow constants in syntax i.e. Gen.const
   implicit class ScalaCheckJsonSyntax(key: String) {
-    def gen[T]: Gen[Json] = ???
+    def gen[T]: Gen[Json]           = ???
+    def gen[T](value: T): Gen[Json] = ???
   }
 
   case class MyProperty(property1: String, property2: Int)
@@ -86,7 +87,8 @@ object Hello {
     "myString".gen[String],
     "myNonEmptyString".gen[NonEmptyString],
     "myArray".gen[List[String]],
-    "myObject".gen[MyProperty]
+    "myObject".gen[MyProperty],
+    "myConstant".gen[String]("constant")
   )
 
 }

@@ -328,6 +328,24 @@ In functional programming, an effect adds some capabilities to a computation. An
 
 * [Phantom Types in Scala](https://blog.codecentric.de/en/2016/02/phantom-types-scala)
 
+### *What are dependent types?*
+
+* [Dependent Types in Scala](http://wheaties.github.io/Presentations/Scala-Dep-Types/dependent-types.html)
+
+Given
+```
+trait Generic[A] {
+  type R
+  def to(value: A): R
+  def from(value: R): A
+}
+
+object Generic {
+  def getR[A](value: A)(implicit gen: Generic[A]) = gen.to(value)
+}
+```
+where `A` is a type parameter and `R` is a type member, `getR` will return a type that depends on `gen` instance i.e. its value parameter via the type member
+
 ### TODO *What is type erasure?*
 
 > TODO
