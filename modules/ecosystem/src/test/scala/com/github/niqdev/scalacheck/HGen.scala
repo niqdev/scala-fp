@@ -2,6 +2,7 @@ package com.github.niqdev.scalacheck
 
 import io.circe.Json
 import org.scalacheck.Gen
+import shapeless.{ HList, HNil }
 
 object MyGenerators {
   lazy val genBoolean: Gen[Boolean] =
@@ -43,7 +44,7 @@ object HGen {
     gmap[String](Gen.alphaNumStr)
 
   val defaultIntHGen: HGen[Int] =
-    gmap[Int](Gen.posNum)
+    gmap[Int](Gen.posNum[Int])
 
   val defaultBooleanHGen: HGen[Boolean] =
     gmap[Boolean](MyGenerators.genBoolean)
@@ -52,7 +53,10 @@ object HGen {
     instance[T](ToJson[T].from(tGen))
 
   // TODO
-  implicit def genericHGen[T]: HGen[T] = ???
+  import shapeless.::
+  implicit val hNilHGen: HGen[HNil]                                = ???
+  implicit def hListHGen[K <: Symbol, H, T <: HList]: HGen[H :: T] = ???
+  implicit def genericHGen[T]: HGen[T]                             = ???
 }
 
 case class Example(myString: String, myInt: Int)
