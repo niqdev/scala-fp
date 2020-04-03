@@ -1,3 +1,4 @@
+/*
 package com.github.niqdev.scalacheck
 
 import java.io.Serializable
@@ -12,9 +13,77 @@ import shapeless.labelled.FieldType
 import shapeless.{HList, HNil, LabelledGeneric, Lazy, Witness}
 
 case class Example(string: String, uuid: UUID)
+// ('string -> String, 'uuid: UUID)
+// ('string -> Gen[Sting], 'uuid -> Gen[UUID])
+// OVERRIDE generators: default provided
+// [ SYMBOL, GEN[*] ].foldLeft(Gen.const(JsonObject.empty)) { (result, data) =>
+//    val (key, gen) = data
+//    result.flatMap { jsonObject => gen.map(value => jsonObject.add(key, value)) }
+// }
 
 trait GenJson1[T] {
   def gen: Gen[Json]
+}
+
+trait GenJson2[T] {
+  def gen(value: T): Gen[Json]
+}
+
+// https://github.com/underscoreio/shapeless-guide-code/blob/solutions/json/src/main/scala/json.scala
+object GenJson2 {
+  def apply[T](implicit ev: GenJson2[T]): GenJson2[T] = ev
+
+  implicit val alphaNumStrGenJson: GenJson2[Gen[String]] =
+    _.map(Json.fromString)
+
+  implicit val uuidGenJson: GenJson2[Gen[UUID]] =
+    _.map(value => Json.fromString(value.toString))
+
+  import io.circe.syntax.EncoderOps
+  implicit val hNilGenJson: GenJson2[HNil] =
+    _ => JsonObject.empty.asJson
+
+  import shapeless.::
+  import shapeless.ops.hlist.IsHCons
+  import shapeless.record._
+
+  val x = LabelledGeneric[Example].
+
+  implicit def hListGenJson[K <: Symbol, H, T <: HList](
+     implicit
+     witness: Witness.Aux[K],
+     hGenJson: Lazy[GenJson2[H]],
+     tGenJson: GenJson2[T]
+   ): GenJson2[FieldType[K, H] :: T] = {
+    val fieldName = witness.value.name
+
+    new GenJson2[HList] {
+      override def gen(value: HList): Gen[Json] =
+        value match {
+          case h :: t =>
+            val hField  = witness.value.name -> hGenJson.value.gen(h)
+            val tFields = tGenJson.gen(t).fields
+            JsonObject(hField :: tFields)
+        }
+//      {
+//        val h: Gen[Json] = hGenJson.value.gen(value.head)
+//        val t: Gen[Json] = tGenJson.gen(value.tail)
+//        JsonObject((fieldName, h.asJson) :: t.fields)
+//        ???
+//      }
+    }
+
+
+
+    /*
+    createObjectEncoder { hlist =>
+      val head = hEncoder.value.encode(hlist.head)
+      val tail = tEncoder.encode(hlist.tail)
+      JsonObject((fieldName, head) :: tail.fields)
+    }
+ */
+    ???
+  }
 }
 
 @silent
@@ -63,7 +132,7 @@ object GenJson1 {
       def encode(value: A): JsonObject =
         fn(value)
     }
-   */
+ */
 
   import shapeless.::
 
@@ -85,7 +154,7 @@ object GenJson1 {
       val tail = tEncoder.encode(hlist.tail)
       JsonObject((fieldName, head) :: tail.fields)
     }
-     */
+ */
     ???
   }
 
@@ -102,6 +171,8 @@ object GenJson1 {
  */
 }
 
+// shapeless LabelledGeneric get representation without concrete instance
+// TODO see random gen
 object HelloGenJson1 extends App {
 
   println(GenJson1.fromString(Gen.numStr).sample)
@@ -197,3 +268,4 @@ object Hello {
   )
 
 }
+ */
