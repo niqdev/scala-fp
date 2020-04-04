@@ -2,7 +2,8 @@ package com.github.niqdev.scalacheck
 
 import io.circe.Json
 import org.scalacheck.Gen
-import shapeless.{ HList, HNil }
+import shapeless.labelled.FieldType
+import shapeless.{HList, HNil, Lazy, Witness}
 
 object MyGenerators {
   lazy val genBoolean: Gen[Boolean] =
@@ -54,9 +55,31 @@ object HGen {
 
   // TODO
   import shapeless.::
-  implicit val hNilHGen: HGen[HNil]                                = ???
-  implicit def hListHGen[K <: Symbol, H, T <: HList]: HGen[H :: T] = ???
-  implicit def genericHGen[T]: HGen[T]                             = ???
+  implicit val hNilHGen: HGen[HNil] =
+    instance(Json.Null)
+
+  implicit def hListHGen[K <: Symbol, H, T <: HList](
+    implicit
+    witness: Witness.Aux[K],
+    hHGen: Lazy[HGen[H]],
+    tHGen: HGen[T],
+    toJson: ToJson[H]
+  ): HGen[FieldType[K, H] :: T] = {
+    val fieldName = witness.value.name
+
+    // TODO iterate over Repr
+
+    new HGen[FieldType[K, H] :: T] {
+      override def gen: Gen[Json] = {
+        val head = hHGen.value.gen
+        val tail = tHGen.gen
+
+        ???
+      }
+    }
+  }
+
+  implicit def genericHGen[T]: HGen[T] = ???
 }
 
 case class Example(myString: String, myInt: Int)

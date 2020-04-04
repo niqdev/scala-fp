@@ -88,6 +88,8 @@ sbt "test:testOnly *fs2*"
 * [First-class polymorphic function values in shapeless](https://milessabin.com/blog/2012/04/27/shapeless-polymorphic-function-values-1)
 * [Scala Tagged types](http://www.vlachjosef.com/tagged-types-introduction)
 * [Scala's Modular Roots](http://lambdafoo.com/scala-syd-2015-modules)
+* [Type classes and generic derivation](https://meta.plasm.us/posts/2015/11/08/type-classes-and-generic-derivation)
+* [Automatic type-class derivation with Shapeless](https://www.lyh.me/automatic-type-class-derivation-with-shapeless.html)
 
 ### Examples
 
