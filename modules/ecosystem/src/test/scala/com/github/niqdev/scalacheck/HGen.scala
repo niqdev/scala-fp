@@ -1,5 +1,6 @@
 package com.github.niqdev.scalacheck
 
+import com.github.ghik.silencer.silent
 import io.circe.Json
 import org.scalacheck.Gen
 import shapeless.labelled.FieldType
@@ -33,6 +34,7 @@ trait HGen[T] {
   def gen: Gen[Json]
 }
 
+@silent
 object HGen {
   def apply[T](implicit ev: HGen[T]): HGen[T] = ev
 

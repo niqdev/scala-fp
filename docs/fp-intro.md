@@ -325,10 +325,11 @@ Unfortunately the default behaviour of the compiler is to **widen** literals to 
 
 It's possible to convert a literal expression to a singleton-typed literal expression with `narrow`
 
-```scala mdoc
+```scala
 import shapeless.syntax.singleton.mkSingletonOps
 
-"foo".narrow
+val x = "foo".narrow
+// x: String("foo") = foo
 ```
 
 ### TODO *What are phantom types and type tagging?*
