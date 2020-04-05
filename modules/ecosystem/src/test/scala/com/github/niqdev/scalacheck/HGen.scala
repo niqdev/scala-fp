@@ -4,7 +4,7 @@ import com.github.ghik.silencer.silent
 import io.circe.Json
 import org.scalacheck.Gen
 import shapeless.labelled.FieldType
-import shapeless.{HList, HNil, Lazy, Witness}
+import shapeless.{ HList, HNil, Lazy, Witness }
 
 object MyGenerators {
   lazy val genBoolean: Gen[Boolean] =
