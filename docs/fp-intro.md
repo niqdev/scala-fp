@@ -302,11 +302,11 @@ object Foo
 Foo
 ```
 
-The *singleton type* `Foo.type` is the type of `Foo`, and `Foo` is the **only value** with that type
+The **singleton type** `Foo.type` is the type of `Foo`, and `Foo` is the *only value* with that type
 
 ###  *What are literal types?*
 
-A Scala literal value may have multi􏰀ple types
+A Scala literal value may have multiple types
 
 ```scala mdoc
 "foo": String
@@ -314,9 +314,9 @@ A Scala literal value may have multi􏰀ple types
 "foo": Any
 ```
 
-Literal values have also another type: a **singleton type** that belongs exclusively to that one value. Singleton types applied to literal values are called *literal types*
+Literal values have also another type: a *singleton type* that belongs exclusively to that one value. Singleton types applied to literal values are called **literal types**
 
-Unfortunately the default behaviour of the compiler is to **widen** literals to their nearest non-singleton type, making these two expressions equivalent
+Unfortunately the default behaviour of the compiler is to *widen* literals to their nearest non-singleton type, making these two expressions equivalent
 
 ```scala mdoc
 "foo"
@@ -338,7 +338,7 @@ val x = "foo".narrow
 
 * [Phantom Types in Scala](https://blog.codecentric.de/en/2016/02/phantom-types-scala)
 
-A literal number is an `Int` in two worlds: at run􏰀time, where it has an actual value and methods that can be called, and at compile ti􏰀me, where the compiler uses the type to calculate which pieces of code work together and to search for implicits
+A literal number is an `Int` in two worlds: at runtime, where it has an actual value and methods that can be called, and at compile time, where the compiler uses the type to calculate which pieces of code work together and to search for implicits
 
 ```scala mdoc
 val number = 42
@@ -347,7 +347,7 @@ trait Answer
 val myAnswer = number.asInstanceOf[Int with Answer]
 ```
 
-It's possible to modify the type of `number` at compile ti􏰀me without modifying its runtime behaviour by **tagging** it with a *phantom type*. Phantom types are types with no runtime semantics
+It's possible to modify the type of `number` at compile time without modifying its runtime behaviour by *tagging* it with a **phantom type**. Phantom types are types with no runtime semantics
 
 ### TODO *What are existential types?*
 
