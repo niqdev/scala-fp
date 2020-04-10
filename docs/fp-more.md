@@ -70,6 +70,7 @@ title: More
 * [Scala Times](https://scalatimes.com)
 * [SoftwareMill](https://softwaremill.com/blog)
 * [okmij](http://okmij.org/ftp/README.html)
+* [kubuszok](https://kubuszok.com/series)
 * [Scala Love](https://scala.love)
 
 ### Videos

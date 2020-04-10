@@ -4,7 +4,7 @@ import com.github.ghik.silencer.silent
 import io.circe.Json
 import org.scalacheck.Gen
 import shapeless.labelled.FieldType
-import shapeless.{ HList, HNil, Lazy, Witness }
+import shapeless.{ CNil, HList, HNil, Lazy, Witness }
 
 object MyGenerators {
   lazy val genBoolean: Gen[Boolean] =
@@ -60,6 +60,39 @@ object HGen {
   implicit val hNilHGen: HGen[HNil] =
     instance(Json.Null)
 
+  implicit val cNilHGen: HGen[CNil] =
+    instance(Json.Null)
+
+  /*
+  val gen = LabelledGeneric[A]
+  val keys = Keys[gen.Repr].apply
+  keys.toList.map(_.name)
+
+  ---
+
+  https://scastie.scala-lang.org/XKCGi35FRzSV01xfjdZBnQ
+  import shapeless.LabelledGeneric
+  import shapeless.ops.hlist.ToList
+  import shapeless.ops.record.Keys
+  import shapeless.ops.record.Values
+
+  case class Foo(
+      x: Int,
+      y: Option[Double],
+      z: List[Unit]
+  )
+
+  val genFoo = LabelledGeneric[Foo]
+
+  val keys = Keys[genFoo.Repr]
+  val values = Values[genFoo.Repr]
+
+  val keyList = ToList[keys.Out, Symbol]
+
+LabelledGeneric[values.Out]
+
+  keyList(keys()).map(_.name)
+   */
   implicit def hListHGen[K <: Symbol, H, T <: HList](
     implicit
     witness: Witness.Aux[K],
@@ -90,5 +123,5 @@ object TestApp extends App {
 
   HGen.defaultStringHGen.gen
   HGen.gmap[String](Gen.numStr).gen
-  HGen[Example].gen
+  //HGen[Example].gen
 }

@@ -6,7 +6,7 @@ import sbt._
  * https://leobenkel.com/2018/11/make-sbt-plugin
  * https://github.com/freewind/my-sbt-plugin
  *
- * sbt 'set logLevel := Level.Debug'
+ * sbt 'set logLevel := Level.Debug' hello
  */
 object MyPlugin extends AutoPlugin {
   override def requires = plugins.JvmPlugin
