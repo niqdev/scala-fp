@@ -10,11 +10,11 @@ import sbt._
  */
 object MyPlugin extends AutoPlugin {
   override def requires = plugins.JvmPlugin
-  override def trigger = allRequirements
+  override def trigger  = allRequirements
 
   object autoImport {
     val greeting = settingKey[String]("greeting")
-    val hello = taskKey[Unit]("say hello")
+    val hello    = taskKey[Unit]("say hello")
   }
 
   import autoImport._
@@ -28,7 +28,7 @@ object MyPlugin extends AutoPlugin {
 
   override lazy val buildSettings = Seq(
     greeting := "Hi!",
-    hello := helloTask.value
+    hello    := helloTask.value
   )
 }
 
