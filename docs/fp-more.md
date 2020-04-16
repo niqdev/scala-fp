@@ -21,6 +21,7 @@ title: More
 * [Introduction to Tagless final](http://www.beyondthelines.net/programming/introduction-to-tagless-final)
 * [From Object Algebras to Finally Tagless Interpreters](https://oleksandrmanzyuk.wordpress.com/2014/06/18/from-object-algebras-to-finally-tagless-interpreters-2/)
 * [The Death of Final Tagless](https://skillsmatter.com/skillscasts/13247-scala-matters) (Video)
+* [Move Over Free Monads: Make Way for Free Applicatives!](https://www.youtube.com/watch?v=H28QqxO7Ihc) by John de Goes (Video)
 
 ### Miscellaneous
 
