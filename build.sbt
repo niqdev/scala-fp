@@ -8,7 +8,7 @@ lazy val versions = new {
   // ecosystem
   val shapeless        = "2.3.3"
   val catsCore         = "2.1.1"
-  val catsEffect       = "2.1.2"
+  val catsEffect       = "2.1.3"
   val catsRetry        = "1.1.0"
   val zio              = "1.0.0-RC18-2"
   val zioInteropCats   = "2.0.0.0-RC12"
