@@ -1,7 +1,6 @@
 package com.github.niqdev.retry
 
 import cats.effect.{ ExitCode, IO, IOApp, Sync }
-import cats.syntax.functor.toFunctorOps
 import retry.RetryDetails.{ GivingUp, WillDelayAndRetry }
 import retry.{ RetryDetails, RetryPolicies, retryingOnAllErrors }
 

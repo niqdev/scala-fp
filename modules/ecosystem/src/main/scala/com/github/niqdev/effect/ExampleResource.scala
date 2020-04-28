@@ -2,7 +2,6 @@ package com.github.niqdev.effect
 
 import cats.effect.{ ExitCode, IO, IOApp, Resource, Sync }
 import cats.syntax.apply.catsSyntaxApply
-import cats.syntax.functor.toFunctorOps
 
 sealed abstract class MyResource[F[_]](implicit F: Sync[F]) {
 

@@ -1,7 +1,6 @@
 package com.github.niqdev.effect
 
 import cats.effect.{ ExitCode, IO, IOApp }
-import cats.syntax.functor.toFunctorOps
 
 object ExampleIOApp extends IOApp {
 

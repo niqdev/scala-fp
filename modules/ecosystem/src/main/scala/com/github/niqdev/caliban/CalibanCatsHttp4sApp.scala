@@ -3,7 +3,6 @@ package com.github.niqdev.caliban
 import caliban.Http4sAdapter
 import caliban.interop.cats.implicits.CatsEffectGraphQL
 import cats.effect.{ ConcurrentEffect, ExitCode, IO, IOApp, Resource, Timer }
-import cats.syntax.functor.toFunctorOps
 import org.http4s.server.Router
 import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.syntax.kleisli.http4sKleisliResponseSyntaxOptionT
