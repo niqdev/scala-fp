@@ -3,7 +3,7 @@ sbt projects
 sbt ecosystem/console
 ```
 
-# FIX tests
+# TODO fix tests
 * (ecosystem) com.github.niqdev.cats.EqSpec (scalactic conflict)
 * (ecosystem) com.github.niqdev.cats.ValidatedSpec
 * (fp) com.github.niqdev.FunctorSpec
@@ -14,45 +14,9 @@ sbt ecosystem/console
 
 ---
 
-### OLD NOTES review
-
-Algebra = Operations + Types
-
-e.g.
-* create is an operation
-* A and String is a type
-* Db is a piece of Algebra that can be composed or extended
-
-trait Db[F[_]] {
-  def create[A]: F[String]
-  def delete(id: String): F[Boolean]
-}
-
-Interpreter = "Implementation" of an Algebra
-
-i.e. Materialization for specific type
-
----
-they are alternatives:
-
-(tagless) final encoding: typeclass
-* ignore tagless
-* final encoding: means that you can describe operations with functions
-
-initial encoding: free monad
-* you can describe operations with case classes
-
-trait Db {
-  case class Create[F[_], A](a: A)
-  case class Delete[F[_]](id: String)
-}
-
----
-
-Tagless Final Encoding == MTL-style program composition
-mtl is now is a final tagless encoding of common effects
-The `mtl` (Monad Transformer library) library in haskell used to provide the concrete monad transformers types, which are now in `transformers`
-Option, Either, IO are all effect/context/wrapper
+# TODO
+* fix plugin example in multi-module project
+* ScalaCheckGen in shapeless vs Magnolia
 
 ---
 
