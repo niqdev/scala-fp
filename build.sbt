@@ -31,7 +31,6 @@ lazy val versions = new {
 
   // common
   val kindProjector = "0.11.0"
-  val silencer      = "1.6.0"
 }
 
 lazy val dependencies = new {
@@ -85,26 +84,18 @@ lazy val commonSettings = Seq(
     "-encoding",
     "UTF-8", // source files are in UTF-8
     "-unchecked", // Enable additional warnings where generated code depends on assumptions.
-    "-deprecation", // warn about use of deprecated APIs
-    "-unchecked", // warn about unchecked type parameters
-    "-feature", // warn about misused language features
     "-explaintypes", // explain type errors in more detail
     "-language:existentials", // existential types (besides wildcard types) can be written and inferred
     "-language:higherKinds", // allow higher kinded types without `import scala.language.higherKinds`
     "-language:implicitConversions", // allow definition of implicit functions called views
     "-Xlint", // enable handy linter warnings
-    "-Xfatal-warnings", // turn compiler warnings into errors
-    "-Ywarn-unused:imports", // warn if an import selector is not referenced
+    "-Wconf:any:error", // configurable warnings see https://github.com/scala/scala/pull/8373
     "-Xsource:2.13"
   ),
   resolvers ++= Seq(
     Resolver.sonatypeRepo("releases")
   ),
-  addCompilerPlugin("org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full),
-  libraryDependencies ++= Seq(
-    compilerPlugin("com.github.ghik" % "silencer-plugin" % versions.silencer cross CrossVersion.full),
-    "com.github.ghik" % "silencer-lib" % versions.silencer % Provided cross CrossVersion.full
-  )
+  addCompilerPlugin("org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full)
 )
 
 lazy val common = (project in file("modules/common"))

@@ -44,7 +44,7 @@ final class ExampleApiSpec extends AnyWordSpecLike with Matchers {
           |}
           |""".stripMargin
 
-      @com.github.ghik.silencer.silent
+      @scala.annotation.nowarn
       val data = for {
         interpreter <- ExampleApi.api.interpreter
         result      <- interpreter.execute(query)
