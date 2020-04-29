@@ -22,6 +22,7 @@ lazy val versions = new {
   val http4s           = "0.21.3"
   val doobie           = "0.9.0"
   val caliban          = "0.7.6"
+  val magnolia         = "0.16.0"
   val logback          = "1.2.3"
 
   // test
@@ -62,6 +63,7 @@ lazy val dependencies = new {
     "com.github.ghostdogpr" %% "caliban"                   % versions.caliban,
     "com.github.ghostdogpr" %% "caliban-http4s"            % versions.caliban,
     "com.github.ghostdogpr" %% "caliban-cats"              % versions.caliban,
+    "com.propensive"        %% "magnolia"                  % versions.magnolia,
     "ch.qos.logback"        % "logback-classic"            % versions.logback
   )
 
@@ -91,9 +93,6 @@ lazy val commonSettings = Seq(
     "-Xlint", // enable handy linter warnings
     "-Wconf:any:error", // configurable warnings see https://github.com/scala/scala/pull/8373
     "-Xsource:2.13"
-  ),
-  resolvers ++= Seq(
-    Resolver.sonatypeRepo("releases")
   ),
   addCompilerPlugin("org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full)
 )

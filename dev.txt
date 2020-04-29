@@ -24,3 +24,21 @@ sbt ecosystem/console
 * https://speakerdeck.com/kubukoz/keep-your-sanity-with-compositional-tracing
 * https://github.com/kubukoz/talks/tree/master/compositional-tracing
 * https://github.com/tpolecat/natchez
+
+---
+
+# magnolia
+* https://propensive.com/opensource/magnolia
+* https://propensive.com/opensource/magnolia/tutorial
+* https://github.com/propensive/magnolia/tree/master/examples/shared/src/main/scala
+* https://www.youtube.com/watch?v=MKryAwl068Q
+
+* https://github.com/circe/circe-magnolia
+* https://github.com/alexarchambault/scalacheck-shapeless
+* https://github.com/typelevel/scalacheck/blob/master/doc/UserGuide.md
+
+# scalacheck-magnolia
+* https://github.com/etaty/scalacheck-magnolia
+* https://github.com/implmnt/scalacheck-magnolia
+* https://github.com/spotify/magnolify
+* https://github.com/laurence-bird/scalacheck-magnolia
