@@ -42,3 +42,7 @@ sbt ecosystem/console
 * https://github.com/implmnt/scalacheck-magnolia
 * https://github.com/spotify/magnolify
 * https://github.com/laurence-bird/scalacheck-magnolia
+
+# profiling
+* https://www.lihaoyi.com/post/MicrooptimizingyourScalacode.html
+* https://www.lightbend.com/blog/profiling-jvm-applications
