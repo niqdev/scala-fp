@@ -8,6 +8,8 @@ import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.syntax.kleisli.http4sKleisliResponseSyntaxOptionT
 import zio.Runtime
 
+import scala.concurrent.ExecutionContext
+
 object CalibanCatsHttp4sApp extends IOApp {
 
   implicit val runtime: Runtime[Any] = Runtime.default
@@ -23,7 +25,7 @@ object CalibanCatsHttp4sApp extends IOApp {
       httpApp = Router(
         "/api/graphql" -> Http4sAdapter.makeHttpServiceF(interpreter)
       ).orNotFound
-      _ <- BlazeServerBuilder[F]
+      _ <- BlazeServerBuilder[F](ExecutionContext.global)
         .bindLocal(8080)
         .withHttpApp(httpApp)
         .resource

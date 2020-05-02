@@ -10,6 +10,8 @@ import org.http4s.server.Router
 import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.server.middleware.Metrics
 
+import scala.concurrent.ExecutionContext
+
 object ExampleServer extends IOApp {
 
   def server[F[_]: ConcurrentEffect: Timer]: Resource[F, ExitCode] =
@@ -22,7 +24,7 @@ object ExampleServer extends IOApp {
       allRoutes = meteredRoutes <+> prometheusService.routes
       httpApp   = Router("/" -> allRoutes).orNotFound
       exitCode <- Resource.liftF(
-        BlazeServerBuilder[F]
+        BlazeServerBuilder[F](ExecutionContext.global)
           .bindLocal(8080)
           .withHttpApp(httpApp)
           .serve
