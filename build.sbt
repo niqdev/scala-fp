@@ -28,7 +28,7 @@ lazy val versions = new {
   // test
   val scalatest            = "3.1.1"
   val scalacheck           = "1.14.3"
-  val enumeratumScalacheck = "1.5.16"
+  val enumeratumScalacheck = "1.6.0"
 
   // common
   val kindProjector = "0.11.0"
