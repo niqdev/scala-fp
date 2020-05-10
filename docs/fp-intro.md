@@ -160,6 +160,7 @@ A function having the same argument and return type is sometimes called an *endo
 * [Polymorphism, and typeclasses in Scala](http://like-a-boss.net/2013/03/29/polymorphism-and-typeclasses-in-scala.html)
 * [Polymorphism in Scala](https://medium.com/@scelestino/polymorphism-in-scala-part-1-34015f9b5b13)
 * [How to be polymorphic in Scala](http://scala.org.ua/presentations/scala-polymorphism)
+* [How to make *ad-hoc* polymorphism less ad hoc](http://people.csail.mit.edu/dnj/teaching/6898/papers/wadler88.pdf) (Paper)(Haskell)
 
 A polymorphic type is the one whose operations can be applied to other types
 
