@@ -15,7 +15,7 @@ lazy val versions = new {
   val circe          = "0.13.0"
   val refined        = "0.9.14"
   val squants        = "1.6.0"
-  val enumeratum     = "1.6.0"
+  val enumeratum     = "1.6.1"
   val fs2            = "2.3.0"
   val http4s         = "0.21.4"
   val doobie         = "0.9.0"
@@ -48,7 +48,7 @@ lazy val dependencies = new {
     "org.typelevel"         %% "squants"                   % versions.squants,
     "com.beachape"          %% "enumeratum"                % versions.enumeratum,
     "com.beachape"          %% "enumeratum-circe"          % versions.enumeratum,
-    "com.beachape"          %% "enumeratum-doobie"         % versions.enumeratum,
+    "com.beachape"          %% "enumeratum-doobie"         % "1.6.0",
     "co.fs2"                %% "fs2-core"                  % versions.fs2,
     "co.fs2"                %% "fs2-io"                    % versions.fs2,
     "org.http4s"            %% "http4s-dsl"                % versions.http4s,
