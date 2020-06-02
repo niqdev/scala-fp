@@ -19,7 +19,7 @@ lazy val versions = new {
   val fs2            = "2.3.0"
   val http4s         = "0.21.4"
   val doobie         = "0.9.0"
-  val caliban        = "0.8.0"
+  val caliban        = "0.8.1"
   val magnolia       = "0.16.0"
   val logback        = "1.2.3"
 
