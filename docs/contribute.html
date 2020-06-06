@@ -63,23 +63,24 @@
 <ul>
 <li><a href="https://nodejs.org">Node.js</a></li>
 <li><a href="https://github.com/nvm-sh/nvm">nvm</a></li>
-<li><a href="https://yarnpkg.com">Yarn</a></li>
+<li><a href="https://classic.yarnpkg.com/lang/en">Yarn</a></li>
 </ul>
 <p>Install Node.js using nvm</p>
 <pre><code class="hljs css language-bash"><span class="hljs-comment"># install or update nvm</span>
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 <span class="hljs-comment"># install node + npm (LTS)</span>
 nvm install 12 --lts
 
 <span class="hljs-comment"># use default version (see .nvmrc)</span>
+<span class="hljs-built_in">cd</span> website/
 nvm use
 
 <span class="hljs-comment"># verify installation</span>
 node --version
 npm --version
 </code></pre>
-<p>Install Yarn</p>
+<p>Install Yarn classic</p>
 <pre><code class="hljs css language-bash"><span class="hljs-comment">### on Debian / Ubuntu</span>
 
 <span class="hljs-comment"># configure the repository</span>
