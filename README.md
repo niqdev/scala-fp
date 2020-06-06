@@ -1,8 +1,9 @@
 # scala-fp
 
-[![Build Status][travis-image]][travis-url]
+[![Build Status][build-image]][build-url]
+[![Book Version][tag-image]][tag-url]
 
-[travis-image]: https://travis-ci.org/niqdev/scala-fp.svg?branch=master
-[travis-url]: https://travis-ci.org/niqdev/scala-fp
-
-Visit [niqdev/scala-fp](https://niqdev.github.io/scala-fp)
+[build-image]: https://img.shields.io/travis/niqdev/scala-fp.svg?style=popout-square
+[build-url]: https://travis-ci.org/niqdev/scala-fp
+[tag-image]: https://img.shields.io/github/tag/niqdev/scala-fp.svg?style=popout-square&color=blue&label=book-version
+[tag-url]: https://niqdev.github.io/scala-fp
