@@ -401,7 +401,7 @@ trait Test
 case class Test1() extends Test
 case class Test2() extends Test
 
-@com.github.ghik.silencer.silent
+@scala.annotation.nowarn
 def check1[T <: Test](test: Test):Boolean =
   test.isInstanceOf[T]
 
