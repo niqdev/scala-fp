@@ -64,8 +64,6 @@ http :8080/metrics
 
 ### Examples
 
-[ [fs2.StreamSpec](https://github.com/niqdev/scala-fp/blob/master/modules/ecosystem/src/test/scala/com/github/niqdev/fs2/StreamSpec.scala) ]
-
 ```bash
 # run tests
 sbt "test:testOnly *fs2*"
@@ -115,6 +113,9 @@ sbt "test:testOnly *shapeless*"
 ```bash
 # run tests
 sbt "test:testOnly *scalacheck*"
+
+# auto derivation of ScalaCheck generators using Magnolia
+sbt "ecosystem/test:runMain com.github.niqdev.scalacheck.RandomApp"
 ```
 
 ## GraphQL

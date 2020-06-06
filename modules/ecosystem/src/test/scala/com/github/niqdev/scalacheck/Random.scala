@@ -55,7 +55,6 @@ object Random extends RandomLowPriority {
 
 case class RandomExample(myString: String, myInt: Int, myBoolean: Boolean)
 
-// sbt "ecosystem/test:runMain com.github.niqdev.scalacheck.RandomApp"
 object RandomApp extends App {
   import io.circe._
   import io.circe.generic.semiauto._

@@ -1,7 +1,8 @@
-```
+# sbt
 sbt projects
 sbt ecosystem/console
-```
+
+---
 
 # TODO fix tests
 * (ecosystem) com.github.niqdev.cats.EqSpec (scalactic conflict)
@@ -16,7 +17,6 @@ sbt ecosystem/console
 
 # TODO
 * fix plugin example in multi-module project
-* ScalaCheckGen in shapeless vs Magnolia
 
 ---
 
