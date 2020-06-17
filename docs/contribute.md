@@ -13,18 +13,19 @@ This website is built using
 
 * [Node.js](https://nodejs.org)
 * [nvm](https://github.com/nvm-sh/nvm)
-* [Yarn](https://yarnpkg.com)
+* [Yarn](https://classic.yarnpkg.com/lang/en)
 
 Install Node.js using nvm
 
 ```bash
 # install or update nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 # install node + npm (LTS)
 nvm install 12 --lts
 
 # use default version (see .nvmrc)
+cd website/
 nvm use
 
 # verify installation
@@ -32,7 +33,7 @@ node --version
 npm --version
 ```
 
-Install Yarn
+Install Yarn classic
 
 ```bash
 ### on Debian / Ubuntu

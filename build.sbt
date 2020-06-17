@@ -9,14 +9,14 @@ lazy val versions = new {
   val shapeless      = "2.3.3"
   val catsCore       = "2.1.1"
   val catsEffect     = "2.1.3"
-  val catsRetry      = "1.1.0"
-  val zio            = "1.0.0-RC20"
+  val catsRetry      = "1.1.1"
+  val zio            = "1.0.0-RC19-2"
   val zioInteropCats = "2.0.0.0-RC14"
   val circe          = "0.13.0"
   val refined        = "0.9.14"
   val squants        = "1.6.0"
-  val enumeratum     = "1.6.0"
-  val fs2            = "2.3.0"
+  val enumeratum     = "1.6.1"
+  val fs2            = "2.4.2"
   val http4s         = "0.21.4"
   val doobie         = "0.9.0"
   val caliban        = "0.8.0"
@@ -48,7 +48,7 @@ lazy val dependencies = new {
     "org.typelevel"         %% "squants"                   % versions.squants,
     "com.beachape"          %% "enumeratum"                % versions.enumeratum,
     "com.beachape"          %% "enumeratum-circe"          % versions.enumeratum,
-    "com.beachape"          %% "enumeratum-doobie"         % versions.enumeratum,
+    "com.beachape"          %% "enumeratum-doobie"         % "1.6.0",
     "co.fs2"                %% "fs2-core"                  % versions.fs2,
     "co.fs2"                %% "fs2-io"                    % versions.fs2,
     "org.http4s"            %% "http4s-dsl"                % versions.http4s,
