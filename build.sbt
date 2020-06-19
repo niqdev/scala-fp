@@ -24,7 +24,7 @@ lazy val versions = new {
   val logback        = "1.2.3"
 
   // test
-  val scalatest  = "3.1.2"
+  val scalatest  = "3.2.0"
   val scalacheck = "1.14.3"
 
   // common
