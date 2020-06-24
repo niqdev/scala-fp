@@ -47,6 +47,7 @@ https://www.lightbend.com/blog/profiling-jvm-applications
 https://www.scala-lang.org/blog/2018/06/04/scalac-profiling.html
 
 # recursion-schemas
+https://akmetiuk.com/posts/2017-03-10-matryoshka-intro.html
 https://kubuszok.com/2019/ast-playground-recursion-schemes-and-recursive-data
 https://www.reddit.com/r/haskell/comments/9x684a/edward_kmett_there_and_back_again_regular_and
 https://medium.com/@jaredtobin/practical-recursion-schemes-c10648ec1c29
