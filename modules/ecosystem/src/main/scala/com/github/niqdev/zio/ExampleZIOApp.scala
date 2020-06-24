@@ -3,12 +3,12 @@ package com.github.niqdev.zio
 import java.io.IOException
 
 import zio.console.{ Console, getStrLn, putStrLn }
-import zio.{ App, ZIO }
+import zio.{ App, ExitCode, URIO, ZIO }
 
 object ExampleZIOApp extends App {
 
-  override def run(args: List[String]): ZIO[zio.ZEnv, Nothing, Int] =
-    myApp.fold(_ => 1, _ => 0)
+  override def run(args: List[String]): URIO[zio.ZEnv, ExitCode] =
+    myApp.exitCode
 
   final val myApp: ZIO[Console, IOException, Unit] =
     for {

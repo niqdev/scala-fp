@@ -1,7 +1,7 @@
 package com.github.niqdev.caliban
 
 import zio.console.putStrLn
-import zio.{ UIO, ZIO }
+import zio.{ ExitCode, URIO }
 
 object CalibanZIOApp extends zio.App {
 
@@ -20,14 +20,10 @@ object CalibanZIOApp extends zio.App {
       |}
       |""".stripMargin
 
-  override def run(args: List[String]): ZIO[zio.ZEnv, Nothing, Int] =
+  override def run(args: List[String]): URIO[zio.ZEnv, ExitCode] =
     (for {
       interpreter <- ExampleApi.api.interpreter
       result      <- interpreter.execute(query)
       _           <- putStrLn(s"${result.data}")
-    } yield ())
-      .foldM(
-        error => putStrLn(s"$error") *> UIO.succeed(1),
-        _ => UIO.succeed(0)
-      )
+    } yield ()).exitCode
 }
