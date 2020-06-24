@@ -21,11 +21,13 @@ lazy val versions = new {
   val doobie         = "0.9.0"
   val caliban        = "0.8.0"
   val magnolia       = "0.16.0"
+  val droste         = "0.8.0"
   val logback        = "1.2.3"
 
   // test
-  val scalatest  = "3.2.0"
-  val scalacheck = "1.14.3"
+  val scalatest     = "3.2.0"
+  val scalatestplus = "3.2.0.0"
+  val scalacheck    = "1.14.3"
 
   // common
   val kindProjector = "0.11.0"
@@ -61,14 +63,16 @@ lazy val dependencies = new {
     "com.github.ghostdogpr" %% "caliban-http4s"            % versions.caliban,
     "com.github.ghostdogpr" %% "caliban-cats"              % versions.caliban,
     "com.propensive"        %% "magnolia"                  % versions.magnolia,
+    "io.higherkindness"     %% "droste-core"               % versions.droste,
     "ch.qos.logback"        % "logback-classic"            % versions.logback
   )
 
   lazy val test = Seq(
-    "org.scalatest"  %% "scalatest"             % versions.scalatest  % Test,
-    "org.tpolecat"   %% "doobie-scalatest"      % versions.doobie     % Test,
-    "org.scalacheck" %% "scalacheck"            % versions.scalacheck % Test,
-    "com.beachape"   %% "enumeratum-scalacheck" % versions.enumeratum % Test
+    "org.scalatest"     %% "scalatest"             % versions.scalatest     % Test,
+    "org.tpolecat"      %% "doobie-scalatest"      % versions.doobie        % Test,
+    "org.scalatestplus" %% "scalacheck-1-14"       % versions.scalatestplus % Test,
+    "org.scalacheck"    %% "scalacheck"            % versions.scalacheck    % Test,
+    "com.beachape"      %% "enumeratum-scalacheck" % versions.enumeratum    % Test
   )
 }
 

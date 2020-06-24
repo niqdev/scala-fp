@@ -152,6 +152,8 @@ sbt "test:testOnly *caliban*"
 
 ## cats-retry
 
+### Resources
+
 * [cats-retry](https://cb372.github.io/cats-retry/docs) (Documentation)
 
 ### Examples
@@ -159,6 +161,19 @@ sbt "test:testOnly *caliban*"
 ```bash
 # run
 sbt "ecosystem/runMain com.github.niqdev.retry.ExampleRetry"
+```
+
+## Droste
+
+### Resources
+
+> TODO
+
+### Examples
+
+```bash
+# run tests
+sbt "test:testOnly *droste*"
 ```
 
 ## More libraries
