@@ -63,6 +63,8 @@ https://github.com/passy/awesome-recursion-schemes
 http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.125
 # Peeling the Banana: Recursion Schemes from First Principles
 https://www.youtube.com/watch?v=XZ9nPZbaYfE
+# Practical Droste - live coding with Beni Villa
+https://www.youtube.com/watch?v=YBEc0Upntjg
 # Category Theory in Life
 https://www.youtube.com/watch?v=ho7oagHeqNc
 
