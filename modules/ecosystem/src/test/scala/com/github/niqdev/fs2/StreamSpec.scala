@@ -27,11 +27,11 @@ final class StreamSpec extends AnyWordSpecLike with Matchers {
       val stream = fs2.Stream.eval[IO, Int](intIO)
 
       val vectorIntIO: IO[Vector[Int]] = stream.compile.toVector
-      vectorIntIO.unsafeRunSync shouldBe Vector(42)
+      vectorIntIO.unsafeRunSync() shouldBe Vector(42)
 
       // discards any output values
       val unitIO: IO[Unit] = stream.compile.drain
-      unitIO.unsafeRunSync shouldBe (_: Unit)
+      unitIO.unsafeRunSync() shouldBe (_: Unit)
     }
 
     "verify streams composition" in {
@@ -49,7 +49,7 @@ final class StreamSpec extends AnyWordSpecLike with Matchers {
         c <- fs2.Stream.eval(IO(3))
       } yield a + b + c
 
-      effectful.compile.toList.unsafeRunSync shouldBe List(6)
+      effectful.compile.toList.unsafeRunSync() shouldBe List(6)
 
       val effectfulError = for {
         a <- fs2.Stream.eval(IO(1))
@@ -57,7 +57,7 @@ final class StreamSpec extends AnyWordSpecLike with Matchers {
         c <- fs2.Stream.eval(IO(3))
       } yield a + c
 
-      scala.util.Try(effectfulError.compile.toList.unsafeRunSync) match {
+      scala.util.Try(effectfulError.compile.toList.unsafeRunSync()) match {
         case scala.util.Failure(error) =>
           error.getMessage shouldBe "error"
         case scala.util.Success(value) =>

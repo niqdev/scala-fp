@@ -20,6 +20,8 @@ object models {
     active: Boolean
   )
   object Person extends PersonCodec
+
+  @scala.annotation.nowarn
   trait PersonCodec {
     import io.circe.refined.{ refinedDecoder, refinedEncoder }
 
@@ -35,7 +37,7 @@ object models {
 
     implicit val keyMapEncoder: KeyEncoder[NonEmptyString] =
       _.value
-    implicit lazy val keyMapDecoder: KeyDecoder[NonEmptyString] =
+    implicit val keyMapDecoder: KeyDecoder[NonEmptyString] =
       NonEmptyString.from(_).toOption
 
     implicit val personEncoder: Encoder[Person] =

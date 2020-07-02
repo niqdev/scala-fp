@@ -59,6 +59,8 @@ object RandomApp extends App {
   import io.circe._
   import io.circe.generic.semiauto._
   import io.circe.syntax._
+
+  @scala.annotation.nowarn
   implicit val randomExampleEncoder: Encoder[RandomExample] = deriveEncoder[RandomExample]
 
   println(Random[String].random.sample)

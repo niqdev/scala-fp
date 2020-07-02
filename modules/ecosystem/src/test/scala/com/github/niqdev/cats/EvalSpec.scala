@@ -13,11 +13,11 @@ final class EvalSpec extends AnyWordSpecLike with Matchers {
       implicit val order = Ordering.Double.TotalOrdering
 
       // val is eager and memoized
-      Eval.now(math.random + 1000).value should be >= 0.0
+      Eval.now(math.random() + 1000).value should be >= 0.0
       // def is lazy and not memoized
-      Eval.always(math.random + 3000).value should be >= 0.0
+      Eval.always(math.random() + 3000).value should be >= 0.0
       // lazy val is lazy and memoized
-      Eval.later(math.random + 2000).value should be >= 0.0
+      Eval.later(math.random() + 2000).value should be >= 0.0
     }
 
     "verify factorial" in {
