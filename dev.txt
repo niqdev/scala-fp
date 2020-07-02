@@ -68,6 +68,7 @@ https://www.youtube.com/watch?v=YBEc0Upntjg
 # Category Theory in Life
 https://www.youtube.com/watch?v=ho7oagHeqNc
 
+# free boolean
 https://arosien.github.io/talks/free-boolean-algebras.html
 
 # compilers

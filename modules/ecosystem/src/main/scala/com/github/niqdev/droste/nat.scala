@@ -1,11 +1,14 @@
 package com.github.niqdev.droste
 
-import cats.Functor
+import cats.{ Applicative, Functor, Traverse }
 import higherkindness.droste.data.Fix
+import higherkindness.droste.util.DefaultTraverse
 import higherkindness.droste.{ Algebra, Coalgebra, scheme }
 
 // https://github.com/precog/matryoshka/blob/master/tests/shared/src/test/scala/matryoshka/example/nat.scala
 object nat {
+
+  import cats.syntax.functor.toFunctorOps
 
   sealed trait Nat[+A]
   final case object Zero                extends Nat[Nothing]
@@ -29,7 +32,16 @@ object nat {
     case Succ(previous) => previous + 1
   }
 
-  val intToNat: Int => Fix[Nat] = scheme.ana(toNat)
-  val natToInt: Fix[Nat] => Int = scheme.cata(toInt)
-  val intToNatToInt: Int => Int = scheme.hylo(toInt, toNat)
+  // required by hyloM
+  implicit val natTraverse: Traverse[Nat] = new DefaultTraverse[Nat] {
+    override def traverse[G[_]: Applicative, A, B](fa: Nat[A])(f: A => G[B]): G[Nat[B]] = fa match {
+      case Zero           => Applicative[G].pure(Zero)
+      case Succ(previous) => f(previous) map (Succ(_))
+    }
+  }
+
+  val intToNat: Int => Fix[Nat]          = scheme.ana(toNat)
+  val natToInt: Fix[Nat] => Int          = scheme.cata(toInt)
+  val intToNatToInt: Int => Int          = scheme.hylo(toInt, toNat)
+  val intToNatToIntStackSafe: Int => Int = scheme.hyloM(toInt.lift, toNat.lift)
 }
