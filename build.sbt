@@ -10,6 +10,7 @@ lazy val versions = new {
   val catsCore       = "2.1.1"
   val catsEffect     = "2.1.3"
   val catsRetry      = "1.1.1"
+  val log4cats       = "1.1.1"
   val zio            = "1.0.0-RC21-2"
   val zioInteropCats = "2.1.3.0-RC16"
   val circe          = "0.13.0"
@@ -39,6 +40,8 @@ lazy val dependencies = new {
     "org.typelevel"         %% "cats-core"                 % versions.catsCore,
     "org.typelevel"         %% "cats-effect"               % versions.catsEffect,
     "com.github.cb372"      %% "cats-retry"                % versions.catsRetry,
+    "io.chrisdavenport"     %% "log4cats-core"             % versions.log4cats,
+    "io.chrisdavenport"     %% "log4cats-slf4j"            % versions.log4cats,
     "dev.zio"               %% "zio"                       % versions.zio,
     "dev.zio"               %% "zio-streams"               % versions.zio,
     "dev.zio"               %% "zio-interop-cats"          % versions.zioInteropCats,

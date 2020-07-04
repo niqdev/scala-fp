@@ -1,6 +1,8 @@
 package com.github.niqdev.caliban
 package pagination
 
+import java.time.Instant
+
 import caliban.schema.Annotations.GQLInterface
 
 // https://developer.github.com/v4/explorer
@@ -17,12 +19,54 @@ object models {
     def id: String
   }
 
-  // createdAt|updatedAt
+  @GQLInterface
+  sealed trait Base {
+    def createdAt: Instant
+    def updatedAt: Instant
+  }
 
-  // createdAt|email|id|name|repository|repositories|updatedAt
-  final case class User(id: String, name: String) extends Node
+  // repository
+  final case class User(
+    id: String,
+    name: String,
+    repository: Repository,
+    // TODO
+    repositories: List[Repository],
+    createdAt: Instant,
+    updatedAt: Instant
+  ) extends Node
+      with Base
 
-  // createdAt|id|isFork|isPrivate|issue|issues|name|updatedAt
-  final case class Repository(id: String, url: String) extends Node
+  final case class Repository(
+    id: String,
+    name: String,
+    url: String,
+    isFork: Boolean,
+    createdAt: Instant,
+    updatedAt: Instant
+  ) extends Node
+      with Base
+
+  val repositories: List[Repository] = List(
+    Repository(
+      id = "userId",
+      name = "myRepository",
+      url = "myUrl",
+      isFork = false,
+      createdAt = Instant.now,
+      updatedAt = Instant.now
+    )
+  )
+
+  val users: List[User] = List(
+    User(
+      id = "repositoryId",
+      name = "repositoryName",
+      repository = repositories.head,
+      repositories = repositories,
+      createdAt = Instant.now,
+      updatedAt = Instant.now
+    )
+  )
 
 }

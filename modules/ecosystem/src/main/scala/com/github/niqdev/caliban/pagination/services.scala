@@ -12,7 +12,7 @@ object services {
 
   abstract class UserService[F[_]](implicit F: Sync[F]) {
     def findById(id: String): F[Option[Node]] =
-      F.pure(if (id == "userId") Some(User(id, "userName")) else None)
+      F.pure(if (id == "userId") Some(models.users.head) else None)
   }
   object UserService {
     def apply[F[_]: Sync]: UserService[F] =
@@ -21,7 +21,7 @@ object services {
 
   abstract class RepositoryService[F[_]](implicit F: Sync[F]) {
     def findById(id: String): F[Option[Node]] =
-      F.pure(if (id == "repositoryId") Some(Repository(id, "repositoryName")) else None)
+      F.pure(if (id == "repositoryId") Some(models.repositories.head) else None)
   }
   object RepositoryService {
     def apply[F[_]: Sync]: RepositoryService[F] =
