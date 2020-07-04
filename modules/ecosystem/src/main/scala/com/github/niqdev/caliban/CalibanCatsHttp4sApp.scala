@@ -21,7 +21,7 @@ object CalibanCatsHttp4sApp extends IOApp {
 
   def server[F[_]: ConcurrentEffect: Timer]: Resource[F, Unit] =
     for {
-      interpreter <- Resource.liftF(ExampleApi.api.interpreterAsync)
+      interpreter <- Resource.liftF((ExampleApi.api |+| pagination.queries.api[F]).interpreterAsync)
       httpApp = Router(
         "/api/graphql" -> Http4sAdapter.makeHttpServiceF(interpreter)
       ).orNotFound
@@ -31,3 +31,21 @@ object CalibanCatsHttp4sApp extends IOApp {
         .resource
     } yield ()
 }
+
+/*
+
+query node {
+  node(id: "userId") {
+    id
+    ... on User {
+      id
+      name
+    }
+    ... on Repository {
+      id
+      url
+    }
+  }
+}
+
+ */
