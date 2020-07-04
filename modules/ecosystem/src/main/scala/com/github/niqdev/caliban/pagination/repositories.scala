@@ -1,13 +1,17 @@
 package com.github.niqdev.caliban.pagination
 
 import cats.effect.Sync
+import cats.syntax.functor._
 import com.github.niqdev.caliban.pagination.models._
 
 object repositories {
 
-  sealed trait RepositoryI[F[_], T] {
+  sealed abstract class RepositoryI[F[_], T <: Model](implicit F: Sync[F]) {
     def findAll: F[List[T]]
-    def findById(id: String): F[Option[T]]
+    def findById(id: String): F[Option[T]] =
+      findAll.map(_.find(_.id == id))
+    def count: F[Long] =
+      findAll.map(_.length)
   }
 
   /**
@@ -18,8 +22,8 @@ object repositories {
     override def findAll: F[List[UserModel]] =
       F.pure(models.users)
 
-    override def findById(id: String): F[Option[UserModel]] =
-      F.pure(models.users.find(_.id == id))
+    def findByName(name: String): F[Option[UserModel]] =
+      findAll.map(_.find(_.name == name))
   }
   object UserRepo {
     def apply[F[_]: Sync]: UserRepo[F] =
@@ -34,14 +38,17 @@ object repositories {
     override def findAll: F[List[RepositoryModel]] =
       F.pure(models.repositories)
 
-    override def findById(id: String): F[Option[RepositoryModel]] =
-      F.pure(models.repositories.find(_.id == id))
-
     def findAllByUserId(userId: String): F[List[RepositoryModel]] =
-      F.pure(models.repositories.filter(_.userId == userId))
+      findAll.map(_.filter(_.userId == userId))
 
     def findByUserId(userId: String): F[Option[RepositoryModel]] =
-      F.pure(models.repositories.find(_.userId == userId))
+      findAll.map(_.find(_.userId == userId))
+
+    def findByName(name: String): F[Option[RepositoryModel]] =
+      findAll.map(_.find(_.name == name))
+
+    def countByUserId(userId: String): F[Long] =
+      findAllByUserId(userId).map(_.length)
   }
   object RepositoryRepo {
     def apply[F[_]: Sync]: RepositoryRepo[F] =

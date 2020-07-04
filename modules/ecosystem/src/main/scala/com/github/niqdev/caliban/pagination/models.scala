@@ -6,12 +6,17 @@ import java.time.Instant
 // TODO newtype + refined
 object models {
 
+  // TODO
+  trait Model {
+    def id: String
+  }
+
   final case class UserModel(
     id: String,
     name: String,
     createdAt: Instant,
     updatedAt: Instant
-  )
+  ) extends Model
 
   final case class RepositoryModel(
     id: String,
@@ -21,7 +26,7 @@ object models {
     isFork: Boolean,
     createdAt: Instant,
     updatedAt: Instant
-  )
+  ) extends Model
 
   val users: List[UserModel] = List(
     UserModel(

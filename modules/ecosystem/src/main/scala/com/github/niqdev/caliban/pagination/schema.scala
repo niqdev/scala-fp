@@ -26,20 +26,21 @@ object schema extends CommonSchema {
   final case class User(
     id: String,
     name: String,
-    //repository: Option[Repository],
-    //repositories: List[Repository],
     createdAt: Instant,
-    updatedAt: Instant
+    updatedAt: Instant,
+    //repository: Repository, TODO findByName
+    repositories: RepositoryConnection
   ) extends Node
       with Base
   object User {
-    val fromModel: UserModel => User =
+    def fromModel(repositories: RepositoryConnection): UserModel => User =
       model =>
         User(
           id = model.id,
           name = model.name,
           createdAt = model.createdAt,
-          updatedAt = model.updatedAt
+          updatedAt = model.updatedAt,
+          repositories
         )
   }
 
@@ -64,6 +65,26 @@ object schema extends CommonSchema {
           model.updatedAt
         )
   }
+
+  final case class RepositoryConnection(
+    edges: List[RepositoryEdge],
+    //nodes: List[Repository],
+    pageInfo: PageInfo,
+    totalCount: Long
+  )
+
+  // TODO cursor base64
+  final case class RepositoryEdge(
+    cursor: String,
+    node: Repository
+  )
+
+  final case class PageInfo(
+    hasNextPage: Boolean,
+    hasPreviousPage: Boolean,
+    startCursor: String,
+    endCursor: String
+  )
 }
 
 protected[caliban] sealed trait CommonSchema {

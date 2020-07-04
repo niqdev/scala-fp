@@ -43,6 +43,7 @@ object CalibanCatsHttp4sApp extends IOApp {
 
 /*
 
+// TODO
 query node {
   node(id: "userId") {
     id
@@ -59,19 +60,6 @@ query node {
     ... on Repository {
       id
       url
-    }
-  }
-}
-
-{
-  "data": {
-    "node": {
-      "id": "userId",
-      "name": "userName"
-    },
-    "getRepository": {
-      "id": "repositoryId",
-      "url": "repositoryName"
     }
   }
 }
