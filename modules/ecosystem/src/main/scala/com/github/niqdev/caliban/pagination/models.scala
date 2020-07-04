@@ -3,67 +3,51 @@ package pagination
 
 import java.time.Instant
 
-import caliban.schema.Annotations.GQLInterface
-
-// https://developer.github.com/v4/explorer
-// https://relay.dev/graphql/connections.htm
-// https://graphql.org/learn/pagination
-// https://graphql.org/learn/global-object-identification
-// https://relay.dev/docs/en/graphql-server-specification
-// https://medium.com/javascript-in-plain-english/graphql-pagination-using-edges-vs-nodes-in-connections-f2ddb8edffa0
-// https://slack.engineering/evolving-api-pagination-at-slack-1c1f644f8e12
+// TODO newtype + refined
 object models {
 
-  @GQLInterface
-  sealed trait Node {
-    def id: String
-  }
-
-  @GQLInterface
-  sealed trait Base {
-    def createdAt: Instant
-    def updatedAt: Instant
-  }
-
-  // repository
-  final case class User(
+  final case class UserModel(
     id: String,
     name: String,
-    repository: Repository,
-    // TODO
-    repositories: List[Repository],
     createdAt: Instant,
     updatedAt: Instant
-  ) extends Node
-      with Base
+  )
 
-  final case class Repository(
+  final case class RepositoryModel(
     id: String,
-    name: String,
+    userId: String,
     url: String,
+    name: String,
     isFork: Boolean,
     createdAt: Instant,
     updatedAt: Instant
-  ) extends Node
-      with Base
+  )
 
-  val repositories: List[Repository] = List(
-    Repository(
+  val users: List[UserModel] = List(
+    UserModel(
       id = "userId",
-      name = "myRepository",
-      url = "myUrl",
-      isFork = false,
+      name = "userName",
       createdAt = Instant.now,
       updatedAt = Instant.now
     )
   )
 
-  val users: List[User] = List(
-    User(
-      id = "repositoryId",
-      name = "repositoryName",
-      repository = repositories.head,
-      repositories = repositories,
+  val repositories: List[RepositoryModel] = List(
+    RepositoryModel(
+      id = "repositoryId1",
+      userId = "userId",
+      name = "repositoryName1",
+      url = "repositoryUrl1",
+      isFork = false,
+      createdAt = Instant.now,
+      updatedAt = Instant.now
+    ),
+    RepositoryModel(
+      id = "repositoryId2",
+      userId = "userIdNew",
+      name = "repositoryName2",
+      url = "repositoryUrl2",
+      isFork = true,
       createdAt = Instant.now,
       updatedAt = Instant.now
     )
