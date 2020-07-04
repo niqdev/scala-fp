@@ -9,19 +9,7 @@ import caliban.schema.Schema
 import cats.effect.Effect
 import com.github.niqdev.caliban.pagination.models._
 
-object schema extends CommonSchema with GitHubSchema
-
-protected[caliban] sealed trait CommonSchema {
-
-  // caliban.interop.cats.implicits.effectSchema
-  implicit def effectSchema[F[_]: Effect, R, A](implicit ev: Schema[R, A]): Schema[R, F[A]] =
-    CatsInterop.schema
-
-  implicit val instantSchema: Schema[Any, Instant] =
-    Schema.longSchema.contramap(_.getEpochSecond)
-}
-
-protected[caliban] sealed trait GitHubSchema {
+object schema extends CommonSchema {
 
   @GQLInterface
   sealed trait Node {
@@ -76,4 +64,14 @@ protected[caliban] sealed trait GitHubSchema {
           model.updatedAt
         )
   }
+}
+
+protected[caliban] sealed trait CommonSchema {
+
+  // caliban.interop.cats.implicits.effectSchema
+  implicit def effectSchema[F[_]: Effect, R, A](implicit ev: Schema[R, A]): Schema[R, F[A]] =
+    CatsInterop.schema
+
+  implicit val instantSchema: Schema[Any, Instant] =
+    Schema.longSchema.contramap(_.getEpochSecond)
 }
