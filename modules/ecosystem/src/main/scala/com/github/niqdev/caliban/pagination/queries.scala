@@ -3,7 +3,6 @@ package pagination
 
 import caliban.{ GraphQL, RootResolver }
 import cats.effect.Effect
-import com.github.niqdev.caliban.pagination.repositories._
 import com.github.niqdev.caliban.pagination.schema._
 import com.github.niqdev.caliban.pagination.services._
 
@@ -19,8 +18,9 @@ object queries {
   final case class NodeArg(id: String)
   final case class UserArg(name: String)
   final case class RepositoryArg(name: String)
-  // TODO after is cursor/id base64
-  final case class RepositoriesArg(first: Long, after: String)
+  // TODO after|before are cursor base64
+  // TODO first (mandatory) with after (optional) OR last (mandatory) with before (optional)
+  final case class RepositoriesArg(first: Long, after: String, last: Long, before: String)
 
   final case class Queries[F[_]](
     node: NodeArg => F[Option[Node]],
@@ -30,36 +30,37 @@ object queries {
   )
 
   private[this] def nodeQuery[F[_]: Effect](
-    repositories: Repositories[F]
+    nodeService: NodeService[F]
   ): NodeArg => F[Option[Node]] =
-    nodeArg => NodeService[F](repositories).findNode(nodeArg.id)
+    nodeArg => nodeService.findNode(nodeArg.id)
 
   private[this] def userQuery[F[_]: Effect](
-    repository: UserRepo[F]
+    userService: UserService[F]
   ): UserArg => F[Option[User]] =
-    userArg => UserService[F](repository).findByName(userArg.name)
+    userArg => userService.findByName(userArg.name)
 
   private[this] def repositoryQuery[F[_]: Effect](
-    repository: RepositoryRepo[F]
+    repositoryService: RepositoryService[F]
   ): RepositoryArg => F[Option[Repository]] =
-    repositoryArg => RepositoryService[F](repository).findByName(repositoryArg.name)
+    repositoryArg => repositoryService.findByName(repositoryArg.name)
 
   private[this] def repositoryConnectionQuery[F[_]: Effect](
-    repositories: Repositories[F]
+    repositoryService: RepositoryService[F]
   ): RepositoriesArg => F[RepositoryConnection] =
-    repositoriesArg =>
-      RepositoryService[F](repositories.repositoryRepo)
-        .connection(repositoriesArg.first, repositoriesArg.after)
+    repositoriesArg => repositoryService.connection(repositoriesArg.first, repositoriesArg.after)
 
   private[this] def resolver[F[_]: Effect]: Queries[F] = {
     // TODO refactor: move in app
-    val repos = repositories.apply[F]
+    val repos             = repositories.apply[F]
+    val nodeService       = NodeService[F](repos)
+    val userService       = UserService[F](repos.userRepo, repos.repositoryRepo)
+    val repositoryService = RepositoryService[F](repos.repositoryRepo)
 
     Queries(
-      node = nodeQuery(repos),
-      user = userQuery(repos.userRepo),
-      repository = repositoryQuery(repos.repositoryRepo),
-      repositories = repositoryConnectionQuery(repos)
+      node = nodeQuery(nodeService),
+      user = userQuery(userService),
+      repository = repositoryQuery(repositoryService),
+      repositories = repositoryConnectionQuery(repositoryService)
     )
   }
 

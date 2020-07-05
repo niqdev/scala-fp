@@ -1,7 +1,9 @@
 package com.github.niqdev.caliban
 package pagination
 
+import java.nio.charset.StandardCharsets
 import java.time.Instant
+import java.util.Base64
 
 import caliban.interop.cats.CatsInterop
 import caliban.schema.Annotations.GQLInterface
@@ -9,7 +11,11 @@ import caliban.schema.Schema
 import cats.effect.Effect
 import com.github.niqdev.caliban.pagination.models._
 
+// TODO newtype + refined
 object schema extends CommonSchema {
+
+  private[this] val toBase64: String => String =
+    value => Base64.getEncoder.encodeToString(value.getBytes(StandardCharsets.UTF_8))
 
   @GQLInterface
   sealed trait Node {
@@ -33,10 +39,12 @@ object schema extends CommonSchema {
   ) extends Node
       with Base
   object User {
+    val idPrefix = "user:v1:"
+
     def fromModel(repositories: RepositoryConnection): UserModel => User =
       model =>
         User(
-          id = model.id,
+          id = toBase64(s"$idPrefix${model.id}"),
           name = model.name,
           createdAt = model.createdAt,
           updatedAt = model.updatedAt,
@@ -44,6 +52,7 @@ object schema extends CommonSchema {
         )
   }
 
+  // TODO add issue|issues
   final case class Repository(
     id: String,
     name: String,
@@ -54,10 +63,12 @@ object schema extends CommonSchema {
   ) extends Node
       with Base
   object Repository {
+    val idPrefix = "repository:v1:"
+
     val fromModel: RepositoryModel => Repository =
       model =>
         Repository(
-          model.id,
+          toBase64(s"$idPrefix${model.id}"),
           model.name,
           model.url,
           model.isFork,
