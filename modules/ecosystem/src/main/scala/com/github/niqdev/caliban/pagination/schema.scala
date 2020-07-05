@@ -1,9 +1,7 @@
 package com.github.niqdev.caliban
 package pagination
 
-import java.nio.charset.StandardCharsets
 import java.time.Instant
-import java.util.Base64
 
 import caliban.interop.cats.CatsInterop
 import caliban.schema.Annotations.GQLInterface
@@ -13,9 +11,6 @@ import com.github.niqdev.caliban.pagination.models._
 
 // TODO newtype + refined
 object schema extends CommonSchema {
-
-  private[this] val toBase64: String => String =
-    value => Base64.getEncoder.encodeToString(value.getBytes(StandardCharsets.UTF_8))
 
   @GQLInterface
   sealed trait Node {
@@ -44,7 +39,7 @@ object schema extends CommonSchema {
     def fromModel(repositories: RepositoryConnection): UserModel => User =
       model =>
         User(
-          id = toBase64(s"$idPrefix${model.id}"),
+          id = utils.toBase64(s"$idPrefix${model.id}"),
           name = model.name,
           createdAt = model.createdAt,
           updatedAt = model.updatedAt,
@@ -68,7 +63,7 @@ object schema extends CommonSchema {
     val fromModel: RepositoryModel => Repository =
       model =>
         Repository(
-          toBase64(s"$idPrefix${model.id}"),
+          utils.toBase64(s"$idPrefix${model.id}"),
           model.name,
           model.url,
           model.isFork,
@@ -79,16 +74,25 @@ object schema extends CommonSchema {
 
   final case class RepositoryConnection(
     edges: List[RepositoryEdge],
-    //nodes: List[Repository],
+    nodes: List[Repository],
     pageInfo: PageInfo,
     totalCount: Long
   )
 
-  // TODO cursor base64
   final case class RepositoryEdge(
     cursor: String,
     node: Repository
   )
+  object RepositoryEdge {
+    val cursorPrefix = "cursor:v1:"
+
+    val fromRepositoryModel: RepositoryModel => RepositoryEdge =
+      repositoryModel =>
+        RepositoryEdge(
+          utils.toBase64(s"$cursorPrefix${Repository.idPrefix}${repositoryModel.id}"),
+          Repository.fromModel(repositoryModel)
+        )
+  }
 
   final case class PageInfo(
     hasNextPage: Boolean,

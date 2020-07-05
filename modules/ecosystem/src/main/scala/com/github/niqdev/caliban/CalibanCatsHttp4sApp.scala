@@ -43,23 +43,57 @@ object CalibanCatsHttp4sApp extends IOApp {
 
 /*
 
-// TODO
-query node {
-  node(id: "userId") {
+query user {
+  user(name: "userName1") {
     id
-    ... on User {
-      id
-      name
-    }
-    ... on Repository {
-      id
-      url
+    name
+    createdAt
+    updatedAt
+    repositories {
+      edges {
+        cursor
+        node {
+          id
+          name
+          url
+          isFork
+          createdAt
+          updatedAt
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      totalCount
+      nodes {
+        id
+        name
+        url
+        isFork
+        createdAt
+        updatedAt
+      }
     }
   }
-  getRepository: node(id: "repositoryId") {
+}
+
+query node {
+  getNode: node(id: "xxx") {
+    id
+    ... on User {
+      name
+      createdAt
+      updatedAt
+    }
     ... on Repository {
-      id
+      name
       url
+      isFork
+      createdAt
+      updatedAt
     }
   }
 }

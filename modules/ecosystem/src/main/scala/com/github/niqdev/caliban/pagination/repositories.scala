@@ -42,9 +42,6 @@ object repositories {
     def findById(id: Long): F[Option[RepositoryModel]] =
       findAll.map(_.find(_.id == id))
 
-    def findByUserId(userId: Long): F[Option[RepositoryModel]] =
-      findAll.map(_.find(_.userId == userId))
-
     def findByName(name: String): F[Option[RepositoryModel]] =
       findAll.map(_.find(_.name == name))
 

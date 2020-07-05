@@ -1,9 +1,6 @@
 package com.github.niqdev.caliban
 package pagination
 
-import java.nio.charset.StandardCharsets
-import java.util.Base64
-
 import cats.effect.Sync
 import cats.instances.list._
 import cats.instances.option._
@@ -15,16 +12,12 @@ import cats.syntax.nested._
 import com.github.niqdev.caliban.pagination.repositories._
 import com.github.niqdev.caliban.pagination.schema._
 
-import scala.util.Try
-
 // TODO newtype + refined
 object services {
 
-  private[this] val fromBase64: String => String =
-    value => String.valueOf(Base64.getDecoder.decode(value.getBytes(StandardCharsets.UTF_8)))
-
-  private[this] val fromBase64WithoutPrefix: (String, String) => Try[Long] =
-    (value, prefix) => Try(fromBase64(value).replace(prefix, "").toLong)
+  // TODO remove
+  private[this] val decodeNodeId: String => scala.util.Try[Long] =
+    value => utils.longFromBase64(value, User.idPrefix, Repository.idPrefix)
 
   /**
     *
@@ -36,17 +29,26 @@ object services {
     implicit F: Sync[F]
   ) {
 
-    private[this] def findRepositoryConnection(userId: Long): F[RepositoryConnection] = ???
+    private[this] def findRepositoryConnection(userId: Long): F[RepositoryConnection] =
+      for {
+        // TODO use + return paging info
+        repositories <- repositoryRepo.findAllByUserId(userId)
+        edges        <- F.pure(repositories.map(RepositoryEdge.fromRepositoryModel))
+        nodes        <- F.pure(repositories.map(Repository.fromModel))
+        pageInfo <- F.pure {
+          // TODO https://relay.dev/graphql/connections.htm
+          PageInfo(true, true, "startCursor", "endCursor")
+        }
+        totalCount <- repositoryRepo.countByUserId(userId)
+      } yield RepositoryConnection(edges, nodes, pageInfo, totalCount)
 
-    // TODO
     def findNode(id: String): F[Option[User]] =
       for {
-        userId               <- F.fromTry(fromBase64WithoutPrefix(id, User.idPrefix))
+        userId               <- F.fromTry(decodeNodeId(id))
         repositoryConnection <- findRepositoryConnection(userId)
         maybeUser            <- userRepo.findById(userId).nested.map(User.fromModel(repositoryConnection)).value
       } yield maybeUser
 
-    // TODO
     def findByName(name: String): F[Option[User]] =
       (for {
         maybeUserModel       <- userRepo.findByName(name)
@@ -72,7 +74,7 @@ object services {
 
     def findNode(id: String): F[Option[Repository]] =
       for {
-        repositoryId    <- F.fromTry(fromBase64WithoutPrefix(id, Repository.idPrefix))
+        repositoryId    <- F.fromTry(decodeNodeId(id))
         maybeRepository <- repositoryRepo.findById(repositoryId).nested.map(Repository.fromModel).value
       } yield maybeRepository
 
@@ -94,6 +96,9 @@ object services {
     userService: UserService[F],
     repositoryService: RepositoryService[F]
   ) {
+
+    // TODO bug: returns always user
+    // TODO invoke service based on prefix starts with
     def findNode(id: String): F[Option[Node]] =
       for {
         user       <- userService.findNode(id)
