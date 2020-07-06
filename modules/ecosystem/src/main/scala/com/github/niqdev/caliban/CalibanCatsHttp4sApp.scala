@@ -12,6 +12,7 @@ import zio.Runtime
 
 import scala.concurrent.ExecutionContext
 
+// sbt "ecosystem/runMain com.github.niqdev.caliban.CalibanCatsHttp4sApp"
 object CalibanCatsHttp4sApp extends IOApp {
 
   implicit val runtime: Runtime[Any] = Runtime.default
@@ -81,14 +82,14 @@ query user {
 }
 
 query node {
-  getNode: node(id: "xxx") {
+  getNode: node(id: "opaqueCursor") {
     id
-    ... on User {
+    ... on UserNode {
       name
       createdAt
       updatedAt
     }
-    ... on Repository {
+    ... on RepositoryNode {
       name
       url
       isFork

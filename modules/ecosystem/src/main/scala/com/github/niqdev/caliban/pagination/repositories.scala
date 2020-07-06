@@ -4,6 +4,7 @@ import cats.effect.Sync
 import cats.syntax.functor._
 import com.github.niqdev.caliban.pagination.models._
 
+// TODO doobie
 object repositories {
 
   /**
@@ -11,13 +12,13 @@ object repositories {
     */
   sealed abstract class UserRepo[F[_]](implicit F: Sync[F]) {
 
-    def findAll: F[List[UserModel]] =
+    def findAll: F[List[User]] =
       F.pure(models.users)
 
-    def findById(id: Long): F[Option[UserModel]] =
+    def findById(id: Long): F[Option[User]] =
       findAll.map(_.find(_.id == id))
 
-    def findByName(name: String): F[Option[UserModel]] =
+    def findByName(name: String): F[Option[User]] =
       findAll.map(_.find(_.name == name))
 
     def count: F[Long] =
@@ -33,16 +34,16 @@ object repositories {
     */
   sealed abstract class RepositoryRepo[F[_]](implicit F: Sync[F]) {
 
-    def findAll: F[List[RepositoryModel]] =
+    def findAll: F[List[Repository]] =
       F.pure(models.repositories)
 
-    def findAllByUserId(userId: Long): F[List[RepositoryModel]] =
+    def findAllByUserId(userId: Long): F[List[Repository]] =
       findAll.map(_.filter(_.userId == userId))
 
-    def findById(id: Long): F[Option[RepositoryModel]] =
+    def findById(id: Long): F[Option[Repository]] =
       findAll.map(_.find(_.id == id))
 
-    def findByName(name: String): F[Option[RepositoryModel]] =
+    def findByName(name: String): F[Option[Repository]] =
       findAll.map(_.find(_.name == name))
 
     def count: F[Long] =

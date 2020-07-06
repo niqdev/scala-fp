@@ -24,8 +24,8 @@ object queries {
 
   final case class Queries[F[_]](
     node: NodeArg => F[Option[Node]],
-    user: UserArg => F[Option[User]],
-    repository: RepositoryArg => F[Option[Repository]],
+    user: UserArg => F[Option[UserNode]],
+    repository: RepositoryArg => F[Option[RepositoryNode]],
     repositories: RepositoriesArg => F[RepositoryConnection]
   )
 
@@ -36,12 +36,12 @@ object queries {
 
   private[this] def userQuery[F[_]: Effect](
     userService: UserService[F]
-  ): UserArg => F[Option[User]] =
+  ): UserArg => F[Option[UserNode]] =
     userArg => userService.findByName(userArg.name)
 
   private[this] def repositoryQuery[F[_]: Effect](
     repositoryService: RepositoryService[F]
-  ): RepositoryArg => F[Option[Repository]] =
+  ): RepositoryArg => F[Option[RepositoryNode]] =
     repositoryArg => repositoryService.findByName(repositoryArg.name)
 
   private[this] def repositoryConnectionQuery[F[_]: Effect](

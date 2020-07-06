@@ -24,7 +24,7 @@ object schema extends CommonSchema {
   }
 
   // TODO mapN ?
-  final case class User(
+  final case class UserNode(
     id: String,
     name: String,
     createdAt: Instant,
@@ -33,22 +33,22 @@ object schema extends CommonSchema {
     repositories: RepositoryConnection
   ) extends Node
       with Base
-  object User {
+  object UserNode {
     val idPrefix = "user:v1:"
 
-    def fromModel(repositories: RepositoryConnection): UserModel => User =
-      model =>
-        User(
-          id = utils.toBase64(s"$idPrefix${model.id}"),
-          name = model.name,
-          createdAt = model.createdAt,
-          updatedAt = model.updatedAt,
+    def fromUser(repositories: RepositoryConnection): User => UserNode =
+      user =>
+        UserNode(
+          id = utils.toBase64(s"$idPrefix${user.id}"),
+          name = user.name,
+          createdAt = user.createdAt,
+          updatedAt = user.updatedAt,
           repositories
         )
   }
 
   // TODO add issue|issues
-  final case class Repository(
+  final case class RepositoryNode(
     id: String,
     name: String,
     url: String,
@@ -57,40 +57,40 @@ object schema extends CommonSchema {
     updatedAt: Instant
   ) extends Node
       with Base
-  object Repository {
+  object RepositoryNode {
     val idPrefix = "repository:v1:"
 
-    val fromModel: RepositoryModel => Repository =
-      model =>
-        Repository(
-          utils.toBase64(s"$idPrefix${model.id}"),
-          model.name,
-          model.url,
-          model.isFork,
-          model.createdAt,
-          model.updatedAt
+    val fromRepository: Repository => RepositoryNode =
+      repository =>
+        RepositoryNode(
+          utils.toBase64(s"$idPrefix${repository.id}"),
+          repository.name,
+          repository.url,
+          repository.isFork,
+          repository.createdAt,
+          repository.updatedAt
         )
   }
 
   final case class RepositoryConnection(
     edges: List[RepositoryEdge],
-    nodes: List[Repository],
+    nodes: List[RepositoryNode],
     pageInfo: PageInfo,
     totalCount: Long
   )
 
   final case class RepositoryEdge(
     cursor: String,
-    node: Repository
+    node: RepositoryNode
   )
   object RepositoryEdge {
     val cursorPrefix = "cursor:v1:"
 
-    val fromRepositoryModel: RepositoryModel => RepositoryEdge =
-      repositoryModel =>
+    val fromRepository: Repository => RepositoryEdge =
+      repository =>
         RepositoryEdge(
-          utils.toBase64(s"$cursorPrefix${Repository.idPrefix}${repositoryModel.id}"),
-          Repository.fromModel(repositoryModel)
+          utils.toBase64(s"$cursorPrefix${RepositoryNode.idPrefix}${repository.id}"),
+          RepositoryNode.fromRepository(repository)
         )
   }
 

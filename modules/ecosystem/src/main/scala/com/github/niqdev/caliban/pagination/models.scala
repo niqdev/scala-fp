@@ -4,17 +4,17 @@ package pagination
 import java.time.Instant
 
 // TODO newtype + refined
-// TODO mock db: https://github.com/typelevel and https://github.com/zio
+// TODO load db: https://github.com/typelevel and https://github.com/zio
 object models {
 
-  final case class UserModel(
+  final case class User(
     id: Long,
     name: String,
     createdAt: Instant,
     updatedAt: Instant
   )
 
-  final case class RepositoryModel(
+  final case class Repository(
     id: Long,
     userId: Long,
     url: String,
@@ -24,14 +24,14 @@ object models {
     updatedAt: Instant
   )
 
-  val users: List[UserModel] = List(
-    UserModel(
+  val users: List[User] = List(
+    User(
       id = 1,
       name = "userName1",
       createdAt = Instant.now,
       updatedAt = Instant.now
     ),
-    UserModel(
+    User(
       id = 2,
       name = "userName2",
       createdAt = Instant.now,
@@ -39,8 +39,8 @@ object models {
     )
   )
 
-  val repositories: List[RepositoryModel] = List(
-    RepositoryModel(
+  val repositories: List[Repository] = List(
+    Repository(
       id = 1,
       userId = 1,
       name = "repositoryName1",
@@ -49,7 +49,7 @@ object models {
       createdAt = Instant.now,
       updatedAt = Instant.now
     ),
-    RepositoryModel(
+    Repository(
       id = 2,
       userId = 1,
       name = "repositoryName2",
@@ -58,7 +58,7 @@ object models {
       createdAt = Instant.now,
       updatedAt = Instant.now
     ),
-    RepositoryModel(
+    Repository(
       id = 3,
       userId = 2,
       name = "repositoryName3",
