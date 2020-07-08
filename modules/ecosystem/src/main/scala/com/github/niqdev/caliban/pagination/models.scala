@@ -16,8 +16,8 @@ object models {
   final case class Repository(
     id: Long,
     userId: Long,
-    url: String,
     name: String,
+    url: String,
     isFork: Boolean,
     createdAt: Instant,
     updatedAt: Instant

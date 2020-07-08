@@ -1,5 +1,6 @@
 package com.github.niqdev.doobie
 
+import java.net.URL
 import java.time.Instant
 import java.util.UUID
 
@@ -20,7 +21,9 @@ object ExampleH2 extends IOApp {
   import doobie.implicits.legacy.instant.JavaTimeInstantMeta
   import doobie.refined.implicits.refinedMeta
 
-  implicit val idMeta: Meta[UUID] = Meta.Advanced.other[UUID]("id")
+  implicit val logHandler = doobie.util.log.LogHandler.jdkLogHandler
+  implicit val idMeta     = Meta.Advanced.other[UUID]("id")
+  implicit val urlMeta    = Meta.StringMeta.timap(new URL(_))(_.toString)
 
   private[this] final case class DatabaseConfig(
     connectionUrl: String,
@@ -64,15 +67,26 @@ object ExampleH2 extends IOApp {
       .to[List]
       .transact(xa)
 
+  @scala.annotation.nowarn
+  private[this] def findRepositories[F[_]](xa: Transactor[F])(
+    implicit ev: Bracket[F, Throwable]
+  ): F[List[(UUID, UUID, NonEmptyString, URL, Instant, Instant)]] =
+    sql"select id, user_id, name, url, created_at, updated_at from example.repository"
+      .query[(UUID, UUID, NonEmptyString, URL, Instant, Instant)]
+      .to[List]
+      .transact(xa)
+
   private[this] def h2Example[F[_]: Async: ContextShift: Logger]: Resource[F, Unit] = {
     val config = DatabaseConfig("jdbc:h2:mem:example_db;DB_CLOSE_DELAY=-1", "sa", "", "example")
 
     for {
-      version <- Resource.liftF(migration[F](config))
-      _       <- Resource.liftF(Logger[F].info(s"migration version: $version"))
-      xa      <- transactor[F](config)
-      users   <- Resource.liftF(findUsers[F](xa))
-      _       <- Resource.liftF(Logger[F].info(s"findUsers: $users"))
+      version      <- Resource.liftF(migration[F](config))
+      _            <- Resource.liftF(Logger[F].info(s"migration version: $version"))
+      xa           <- transactor[F](config)
+      users        <- Resource.liftF(findUsers[F](xa))
+      _            <- Resource.liftF(Logger[F].info(s"findUsers: $users"))
+      repositories <- Resource.liftF(findRepositories[F](xa))
+      _            <- Resource.liftF(Logger[F].info(s"findRepositories: $repositories"))
     } yield ()
   }
 
