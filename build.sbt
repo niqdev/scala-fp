@@ -20,6 +20,7 @@ lazy val versions = new {
   val fs2            = "2.4.2"
   val http4s         = "0.21.6"
   val doobie         = "0.9.0"
+  val flyway         = "6.5.0"
   val caliban        = "0.8.3"
   val magnolia       = "0.16.0"
   val droste         = "0.8.0"
@@ -61,7 +62,9 @@ lazy val dependencies = new {
     "org.http4s"            %% "http4s-blaze-client"       % versions.http4s,
     "org.http4s"            %% "http4s-prometheus-metrics" % versions.http4s,
     "org.tpolecat"          %% "doobie-core"               % versions.doobie,
+    "org.tpolecat"          %% "doobie-refined"            % versions.doobie,
     "org.tpolecat"          %% "doobie-h2"                 % versions.doobie,
+    "org.flywaydb"          % "flyway-core"                % versions.flyway,
     "com.github.ghostdogpr" %% "caliban"                   % versions.caliban,
     "com.github.ghostdogpr" %% "caliban-http4s"            % versions.caliban,
     "com.github.ghostdogpr" %% "caliban-cats"              % versions.caliban,

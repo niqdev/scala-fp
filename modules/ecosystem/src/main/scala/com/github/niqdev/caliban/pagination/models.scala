@@ -4,7 +4,6 @@ package pagination
 import java.time.Instant
 
 // TODO newtype + refined
-// TODO load db: https://github.com/typelevel and https://github.com/zio
 object models {
 
   final case class User(
