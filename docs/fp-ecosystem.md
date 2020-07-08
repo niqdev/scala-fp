@@ -76,6 +76,13 @@ sbt "test:testOnly *fs2*"
 * [doobie](https://tpolecat.github.io/doobie) (Documentation)
 * [Pure Functional Database Programming with Fixpoint Types](https://www.youtube.com/watch?v=7xSfLPD6tiQ) by Rob Norris (video)
 
+### Examples
+
+```bash
+# run
+sbt "ecosystem/runMain com.github.niqdev.doobie.ExampleH2"
+```
+
 ## shapeless
 
 ### Resources
