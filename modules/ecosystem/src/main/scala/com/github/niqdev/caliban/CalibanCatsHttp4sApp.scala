@@ -2,7 +2,11 @@ package com.github.niqdev.caliban
 
 import caliban.Http4sAdapter
 import caliban.interop.cats.implicits.CatsEffectGraphQL
-import cats.effect.{ ConcurrentEffect, ExitCode, IO, IOApp, Resource, Timer }
+import cats.effect.{ ConcurrentEffect, ContextShift, ExitCode, IO, IOApp, Resource, Timer }
+import com.github.niqdev.caliban.pagination.queries.Queries
+import com.github.niqdev.caliban.pagination.repositories.Repositories
+import com.github.niqdev.caliban.pagination.services.Services
+import com.github.niqdev.doobie.Database
 import io.chrisdavenport.log4cats.Logger
 import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
 import org.http4s.server.Router
@@ -26,10 +30,13 @@ object CalibanCatsHttp4sApp extends IOApp {
           .as(ExitCode.Success)
       )
 
-  def server[F[_]: ConcurrentEffect: Timer: Logger]: Resource[F, Unit] =
+  private[caliban] def server[F[_]: ConcurrentEffect: ContextShift: Timer: Logger]: Resource[F, Unit] =
     for {
-      _ <- Resource.liftF(Logger[F].info("Start server..."))
-      api = ExampleApi.api |+| pagination.queries.api[F]
+      _            <- Resource.liftF(Logger[F].info("Start server..."))
+      xa           <- Database.initInMemory[F]
+      repositories <- Repositories.make[F](xa)
+      services     <- Services.make[F](repositories)
+      api = ExampleApi.api |+| Queries.api[F](services)
       _           <- Resource.liftF(Logger[F].info(s"GraphQL Schema:\n${api.render}"))
       interpreter <- Resource.liftF(api.interpreterAsync)
       httpApp = Router(
@@ -41,62 +48,3 @@ object CalibanCatsHttp4sApp extends IOApp {
         .resource
     } yield ()
 }
-
-/*
-
-query user {
-  user(name: "userName1") {
-    id
-    name
-    createdAt
-    updatedAt
-    repositories {
-      edges {
-        cursor
-        node {
-          id
-          name
-          url
-          isFork
-          createdAt
-          updatedAt
-        }
-      }
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-        startCursor
-        endCursor
-      }
-      totalCount
-      nodes {
-        id
-        name
-        url
-        isFork
-        createdAt
-        updatedAt
-      }
-    }
-  }
-}
-
-query node {
-  getNode: node(id: "opaqueCursor") {
-    id
-    ... on UserNode {
-      name
-      createdAt
-      updatedAt
-    }
-    ... on RepositoryNode {
-      name
-      url
-      isFork
-      createdAt
-      updatedAt
-    }
-  }
-}
-
- */

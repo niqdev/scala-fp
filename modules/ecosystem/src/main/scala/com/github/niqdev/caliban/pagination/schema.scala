@@ -3,111 +3,107 @@ package pagination
 
 import java.time.Instant
 
+import caliban.CalibanError
+import caliban.Value.{ IntValue, StringValue }
 import caliban.interop.cats.CatsInterop
 import caliban.schema.Annotations.GQLInterface
-import caliban.schema.Schema
+import caliban.schema.{ ArgBuilder, Schema }
 import cats.effect.Effect
-import com.github.niqdev.caliban.pagination.models._
+import cats.syntax.either._
+import eu.timepit.refined.numeric.NonNegative
+import eu.timepit.refined.refineV
+import eu.timepit.refined.string.Url
+import eu.timepit.refined.types.numeric.NonNegInt
+import eu.timepit.refined.types.string.NonEmptyString
 
-// TODO newtype + refined
 object schema extends CommonSchema {
 
   @GQLInterface
   sealed trait Node {
-    def id: String
+    def id: NodeId
   }
 
-  @GQLInterface
-  sealed trait Base {
-    def createdAt: Instant
-    def updatedAt: Instant
-  }
-
-  // TODO mapN ?
   final case class UserNode(
-    id: String,
-    name: String,
+    id: NodeId,
+    name: NonEmptyString,
     createdAt: Instant,
     updatedAt: Instant,
-    //repository: Repository, TODO findByName
+    //repository: Repository,
     repositories: RepositoryConnection
   ) extends Node
-      with Base
-  object UserNode {
-    val idPrefix = "user:v1:"
-
-    def fromUser(repositories: RepositoryConnection): User => UserNode =
-      user =>
-        UserNode(
-          id = utils.toBase64(s"$idPrefix${user.id}"),
-          name = user.name,
-          createdAt = user.createdAt,
-          updatedAt = user.updatedAt,
-          repositories
-        )
-  }
 
   // TODO add issue|issues
   final case class RepositoryNode(
-    id: String,
-    name: String,
-    url: String,
+    id: NodeId,
+    name: NonEmptyString,
+    url: Url,
     isFork: Boolean,
     createdAt: Instant,
     updatedAt: Instant
   ) extends Node
-      with Base
-  object RepositoryNode {
-    val idPrefix = "repository:v1:"
-
-    val fromRepository: Repository => RepositoryNode =
-      repository =>
-        RepositoryNode(
-          utils.toBase64(s"$idPrefix${repository.id}"),
-          repository.name,
-          repository.url,
-          repository.isFork,
-          repository.createdAt,
-          repository.updatedAt
-        )
-  }
 
   final case class RepositoryConnection(
     edges: List[RepositoryEdge],
     nodes: List[RepositoryNode],
     pageInfo: PageInfo,
-    totalCount: Long
+    totalCount: NonNegInt
   )
 
   final case class RepositoryEdge(
-    cursor: String,
+    cursor: Cursor,
     node: RepositoryNode
   )
-  object RepositoryEdge {
-    val cursorPrefix = "cursor:v1:"
-
-    val fromRepository: Repository => RepositoryEdge =
-      repository =>
-        RepositoryEdge(
-          utils.toBase64(s"$cursorPrefix${RepositoryNode.idPrefix}${repository.id}"),
-          RepositoryNode.fromRepository(repository)
-        )
-  }
 
   final case class PageInfo(
     hasNextPage: Boolean,
     hasPreviousPage: Boolean,
-    startCursor: String,
-    endCursor: String
+    startCursor: Cursor,
+    endCursor: Cursor
   )
 }
 
 protected[caliban] sealed trait CommonSchema {
 
-  // caliban.interop.cats.implicits.effectSchema
+  // see caliban.interop.cats.implicits.effectSchema
   implicit def effectSchema[F[_]: Effect, R, A](implicit ev: Schema[R, A]): Schema[R, F[A]] =
     CatsInterop.schema
 
   implicit val instantSchema: Schema[Any, Instant] =
     Schema.longSchema.contramap(_.getEpochSecond)
+
+  implicit val nonEmptyStringSchema: Schema[Any, NonEmptyString] =
+    Schema.stringSchema.contramap(_.value)
+
+  implicit val nodeIdSchema: Schema[Any, NodeId] =
+    nonEmptyStringSchema.contramap(_.base64)
+
+  implicit val cursorSchema: Schema[Any, Cursor] =
+    nonEmptyStringSchema.contramap(_.base64)
+
+  implicit val offsetSchema: Schema[Any, Offset] =
+    Schema.intSchema.contramap(_.nonNegInt.value)
+
+}
+
+protected[caliban] sealed trait CommonArgBuilder {
+
+  implicit val nonNegIntArgBuilder: ArgBuilder[Offset] = {
+    case intValue: IntValue =>
+      refineV[NonNegative](intValue.toInt).map(Offset.apply).leftMap(CalibanError.ExecutionError(_))
+    case other =>
+      Left(CalibanError.ExecutionError(s"Can't build an Offset from input $other"))
+  }
+  implicit val nonEmptyStringArgBuilder: ArgBuilder[NonEmptyString] = {
+    case StringValue(value) =>
+      NonEmptyString.from(value).leftMap(CalibanError.ExecutionError(_))
+    case other =>
+      Left(CalibanError.ExecutionError(s"Can't build a NonEmptyString from input $other"))
+  }
+
+  implicit val nodeIdArgBuilder: ArgBuilder[NodeId] =
+    nonEmptyStringArgBuilder.map(NodeId.apply)
+
+  implicit val cursorArgBuilder: ArgBuilder[Cursor] =
+    nonEmptyStringArgBuilder.map(Cursor.apply)
+
 }

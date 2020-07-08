@@ -2,70 +2,44 @@ package com.github.niqdev.caliban
 package pagination
 
 import java.time.Instant
+import java.util.UUID
 
-// TODO newtype + refined
+import doobie.util.meta.Meta
+import eu.timepit.refined.string.Url
+import eu.timepit.refined.types.string.NonEmptyString
+import io.estatico.newtype.macros.newtype
+
 object models {
 
+  @newtype
+  case class UserId(value: UUID)
+  object UserId {
+    implicit val userIdMeta: Meta[UserId] =
+      Meta.Advanced.other[UUID]("id").timap(UserId(_))(_.value)
+  }
+
+  @newtype
+  case class RepositoryId(value: java.util.UUID)
+  object RepositoryId {
+    implicit val repositoryIdMeta: Meta[RepositoryId] =
+      Meta.Advanced.other[UUID]("id").timap(RepositoryId(_))(_.value)
+  }
+
   final case class User(
-    id: Long,
-    name: String,
+    id: UserId,
+    name: NonEmptyString,
     createdAt: Instant,
     updatedAt: Instant
   )
 
   final case class Repository(
-    id: Long,
-    userId: Long,
-    name: String,
-    url: String,
+    id: RepositoryId,
+    userId: UserId,
+    name: NonEmptyString,
+    url: Url,
     isFork: Boolean,
     createdAt: Instant,
     updatedAt: Instant
-  )
-
-  val users: List[User] = List(
-    User(
-      id = 1,
-      name = "userName1",
-      createdAt = Instant.now,
-      updatedAt = Instant.now
-    ),
-    User(
-      id = 2,
-      name = "userName2",
-      createdAt = Instant.now,
-      updatedAt = Instant.now
-    )
-  )
-
-  val repositories: List[Repository] = List(
-    Repository(
-      id = 1,
-      userId = 1,
-      name = "repositoryName1",
-      url = "repositoryUrl1",
-      isFork = false,
-      createdAt = Instant.now,
-      updatedAt = Instant.now
-    ),
-    Repository(
-      id = 2,
-      userId = 1,
-      name = "repositoryName2",
-      url = "repositoryUrl2",
-      isFork = true,
-      createdAt = Instant.now,
-      updatedAt = Instant.now
-    ),
-    Repository(
-      id = 3,
-      userId = 2,
-      name = "repositoryName3",
-      url = "repositoryUrl3",
-      isFork = false,
-      createdAt = Instant.now,
-      updatedAt = Instant.now
-    )
   )
 
 }

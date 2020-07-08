@@ -6,7 +6,7 @@ import doobie.util.ExecutionContexts
 import io.chrisdavenport.log4cats.Logger
 import org.flywaydb.core.Flyway
 
-object database {
+object Database {
 
   final case class Config(
     connectionUrl: String,
@@ -39,11 +39,11 @@ object database {
       )
     } yield xa
 
-  def init[F[_]: Async: ContextShift: Logger]: Resource[F, H2Transactor[F]] = {
+  def initInMemory[F[_]: Async: ContextShift: Logger]: Resource[F, H2Transactor[F]] = {
     val config = Config("jdbc:h2:mem:example_db;DB_CLOSE_DELAY=-1", "sa", "", "example")
 
     for {
-      _       <- Resource.liftF(Logger[F].info(s"Init database..."))
+      _       <- Resource.liftF(Logger[F].info(s"Init in-memory database..."))
       _       <- Resource.liftF(Logger[F].info(s"config: $config"))
       version <- Resource.liftF(migration[F](config))
       _       <- Resource.liftF(Logger[F].info(s"migration version: $version"))

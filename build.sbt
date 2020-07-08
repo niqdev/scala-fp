@@ -14,6 +14,7 @@ lazy val versions = new {
   val zio            = "1.0.0-RC21-2"
   val zioInteropCats = "2.1.3.0-RC16"
   val circe          = "0.13.0"
+  val newtype        = "0.4.4"
   val refined        = "0.9.14"
   val squants        = "1.6.0"
   val enumeratum     = "1.6.1"
@@ -50,6 +51,7 @@ lazy val dependencies = new {
     "io.circe"              %% "circe-generic"             % versions.circe,
     "io.circe"              %% "circe-parser"              % versions.circe,
     "io.circe"              %% "circe-refined"             % versions.circe,
+    "io.estatico"           %% "newtype"                   % versions.newtype,
     "eu.timepit"            %% "refined"                   % versions.refined,
     "org.typelevel"         %% "squants"                   % versions.squants,
     "com.beachape"          %% "enumeratum"                % versions.enumeratum,

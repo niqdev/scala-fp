@@ -33,15 +33,15 @@ object ExampleH2 extends IOApp {
   @scala.annotation.nowarn
   private[this] def findRepositories[F[_]](xa: Transactor[F])(
     implicit ev: Bracket[F, Throwable]
-  ): F[List[(UUID, UUID, NonEmptyString, URL, Instant, Instant)]] =
-    sql"select id, user_id, name, url, created_at, updated_at from example.repository"
-      .query[(UUID, UUID, NonEmptyString, URL, Instant, Instant)]
+  ): F[List[(UUID, UUID, NonEmptyString, URL, Boolean, Instant, Instant)]] =
+    sql"select id, user_id, name, url, is_fork, created_at, updated_at from example.repository"
+      .query[(UUID, UUID, NonEmptyString, URL, Boolean, Instant, Instant)]
       .to[List]
       .transact(xa)
 
   private[this] def h2Example[F[_]: Async: ContextShift: Logger]: Resource[F, Unit] = {
     for {
-      xa           <- database.init[F]
+      xa           <- Database.initInMemory[F]
       userCount    <- Resource.liftF(countUsers[F](xa))
       _            <- Resource.liftF(Logger[F].info(s"countUsers: $userCount"))
       repositories <- Resource.liftF(findRepositories[F](xa))
