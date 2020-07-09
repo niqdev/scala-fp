@@ -10,13 +10,12 @@ import caliban.schema.Annotations.GQLInterface
 import caliban.schema.{ ArgBuilder, Schema }
 import cats.effect.Effect
 import cats.syntax.either._
-import eu.timepit.refined.numeric.NonNegative
-import eu.timepit.refined.refineV
+import com.github.niqdev.caliban.pagination.types._
 import eu.timepit.refined.string.Url
 import eu.timepit.refined.types.numeric.NonNegInt
 import eu.timepit.refined.types.string.NonEmptyString
 
-object schema extends CommonSchema {
+object schema extends CommonSchema with CommonArgBuilder {
 
   @GQLInterface
   sealed trait Node {
@@ -82,17 +81,10 @@ protected[caliban] sealed trait CommonSchema {
 
   implicit val offsetSchema: Schema[Any, Offset] =
     Schema.intSchema.contramap(_.nonNegInt.value)
-
 }
 
 protected[caliban] sealed trait CommonArgBuilder {
 
-  implicit val nonNegIntArgBuilder: ArgBuilder[Offset] = {
-    case intValue: IntValue =>
-      refineV[NonNegative](intValue.toInt).map(Offset.apply).leftMap(CalibanError.ExecutionError(_))
-    case other =>
-      Left(CalibanError.ExecutionError(s"Can't build an Offset from input $other"))
-  }
   implicit val nonEmptyStringArgBuilder: ArgBuilder[NonEmptyString] = {
     case StringValue(value) =>
       NonEmptyString.from(value).leftMap(CalibanError.ExecutionError(_))
@@ -105,5 +97,12 @@ protected[caliban] sealed trait CommonArgBuilder {
 
   implicit val cursorArgBuilder: ArgBuilder[Cursor] =
     nonEmptyStringArgBuilder.map(Cursor.apply)
+
+  implicit val offsetArgBuilder: ArgBuilder[Offset] = {
+    case value: IntValue =>
+      NonNegInt.from(value.toInt).map(Offset.apply).leftMap(CalibanError.ExecutionError(_))
+    case other =>
+      Left(CalibanError.ExecutionError(s"Can't build a NonNegInt from input $other"))
+  }
 
 }

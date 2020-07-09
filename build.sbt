@@ -91,6 +91,8 @@ lazy val commonSettings = Seq(
   // https://tpolecat.github.io/2017/04/25/scalac-flags.html
   // https://github.com/DavidGregory084/sbt-tpolecat
   // https://nathankleyn.com/2019/05/13/recommended-scalac-flags-for-2-13
+  // http://eed3si9n.com/stricter-scala-with-xlint-xfatal-warnings-and-scalafix
+  // https://alexn.org/blog/2020/05/26/scala-fatal-warnings.html
   scalacOptions ++= Seq(
     "-encoding",
     "UTF-8", // source files are in UTF-8
@@ -101,6 +103,7 @@ lazy val commonSettings = Seq(
     "-language:implicitConversions", // allow definition of implicit functions called views
     "-Xlint", // enable handy linter warnings
     "-Wconf:any:error", // configurable warnings see https://github.com/scala/scala/pull/8373
+    "-Ymacro-annotations", // required by newtype
     "-Xsource:2.13"
   ),
   addCompilerPlugin("org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full)

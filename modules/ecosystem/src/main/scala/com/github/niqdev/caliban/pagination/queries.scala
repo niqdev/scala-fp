@@ -6,6 +6,7 @@ import cats.effect.Effect
 import com.github.niqdev.caliban.pagination.queries.arguments._
 import com.github.niqdev.caliban.pagination.schema._
 import com.github.niqdev.caliban.pagination.services._
+import com.github.niqdev.caliban.pagination.types._
 import eu.timepit.refined.types.string.NonEmptyString
 
 // https://developer.github.com/v4/explorer

@@ -7,6 +7,7 @@ import doobie.util.fragment.Fragment
 import doobie.util.transactor.Transactor
 import eu.timepit.refined.types.string.NonEmptyString
 
+@scala.annotation.nowarn
 object repositories {
 
   import doobie.implicits.legacy.instant.JavaTimeInstantMeta
