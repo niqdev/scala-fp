@@ -10,12 +10,20 @@ import caliban.schema.Annotations.GQLInterface
 import caliban.schema.{ ArgBuilder, Schema }
 import cats.effect.Effect
 import cats.syntax.either._
-import com.github.niqdev.caliban.pagination.types._
+import com.github.niqdev.caliban.pagination.schema._
 import eu.timepit.refined.string.Url
 import eu.timepit.refined.types.numeric.NonNegInt
 import eu.timepit.refined.types.string.NonEmptyString
+import io.estatico.newtype.macros.newtype
 
 object schema extends CommonSchema with CommonArgBuilder {
+
+  // TODO MatchesRegex
+  final type Base64 = NonEmptyString
+
+  @newtype case class NodeId(base64: Base64)
+  @newtype case class Cursor(base64: Base64)
+  @newtype case class Offset(nonNegInt: NonNegInt)
 
   @GQLInterface
   sealed trait Node {

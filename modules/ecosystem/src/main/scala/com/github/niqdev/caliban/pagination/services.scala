@@ -4,7 +4,6 @@ package pagination
 import cats.effect.{ Resource, Sync }
 import com.github.niqdev.caliban.pagination.repositories._
 import com.github.niqdev.caliban.pagination.schema._
-import com.github.niqdev.caliban.pagination.types._
 import eu.timepit.refined.types.string.NonEmptyString
 
 /*
