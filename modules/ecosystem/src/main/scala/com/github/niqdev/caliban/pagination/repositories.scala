@@ -43,10 +43,10 @@ object repositories {
         fr"SELECT id, name, created_at, updated_at" ++ tableFrom
 
       lazy val findById: UserId => Fragment =
-        id => findAll ++ fr"WHERE id = $id"
+        id => findAll ++ fr"WHERE id = ${id.value}"
 
       lazy val findByName: NonEmptyString => Fragment =
-        name => findAll ++ fr"WHERE name = $name"
+        name => findAll ++ fr"WHERE name = ${name.value}"
 
       lazy val count: Fragment =
         fr"SELECT COUNT(*)" ++ tableFrom
@@ -89,19 +89,19 @@ object repositories {
         fr"SELECT id, user_id, name, url, is_fork, created_at, updated_at" ++ tableFrom
 
       lazy val findAllByUserId: UserId => Fragment =
-        userId => findAll ++ fr"WHERE user_id = $userId"
+        userId => findAll ++ fr"WHERE user_id = ${userId.value}"
 
       lazy val findById: RepositoryId => Fragment =
-        id => findAll ++ fr"WHERE id = $id"
+        id => findAll ++ fr"WHERE id = ${id.value}"
 
       lazy val findByName: NonEmptyString => Fragment =
-        name => findAll ++ fr"WHERE name = $name"
+        name => findAll ++ fr"WHERE name = ${name.value}"
 
       lazy val count: Fragment =
         fr"SELECT COUNT(*)" ++ tableFrom
 
       lazy val countByUserId: UserId => Fragment =
-        userId => fr"SELECT COUNT(*)" ++ tableFrom ++ fr"WHERE user_id = $userId"
+        userId => fr"SELECT COUNT(*)" ++ tableFrom ++ fr"WHERE user_id = ${userId.value}"
     }
   }
 

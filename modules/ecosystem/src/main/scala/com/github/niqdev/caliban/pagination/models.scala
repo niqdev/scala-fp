@@ -10,20 +10,21 @@ import eu.timepit.refined.string.Url
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.macros.newtype
 
-// FIXME No TypeTag available for com.github.niqdev.caliban.pagination.models.UserId
+import scala.reflect.runtime.universe.TypeTag
+
 object models {
 
   @newtype
   case class UserId(value: UUID)
   object UserId {
-    implicit val userIdMeta: Meta[UserId] =
+    implicit def userIdMeta(implicit t: TypeTag[UserId]): Meta[UserId] =
       UuidType.timap(UserId.apply)(_.value)
   }
 
   @newtype
   case class RepositoryId(value: java.util.UUID)
   object RepositoryId {
-    implicit val repositoryIdMeta: Meta[RepositoryId] =
+    implicit def repositoryIdMeta(implicit t: TypeTag[RepositoryId]): Meta[RepositoryId] =
       UuidType.timap(RepositoryId.apply)(_.value)
   }
 
