@@ -46,28 +46,45 @@ https://www.lihaoyi.com/post/MicrooptimizingyourScalacode.html
 https://www.lightbend.com/blog/profiling-jvm-applications
 https://www.scala-lang.org/blog/2018/06/04/scalac-profiling.html
 
-# recursion-schemas
+---
+
+### recursion-schemas
+
+# matryoshka
 https://github.com/precog/matryoshka
-https://github.com/higherkindness/droste
 https://akmetiuk.com/posts/2017-03-10-matryoshka-intro.html
 https://kubuszok.com/2019/ast-playground-recursion-schemes-and-recursive-data
-https://www.47deg.com/blog/recursion-schemes-introduction
+https://github.com/LoyolaChicagoCode/matryoshka-examples-scala
 https://github.com/vil1/recursion-schemes-cookbook
+
+# droste
+https://github.com/higherkindness/droste
+https://www.47deg.com/blog/recursion-schemes-introduction
+https://github.com/BeniVF/practical-droste
+https://github.com/higherkindness/ersatz
+# Practical Droste
+https://www.youtube.com/watch?v=YBEc0Upntjg
+# Recursion schemes with Higherkindness
+https://www.youtube.com/watch?v=tP77Ryy9Qxs
+
 # haskell
 https://www.reddit.com/r/haskell/comments/9x684a/edward_kmett_there_and_back_again_regular_and
 https://medium.com/@jaredtobin/practical-recursion-schemes-c10648ec1c29
 https://bartoszmilewski.com/2018/08/20/recursion-schemes-for-higher-algebras
 https://blog.sumtypeofway.com/posts/introduction-to-recursion-schemes.html
+
 # more
 https://github.com/passy/awesome-recursion-schemes
 http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.125
+
 # Peeling the Banana: Recursion Schemes from First Principles
 https://www.youtube.com/watch?v=XZ9nPZbaYfE
-# Practical Droste - live coding with Beni Villa
-https://www.youtube.com/watch?v=YBEc0Upntjg
+# A path to Recursion Schemes
+https://www.youtube.com/watch?v=ngnzCv7M92c
 # Category Theory in Life
 https://www.youtube.com/watch?v=ho7oagHeqNc
 
+---
 # free boolean
 https://arosien.github.io/talks/free-boolean-algebras.html
 
