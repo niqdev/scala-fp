@@ -17,7 +17,7 @@ object repositories {
   import doobie.h2.implicits.UuidType
 
   // newtype meta
-  implicit def coercibleMeta[R, N](
+  private[this] implicit def coercibleMeta[R, N](
     implicit ev: Coercible[Meta[R], Meta[N]],
     R: Meta[R]
   ): Meta[N] = ev(R)
@@ -52,10 +52,10 @@ object repositories {
         fr"SELECT id, name, created_at, updated_at" ++ tableFrom
 
       lazy val findById: UserId => Fragment =
-        id => findAll ++ fr"WHERE id = ${id.value}"
+        id => findAll ++ fr"WHERE id = $id"
 
       lazy val findByName: NonEmptyString => Fragment =
-        name => findAll ++ fr"WHERE name = ${name.value}"
+        name => findAll ++ fr"WHERE name = $name"
 
       lazy val count: Fragment =
         fr"SELECT COUNT(*)" ++ tableFrom
@@ -98,19 +98,19 @@ object repositories {
         fr"SELECT id, user_id, name, url, is_fork, created_at, updated_at" ++ tableFrom
 
       lazy val findAllByUserId: UserId => Fragment =
-        userId => findAll ++ fr"WHERE user_id = ${userId.value}"
+        userId => findAll ++ fr"WHERE user_id = $userId"
 
       lazy val findById: RepositoryId => Fragment =
-        id => findAll ++ fr"WHERE id = ${id.value}"
+        id => findAll ++ fr"WHERE id = $id"
 
       lazy val findByName: NonEmptyString => Fragment =
-        name => findAll ++ fr"WHERE name = ${name.value}"
+        name => findAll ++ fr"WHERE name = $name"
 
       lazy val count: Fragment =
         fr"SELECT COUNT(*)" ++ tableFrom
 
       lazy val countByUserId: UserId => Fragment =
-        userId => fr"SELECT COUNT(*)" ++ tableFrom ++ fr"WHERE user_id = ${userId.value}"
+        userId => fr"SELECT COUNT(*)" ++ tableFrom ++ fr"WHERE user_id = $userId"
     }
   }
 
