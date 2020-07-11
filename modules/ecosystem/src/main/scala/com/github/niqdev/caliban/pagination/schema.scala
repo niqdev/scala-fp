@@ -11,14 +11,23 @@ import caliban.schema.{ ArgBuilder, Schema }
 import cats.effect.Effect
 import cats.syntax.either._
 import com.github.niqdev.caliban.pagination.schema._
-import eu.timepit.refined.string.Url
+import eu.timepit.refined.W
+import eu.timepit.refined.api.{ Refined, RefinedTypeOps }
+import eu.timepit.refined.string.{ MatchesRegex, Url }
 import eu.timepit.refined.types.numeric.NonNegInt
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.macros.newtype
 
 object schema extends CommonSchema with CommonArgBuilder {
 
-  // TODO MatchesRegex
+  // TODO replace Base64
+  // https://stackoverflow.com/questions/475074/regex-to-parse-or-validate-base64-data
+  final val Base64Regex = W(
+    """^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"""
+  )
+  final type Base64String = String Refined MatchesRegex[Base64Regex.T]
+  final object Base64String extends RefinedTypeOps[Base64String, String]
+
   final type Base64 = NonEmptyString
 
   @newtype case class NodeId(base64: Base64)

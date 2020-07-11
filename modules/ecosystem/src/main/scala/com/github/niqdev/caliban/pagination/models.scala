@@ -11,7 +11,6 @@ import io.estatico.newtype.macros.newtype
 object models {
 
   @newtype case class UserId(value: UUID)
-
   @newtype case class RepositoryId(value: UUID)
 
   final case class User(
