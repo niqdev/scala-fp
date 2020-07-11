@@ -4,29 +4,15 @@ package pagination
 import java.time.Instant
 import java.util.UUID
 
-import doobie.h2.implicits.UuidType
-import doobie.util.meta.Meta
 import eu.timepit.refined.string.Url
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.macros.newtype
 
-import scala.reflect.runtime.universe.TypeTag
-
 object models {
 
-  @newtype
-  case class UserId(value: UUID)
-  object UserId {
-    implicit def userIdMeta(implicit t: TypeTag[UserId]): Meta[UserId] =
-      UuidType.timap(UserId.apply)(_.value)
-  }
+  @newtype case class UserId(value: UUID)
 
-  @newtype
-  case class RepositoryId(value: java.util.UUID)
-  object RepositoryId {
-    implicit def repositoryIdMeta(implicit t: TypeTag[RepositoryId]): Meta[RepositoryId] =
-      UuidType.timap(RepositoryId.apply)(_.value)
-  }
+  @newtype case class RepositoryId(value: UUID)
 
   final case class User(
     id: UserId,

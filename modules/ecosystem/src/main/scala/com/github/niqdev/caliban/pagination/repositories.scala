@@ -4,14 +4,23 @@ import cats.effect.{ Resource, Sync }
 import com.github.niqdev.caliban.pagination.models._
 import doobie.syntax.all._
 import doobie.util.fragment.Fragment
+import doobie.util.meta.Meta
 import doobie.util.transactor.Transactor
 import eu.timepit.refined.types.string.NonEmptyString
+import io.estatico.newtype.Coercible
 
 @scala.annotation.nowarn
 object repositories {
 
   import doobie.implicits.legacy.instant.JavaTimeInstantMeta
   import doobie.refined.implicits.refinedMeta
+  import doobie.h2.implicits.UuidType
+
+  // newtype meta
+  implicit def coercibleMeta[R, N](
+    implicit ev: Coercible[Meta[R], Meta[N]],
+    R: Meta[R]
+  ): Meta[N] = ev(R)
 
   /**
     *
