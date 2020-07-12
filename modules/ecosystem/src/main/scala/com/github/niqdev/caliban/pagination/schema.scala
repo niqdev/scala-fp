@@ -52,7 +52,7 @@ object schema extends CommonSchema with CommonArgBuilder {
   final case class RepositoryNode(
     id: NodeId,
     name: NonEmptyString,
-    url: Url,
+    url: String Refined Url,
     isFork: Boolean,
     createdAt: Instant,
     updatedAt: Instant
@@ -95,6 +95,9 @@ protected[caliban] sealed trait CommonSchema {
 
   implicit val cursorSchema: Schema[Any, Cursor] =
     nonEmptyStringSchema.contramap(_.base64)
+
+  implicit val urlSchema: Schema[Any, Url] =
+    Schema.stringSchema.contramap(_.toString)
 
   implicit val offsetSchema: Schema[Any, Offset] =
     Schema.intSchema.contramap(_.nonNegInt.value)

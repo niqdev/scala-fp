@@ -83,6 +83,17 @@ private[pagination] sealed trait RepositoryQueries {
 
 /*
 
+query findRepositoryByName {
+  repository(name: "zio") {
+    id
+    name
+    url
+    isFork
+    createdAt
+    updatedAt
+  }
+}
+
 query user {
   user(name: "typelevel") {
     id

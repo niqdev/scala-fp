@@ -2,10 +2,14 @@ package com.github.niqdev.caliban
 package pagination
 
 import cats.effect.{ Resource, Sync }
+import cats.instances.option._
+import cats.syntax.functor._
+import cats.syntax.nested._
+import com.github.niqdev.caliban.pagination.codecs._
+import com.github.niqdev.caliban.pagination.models._
 import com.github.niqdev.caliban.pagination.repositories._
 import com.github.niqdev.caliban.pagination.schema._
 import eu.timepit.refined.types.string.NonEmptyString
-
 /*
 import cats.instances.list._
 import cats.instances.option._
@@ -84,8 +88,11 @@ object services {
     implicit F: Sync[F]
   ) {
 
-    def findNode(id: NodeId): F[Option[RepositoryNode]]             = ???
-    def findByName(name: NonEmptyString): F[Option[RepositoryNode]] = ???
+    def findNode(id: NodeId): F[Option[RepositoryNode]] = ???
+
+    def findByName(name: NonEmptyString): F[Option[RepositoryNode]] =
+      repositoryRepo.findByName(name).nested.map(SchemaDecoder[Repository, RepositoryNode].to).value
+
     def connection(
       first: Option[Offset],
       after: Option[Cursor],
@@ -103,9 +110,6 @@ object services {
           .map(RepositoryNode.fromRepository)
           .value
       } yield maybeRepositoryNode
-
-    def findByName(name: String): F[Option[RepositoryNode]] =
-      repositoryRepo.findByName(name).nested.map(RepositoryNode.fromRepository).value
 
    */
 
