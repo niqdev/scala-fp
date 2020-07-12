@@ -49,6 +49,7 @@ object queries {
         repositories = Queries.repositoryConnectionQuery(services.repositoryService)
       )
 
+    // TODO log errors: mapError or Wrapper
     def api[F[_]: Effect](services: Services[F]): GraphQL[Any] =
       GraphQL.graphQL(RootResolver(resolver[F](services)))
   }
