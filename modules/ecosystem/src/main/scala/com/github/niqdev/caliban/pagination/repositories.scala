@@ -6,9 +6,10 @@ import doobie.syntax.all._
 import doobie.util.fragment.Fragment
 import doobie.util.meta.Meta
 import doobie.util.transactor.Transactor
-import eu.timepit.refined.types.numeric.NonNegLong
+import eu.timepit.refined.types.numeric.{ NonNegLong, PosLong }
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.Coercible
+import io.estatico.newtype.macros.newtype
 
 @scala.annotation.nowarn
 object repositories {
@@ -22,6 +23,8 @@ object repositories {
     implicit ev: Coercible[Meta[R], Meta[N]],
     R: Meta[R]
   ): Meta[N] = ev(R)
+
+  @newtype case class RowNumber(value: PosLong)
 
   /**
     *
@@ -68,11 +71,11 @@ object repositories {
     */
   sealed abstract class RepositoryRepo[F[_]: Sync](xa: Transactor[F]) {
 
-    def findAll: F[List[Repository]] =
-      RepositoryRepo.queries.findAll.query[Repository].to[List].transact(xa)
+    def findAll: F[List[(RowNumber, Repository)]] =
+      RepositoryRepo.queries.findAll.query[(RowNumber, Repository)].to[List].transact(xa)
 
-    def findAllByUserId(userId: UserId): F[List[Repository]] =
-      RepositoryRepo.queries.findAllByUserId(userId).query[Repository].to[List].transact(xa)
+    def findAllByUserId(userId: UserId): F[List[(RowNumber, Repository)]] =
+      RepositoryRepo.queries.findAllByUserId(userId).query[(RowNumber, Repository)].to[List].transact(xa)
 
     def findById(id: RepositoryId): F[Option[Repository]] =
       RepositoryRepo.queries.findById(id).query[Repository].option.transact(xa)
@@ -94,18 +97,22 @@ object repositories {
       private[this] val schemaName = "example"
       private[this] val tableName  = "repository"
       private[this] val tableFrom  = Fragment.const(s" FROM $schemaName.$tableName ")
+      private[this] val columns    = Fragment.const(s"id, user_id, name, url, is_fork, created_at, updated_at")
 
       lazy val findAll: Fragment =
-        fr"SELECT id, user_id, name, url, is_fork, created_at, updated_at" ++ tableFrom
+        fr"SELECT ROWNUM(), " ++ columns ++ tableFrom
 
       lazy val findAllByUserId: UserId => Fragment =
         userId => findAll ++ fr"WHERE user_id = $userId"
 
+      lazy val find: Fragment =
+        fr"SELECT " ++ columns ++ tableFrom
+
       lazy val findById: RepositoryId => Fragment =
-        id => findAll ++ fr"WHERE id = $id"
+        id => find ++ fr"WHERE id = $id"
 
       lazy val findByName: NonEmptyString => Fragment =
-        name => findAll ++ fr"WHERE name = $name"
+        name => find ++ fr"WHERE name = $name"
 
       lazy val count: Fragment =
         fr"SELECT COUNT(*)" ++ tableFrom

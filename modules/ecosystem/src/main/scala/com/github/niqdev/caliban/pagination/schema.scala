@@ -27,9 +27,12 @@ object schema extends CommonSchema with CommonArgBuilder {
   final type Base64String = String Refined MatchesRegex[Base64Regex.T]
   final object Base64String extends RefinedTypeOps[Base64String, String]
 
+  @newtype case class Offset(value: NonNegLong)
   @newtype case class NodeId(value: Base64String)
   @newtype case class Cursor(value: Base64String)
-  @newtype case class Offset(value: NonNegLong)
+  object Cursor {
+    final val prefix = "cursor:v1:"
+  }
 
   @GQLInterface
   sealed trait Node {

@@ -4,6 +4,7 @@ package pagination
 import java.util.UUID
 
 import com.github.niqdev.caliban.pagination.models._
+import com.github.niqdev.caliban.pagination.repositories.RowNumber
 import com.github.niqdev.caliban.pagination.schema._
 
 import scala.util.Try
@@ -20,24 +21,48 @@ object codecs {
   object SchemaEncoder {
     def apply[A, B](implicit ev: SchemaEncoder[A, B]): SchemaEncoder[A, B] = ev
 
-    implicit lazy val userSchemaEncoder: SchemaEncoder[User, UserNode] = ???
+    implicit lazy val cursorSchemaEncoder: SchemaEncoder[RowNumber, Cursor] =
+      rowNumber =>
+        Cursor(Base64String.unsafeFrom(utils.toBase64(s"${Cursor.prefix}${rowNumber.value.value}")))
+
+    // TODO
+    implicit lazy val userNodeIdSchemaEncoder: SchemaEncoder[UserId, NodeId]                       = ???
+    implicit lazy val userNodeSchemaEncoder: SchemaEncoder[(User, RepositoryConnection), UserNode] = ???
 
     implicit lazy val repositoryNodeIdSchemaEncoder: SchemaEncoder[RepositoryId, NodeId] =
       model =>
         NodeId(Base64String.unsafeFrom(utils.toBase64(s"${RepositoryNode.idPrefix}${model.value.toString}")))
 
-    implicit def repositorySchemaEncoder(
-      implicit idSchemaEncoder: SchemaEncoder[RepositoryId, NodeId]
+    implicit def repositoryNodeSchemaEncoder(
+      implicit rniSchemaEncoder: SchemaEncoder[RepositoryId, NodeId]
     ): SchemaEncoder[Repository, RepositoryNode] =
       model =>
         RepositoryNode(
-          id = idSchemaEncoder.from(model.id),
+          id = rniSchemaEncoder.from(model.id),
           name = model.name.value,
           url = model.url.value,
           isFork = model.isFork,
           createdAt = model.createdAt,
           updatedAt = model.updatedAt
         )
+
+    implicit def repositoryEdgeSchemaEncoder(
+      implicit
+      cSchemaEncoder: SchemaEncoder[RowNumber, Cursor],
+      //rniSchemaEncoder: SchemaEncoder[RepositoryId, NodeId],
+      rnSchemaEncoder: SchemaEncoder[Repository, RepositoryNode]
+    ): SchemaEncoder[(RowNumber, Repository), RepositoryEdge] = {
+      case (rowNumber, model) =>
+        RepositoryEdge(
+          cursor = cSchemaEncoder.from(rowNumber),
+          node = rnSchemaEncoder.from(model)
+        )
+    }
+  }
+
+  final class SchemaEncoderOps[A](private val model: A) extends AnyVal {
+    def encodeFrom[B](implicit schemaEncoder: SchemaEncoder[A, B]): B =
+      schemaEncoder.from(model)
   }
 
   /**

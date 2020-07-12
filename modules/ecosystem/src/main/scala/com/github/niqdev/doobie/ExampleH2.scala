@@ -8,6 +8,7 @@ import cats.effect._
 import doobie.syntax.all._
 import doobie.util.meta.Meta
 import doobie.util.transactor.Transactor
+import eu.timepit.refined.types.numeric.PosLong
 import eu.timepit.refined.types.string.NonEmptyString
 import io.chrisdavenport.log4cats.Logger
 import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
@@ -33,9 +34,9 @@ object ExampleH2 extends IOApp {
   @scala.annotation.nowarn
   private[this] def findRepositories[F[_]](xa: Transactor[F])(
     implicit ev: Bracket[F, Throwable]
-  ): F[List[(UUID, UUID, NonEmptyString, URL, Boolean, Instant, Instant)]] =
-    sql"select id, user_id, name, url, is_fork, created_at, updated_at from example.repository"
-      .query[(UUID, UUID, NonEmptyString, URL, Boolean, Instant, Instant)]
+  ): F[List[(PosLong, UUID, UUID, NonEmptyString, URL, Boolean, Instant, Instant)]] =
+    sql"select ROWNUM(), id, user_id, name, url, is_fork, created_at, updated_at from example.repository"
+      .query[(PosLong, UUID, UUID, NonEmptyString, URL, Boolean, Instant, Instant)]
       .to[List]
       .transact(xa)
 

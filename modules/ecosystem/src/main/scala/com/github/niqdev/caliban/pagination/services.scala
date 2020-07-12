@@ -4,6 +4,7 @@ package pagination
 import cats.effect.{ Resource, Sync }
 import cats.instances.list._
 import cats.instances.option._
+import cats.syntax.applicativeError._
 import cats.syntax.flatMap._
 import cats.syntax.foldable._
 import cats.syntax.functor._
@@ -26,23 +27,34 @@ object services {
     implicit F: Sync[F]
   ) {
 
-    def findNode(id: NodeId): F[Option[UserNode]]             = F.pure(None)
-    def findByName(name: NonEmptyString): F[Option[UserNode]] = ???
+    def findNode(id: NodeId): F[Option[UserNode]] = F.pure(None)
 
-    /*
+    def findByName(name: NonEmptyString): F[Option[UserNode]] =
+      (for {
+        maybeUser            <- userRepo.findByName(name)
+        user                 <- F.fromOption(maybeUser, throw new IllegalArgumentException("invalid name"))
+        repositoryConnection <- findRepositoryConnection(user.id)
+        userNode             <- F.pure(user -> repositoryConnection).map(_.encodeFrom[UserNode])
+      } yield userNode).redeem(_ => None, Some(_))
+
+    // TODO https://relay.dev/graphql/connections.htm
     private[this] def findRepositoryConnection(userId: UserId): F[RepositoryConnection] =
       for {
-        // TODO use + return paging info
         repositories <- repositoryRepo.findAllByUserId(userId)
-        edges        <- F.pure(repositories.map(RepositoryEdge.fromRepository))
-        nodes        <- F.pure(repositories.map(RepositoryNode.fromRepository))
+        edges        <- F.pure(repositories.map(_.encodeFrom[RepositoryEdge]))
+        nodes        <- F.pure(repositories.map(_._2.encodeFrom[RepositoryNode]))
         pageInfo <- F.pure {
-          // TODO https://relay.dev/graphql/connections.htm
-          PageInfo(true, true, Cursor(Base64String.unsafeFrom("aGVsbG8K")), Cursor(Base64String.unsafeFrom("aGVsbG8K")))
+          PageInfo(
+            true,
+            true,
+            Cursor(Base64String.unsafeFrom("aGVsbG8K")),
+            Cursor(Base64String.unsafeFrom("aGVsbG8K"))
+          )
         }
         totalCount <- repositoryRepo.countByUserId(userId)
       } yield RepositoryConnection(edges, nodes, pageInfo, totalCount)
 
+    /*
     def findNode(id: String): F[Option[UserNode]] =
       for {
         userId               <- F.fromTry(decodeNodeId(id))
@@ -79,11 +91,11 @@ object services {
       F.fromEither(SchemaDecoder[NodeId, RepositoryId].to(id))
         .flatMap(repositoryRepo.findById)
         .nested
-        .map(SchemaEncoder[Repository, RepositoryNode].from)
+        .map(_.encodeFrom[RepositoryNode])
         .value
 
     def findByName(name: NonEmptyString): F[Option[RepositoryNode]] =
-      repositoryRepo.findByName(name).nested.map(SchemaEncoder[Repository, RepositoryNode].from).value
+      repositoryRepo.findByName(name).nested.map(_.encodeFrom[RepositoryNode]).value
 
     def connection(
       first: Option[Offset],
