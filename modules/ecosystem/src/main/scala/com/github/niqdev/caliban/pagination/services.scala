@@ -2,7 +2,10 @@ package com.github.niqdev.caliban
 package pagination
 
 import cats.effect.{ Resource, Sync }
+import cats.instances.list._
 import cats.instances.option._
+import cats.syntax.flatMap._
+import cats.syntax.foldable._
 import cats.syntax.functor._
 import cats.syntax.nested._
 import com.github.niqdev.caliban.pagination.codecs._
@@ -10,24 +13,8 @@ import com.github.niqdev.caliban.pagination.models._
 import com.github.niqdev.caliban.pagination.repositories._
 import com.github.niqdev.caliban.pagination.schema._
 import eu.timepit.refined.types.string.NonEmptyString
-/*
-import cats.instances.list._
-import cats.instances.option._
-import cats.syntax.applicativeError._
-import cats.syntax.flatMap._
-import cats.syntax.foldable._
-import cats.syntax.functor._
-import cats.syntax.nested._
- */
 
-// TODO
-@scala.annotation.nowarn
 object services {
-
-  /*
-  private[this] val decodeNodeId: String => scala.util.Try[Long] =
-    value => utils.longFromBase64(value, UserNode.idPrefix, RepositoryNode.idPrefix)
-   */
 
   /**
     *
@@ -39,7 +26,7 @@ object services {
     implicit F: Sync[F]
   ) {
 
-    def findNode(id: NodeId): F[Option[UserNode]]             = ???
+    def findNode(id: NodeId): F[Option[UserNode]]             = F.pure(None)
     def findByName(name: NonEmptyString): F[Option[UserNode]] = ???
 
     /*
@@ -88,10 +75,15 @@ object services {
     implicit F: Sync[F]
   ) {
 
-    def findNode(id: NodeId): F[Option[RepositoryNode]] = ???
+    def findNode(id: NodeId): F[Option[RepositoryNode]] =
+      F.fromEither(SchemaDecoder[NodeId, RepositoryId].to(id))
+        .flatMap(repositoryRepo.findById)
+        .nested
+        .map(SchemaEncoder[Repository, RepositoryNode].from)
+        .value
 
     def findByName(name: NonEmptyString): F[Option[RepositoryNode]] =
-      repositoryRepo.findByName(name).nested.map(SchemaDecoder[Repository, RepositoryNode].to).value
+      repositoryRepo.findByName(name).nested.map(SchemaEncoder[Repository, RepositoryNode].from).value
 
     def connection(
       first: Option[Offset],
@@ -99,19 +91,6 @@ object services {
       last: Option[Offset],
       before: Option[Cursor]
     ): F[RepositoryConnection] = ???
-
-    /*
-    def findNode(id: String): F[Option[RepositoryNode]] =
-      for {
-        repositoryId <- F.fromTry(decodeNodeId(id))
-        maybeRepositoryNode <- repositoryRepo
-          .findById(repositoryId)
-          .nested
-          .map(RepositoryNode.fromRepository)
-          .value
-      } yield maybeRepositoryNode
-
-   */
 
   }
   object RepositoryService {
@@ -127,18 +106,12 @@ object services {
     repositoryService: RepositoryService[F]
   ) {
 
-    def findNode(id: NodeId): F[Option[Node]] = ???
-
-    /*
-    // TODO bug: returns always user (same id)
-    // TODO invoke service based on prefix starts with
-    def findNode(id: String): F[Option[Node]] =
+    def findNode(id: NodeId): F[Option[Node]] =
       for {
         userNode       <- userService.findNode(id)
         repositoryNode <- repositoryService.findNode(id)
       } yield List(userNode, repositoryNode).foldK
 
-   */
   }
   object NodeService {
     def apply[F[_]: Sync](repositories: Repositories[F]): NodeService[F] =

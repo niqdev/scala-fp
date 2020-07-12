@@ -94,6 +94,25 @@ query findRepositoryByName {
   }
 }
 
+query getNodeById {
+  node(id: "opaqueCursor") {
+    id
+    ... on UserNode {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    ... on RepositoryNode {
+      name
+      url
+      isFork
+      createdAt
+      updatedAt
+    }
+  }
+}
+
 query user {
   user(name: "typelevel") {
     id
@@ -127,24 +146,6 @@ query user {
         createdAt
         updatedAt
       }
-    }
-  }
-}
-
-query node {
-  getNode: node(id: "opaqueCursor") {
-    id
-    ... on UserNode {
-      name
-      createdAt
-      updatedAt
-    }
-    ... on RepositoryNode {
-      name
-      url
-      isFork
-      createdAt
-      updatedAt
     }
   }
 }

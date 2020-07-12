@@ -30,15 +30,16 @@ object schema extends CommonSchema with CommonArgBuilder {
 
   final type Base64 = NonEmptyString
 
-  @newtype case class NodeId(base64: Base64)
-  @newtype case class Cursor(base64: Base64)
-  @newtype case class Offset(nonNegInt: NonNegInt)
+  @newtype case class NodeId(value: Base64)
+  @newtype case class Cursor(value: Base64)
+  @newtype case class Offset(value: NonNegInt)
 
   @GQLInterface
   sealed trait Node {
     def id: NodeId
   }
 
+  final val userNodeIdPrefix = "user:v1:"
   final case class UserNode(
     id: NodeId,
     name: NonEmptyString,
@@ -49,6 +50,7 @@ object schema extends CommonSchema with CommonArgBuilder {
   ) extends Node
 
   // TODO add issue|issues
+  final val repositoryNodeIdPrefix = "repository:v1:"
   final case class RepositoryNode(
     id: NodeId,
     name: NonEmptyString,
@@ -91,16 +93,16 @@ protected[caliban] sealed trait CommonSchema {
     Schema.stringSchema.contramap(_.value)
 
   implicit val nodeIdSchema: Schema[Any, NodeId] =
-    nonEmptyStringSchema.contramap(_.base64)
+    nonEmptyStringSchema.contramap(_.value)
 
   implicit val cursorSchema: Schema[Any, Cursor] =
-    nonEmptyStringSchema.contramap(_.base64)
+    nonEmptyStringSchema.contramap(_.value)
 
   implicit val urlSchema: Schema[Any, Url] =
     Schema.stringSchema.contramap(_.toString)
 
   implicit val offsetSchema: Schema[Any, Offset] =
-    Schema.intSchema.contramap(_.nonNegInt.value)
+    Schema.intSchema.contramap(_.value.value)
 }
 
 protected[caliban] sealed trait CommonArgBuilder {
