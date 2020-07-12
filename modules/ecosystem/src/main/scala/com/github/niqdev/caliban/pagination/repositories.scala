@@ -6,6 +6,7 @@ import doobie.syntax.all._
 import doobie.util.fragment.Fragment
 import doobie.util.meta.Meta
 import doobie.util.transactor.Transactor
+import eu.timepit.refined.types.numeric.NonNegLong
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.Coercible
 
@@ -36,8 +37,8 @@ object repositories {
     def findByName(name: NonEmptyString): F[Option[User]] =
       UserRepo.queries.findByName(name).query[User].option.transact(xa)
 
-    def count: F[Long] =
-      UserRepo.queries.count.query[Long].unique.transact(xa)
+    def count: F[NonNegLong] =
+      UserRepo.queries.count.query[NonNegLong].unique.transact(xa)
   }
   object UserRepo {
     def apply[F[_]: Sync](xa: Transactor[F]): UserRepo[F] =
@@ -79,11 +80,11 @@ object repositories {
     def findByName(name: NonEmptyString): F[Option[Repository]] =
       RepositoryRepo.queries.findByName(name).query[Repository].option.transact(xa)
 
-    def count: F[Long] =
-      RepositoryRepo.queries.count.query[Long].unique.transact(xa)
+    def count: F[NonNegLong] =
+      RepositoryRepo.queries.count.query[NonNegLong].unique.transact(xa)
 
-    def countByUserId(userId: UserId): F[Long] =
-      RepositoryRepo.queries.countByUserId(userId).query[Long].unique.transact(xa)
+    def countByUserId(userId: UserId): F[NonNegLong] =
+      RepositoryRepo.queries.countByUserId(userId).query[NonNegLong].unique.transact(xa)
   }
   object RepositoryRepo {
     def apply[F[_]: Sync](xa: Transactor[F]): RepositoryRepo[F] =

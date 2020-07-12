@@ -4,8 +4,6 @@ package pagination
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 
-import scala.util.Try
-
 object utils {
 
   val toBase64: String => String =
@@ -16,8 +14,5 @@ object utils {
 
   def removePrefix(value: String, prefixes: String*): String =
     prefixes.foldLeft(value)((v, prefix) => v.replace(prefix, ""))
-
-  def longFromBase64(value: String, prefixes: String*): Try[Long] =
-    Try(removePrefix(fromBase64(value), prefixes: _*).toLong)
 
 }

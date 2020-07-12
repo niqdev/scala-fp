@@ -14,7 +14,7 @@ import com.github.niqdev.caliban.pagination.schema._
 import eu.timepit.refined.W
 import eu.timepit.refined.api.{ Refined, RefinedTypeOps }
 import eu.timepit.refined.string.{ MatchesRegex, Url }
-import eu.timepit.refined.types.numeric.NonNegInt
+import eu.timepit.refined.types.numeric.NonNegLong
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.macros.newtype
 
@@ -29,7 +29,7 @@ object schema extends CommonSchema with CommonArgBuilder {
 
   @newtype case class NodeId(value: Base64String)
   @newtype case class Cursor(value: Base64String)
-  @newtype case class Offset(value: NonNegInt)
+  @newtype case class Offset(value: NonNegLong)
 
   @GQLInterface
   sealed trait Node {
@@ -65,7 +65,7 @@ object schema extends CommonSchema with CommonArgBuilder {
     edges: List[RepositoryEdge],
     nodes: List[RepositoryNode],
     pageInfo: PageInfo,
-    totalCount: NonNegInt
+    totalCount: NonNegLong
   )
 
   final case class RepositoryEdge(
@@ -106,7 +106,7 @@ protected[caliban] sealed trait CommonSchema {
     Schema.stringSchema.contramap(_.toString)
 
   implicit val offsetSchema: Schema[Any, Offset] =
-    Schema.intSchema.contramap(_.value.value)
+    Schema.longSchema.contramap(_.value.value)
 }
 
 protected[caliban] sealed trait CommonArgBuilder {
@@ -133,7 +133,7 @@ protected[caliban] sealed trait CommonArgBuilder {
 
   implicit val offsetArgBuilder: ArgBuilder[Offset] = {
     case value: IntValue =>
-      NonNegInt.from(value.toInt).map(Offset.apply).leftMap(CalibanError.ExecutionError(_))
+      NonNegLong.from(value.toLong).map(Offset.apply).leftMap(CalibanError.ExecutionError(_))
     case other =>
       Left(CalibanError.ExecutionError(s"Can't build a NonNegInt from input $other"))
   }

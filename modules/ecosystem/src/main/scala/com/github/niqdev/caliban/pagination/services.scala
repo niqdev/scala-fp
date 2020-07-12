@@ -30,7 +30,7 @@ object services {
     def findByName(name: NonEmptyString): F[Option[UserNode]] = ???
 
     /*
-    private[this] def findRepositoryConnection(userId: Long): F[RepositoryConnection] =
+    private[this] def findRepositoryConnection(userId: UserId): F[RepositoryConnection] =
       for {
         // TODO use + return paging info
         repositories <- repositoryRepo.findAllByUserId(userId)
@@ -38,7 +38,7 @@ object services {
         nodes        <- F.pure(repositories.map(RepositoryNode.fromRepository))
         pageInfo <- F.pure {
           // TODO https://relay.dev/graphql/connections.htm
-          PageInfo(true, true, "startCursor", "endCursor")
+          PageInfo(true, true, Cursor(Base64String.unsafeFrom("aGVsbG8K")), Cursor(Base64String.unsafeFrom("aGVsbG8K")))
         }
         totalCount <- repositoryRepo.countByUserId(userId)
       } yield RepositoryConnection(edges, nodes, pageInfo, totalCount)
