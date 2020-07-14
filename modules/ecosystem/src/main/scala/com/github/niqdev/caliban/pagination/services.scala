@@ -27,16 +27,26 @@ object services {
     implicit F: Sync[F]
   ) {
 
-    def findNode(id: NodeId): F[Option[UserNode]] = F.pure(None)
+    def findNode(id: NodeId): F[Option[UserNode]] =
+      for {
+        userId               <- F.fromEither(SchemaDecoder[NodeId, UserId].to(id))
+        repositoryConnection <- findRepositoryConnection(userId)
+        maybeUserNode <- userRepo
+          .findById(userId)
+          .nested
+          .map(user => (user, repositoryConnection).encodeFrom[UserNode])
+          .value
+      } yield maybeUserNode
 
     def findByName(name: NonEmptyString): F[Option[UserNode]] =
       (for {
         maybeUser            <- userRepo.findByName(name)
-        user                 <- F.fromOption(maybeUser, throw new IllegalArgumentException("invalid name"))
+        user                 <- F.fromOption(maybeUser, new IllegalArgumentException("invalid name"))
         repositoryConnection <- findRepositoryConnection(user.id)
         userNode             <- F.pure(user -> repositoryConnection).map(_.encodeFrom[UserNode])
       } yield userNode).redeem(_ => None, Some(_))
 
+    // TODO move in repositoryRepo
     // TODO https://relay.dev/graphql/connections.htm
     private[this] def findRepositoryConnection(userId: UserId): F[RepositoryConnection] =
       for {
@@ -53,24 +63,6 @@ object services {
         }
         totalCount <- repositoryRepo.countByUserId(userId)
       } yield RepositoryConnection(edges, nodes, pageInfo, totalCount)
-
-    /*
-    def findNode(id: String): F[Option[UserNode]] =
-      for {
-        userId               <- F.fromTry(decodeNodeId(id))
-        repositoryConnection <- findRepositoryConnection(userId)
-        maybeUserNode        <- userRepo.findById(userId).nested.map(UserNode.fromUser(repositoryConnection)).value
-      } yield maybeUserNode
-
-    def findByName(name: String): F[Option[UserNode]] =
-      (for {
-        maybeUser            <- userRepo.findByName(name)
-        user                 <- F.fromOption(maybeUser, new IllegalArgumentException("invalid name"))
-        repositoryConnection <- findRepositoryConnection(user.id)
-        userNode             <- F.pure(user).map(UserNode.fromUser(repositoryConnection))
-      } yield userNode).redeem(_ => None, Some(_))
-
-   */
 
   }
   object UserService {
@@ -118,11 +110,16 @@ object services {
     repositoryService: RepositoryService[F]
   ) {
 
+    // TODO create specific error + log WARN
+    private[this] def recoverInvalidNode[T <: Node]: PartialFunction[Throwable, Option[T]] = {
+      case e: IllegalArgumentException => None
+    }
+
     def findNode(id: NodeId): F[Option[Node]] =
       for {
-        userNode       <- userService.findNode(id)
-        repositoryNode <- repositoryService.findNode(id)
-      } yield List(userNode, repositoryNode).foldK
+        userNode       <- userService.findNode(id).recover(recoverInvalidNode[UserNode])
+        repositoryNode <- repositoryService.findNode(id).recover(recoverInvalidNode[RepositoryNode])
+      } yield List(userNode, repositoryNode).collectFirstSomeM(List(_)).head
 
   }
   object NodeService {

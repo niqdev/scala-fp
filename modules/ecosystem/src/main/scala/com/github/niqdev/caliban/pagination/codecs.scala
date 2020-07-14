@@ -25,9 +25,22 @@ object codecs {
       rowNumber =>
         Cursor(Base64String.unsafeFrom(utils.toBase64(s"${Cursor.prefix}${rowNumber.value.value}")))
 
-    // TODO
-    implicit lazy val userNodeIdSchemaEncoder: SchemaEncoder[UserId, NodeId]                       = ???
-    implicit lazy val userNodeSchemaEncoder: SchemaEncoder[(User, RepositoryConnection), UserNode] = ???
+    implicit lazy val userNodeIdSchemaEncoder: SchemaEncoder[UserId, NodeId] =
+      model => NodeId(Base64String.unsafeFrom(utils.toBase64(s"${UserNode.idPrefix}${model.value.toString}")))
+
+    implicit def userNodeSchemaEncoder(
+      implicit
+      uniSchemaEncoder: SchemaEncoder[UserId, NodeId]
+    ): SchemaEncoder[(User, RepositoryConnection), UserNode] = {
+      case (user, repositoryConnection) =>
+        UserNode(
+          id = uniSchemaEncoder.from(user.id),
+          name = user.name.value,
+          createdAt = user.createdAt,
+          updatedAt = user.updatedAt,
+          repositories = repositoryConnection
+        )
+    }
 
     implicit lazy val repositoryNodeIdSchemaEncoder: SchemaEncoder[RepositoryId, NodeId] =
       model =>
@@ -83,7 +96,7 @@ object codecs {
           .cond(
             nodeId.startsWith(prefix),
             utils.removePrefix(nodeId, prefix),
-            throw new IllegalArgumentException(errorMessage)
+            new IllegalArgumentException(errorMessage)
           )
           .flatMap(uuidString => Try(UUID.fromString(uuidString)).toEither)
       }
