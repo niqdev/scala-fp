@@ -20,6 +20,22 @@ import io.estatico.newtype.macros.newtype
 
 object schema extends CommonSchema with CommonArgBuilder {
 
+  object arguments {
+    final case class NodeArg(id: NodeId)
+    final case class UserArg(name: NonEmptyString)
+    final case class RepositoryArg(name: NonEmptyString)
+    // "after" is the cursor of the last edge in the previous page
+    final case class ForwardPaginationArg(
+      first: Offset,
+      after: Option[Cursor]
+    )
+    // "before" is the cursor of the first edge in the next page
+    final case class BackwardPaginationArg(
+      last: Offset,
+      before: Option[Cursor]
+    )
+  }
+
   // https://stackoverflow.com/questions/475074/regex-to-parse-or-validate-base64-data
   final val Base64Regex = W(
     """^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"""

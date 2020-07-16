@@ -3,10 +3,9 @@ package pagination
 
 import caliban.{ GraphQL, RootResolver }
 import cats.effect.Effect
-import com.github.niqdev.caliban.pagination.queries.arguments._
 import com.github.niqdev.caliban.pagination.schema._
+import com.github.niqdev.caliban.pagination.schema.arguments._
 import com.github.niqdev.caliban.pagination.services._
-import eu.timepit.refined.types.string.NonEmptyString
 
 // https://developer.github.com/v4/explorer
 // https://relay.dev/graphql/connections.htm
@@ -17,28 +16,14 @@ import eu.timepit.refined.types.string.NonEmptyString
 // https://slack.engineering/evolving-api-pagination-at-slack-1c1f644f8e12
 object queries {
 
-  object arguments {
-    final case class NodeArg(id: NodeId)
-    final case class UserArg(name: NonEmptyString)
-    final case class RepositoryArg(name: NonEmptyString)
-    // TODO after|before are cursor base64
-    // TODO first (mandatory) with after (optional) OR last (mandatory) with before (optional)
-    final case class RepositoriesArg(
-      first: Option[Offset],
-      after: Option[Cursor],
-      last: Option[Offset],
-      before: Option[Cursor]
-    )
-  }
-
   /**
-    *
+    * Root Nodes
     */
   final case class Queries[F[_]](
     node: NodeArg => F[Option[Node]],
     user: UserArg => F[Option[UserNode]],
     repository: RepositoryArg => F[Option[RepositoryNode]],
-    repositories: RepositoriesArg => F[RepositoryConnection]
+    repositories: ForwardPaginationArg => F[RepositoryConnection]
   )
   object Queries extends NodeQueries with UserQueries with RepositoryQueries {
     private[this] def resolver[F[_]: Effect](services: Services[F]): Queries[F] =
@@ -78,8 +63,8 @@ private[pagination] sealed trait RepositoryQueries {
 
   def repositoryConnectionQuery[F[_]: Effect](
     repositoryService: RepositoryService[F]
-  ): RepositoriesArg => F[RepositoryConnection] =
-    arg => repositoryService.connection(arg.first, arg.after, arg.last, arg.before)
+  ): ForwardPaginationArg => F[RepositoryConnection] =
+    arg => repositoryService.connection(arg.first, arg.after)
 }
 
 /*

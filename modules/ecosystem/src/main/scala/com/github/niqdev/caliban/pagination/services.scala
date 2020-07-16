@@ -89,12 +89,7 @@ object services {
     def findByName(name: NonEmptyString): F[Option[RepositoryNode]] =
       repositoryRepo.findByName(name).nested.map(_.encodeFrom[RepositoryNode]).value
 
-    def connection(
-      first: Option[Offset],
-      after: Option[Cursor],
-      last: Option[Offset],
-      before: Option[Cursor]
-    ): F[RepositoryConnection] = ???
+    def connection(first: Offset, after: Option[Cursor]): F[RepositoryConnection] = ???
 
   }
   object RepositoryService {
