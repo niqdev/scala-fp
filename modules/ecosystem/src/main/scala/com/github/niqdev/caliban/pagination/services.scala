@@ -112,7 +112,7 @@ object services {
 
     // TODO create specific error + log WARN
     private[this] def recoverInvalidNode[T <: Node]: PartialFunction[Throwable, Option[T]] = {
-      case e: IllegalArgumentException => None
+      case _: IllegalArgumentException => None
     }
 
     def findNode(id: NodeId): F[Option[Node]] =

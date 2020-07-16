@@ -114,7 +114,26 @@ query getNodeById {
   }
 }
 
-query user {
+query getSimpleUser {
+  user(name: "typelevel") {
+    id
+    name
+    repositories(first: 10, after: "opaqueCursor") {
+      edges {
+        cursor
+        node {
+          id
+          name
+        }
+      }
+      pageInfo {
+        hasNextPage
+      }
+    }
+  }
+}
+
+query getUser {
   user(name: "typelevel") {
     id
     name
