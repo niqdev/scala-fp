@@ -20,10 +20,10 @@ object queries {
     * Root Nodes
     */
   final case class Queries[F[_]](
-    node: NodeArg => F[Option[Node]],
-    user: UserArg => F[Option[UserNode]],
-    repository: RepositoryArg => F[Option[RepositoryNode]],
-    repositories: ForwardPaginationArg => F[RepositoryConnection]
+    node: NodeArg => F[Option[Node[F]]],
+    user: UserArg => F[Option[UserNode[F]]],
+    repository: RepositoryArg => F[Option[RepositoryNode[F]]],
+    repositories: ForwardPaginationArg => F[RepositoryConnection[F]]
   )
   object Queries extends NodeQueries with UserQueries with RepositoryQueries {
     private[this] def resolver[F[_]: Effect](services: Services[F]): Queries[F] =
@@ -44,26 +44,26 @@ object queries {
 private[pagination] sealed trait NodeQueries {
   def nodeQuery[F[_]: Effect](
     nodeService: NodeService[F]
-  ): NodeArg => F[Option[Node]] =
+  ): NodeArg => F[Option[Node[F]]] =
     arg => nodeService.findNode(arg.id)
 }
 
 private[pagination] sealed trait UserQueries {
   def userQuery[F[_]: Effect](
     userService: UserService[F]
-  ): UserArg => F[Option[UserNode]] =
+  ): UserArg => F[Option[UserNode[F]]] =
     arg => userService.findByName(arg.name)
 }
 
 private[pagination] sealed trait RepositoryQueries {
   def repositoryQuery[F[_]: Effect](
     repositoryService: RepositoryService[F]
-  ): RepositoryArg => F[Option[RepositoryNode]] =
+  ): RepositoryArg => F[Option[RepositoryNode[F]]] =
     arg => repositoryService.findByName(arg.name)
 
   def repositoryConnectionQuery[F[_]: Effect](
     repositoryService: RepositoryService[F]
-  ): ForwardPaginationArg => F[RepositoryConnection] =
+  ): ForwardPaginationArg => F[RepositoryConnection[F]] =
     arg => repositoryService.connection(arg.first, arg.after)
 }
 

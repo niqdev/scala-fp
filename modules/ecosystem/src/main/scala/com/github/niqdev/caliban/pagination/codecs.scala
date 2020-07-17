@@ -6,6 +6,7 @@ import java.util.UUID
 import com.github.niqdev.caliban.pagination.models._
 import com.github.niqdev.caliban.pagination.repositories.RowNumber
 import com.github.niqdev.caliban.pagination.schema._
+import com.github.niqdev.caliban.pagination.schema.arguments._
 
 import scala.util.Try
 
@@ -28,17 +29,17 @@ object codecs {
     implicit lazy val userNodeIdSchemaEncoder: SchemaEncoder[UserId, NodeId] =
       model => NodeId(Base64String.unsafeFrom(utils.toBase64(s"${UserNode.idPrefix}${model.value.toString}")))
 
-    implicit def userNodeSchemaEncoder(
+    implicit def userNodeSchemaEncoder[F[_]](
       implicit
       uniSchemaEncoder: SchemaEncoder[UserId, NodeId]
-    ): SchemaEncoder[(User, RepositoryConnection), UserNode] = {
-      case (user, repositoryConnection) =>
+    ): SchemaEncoder[(User, ForwardPaginationArg => F[RepositoryConnection[F]]), UserNode[F]] = {
+      case (user, getRepositoryConnectionF) =>
         UserNode(
           id = uniSchemaEncoder.from(user.id),
           name = user.name.value,
           createdAt = user.createdAt,
           updatedAt = user.updatedAt,
-          repositories = repositoryConnection
+          repositories = getRepositoryConnectionF
         )
     }
 
@@ -46,9 +47,9 @@ object codecs {
       model =>
         NodeId(Base64String.unsafeFrom(utils.toBase64(s"${RepositoryNode.idPrefix}${model.value.toString}")))
 
-    implicit def repositoryNodeSchemaEncoder(
+    implicit def repositoryNodeSchemaEncoder[F[_]](
       implicit rniSchemaEncoder: SchemaEncoder[RepositoryId, NodeId]
-    ): SchemaEncoder[Repository, RepositoryNode] =
+    ): SchemaEncoder[Repository, RepositoryNode[F]] =
       model =>
         RepositoryNode(
           id = rniSchemaEncoder.from(model.id),
@@ -59,12 +60,12 @@ object codecs {
           updatedAt = model.updatedAt
         )
 
-    implicit def repositoryEdgeSchemaEncoder(
+    implicit def repositoryEdgeSchemaEncoder[F[_]](
       implicit
       cSchemaEncoder: SchemaEncoder[RowNumber, Cursor],
       //rniSchemaEncoder: SchemaEncoder[RepositoryId, NodeId],
-      rnSchemaEncoder: SchemaEncoder[Repository, RepositoryNode]
-    ): SchemaEncoder[(RowNumber, Repository), RepositoryEdge] = {
+      rnSchemaEncoder: SchemaEncoder[Repository, RepositoryNode[F]]
+    ): SchemaEncoder[(RowNumber, Repository), RepositoryEdge[F]] = {
       case (rowNumber, model) =>
         RepositoryEdge(
           cursor = cSchemaEncoder.from(rowNumber),

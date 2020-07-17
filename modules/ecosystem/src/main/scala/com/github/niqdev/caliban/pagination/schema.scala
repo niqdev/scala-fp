@@ -11,6 +11,7 @@ import caliban.schema.{ ArgBuilder, Schema }
 import cats.effect.Effect
 import cats.syntax.either._
 import com.github.niqdev.caliban.pagination.schema._
+import com.github.niqdev.caliban.pagination.schema.arguments._
 import eu.timepit.refined.W
 import eu.timepit.refined.api.{ Refined, RefinedTypeOps }
 import eu.timepit.refined.string.{ MatchesRegex, Url }
@@ -50,46 +51,48 @@ object schema extends CommonSchema with CommonArgBuilder {
     final val prefix = "cursor:v1:"
   }
 
+  // Node is also a root node and it must be of higher-kinded i.e. Node[F[_]]
+  // for more details see docs/graphql-error.txt
   @GQLInterface
-  sealed trait Node {
+  sealed trait Node[F[_]] {
     def id: NodeId
   }
 
-  final case class UserNode(
+  final case class UserNode[F[_]](
     id: NodeId,
     name: NonEmptyString,
     createdAt: Instant,
     updatedAt: Instant,
     //repository: Repository,
-    repositories: RepositoryConnection
-  ) extends Node
+    repositories: ForwardPaginationArg => F[RepositoryConnection[F]]
+  ) extends Node[F]
   object UserNode {
     final val idPrefix = "user:v1:"
   }
 
   // TODO add issue|issues
-  final case class RepositoryNode(
+  final case class RepositoryNode[F[_]](
     id: NodeId,
     name: NonEmptyString,
     url: String Refined Url,
     isFork: Boolean,
     createdAt: Instant,
     updatedAt: Instant
-  ) extends Node
+  ) extends Node[F]
   object RepositoryNode {
     val idPrefix = "repository:v1:"
   }
 
-  final case class RepositoryConnection(
-    edges: List[RepositoryEdge],
-    nodes: List[RepositoryNode],
+  final case class RepositoryConnection[F[_]](
+    edges: List[RepositoryEdge[F]],
+    nodes: List[RepositoryNode[F]],
     pageInfo: PageInfo,
     totalCount: NonNegLong
   )
 
-  final case class RepositoryEdge(
+  final case class RepositoryEdge[F[_]](
     cursor: Cursor,
-    node: RepositoryNode
+    node: RepositoryNode[F]
   )
 
   final case class PageInfo(
