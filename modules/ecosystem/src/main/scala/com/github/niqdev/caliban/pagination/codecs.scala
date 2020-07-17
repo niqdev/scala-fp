@@ -3,13 +3,14 @@ package pagination
 
 import java.util.UUID
 
+import cats.syntax.either._
 import com.github.niqdev.caliban.pagination.models._
-import com.github.niqdev.caliban.pagination.repositories.RowNumber
+import com.github.niqdev.caliban.pagination.repositories._
 import com.github.niqdev.caliban.pagination.schema._
 import com.github.niqdev.caliban.pagination.schema.arguments._
+import eu.timepit.refined.types.numeric.PosLong
 
-import scala.util.Try
-
+// TODO SchemaDecoderOps + move instances in sealed traits
 object codecs {
 
   /**
@@ -89,23 +90,43 @@ object codecs {
   object SchemaDecoder {
     def apply[A, B](implicit ev: SchemaDecoder[A, B]): SchemaDecoder[A, B] = ev
 
-    private[this] def uuidSchemaDecoder(prefix: String): SchemaDecoder[NodeId, UUID] =
+    private[this] def base64SchemaDecoder(prefix: String): SchemaDecoder[Base64String, String] =
       schema => {
-        val nodeId       = utils.fromBase64(schema.value.value)
-        val errorMessage = s"invalid prefix: expected to start with [$prefix] but found [$nodeId]"
+        val base64String = utils.fromBase64(schema.value)
+        val errorMessage = s"invalid prefix: expected to start with [$prefix] but found [$base64String]"
         Either
           .cond(
-            nodeId.startsWith(prefix),
-            utils.removePrefix(nodeId, prefix),
+            base64String.startsWith(prefix),
+            utils.removePrefix(base64String, prefix),
             new IllegalArgumentException(errorMessage)
           )
-          .flatMap(uuidString => Try(UUID.fromString(uuidString)).toEither)
       }
+
+    private[this] def uuidSchemaDecoder(prefix: String): SchemaDecoder[NodeId, UUID] =
+      schema =>
+        base64SchemaDecoder(prefix)
+          .to(schema.value)
+          .flatMap(uuidString => Either.catchNonFatal(UUID.fromString(uuidString)))
 
     implicit lazy val userIdSchemaDecoder: SchemaDecoder[NodeId, UserId] =
       schema => uuidSchemaDecoder(UserNode.idPrefix).to(schema).map(UserId.apply)
 
     implicit lazy val repositoryIdSchemaDecoder: SchemaDecoder[NodeId, RepositoryId] =
       schema => uuidSchemaDecoder(RepositoryNode.idPrefix).to(schema).map(RepositoryId.apply)
+
+    implicit lazy val cursorSchemaDecoder: SchemaDecoder[Cursor, RowNumber] =
+      schema =>
+        base64SchemaDecoder(Cursor.prefix)
+          .to(schema.value)
+          .flatMap(cursorString => Either.catchNonFatal(PosLong.unsafeFrom(cursorString.toLong)))
+          .map(RowNumber.apply)
+
+    implicit lazy val offsetSchemaDecoder: SchemaDecoder[Offset, Limit] =
+      schema => Limit(schema.value).asRight[Throwable]
+
+    implicit def optionSchemaDecoder[I, O](
+      implicit schemaDecoder: SchemaDecoder[I, O]
+    ): SchemaDecoder[Option[I], Option[O]] =
+      maybeSchema => maybeSchema.fold(Option.empty[O])(i => schemaDecoder.to(i).toOption).asRight[Throwable]
   }
 }

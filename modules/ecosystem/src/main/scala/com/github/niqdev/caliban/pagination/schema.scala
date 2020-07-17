@@ -58,6 +58,7 @@ object schema extends CommonSchema with CommonArgBuilder {
     def id: NodeId
   }
 
+  // TODO rename UserNodeF > User
   final case class UserNode[F[_]](
     id: NodeId,
     name: NonEmptyString,
@@ -128,7 +129,7 @@ protected[caliban] sealed trait CommonSchema {
     Schema.stringSchema.contramap(_.toString)
 
   implicit val offsetSchema: Schema[Any, Offset] =
-    Schema.longSchema.contramap(_.value.value)
+    Schema.intSchema.contramap(_.value.value)
 }
 
 protected[caliban] sealed trait CommonArgBuilder {

@@ -6,7 +6,7 @@ import doobie.syntax.all._
 import doobie.util.fragment.Fragment
 import doobie.util.meta.Meta
 import doobie.util.transactor.Transactor
-import eu.timepit.refined.types.numeric.{ NonNegLong, PosLong }
+import eu.timepit.refined.types.numeric.{ NonNegInt, NonNegLong, PosLong }
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.Coercible
 import io.estatico.newtype.macros.newtype
@@ -24,7 +24,9 @@ object repositories {
     R: Meta[R]
   ): Meta[N] = ev(R)
 
+  // TODO BigInt ?
   @newtype case class RowNumber(value: PosLong)
+  @newtype case class Limit(value: NonNegInt)
 
   /**
     *

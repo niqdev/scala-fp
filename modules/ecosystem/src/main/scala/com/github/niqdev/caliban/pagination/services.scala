@@ -23,53 +23,31 @@ object services {
     */
   sealed abstract class UserService[F[_]](
     userRepo: UserRepo[F],
-    repositoryRepo: RepositoryRepo[F]
+    repositoryService: RepositoryService[F]
   )(
     implicit F: Sync[F]
   ) {
 
+    protected[pagination] val toNode: User => UserNode[F] =
+      user => (user, repositoryService.connection(Some(user.id))).encodeFrom[UserNode[F]]
+
     def findNode(id: NodeId): F[Option[UserNode[F]]] =
-      for {
-        userId <- F.fromEither(SchemaDecoder[NodeId, UserId].to(id))
-        maybeUserNode <- userRepo
-          .findById(userId)
-          .nested
-          .map(user => (user, findRepositoryConnection(user.id)).encodeFrom[UserNode[F]])
-          .value
-      } yield maybeUserNode
+      F.fromEither(SchemaDecoder[NodeId, UserId].to(id))
+        .flatMap(userRepo.findById)
+        .nested
+        .map(toNode)
+        .value
 
     def findByName(name: NonEmptyString): F[Option[UserNode[F]]] =
-      (for {
-        maybeUser <- userRepo.findByName(name)
-        user      <- F.fromOption(maybeUser, new IllegalArgumentException("invalid name"))
-        userNode  <- F.pure(user -> findRepositoryConnection(user.id)).map(_.encodeFrom[UserNode[F]])
-      } yield userNode).redeem(_ => None, Some(_))
-
-    // TODO move in repositoryRepo
-    // TODO https://relay.dev/graphql/connections.htm
-    private[this] def findRepositoryConnection(
-      userId: UserId
-    ): ForwardPaginationArg => F[RepositoryConnection[F]] =
-      paginationArg =>
-        for {
-          repositories <- repositoryRepo.findAllByUserId(userId)
-          edges        <- F.pure(repositories.map(_.encodeFrom[RepositoryEdge[F]]))
-          nodes        <- F.pure(repositories.map(_._2.encodeFrom[RepositoryNode[F]]))
-          pageInfo <- F.pure {
-            PageInfo(
-              true,
-              true,
-              Cursor(Base64String.unsafeFrom("aGVsbG8K")),
-              Cursor(Base64String.unsafeFrom("aGVsbG8K"))
-            )
-          }
-          totalCount <- repositoryRepo.countByUserId(userId)
-        } yield RepositoryConnection(edges, nodes, pageInfo, totalCount)
+      userRepo.findByName(name).nested.map(toNode).value
 
   }
   object UserService {
-    def apply[F[_]: Sync](userRepo: UserRepo[F], repositoryRepo: RepositoryRepo[F]): UserService[F] =
-      new UserService[F](userRepo, repositoryRepo) {}
+    def apply[F[_]: Sync](
+      userRepo: UserRepo[F],
+      repositoryService: RepositoryService[F]
+    ): UserService[F] =
+      new UserService[F](userRepo, repositoryService) {}
   }
 
   /**
@@ -81,17 +59,43 @@ object services {
     implicit F: Sync[F]
   ) {
 
+    protected[pagination] val toNode: Repository => RepositoryNode[F] =
+      _.encodeFrom[RepositoryNode[F]]
+
+    protected[pagination] val toEdge: RowNumber => Repository => RepositoryEdge[F] =
+      rowNumber => repository => (rowNumber -> repository).encodeFrom[RepositoryEdge[F]]
+
     def findNode(id: NodeId): F[Option[RepositoryNode[F]]] =
       F.fromEither(SchemaDecoder[NodeId, RepositoryId].to(id))
         .flatMap(repositoryRepo.findById)
         .nested
-        .map(_.encodeFrom[RepositoryNode[F]])
+        .map(toNode)
         .value
 
     def findByName(name: NonEmptyString): F[Option[RepositoryNode[F]]] =
-      repositoryRepo.findByName(name).nested.map(_.encodeFrom[RepositoryNode[F]]).value
+      repositoryRepo.findByName(name).nested.map(toNode).value
 
-    def connection(first: Offset, after: Option[Cursor]): F[RepositoryConnection[F]] = ???
+    // TODO
+    def connection(maybeUserId: Option[UserId]): ForwardPaginationArg => F[RepositoryConnection[F]] =
+      paginationArg =>
+        for {
+          limit <- F.fromEither(SchemaDecoder[Offset, Limit].to(paginationArg.first))
+          maybeRowNumber <- F.fromEither(
+            SchemaDecoder[Option[Cursor], Option[RowNumber]].to(paginationArg.after)
+          )
+          repositories <- maybeUserId.fold(repositoryRepo.findAll)(repositoryRepo.findAllByUserId)
+          edges        <- F.pure(repositories).nested.map(repository => toEdge(repository._1)(repository._2)).value
+          nodes        <- F.pure(repositories).nested.map(repository => toNode(repository._2)).value
+          pageInfo <- F.pure {
+            PageInfo(
+              true, // request next with limit 1
+              true, // request previous with limit 1
+              Cursor(Base64String.unsafeFrom("aGVsbG8K")),
+              Cursor(Base64String.unsafeFrom("aGVsbG8K"))
+            )
+          }
+          totalCount <- repositoryRepo.count
+        } yield RepositoryConnection(edges, nodes, pageInfo, totalCount)
 
   }
   object RepositoryService {
@@ -120,11 +124,13 @@ object services {
 
   }
   object NodeService {
-    def apply[F[_]: Sync](repositories: Repositories[F]): NodeService[F] =
+    def apply[F[_]: Sync](repositories: Repositories[F]): NodeService[F] = {
+      val repositoryService = RepositoryService[F](repositories.repositoryRepo)
       new NodeService[F](
-        UserService[F](repositories.userRepo, repositories.repositoryRepo),
-        RepositoryService[F](repositories.repositoryRepo)
+        UserService[F](repositories.userRepo, repositoryService),
+        repositoryService
       ) {}
+    }
   }
 
   /**
@@ -139,8 +145,8 @@ object services {
     private[this] def apply[F[_]: Sync](repos: Repositories[F]) =
       new Services[F] {
         val nodeService: NodeService[F]             = NodeService[F](repos)
-        val userService: UserService[F]             = UserService[F](repos.userRepo, repos.repositoryRepo)
         val repositoryService: RepositoryService[F] = RepositoryService[F](repos.repositoryRepo)
+        val userService: UserService[F]             = UserService[F](repos.userRepo, repositoryService)
       }
 
     def make[F[_]: Sync](repos: Repositories[F]) =

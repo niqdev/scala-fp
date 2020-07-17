@@ -25,13 +25,13 @@ object queries {
     repository: RepositoryArg => F[Option[RepositoryNode[F]]],
     repositories: ForwardPaginationArg => F[RepositoryConnection[F]]
   )
-  object Queries extends NodeQueries with UserQueries with RepositoryQueries {
+  object Queries {
     private[this] def resolver[F[_]: Effect](services: Services[F]): Queries[F] =
       Queries(
-        node = Queries.nodeQuery(services.nodeService),
-        user = Queries.userQuery(services.userService),
-        repository = Queries.repositoryQuery(services.repositoryService),
-        repositories = Queries.repositoryConnectionQuery(services.repositoryService)
+        node = nodeArg => services.nodeService.findNode(nodeArg.id),
+        user = userArg => services.userService.findByName(userArg.name),
+        repository = repositoryArg => services.repositoryService.findByName(repositoryArg.name),
+        repositories = services.repositoryService.connection(None)
       )
 
     // TODO log errors: mapError or Wrapper
@@ -39,32 +39,6 @@ object queries {
       GraphQL.graphQL(RootResolver(resolver[F](services)))
   }
 
-}
-
-private[pagination] sealed trait NodeQueries {
-  def nodeQuery[F[_]: Effect](
-    nodeService: NodeService[F]
-  ): NodeArg => F[Option[Node[F]]] =
-    arg => nodeService.findNode(arg.id)
-}
-
-private[pagination] sealed trait UserQueries {
-  def userQuery[F[_]: Effect](
-    userService: UserService[F]
-  ): UserArg => F[Option[UserNode[F]]] =
-    arg => userService.findByName(arg.name)
-}
-
-private[pagination] sealed trait RepositoryQueries {
-  def repositoryQuery[F[_]: Effect](
-    repositoryService: RepositoryService[F]
-  ): RepositoryArg => F[Option[RepositoryNode[F]]] =
-    arg => repositoryService.findByName(arg.name)
-
-  def repositoryConnectionQuery[F[_]: Effect](
-    repositoryService: RepositoryService[F]
-  ): ForwardPaginationArg => F[RepositoryConnection[F]] =
-    arg => repositoryService.connection(arg.first, arg.after)
 }
 
 /*
@@ -83,13 +57,13 @@ query findRepositoryByName {
 query getNodeById {
   node(id: "opaqueCursor") {
     id
-    ... on UserNode {
+    ... on UserNodeF {
       id
       name
       createdAt
       updatedAt
     }
-    ... on RepositoryNode {
+    ... on RepositoryNodeF {
       name
       url
       isFork
