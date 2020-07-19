@@ -19,7 +19,7 @@ import eu.timepit.refined.types.numeric.{ NonNegInt, NonNegLong }
 import eu.timepit.refined.types.string.NonEmptyString
 import io.estatico.newtype.macros.newtype
 
-object schema extends CommonSchema with CommonArgBuilder {
+object schema extends CommonSchemaInstances with CommonArgInstances {
 
   object arguments {
     final case class NodeArg(id: NodeId)
@@ -96,6 +96,17 @@ object schema extends CommonSchema with CommonArgBuilder {
     node: RepositoryNode[F]
   )
 
+  /*
+   * If the client is paginating with first/after (Forward Pagination):
+   * - hasNextPage is true if further edges exist, otherwise false
+   * - hasPreviousPage may be true if edges prior to after exist, if it can do so efficiently, otherwise may return false
+   *
+   * If the client is paginating with last/before (Backward Pagination):
+   * - hasNextPage may be true if edges further from before exist, if it can do so efficiently, otherwise may return false
+   * - hasPreviousPage is true if prior edges exist, otherwise false
+   *
+   * startCursor and endCursor must be the cursors corresponding to the first and last nodes in edges, respectively
+   */
   final case class PageInfo(
     hasNextPage: Boolean,
     hasPreviousPage: Boolean,
@@ -104,7 +115,7 @@ object schema extends CommonSchema with CommonArgBuilder {
   )
 }
 
-protected[caliban] sealed trait CommonSchema {
+protected[caliban] sealed trait CommonSchemaInstances {
 
   // see caliban.interop.cats.implicits.effectSchema
   implicit def effectSchema[F[_]: Effect, R, A](implicit ev: Schema[R, A]): Schema[R, F[A]] =
@@ -132,7 +143,7 @@ protected[caliban] sealed trait CommonSchema {
     Schema.intSchema.contramap(_.value.value)
 }
 
-protected[caliban] sealed trait CommonArgBuilder {
+protected[caliban] sealed trait CommonArgInstances {
 
   implicit val nonEmptyStringArgBuilder: ArgBuilder[NonEmptyString] = {
     case StringValue(value) =>

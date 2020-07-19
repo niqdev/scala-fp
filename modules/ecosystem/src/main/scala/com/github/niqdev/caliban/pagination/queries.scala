@@ -38,7 +38,6 @@ object queries {
     def api[F[_]: Effect](services: Services[F]): GraphQL[Any] =
       GraphQL.graphQL(RootResolver(resolver[F](services)))
   }
-
 }
 
 /*
