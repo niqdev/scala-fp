@@ -21,6 +21,8 @@ import io.estatico.newtype.macros.newtype
 
 object schema extends CommonSchemaInstances with CommonArgInstances {
 
+  // TODO RepositoriesArg(first*, after, orderBy: {direction*, field*}) * is mandatory
+  // TODO ForwardPaginationArg change to trait
   object arguments {
     final case class NodeArg(id: NodeId)
     final case class UserArg(name: NonEmptyString)

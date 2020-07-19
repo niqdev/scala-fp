@@ -39,6 +39,7 @@ object Database {
       )
     } yield xa
 
+  // http://h2database.com/html/main.html
   def initInMemory[F[_]: Async: ContextShift: Logger]: Resource[F, H2Transactor[F]] = {
     val config = Config("jdbc:h2:mem:example_db;DB_CLOSE_DELAY=-1", "sa", "", "example")
 
@@ -50,5 +51,4 @@ object Database {
       xa      <- transactor[F](config)
     } yield xa
   }
-
 }

@@ -62,8 +62,8 @@ object services {
     protected[pagination] val toNode: Repository => RepositoryNode[F] =
       _.encodeFrom[RepositoryNode[F]]
 
-    protected[pagination] val toEdge: RowNumber => Repository => RepositoryEdge[F] =
-      rowNumber => repository => (rowNumber -> repository).encodeFrom[RepositoryEdge[F]]
+    protected[pagination] val toEdge: Repository => RowNumber => RepositoryEdge[F] =
+      repository => rowNumber => (repository -> rowNumber).encodeFrom[RepositoryEdge[F]]
 
     def findNode(id: NodeId): F[Option[RepositoryNode[F]]] =
       F.fromEither(SchemaDecoder[NodeId, RepositoryId].to(id))
@@ -80,18 +80,20 @@ object services {
       paginationArg =>
         for {
           limit <- F.fromEither(SchemaDecoder[Offset, Limit].to(paginationArg.first))
-          maybeRowNumber <- F.fromEither(
+          nextRowNumber <- F.fromEither(
             SchemaDecoder[Option[Cursor], Option[RowNumber]].to(paginationArg.after)
           )
-          repositories <- maybeUserId.fold(repositoryRepo.findAll)(repositoryRepo.findAllByUserId)
-          edges        <- F.pure(repositories).nested.map(repository => toEdge(repository._1)(repository._2)).value
-          nodes        <- F.pure(repositories).nested.map(repository => toNode(repository._2)).value
+          repositories <- maybeUserId.fold(repositoryRepo.find(limit, nextRowNumber))(
+            repositoryRepo.findByUserId(limit, nextRowNumber)
+          )
+          edges <- F.pure(repositories).nested.map(repository => toEdge(repository._1)(repository._2)).value
+          nodes <- F.pure(repositories).nested.map(repository => toNode(repository._1)).value
           pageInfo <- F.pure {
             PageInfo(
-              true, // request next with limit 1
-              true, // request previous with limit 1
-              Cursor(Base64String.unsafeFrom("aGVsbG8K")),
-              Cursor(Base64String.unsafeFrom("aGVsbG8K"))
+              true, // TODO
+              false,
+              repositories.head._2.encodeFrom[Cursor],
+              repositories.last._2.encodeFrom[Cursor]
             )
           }
           totalCount <- repositoryRepo.count
