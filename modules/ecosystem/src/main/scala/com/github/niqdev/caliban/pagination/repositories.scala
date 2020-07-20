@@ -123,10 +123,10 @@ object repositories {
         nextRowNumber: Option[RowNumber],
         where: Option[Fragment]
       ): Fragment = {
-        val rowNumberColumn     = Fragment.const(s", ROW_NUMBER() OVER (ORDER BY updated_at)")
+        val rowNumberColumn     = Fragment.const(s", ROW_NUMBER() OVER (ORDER BY updated_at) AS row_number")
         val findLimit: Fragment = findAll(Some(rowNumberColumn), where) ++ fr" LIMIT $limit"
         val findLimitAfterRowNumber: RowNumber => Fragment = rowNumber =>
-          fr"SELECT * FROM (" ++ findAll(Some(rowNumberColumn), where) ++ fr") t WHERE t.ROW_NUMBER > $rowNumber" ++ fr" LIMIT $limit"
+          fr"SELECT * FROM (" ++ findAll(Some(rowNumberColumn), where) ++ fr") t WHERE t.row_number > $rowNumber" ++ fr" LIMIT $limit"
 
         nextRowNumber.fold(findLimit)(findLimitAfterRowNumber)
       }

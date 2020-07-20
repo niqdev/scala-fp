@@ -16,10 +16,10 @@ import zio.Runtime
 
 import scala.concurrent.ExecutionContext
 
-// sbt "ecosystem/runMain com.github.niqdev.caliban.CalibanCatsHttp4sApp"
+// sbt -jvm-debug 5005 "ecosystem/runMain com.github.niqdev.caliban.CalibanCatsHttp4sApp"
 object CalibanCatsHttp4sApp extends IOApp {
 
-  implicit val runtime: Runtime[Any] = Runtime.default
+  private[this] implicit val runtime: Runtime[Any] = Runtime.default
 
   override def run(args: List[String]): IO[ExitCode] =
     Slf4jLogger
