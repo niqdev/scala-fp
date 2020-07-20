@@ -46,6 +46,7 @@ object schema extends CommonSchemaInstances with CommonArgInstances {
   final type Base64String = String Refined MatchesRegex[Base64Regex.T]
   final object Base64String extends RefinedTypeOps[Base64String, String]
 
+  // TODO replace Offset with first/last
   @newtype case class Offset(value: NonNegInt)
   @newtype case class NodeId(value: Base64String)
   @newtype case class Cursor(value: Base64String)

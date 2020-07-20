@@ -91,6 +91,15 @@ query getSimpleUser {
   }
 }
 
+query getRepositories {
+  repositories(first: 2, after: "opaqueCursor") {
+    nodes {
+      id
+      name
+    }
+  }
+}
+
 query getUser {
   user(name: "typelevel") {
     id
