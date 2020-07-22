@@ -9,7 +9,7 @@ import org.scalacheck.{ Arbitrary, Properties }
 sealed abstract class MonoidLawsProp[A](description: String)(implicit arbitrary: Arbitrary[A], ev: Monoid[A])
     extends Properties(s"MonoidLaws: $description") {
 
-  property("associativity") = forAll { (x: A, y: A, z: A) => MonoidLaws[A].semigroupAssociativity(x, y, z) }
+  property("associativity") = forAll((x: A, y: A, z: A) => MonoidLaws[A].semigroupAssociativity(x, y, z))
 
   property("leftIdentity") = forAll { a: A => MonoidLaws[A].monoidLeftIdentity(a) }
 

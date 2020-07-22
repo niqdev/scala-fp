@@ -13,7 +13,7 @@ final class StateSpec extends AnyWordSpecLike with Matchers {
        * (1) transforms an input state to an output state
        * (2) computes a result
        */
-      val myState = State[Int, String] { state => (state, s"state=$state") }
+      val myState = State[Int, String](state => (state, s"state=$state"))
 
       // run(initial state)
       // state and result

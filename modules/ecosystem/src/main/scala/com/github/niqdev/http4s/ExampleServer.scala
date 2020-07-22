@@ -18,9 +18,10 @@ object ExampleServer extends IOApp {
     for {
       prometheusService <- PrometheusExportService.build[F]
       helloRoute: HttpRoutes[F] = HttpService[F].helloRoute
-      meteredRoutes <- Prometheus
-        .metricsOps[F](prometheusService.collectorRegistry, "server")
-        .map(Metrics[F](_)(helloRoute))
+      meteredRoutes <-
+        Prometheus
+          .metricsOps[F](prometheusService.collectorRegistry, "server")
+          .map(Metrics[F](_)(helloRoute))
       allRoutes = meteredRoutes <+> prometheusService.routes
       httpApp   = Router("/" -> allRoutes).orNotFound
       exitCode <- Resource.liftF(

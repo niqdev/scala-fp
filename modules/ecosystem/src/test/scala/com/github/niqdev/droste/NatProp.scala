@@ -12,10 +12,10 @@ final class NatProp extends AnyWordSpecLike with ScalaCheckPropertyChecks with M
   // Int.MaxValue throws StackOverflowError
   "Nat" should {
     "verify hylo" in {
-      forAll(Gen.chooseNum(0, 1000)) { n => intToNatToInt(n) shouldBe natToInt(intToNat(n)) }
+      forAll(Gen.chooseNum(0, 1000))(n => intToNatToInt(n) shouldBe natToInt(intToNat(n)))
     }
     "verify hyloM" in {
-      forAll(Gen.chooseNum(0, 1000)) { n => intToNatToIntStackSafe(n) shouldBe n }
+      forAll(Gen.chooseNum(0, 1000))(n => intToNatToIntStackSafe(n) shouldBe n)
     }
   }
 }

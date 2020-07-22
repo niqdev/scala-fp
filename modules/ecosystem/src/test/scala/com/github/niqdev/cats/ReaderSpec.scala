@@ -24,9 +24,10 @@ final class ReaderSpec extends AnyWordSpecLike with Matchers {
       def checkLogin(userId: Int, password: String): DbReader[Boolean] =
         for {
           maybeUser <- findUser(userId)
-          isValid <- maybeUser
-            .map(user => checkPassword(user, password))
-            .getOrElse(false.pure[DbReader]) // applicative
+          isValid <-
+            maybeUser
+              .map(user => checkPassword(user, password))
+              .getOrElse(false.pure[DbReader]) // applicative
         } yield isValid
 
       val users     = Map(1 -> "user1", 2 -> "user2", 3 -> "user3")

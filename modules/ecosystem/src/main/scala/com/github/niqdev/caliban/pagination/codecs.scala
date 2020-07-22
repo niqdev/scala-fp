@@ -14,7 +14,7 @@ import eu.timepit.refined.types.numeric.PosLong
 object codecs {
 
   /**
-    *
+    * Schema encoder
     */
   trait SchemaEncoder[A, B] {
     def from(model: A): B
@@ -31,8 +31,7 @@ object codecs {
       model => NodeId(Base64String.unsafeFrom(utils.toBase64(s"${UserNode.idPrefix}${model.value.toString}")))
 
     implicit def userNodeSchemaEncoder[F[_]](
-      implicit
-      uniSchemaEncoder: SchemaEncoder[UserId, NodeId]
+      implicit uniSchemaEncoder: SchemaEncoder[UserId, NodeId]
     ): SchemaEncoder[(User, ForwardPaginationArg => F[RepositoryConnection[F]]), UserNode[F]] = {
       case (user, getRepositoryConnectionF) =>
         UserNode(
@@ -62,8 +61,7 @@ object codecs {
         )
 
     implicit def repositoryEdgeSchemaEncoder[F[_]](
-      implicit
-      cSchemaEncoder: SchemaEncoder[RowNumber, Cursor],
+      implicit cSchemaEncoder: SchemaEncoder[RowNumber, Cursor],
       //rniSchemaEncoder: SchemaEncoder[RepositoryId, NodeId],
       rnSchemaEncoder: SchemaEncoder[Repository, RepositoryNode[F]]
     ): SchemaEncoder[(Repository, RowNumber), RepositoryEdge[F]] = {
@@ -81,7 +79,7 @@ object codecs {
   }
 
   /**
-    *
+    * Schema decoder
     */
   trait SchemaDecoder[A, B] {
     def to(schema: A): Either[Throwable, B]

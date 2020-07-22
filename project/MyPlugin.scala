@@ -28,7 +28,7 @@ object MyPlugin extends AutoPlugin {
 
   override lazy val buildSettings = Seq(
     greeting := "Hi!",
-    hello    := helloTask.value
+    hello := helloTask.value
   )
 }
 

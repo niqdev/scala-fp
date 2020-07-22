@@ -51,7 +51,7 @@ final class FunctorSpec extends AnyWordSpecLike with Matchers {
       val func3 = (a: Int) => a + "!"
       val func4 = func1.map(func2).map(func3)
     }
-   */
+     */
   }
 
 }

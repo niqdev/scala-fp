@@ -11,7 +11,9 @@ final class MonoidSpec extends AnyWordSpecLike with Matchers {
     "verify instances" in {
       List(1, 2, 3, 4).foldLeft(intAdditionMonoid.empty)(intAdditionMonoid.combine) shouldBe 10
       List(1, 2, 3, 4).foldLeft(intMultiplicationMonoid.empty)(intMultiplicationMonoid.combine) shouldBe 24
-      List("a", "b", "c").foldLeft(stringConcatenationMonoid.empty)(stringConcatenationMonoid.combine) shouldBe "abc"
+      List("a", "b", "c").foldLeft(stringConcatenationMonoid.empty)(
+        stringConcatenationMonoid.combine
+      ) shouldBe "abc"
       List(true, false).foldLeft(booleanAndMonoid.empty)(booleanAndMonoid.combine) shouldBe false
       List(true, false).foldLeft(booleanOrMonoid.empty)(booleanOrMonoid.combine) shouldBe true
       List(Set(1, 2, 3), Set(2, 3, 4))

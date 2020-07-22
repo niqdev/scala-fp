@@ -85,6 +85,7 @@ https://www.youtube.com/watch?v=ngnzCv7M92c
 https://www.youtube.com/watch?v=ho7oagHeqNc
 
 ---
+
 # free boolean
 https://arosien.github.io/talks/free-boolean-algebras.html
 
@@ -95,3 +96,9 @@ https://godbolt.org
 https://www.amazon.com/Compilers-Principles-Techniques-Tools-2nd-dp-0321486811/dp/0321486811
 https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871
 https://www.amazon.com/Recursive-Programming-Techniques-Systems-programming/dp/0201144506
+
+---
+
+# e2e/it tests
+https://github.com/whisklabs/docker-it-scala
+https://github.com/testcontainers/testcontainers-java

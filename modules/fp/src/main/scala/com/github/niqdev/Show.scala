@@ -38,9 +38,10 @@ object Show extends ShowInstances {
     s.show(value)
 
   // instance helper
-  def showInstance[T](f: T => String): Show[T] = new Show[T] {
-    override def show(value: T): String = f(value)
-  }
+  def showInstance[T](f: T => String): Show[T] =
+    new Show[T] {
+      override def show(value: T): String = f(value)
+    }
 
   // helper
   def apply[T](implicit S: Show[T]): Show[T] = S

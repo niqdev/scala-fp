@@ -34,10 +34,11 @@ object nat {
 
   // required by hyloM
   implicit val natTraverse: Traverse[Nat] = new DefaultTraverse[Nat] {
-    override def traverse[G[_]: Applicative, A, B](fa: Nat[A])(f: A => G[B]): G[Nat[B]] = fa match {
-      case Zero           => Applicative[G].pure(Zero)
-      case Succ(previous) => f(previous) map (Succ(_))
-    }
+    override def traverse[G[_]: Applicative, A, B](fa: Nat[A])(f: A => G[B]): G[Nat[B]] =
+      fa match {
+        case Zero           => Applicative[G].pure(Zero)
+        case Succ(previous) => f(previous) map (Succ(_))
+      }
   }
 
   val intToNat: Int => Fix[Nat]          = scheme.ana(toNat)

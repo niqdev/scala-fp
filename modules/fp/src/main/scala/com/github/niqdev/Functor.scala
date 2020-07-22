@@ -63,7 +63,7 @@ trait FunctorInstances {
 
 trait FunctorSyntax {
 
-  implicit final class FunctorOps[F[_], A](fa: F[A]) {
+  final implicit class FunctorOps[F[_], A](fa: F[A]) {
     def map[B](f: A => B)(implicit ev: Functor[F]): F[B] =
       ev.map(fa)(f)
   }

@@ -13,7 +13,7 @@ trait Random[T] {
 
 trait RandomLowPriority {
 
-  def instance[T](f: =>Gen[T]): Random[T] =
+  def instance[T](f: => Gen[T]): Random[T] =
     new Random[T] {
       override def random: Gen[T] = f
     }
@@ -36,7 +36,7 @@ object Random extends RandomLowPriority {
   def combine[T](ctx: CaseClass[Random, T]): Random[T] =
     new Random[T] {
       override def random: Gen[T] =
-        ctx.constructMonadic { param => param.typeclass.random }
+        ctx.constructMonadic(param => param.typeclass.random)
     }
 
   implicit val genMonadic: Monadic[Gen] = new Monadic[Gen] {

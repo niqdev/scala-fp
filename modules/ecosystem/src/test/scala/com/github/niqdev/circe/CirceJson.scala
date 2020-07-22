@@ -32,7 +32,7 @@ object CirceJson {
   def apply(values: (NonEmptyString, Gen[Json])*): Gen[JsonObject] =
     values.foldLeft(Gen.const(JsonObject.empty)) { (result, data) =>
       val (key, gen) = data
-      result.flatMap { jsonObject => gen.map(value => jsonObject.add(key.value, value)) }
+      result.flatMap(jsonObject => gen.map(value => jsonObject.add(key.value, value)))
     }
 }
 

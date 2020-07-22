@@ -19,7 +19,7 @@ import eu.timepit.refined.types.string.NonEmptyString
 object services {
 
   /**
-    *
+    * User service
     */
   sealed abstract class UserService[F[_]](
     userRepo: UserRepo[F],
@@ -51,7 +51,7 @@ object services {
   }
 
   /**
-    *
+    * Repository service
     */
   sealed abstract class RepositoryService[F[_]](
     repositoryRepo: RepositoryRepo[F]
@@ -106,7 +106,7 @@ object services {
   }
 
   /**
-    *
+    * Node service
     */
   abstract class NodeService[F[_]: Sync](
     userService: UserService[F],
@@ -136,7 +136,7 @@ object services {
   }
 
   /**
-    *
+    * Services
     */
   sealed trait Services[F[_]] {
     def nodeService: NodeService[F]

@@ -2,7 +2,7 @@ package com.github.niqdev
 
 // https://github.com/jdegoes/lambdaconf-2014-introgame#effectful-monads
 // https://github.com/alvinj/IOMonad/blob/master/src/main/scala/io_monad/IO.scala
-sealed abstract class IO[A] private (thunk: =>A) {
+sealed abstract class IO[A] private (thunk: => A) {
 
   def unsafeRun: A = thunk
 
@@ -21,7 +21,7 @@ object IO {
   object instances extends IOInstances
 
   // lifts any by-name parameter into the IO context
-  def apply[A](a: =>A): IO[A] = new IO[A](a) {}
+  def apply[A](a: => A): IO[A] = new IO[A](a) {}
 
   def unit: IO[Unit] = IO(())
 }

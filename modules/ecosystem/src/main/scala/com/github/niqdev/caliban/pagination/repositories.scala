@@ -32,7 +32,7 @@ object repositories {
   @newtype case class Limit(value: NonNegInt)
 
   /**
-    *
+    * User repository
     */
   sealed abstract class UserRepo[F[_]: Sync](xa: Transactor[F]) {
 
@@ -69,12 +69,13 @@ object repositories {
   }
 
   /**
-    *
+    * Repository repository
     */
   sealed abstract class RepositoryRepo[F[_]: Sync](xa: Transactor[F]) {
 
     def find(limit: Limit, nextRowNumber: Option[RowNumber]): F[List[(Repository, RowNumber)]] =
-      RepositoryRepo.queries
+      RepositoryRepo
+        .queries
         .find(limit, nextRowNumber)
         .query[(Repository, RowNumber)]
         .to[List]
@@ -83,7 +84,8 @@ object repositories {
     def findByUserId(limit: Limit, nextRowNumber: Option[RowNumber])(
       userId: UserId
     ): F[List[(Repository, RowNumber)]] =
-      RepositoryRepo.queries
+      RepositoryRepo
+        .queries
         .findByUserId(limit, nextRowNumber)(userId)
         .query[(Repository, RowNumber)]
         .to[List]
@@ -116,7 +118,9 @@ object repositories {
         extraColumns: Option[Fragment] = None,
         where: Option[Fragment] = None
       ): Fragment =
-        fr"SELECT " ++ columns ++ extraColumns.getOrElse(fr"") ++ tableFrom ++ where.getOrElse(fr"") ++ fr" ORDER BY updated_at"
+        fr"SELECT " ++ columns ++ extraColumns.getOrElse(fr"") ++ tableFrom ++ where.getOrElse(
+          fr""
+        ) ++ fr" ORDER BY updated_at"
 
       private[this] def find(
         limit: Limit,
@@ -126,7 +130,10 @@ object repositories {
         val rowNumberColumn     = Fragment.const(s", ROW_NUMBER() OVER (ORDER BY updated_at) AS row_number")
         val findLimit: Fragment = findAll(Some(rowNumberColumn), where) ++ fr" LIMIT $limit"
         val findLimitAfterRowNumber: RowNumber => Fragment = rowNumber =>
-          fr"SELECT * FROM (" ++ findAll(Some(rowNumberColumn), where) ++ fr") t WHERE t.row_number > $rowNumber" ++ fr" LIMIT $limit"
+          fr"SELECT * FROM (" ++ findAll(
+            Some(rowNumberColumn),
+            where
+          ) ++ fr") t WHERE t.row_number > $rowNumber" ++ fr" LIMIT $limit"
 
         nextRowNumber.fold(findLimit)(findLimitAfterRowNumber)
       }
@@ -152,7 +159,7 @@ object repositories {
   }
 
   /**
-    *
+    * Repositories
     */
   sealed trait Repositories[F[_]] {
     def userRepo: UserRepo[F]

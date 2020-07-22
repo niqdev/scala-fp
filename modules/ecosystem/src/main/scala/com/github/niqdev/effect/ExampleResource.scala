@@ -31,7 +31,8 @@ object MyResource {
 object ExampleResource extends IOApp {
 
   def program: IO[Unit] =
-    MyResource[IO].resource
+    MyResource[IO]
+      .resource
       .flatMap(result => IO(println(result)))
 
   // acquire

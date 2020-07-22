@@ -27,14 +27,15 @@ object MainStateTLoop {
     for {
       _     <- putStrLnAsStateT[F, StateContainer[A], String](s"Type a $message, or [q] to quit: ")
       input <- getStrLnAsStateT[F, StateContainer[A]]
-      _ <- if (input == "q") {
-        StateT.liftF[F, StateContainer[A], Unit](Applicative[F].pure(Monoid[A].empty))
-      } else
-        for {
-          i <- StateT.liftF[F, StateContainer[A], A](Applicative[F].pure(fromUnsafe(input)(f)))
-          _ <- combineStateT[F, A](i)
-          _ <- combineLoop[F, A](f)(message)
-        } yield ()
+      _ <-
+        if (input == "q")
+          StateT.liftF[F, StateContainer[A], Unit](Applicative[F].pure(Monoid[A].empty))
+        else
+          for {
+            i <- StateT.liftF[F, StateContainer[A], A](Applicative[F].pure(fromUnsafe(input)(f)))
+            _ <- combineStateT[F, A](i)
+            _ <- combineLoop[F, A](f)(message)
+          } yield ()
     } yield ()
 
   def programInt[F[_]: Monad: Console]: F[(StateContainer[Int], Unit)] = {

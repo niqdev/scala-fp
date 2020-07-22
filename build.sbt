@@ -66,13 +66,13 @@ lazy val dependencies = new {
     "org.tpolecat"          %% "doobie-core"               % versions.doobie,
     "org.tpolecat"          %% "doobie-refined"            % versions.doobie,
     "org.tpolecat"          %% "doobie-h2"                 % versions.doobie,
-    "org.flywaydb"          % "flyway-core"                % versions.flyway,
+    "org.flywaydb"           % "flyway-core"               % versions.flyway,
     "com.github.ghostdogpr" %% "caliban"                   % versions.caliban,
     "com.github.ghostdogpr" %% "caliban-http4s"            % versions.caliban,
     "com.github.ghostdogpr" %% "caliban-cats"              % versions.caliban,
     "com.propensive"        %% "magnolia"                  % versions.magnolia,
     "io.higherkindness"     %% "droste-core"               % versions.droste,
-    "ch.qos.logback"        % "logback-classic"            % versions.logback
+    "ch.qos.logback"         % "logback-classic"           % versions.logback
   )
 
   lazy val test = Seq(
@@ -95,15 +95,15 @@ lazy val commonSettings = Seq(
   // https://alexn.org/blog/2020/05/26/scala-fatal-warnings.html
   scalacOptions ++= Seq(
     "-encoding",
-    "UTF-8", // source files are in UTF-8
-    "-unchecked", // Enable additional warnings where generated code depends on assumptions.
-    "-explaintypes", // explain type errors in more detail
-    "-language:existentials", // existential types (besides wildcard types) can be written and inferred
-    "-language:higherKinds", // allow higher kinded types without `import scala.language.higherKinds`
+    "UTF-8",                         // source files are in UTF-8
+    "-unchecked",                    // Enable additional warnings where generated code depends on assumptions.
+    "-explaintypes",                 // explain type errors in more detail
+    "-language:existentials",        // existential types (besides wildcard types) can be written and inferred
+    "-language:higherKinds",         // allow higher kinded types without `import scala.language.higherKinds`
     "-language:implicitConversions", // allow definition of implicit functions called views
-    "-Xlint", // enable handy linter warnings
-    "-Wconf:any:error", // configurable warnings see https://github.com/scala/scala/pull/8373
-    "-Ymacro-annotations", // required by newtype
+    "-Xlint",                        // enable handy linter warnings
+    "-Wconf:any:error",              // configurable warnings see https://github.com/scala/scala/pull/8373
+    "-Ymacro-annotations",           // required by newtype
     "-Xsource:2.13"
   ),
   addCompilerPlugin("org.typelevel" %% "kind-projector" % versions.kindProjector cross CrossVersion.full)
@@ -113,7 +113,8 @@ lazy val common = (project in file("modules/common"))
   .settings(commonSettings)
   .settings(
     name := s"${info.name}-common",
-    libraryDependencies ++= dependencies.test
+    libraryDependencies ++= dependencies
+      .test
       .map(_.withSources)
       .map(_.withJavadoc)
   )
@@ -123,7 +124,8 @@ lazy val fp = (project in file("modules/fp"))
   .settings(commonSettings)
   .settings(
     name := s"${info.name}-fp",
-    libraryDependencies ++= dependencies.test
+    libraryDependencies ++= dependencies
+      .test
       .map(_.withSources)
       .map(_.withJavadoc)
   )
