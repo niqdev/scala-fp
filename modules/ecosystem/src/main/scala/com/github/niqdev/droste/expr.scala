@@ -20,8 +20,12 @@ object expr {
   object Expr {
     // fixed points
     type Fixed[V] = Fix[Expr[V, *]]
-    def constant[V](value: V): Fixed[V]  = Fix(Constant(value))
-    def negate[V](x: Fixed[V]): Fixed[V] = Fix(Negate(x))
+    def constant[V](value: V): Fixed[V]                 = Fix(Constant(value))
+    def negate[V](x: Fixed[V]): Fixed[V]                = Fix(Negate(x))
+    def add[V](x: Fixed[V], y: Fixed[V]): Fixed[V]      = Fix(Add(x, y))
+    def subtract[V](x: Fixed[V], y: Fixed[V]): Fixed[V] = Fix(Subtract(x, y))
+    def multiply[V](x: Fixed[V], y: Fixed[V]): Fixed[V] = Fix(Multiply(x, y))
+    def divide[V](x: Fixed[V], y: Fixed[V]): Fixed[V]   = Fix(Divide(x, y))
 
     // functor
     implicit def exprFunctor[V]: Functor[Expr[V, *]] =
@@ -50,6 +54,6 @@ object expr {
       case Divide(x, y)                   => x / y
     }
 
-  // cata F[A] => A
+  // cata F[A] => A (requires functor)
   def evalInt: Expr.Fixed[Int] => Int = scheme.cata(evalIntExpr[Int])
 }
