@@ -164,7 +164,7 @@ sbt "test:testOnly *caliban*"
 * [Droste](https://github.com/higherkindness/droste) (Documentation)
 * [Recursion schemes fundamentals](https://www.47deg.com/blog/recursion-schemes-introduction)
 * Practical Droste [ [code](https://github.com/BeniVF/practical-droste) | [video](https://www.youtube.com/watch?v=YBEc0Upntjg) ] by Beni Villa
-* Recursion schemes with Higherkindness [ [code](https://github.com/higherkindness/ersatz) | [video](https://www.youtube.com/watch?v=tP77Ryy9Qxs)] by Oli Makhasoeva & Andy Scott
+* Recursion schemes with Higherkindness [ [code](https://github.com/higherkindness/ersatz) | [video](https://www.youtube.com/watch?v=tP77Ryy9Qxs) ] by Oli Makhasoeva & Andy Scott
 * [Peeling the Banana: Recursion Schemes from First Principles](https://www.youtube.com/watch?v=XZ9nPZbaYfE) by Zainab Ali
 * Matryoshka
     - [Matryoshka](https://github.com/precog/matryoshka) (Documentation)

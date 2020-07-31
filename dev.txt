@@ -24,6 +24,7 @@ sbt ecosystem/console
 https://speakerdeck.com/kubukoz/keep-your-sanity-with-compositional-tracing
 https://github.com/kubukoz/talks/tree/master/compositional-tracing
 https://github.com/tpolecat/natchez
+https://github.com/janstenpickle/trace4cats
 
 # magnolia
 https://propensive.com/opensource/magnolia
