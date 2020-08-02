@@ -157,6 +157,29 @@ http -v :8080/api/graphql query='{models{id}model(id:"model-8"){description,coun
 sbt "test:testOnly *caliban*"
 ```
 
+## Droste
+
+### Resources
+
+* [Droste](https://github.com/higherkindness/droste) (Documentation)
+* [Recursion schemes fundamentals](https://www.47deg.com/blog/recursion-schemes-introduction)
+* Practical Droste [ [code](https://github.com/BeniVF/practical-droste) | [video](https://www.youtube.com/watch?v=YBEc0Upntjg) ] by Beni Villa
+* Recursion schemes with Higherkindness [ [code](https://github.com/higherkindness/ersatz) | [video](https://www.youtube.com/watch?v=tP77Ryy9Qxs) ] by Oli Makhasoeva & Andy Scott
+* [Peeling the Banana: Recursion Schemes from First Principles](https://www.youtube.com/watch?v=XZ9nPZbaYfE) by Zainab Ali
+* Matryoshka
+    - [Matryoshka](https://github.com/precog/matryoshka) (Documentation)
+    - [Introduction to Recursion Schemes with Matryoshka](https://akmetiuk.com/posts/2017-03-10-matryoshka-intro.html)
+    - [AST playground: recursion schemes and recursive data](https://kubuszok.com/2019/ast-playground-recursion-schemes-and-recursive-data)
+    - [matryoshka-examples-scala](https://github.com/LoyolaChicagoCode/matryoshka-examples-scala)
+    - [Recursion Schemes Cookbook](https://github.com/vil1/recursion-schemes-cookbook)
+
+### Examples
+
+```bash
+# run tests
+sbt "test:testOnly *droste*"
+```
+
 ## cats-retry
 
 ### Resources
@@ -168,19 +191,6 @@ sbt "test:testOnly *caliban*"
 ```bash
 # run
 sbt "ecosystem/runMain com.github.niqdev.retry.ExampleRetry"
-```
-
-## Droste
-
-### Resources
-
-> TODO
-
-### Examples
-
-```bash
-# run tests
-sbt "test:testOnly *droste*"
 ```
 
 ## More libraries

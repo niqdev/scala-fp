@@ -22,12 +22,12 @@ object nat {
       }
   }
 
-  val toNat: Coalgebra[Nat, Int] = Coalgebra {
+  private[this] val toNat: Coalgebra[Nat, Int] = Coalgebra {
     case 0        => Zero
     case previous => Succ(previous - 1)
   }
 
-  val toInt: Algebra[Nat, Int] = Algebra {
+  private[this] val toInt: Algebra[Nat, Int] = Algebra {
     case Zero           => 0
     case Succ(previous) => previous + 1
   }
