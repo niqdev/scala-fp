@@ -11,8 +11,8 @@ lazy val versions = new {
   val catsEffect     = "2.1.4"
   val catsRetry      = "1.1.1"
   val log4cats       = "1.1.1"
-  val zio            = "1.0.0-RC21-2"
-  val zioInteropCats = "2.1.3.0-RC16"
+  val zio            = "1.0.0"
+  val zioInteropCats = "2.1.4.0"
   val circe          = "0.13.0"
   val newtype        = "0.4.4"
   val refined        = "0.9.15"
@@ -28,7 +28,7 @@ lazy val versions = new {
   val logback        = "1.2.3"
 
   // test
-  val scalatest     = "3.2.0"
+  val scalatest     = "3.2.1"
   val scalatestplus = "3.2.1.0"
   val scalacheck    = "1.14.3"
 

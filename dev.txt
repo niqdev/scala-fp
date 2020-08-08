@@ -80,5 +80,3 @@ http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.125
 https://www.youtube.com/watch?v=ngnzCv7M92c
 # Category Theory in Life
 https://www.youtube.com/watch?v=ho7oagHeqNc
-
----
