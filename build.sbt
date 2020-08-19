@@ -87,6 +87,7 @@ lazy val dependencies = new {
 lazy val commonSettings = Seq(
   organization := info.organization,
   scalaVersion := info.scalaVersion,
+  javacOptions ++= Seq("-source", "11"),
   // https://docs.scala-lang.org/overviews/compiler-options/index.html
   // https://tpolecat.github.io/2017/04/25/scalac-flags.html
   // https://github.com/DavidGregory084/sbt-tpolecat
