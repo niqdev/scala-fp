@@ -255,3 +255,7 @@ List(1, 2, 3).foldRight(List.empty[Int])((i, a) => i :: a)
 ```
 
 * `foldLeft` and `foldRight` are equivalent if the binary operation is **associative** - see `Monoid`
+
+### TODO *What is string interpolation?*
+
+* [Scala String Interpolation](https://thecodersstop.com/scala/scala-string-interpolation)
