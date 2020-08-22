@@ -23,7 +23,7 @@ lazy val versions = new {
   val doobie         = "0.9.0"
   val flyway         = "6.5.5"
   val caliban        = "0.9.1"
-  val magnolia       = "0.16.0"
+  val magnolia       = "0.17.0"
   val droste         = "0.8.0"
   val logback        = "1.2.3"
 
