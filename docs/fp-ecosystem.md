@@ -28,6 +28,7 @@ title: Ecosystem
 ```bash
 # run
 sbt "ecosystem/runMain com.github.niqdev.zio.ExampleZIOApp"
+sbt "ecosystem/runMain com.github.niqdev.zio.ExampleZLayerApp"
 ```
 
 ## http4s
