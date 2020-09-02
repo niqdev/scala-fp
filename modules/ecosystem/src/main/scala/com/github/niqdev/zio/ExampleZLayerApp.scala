@@ -1,5 +1,6 @@
 package com.github.niqdev.zio
 
+import com.github.niqdev.zio.Person.Person
 import zio._
 import zio.console._
 
@@ -10,7 +11,6 @@ object Person {
     def sayHello(name: String): UIO[Unit]
     def sayGoodbye: UIO[Unit]
   }
-
   object Service {
     // Console service dependency
     val live: Console.Service => Service =
@@ -43,11 +43,11 @@ object ExampleZLayerApp extends App {
   // dependency graph
   private[this] val env = nameLayer ++ Console.live ++ Person.live
 
-  private[this] val program =
+  private[this] val program: ZIO[Person with Console with Has[String], Nothing, Unit] =
     for {
-      name <- ZIO.access[Has[String]](_.get)
-      _    <- Person.sayHello(name)
-      _    <- putStrLn("TODO")
+      name <- ZIO.access[Has[String]](_.get) // access layer directly
+      _    <- Person.sayHello(name) // access custom layer
+      _    <- putStrLn("TODO") // access existing layer
       _    <- Person.sayGoodbye
     } yield ()
 

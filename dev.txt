@@ -80,3 +80,28 @@ http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.125
 https://www.youtube.com/watch?v=ngnzCv7M92c
 # Category Theory in Life
 https://www.youtube.com/watch?v=ho7oagHeqNc
+
+---
+
+# settings example
+javaOptions ++= Seq(
+  "-Xmx1G",
+  "-Xms1G",
+  "-XX:+UseG1GC",
+  "-XX:+UseStringDeduplication",
+  "-XX:+UseNUMA",
+  "-XX:+UseCompressedOops",
+  "-XX:+AggressiveOpts",
+  "-XX:+UseBiasedLocking",
+  "-XX:+UseFastAccessorMethods",
+  "-XX:NewRatio=2",
+  "-XX:-ReduceInitialCardMarks",
+  "-XX:+HeapDumpOnOutOfMemoryError",
+  "-XX:HeapDumpPath=/app/logs",
+  "-XX:OnOutOfMemoryError=kill -9 %p",
+  "-XX:-OmitStackTraceInFastThrow",
+  "-Djava.net.preferIPv4Stack=true",
+  "-Djava.security.egd=file:/dev/urandom",
+  "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005",
+  s"-Dconfig.resource=${Option(System.getProperty("config.resource")).getOrElse("application.conf")}"
+)
