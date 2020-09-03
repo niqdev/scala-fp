@@ -12,16 +12,12 @@ final class ShowSpec extends AnyWordSpecLike with Matchers {
   "Show" should {
 
     "verify apply" in {
-      import cats.instances.int.catsStdShowForInt
-      import cats.instances.string.catsStdShowForString
 
       Show.apply[Int].show(123) shouldBe "123"
       Show[String].show("abc") shouldBe "abc"
     }
 
     "verify Cat" in {
-      import cats.instances.int.catsStdShowForInt
-      import cats.instances.string.catsStdShowForString
 
       final case class Cat(name: String, age: Int, color: String)
 

@@ -19,7 +19,6 @@ final class WriterSpec extends AnyWordSpecLike with Matchers {
     }
 
     "verify composition" in {
-      import cats.instances.vector.catsKernelStdMonoidForVector
       import cats.syntax.applicative.catsSyntaxApplicativeId
       import cats.syntax.writer.catsSyntaxWriterId
 

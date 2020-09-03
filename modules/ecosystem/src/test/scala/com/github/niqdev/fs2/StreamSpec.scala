@@ -9,7 +9,6 @@ final class StreamSpec extends AnyWordSpecLike with Matchers {
   "Stream" should {
 
     "verify pure streams" in {
-      import cats.instances.int.catsKernelStdGroupForInt
 
       // F: effect type
       // O: output type

@@ -1,6 +1,4 @@
 package com.github.niqdev.cats
-
-import cats.instances.list.catsStdInstancesForList
 import cats.syntax.foldable.catsSyntaxFoldOps
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike

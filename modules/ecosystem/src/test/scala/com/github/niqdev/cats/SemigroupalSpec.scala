@@ -10,7 +10,6 @@ final class SemigroupalSpec extends AnyWordSpecLike with Matchers {
     "verify examples" in {
       import cats.Semigroupal
       // semigroupal
-      import cats.instances.option.catsStdInstancesForOption
 
       Semigroupal[Option].product(Some(42), Some("hello")) shouldBe Some(42 -> "hello")
       Semigroupal[Option].product(None, Some("hello")) shouldBe None
@@ -24,7 +23,6 @@ final class SemigroupalSpec extends AnyWordSpecLike with Matchers {
     }
 
     "verify syntax" in {
-      import cats.instances.option.catsStdInstancesForOption
       // tupled
       import cats.syntax.apply.catsSyntaxTuple3Semigroupal
 
@@ -37,7 +35,6 @@ final class SemigroupalSpec extends AnyWordSpecLike with Matchers {
      */
     "verify mapN" in {
       // functor + semigroupal
-      import cats.instances.option.catsStdInstancesForOption
       // mapN
       import cats.syntax.apply.catsSyntaxTuple3Semigroupal
 

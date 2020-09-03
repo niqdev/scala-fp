@@ -31,7 +31,6 @@ final class MonadErrorSpec extends AnyWordSpecLike with Matchers {
     }
 
     "verify examples" in {
-      import cats.instances.try_.catsStdInstancesForTry
       import cats.syntax.applicativeError.catsSyntaxApplicativeErrorId
 
       val exception: Throwable = new RuntimeException("error")

@@ -10,7 +10,6 @@ final class OptionTSpec extends AnyWordSpecLike with Matchers {
 
     "verify examples" in {
       // monad: flatMap, map
-      import cats.instances.list.catsStdInstancesForList
       // pure
       import cats.syntax.applicative.catsSyntaxApplicativeId
 
@@ -27,8 +26,6 @@ final class OptionTSpec extends AnyWordSpecLike with Matchers {
     "verify Future" in {
       // monad: flatMap, map
       import java.util.concurrent.TimeUnit
-
-      import cats.instances.future.catsStdInstancesForFuture
 
       import scala.concurrent.ExecutionContext.Implicits.global
       import scala.concurrent.duration.Duration

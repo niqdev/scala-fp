@@ -9,9 +9,6 @@ final class MonoidSpec extends AnyWordSpecLike with Matchers {
   "Monoid" should {
 
     "verify List" in {
-      import cats.instances.int.catsKernelStdGroupForInt
-      import cats.instances.option.catsKernelStdMonoidForOption
-      import cats.instances.string.catsKernelStdMonoidForString
       import cats.syntax.semigroup.catsSyntaxSemigroup
 
       final case class Container(s: String, i: Int)

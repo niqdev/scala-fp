@@ -7,8 +7,6 @@ import org.scalatest.wordspec.AnyWordSpecLike
 final case class Cat(name: String, age: Int, color: String)
 
 object CatInstances {
-  import cats.instances.int.catsKernelStdOrderForInt
-  import cats.instances.string.catsKernelStdOrderForString
   import cats.syntax.eq.catsSyntaxEq
 
   implicit val catEq: Eq[Cat] =
@@ -35,7 +33,6 @@ final class EqSpec extends AnyWordSpecLike with Matchers {
   "Eq" should {
 
     "verify examples" in {
-      import cats.instances.int.catsKernelStdOrderForInt
 
       Eq[Int].eqv(123, 123) shouldBe true
       Eq[Int].neqv(123, 456) shouldBe true
@@ -43,7 +40,6 @@ final class EqSpec extends AnyWordSpecLike with Matchers {
 
     "verify instances" in {
       import CatInstances.catEq
-      import cats.instances.option.catsKernelStdEqForOption
 
       val cat1 = Cat("Garfield", 35, "orange and black")
       val cat2 = Cat("Heathcliff", 30, "orange and black")

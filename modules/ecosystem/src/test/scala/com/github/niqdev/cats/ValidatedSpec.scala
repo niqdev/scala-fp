@@ -72,7 +72,6 @@ final class ValidatedSpec extends AnyWordSpecLike with Matchers {
       // leftMap
       import cats.syntax.either.catsSyntaxEither
       // semigroupal
-      import cats.instances.list.catsKernelStdMonoidForList
       // mapN
       import cats.syntax.apply.catsSyntaxTuple2Semigroupal
 

@@ -9,7 +9,6 @@ final class MonadSpec extends AnyWordSpecLike with Matchers {
   "Monad" should {
 
     "verify Option" in {
-      import cats.instances.option.catsStdInstancesForOption
 
       Monad[Option].pure(3) shouldBe Some(3)
       Monad[Option].flatMap(Option(3))(value => Some(value * 3)) shouldBe Some(9)
@@ -17,7 +16,6 @@ final class MonadSpec extends AnyWordSpecLike with Matchers {
     }
 
     "verify sumSquare" in {
-      import cats.instances.option.catsStdInstancesForOption
       import cats.syntax.applicative.catsSyntaxApplicativeId
       import cats.syntax.flatMap.toFlatMapOps
       import cats.syntax.functor.toFunctorOps

@@ -9,8 +9,6 @@ final class FunctorSpec extends AnyWordSpecLike with Matchers {
 
     "verify examples" in {
       import cats.Functor
-      import cats.instances.list.catsStdInstancesForList
-      import cats.instances.option.catsStdInstancesForOption
 
       Functor[List].map(List(1, 2, 3, 4))(_ * 2) shouldBe List(2, 4, 6, 8)
       Functor[Option].map(Option(123))(_.toString) shouldBe Some("123")
@@ -18,7 +16,6 @@ final class FunctorSpec extends AnyWordSpecLike with Matchers {
     }
 
     "verify Function1" in {
-      import cats.instances.function.catsStdMonadForFunction1
       import cats.syntax.functor.toFunctorOps
 
       val func1 = (a: Int) => a + 1
