@@ -6,26 +6,27 @@ lazy val info = new {
 
 lazy val versions = new {
   // ecosystem
-  val caliban        = "0.9.2"
-  val catsCore       = "2.2.0"
-  val catsEffect     = "2.2.0"
-  val catsRetry      = "1.1.1"
-  val circe          = "0.13.0"
-  val doobie         = "0.9.2"
-  val droste         = "0.8.0"
-  val enumeratum     = "1.6.1"
-  val flyway         = "6.5.6"
-  val fs2            = "2.4.4"
-  val http4s         = "0.21.7"
-  val log4cats       = "1.1.1"
-  val logback        = "1.2.3"
-  val magnolia       = "0.17.0"
-  val newtype        = "0.4.4"
-  val refined        = "0.9.16"
-  val shapeless      = "2.3.3"
-  val squants        = "1.7.0"
-  val zio            = "1.0.1"
-  val zioInteropCats = "2.1.4.0"
+  val caliban          = "0.9.2"
+  val catsCore         = "2.2.0"
+  val catsEffect       = "2.2.0"
+  val catsRetry        = "1.1.1"
+  val circe            = "0.13.0"
+  val doobie           = "0.9.2"
+  val droste           = "0.8.0"
+  val enumeratum       = "1.6.1"
+  val enumeratumDoobie = "1.6.0"
+  val flyway           = "6.5.6"
+  val fs2              = "2.4.4"
+  val http4s           = "0.21.7"
+  val log4cats         = "1.1.1"
+  val logback          = "1.2.3"
+  val magnolia         = "0.17.0"
+  val newtype          = "0.4.4"
+  val refined          = "0.9.16"
+  val shapeless        = "2.3.3"
+  val squants          = "1.7.0"
+  val zio              = "1.0.1"
+  val zioInteropCats   = "2.1.4.0"
 
   // test
   val scalacheck    = "1.14.3"
@@ -38,49 +39,49 @@ lazy val versions = new {
 
 lazy val dependencies = new {
   lazy val ecosystem = Seq(
-    "com.chuusai"           %% "shapeless"                 % versions.shapeless,
+    "com.github.ghostdogpr" %% "caliban"                   % versions.caliban,
+    "com.github.ghostdogpr" %% "caliban-cats"              % versions.caliban,
+    "com.github.ghostdogpr" %% "caliban-http4s"            % versions.caliban,
     "org.typelevel"         %% "cats-core"                 % versions.catsCore,
     "org.typelevel"         %% "cats-effect"               % versions.catsEffect,
     "com.github.cb372"      %% "cats-retry"                % versions.catsRetry,
-    "io.chrisdavenport"     %% "log4cats-core"             % versions.log4cats,
-    "io.chrisdavenport"     %% "log4cats-slf4j"            % versions.log4cats,
-    "dev.zio"               %% "zio"                       % versions.zio,
-    "dev.zio"               %% "zio-streams"               % versions.zio,
-    "dev.zio"               %% "zio-interop-cats"          % versions.zioInteropCats,
     "io.circe"              %% "circe-core"                % versions.circe,
     "io.circe"              %% "circe-generic"             % versions.circe,
     "io.circe"              %% "circe-parser"              % versions.circe,
     "io.circe"              %% "circe-refined"             % versions.circe,
-    "io.estatico"           %% "newtype"                   % versions.newtype,
-    "eu.timepit"            %% "refined"                   % versions.refined,
-    "org.typelevel"         %% "squants"                   % versions.squants,
+    "org.tpolecat"          %% "doobie-core"               % versions.doobie,
+    "org.tpolecat"          %% "doobie-h2"                 % versions.doobie,
+    "org.tpolecat"          %% "doobie-refined"            % versions.doobie,
+    "io.higherkindness"     %% "droste-core"               % versions.droste,
     "com.beachape"          %% "enumeratum"                % versions.enumeratum,
     "com.beachape"          %% "enumeratum-circe"          % versions.enumeratum,
-    "com.beachape"          %% "enumeratum-doobie"         % "1.6.0",
+    "com.beachape"          %% "enumeratum-doobie"         % versions.enumeratumDoobie,
+    "org.flywaydb"           % "flyway-core"               % versions.flyway,
     "co.fs2"                %% "fs2-core"                  % versions.fs2,
     "co.fs2"                %% "fs2-io"                    % versions.fs2,
-    "org.http4s"            %% "http4s-dsl"                % versions.http4s,
-    "org.http4s"            %% "http4s-blaze-server"       % versions.http4s,
     "org.http4s"            %% "http4s-blaze-client"       % versions.http4s,
+    "org.http4s"            %% "http4s-blaze-server"       % versions.http4s,
+    "org.http4s"            %% "http4s-dsl"                % versions.http4s,
     "org.http4s"            %% "http4s-prometheus-metrics" % versions.http4s,
-    "org.tpolecat"          %% "doobie-core"               % versions.doobie,
-    "org.tpolecat"          %% "doobie-refined"            % versions.doobie,
-    "org.tpolecat"          %% "doobie-h2"                 % versions.doobie,
-    "org.flywaydb"           % "flyway-core"               % versions.flyway,
-    "com.github.ghostdogpr" %% "caliban"                   % versions.caliban,
-    "com.github.ghostdogpr" %% "caliban-http4s"            % versions.caliban,
-    "com.github.ghostdogpr" %% "caliban-cats"              % versions.caliban,
+    "io.chrisdavenport"     %% "log4cats-core"             % versions.log4cats,
+    "io.chrisdavenport"     %% "log4cats-slf4j"            % versions.log4cats,
+    "ch.qos.logback"         % "logback-classic"           % versions.logback % Runtime,
     "com.propensive"        %% "magnolia"                  % versions.magnolia,
-    "io.higherkindness"     %% "droste-core"               % versions.droste,
-    "ch.qos.logback"         % "logback-classic"           % versions.logback
+    "io.estatico"           %% "newtype"                   % versions.newtype,
+    "eu.timepit"            %% "refined"                   % versions.refined,
+    "com.chuusai"           %% "shapeless"                 % versions.shapeless,
+    "org.typelevel"         %% "squants"                   % versions.squants,
+    "dev.zio"               %% "zio"                       % versions.zio,
+    "dev.zio"               %% "zio-interop-cats"          % versions.zioInteropCats,
+    "dev.zio"               %% "zio-streams"               % versions.zio
   )
 
   lazy val test = Seq(
-    "org.scalatest"     %% "scalatest"             % versions.scalatest     % Test,
     "org.tpolecat"      %% "doobie-scalatest"      % versions.doobie        % Test,
-    "org.scalatestplus" %% "scalacheck-1-14"       % versions.scalatestplus % Test,
+    "com.beachape"      %% "enumeratum-scalacheck" % versions.enumeratum    % Test,
     "org.scalacheck"    %% "scalacheck"            % versions.scalacheck    % Test,
-    "com.beachape"      %% "enumeratum-scalacheck" % versions.enumeratum    % Test
+    "org.scalatestplus" %% "scalacheck-1-14"       % versions.scalatestplus % Test,
+    "org.scalatest"     %% "scalatest"             % versions.scalatest     % Test
   )
 }
 

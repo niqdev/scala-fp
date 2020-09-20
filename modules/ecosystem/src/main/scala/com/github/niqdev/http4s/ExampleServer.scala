@@ -1,8 +1,7 @@
 package com.github.niqdev.http4s
 
 import cats.effect.{ ConcurrentEffect, ExitCode, IO, IOApp, Resource, Timer }
-import cats.implicits.toSemigroupKOps
-import cats.syntax.functor.toFunctorOps
+import cats.syntax.all._
 import org.http4s.HttpRoutes
 import org.http4s.syntax.kleisli.http4sKleisliResponseSyntaxOptionT
 import org.http4s.metrics.prometheus.{ Prometheus, PrometheusExportService }

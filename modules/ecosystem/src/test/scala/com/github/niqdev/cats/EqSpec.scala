@@ -6,6 +6,8 @@ import org.scalatest.wordspec.AnyWordSpecLike
 
 final case class Cat(name: String, age: Int, color: String)
 
+// since cats 2.2.x instances are not required anymore
+// see https://github.com/niqdev/scala-fp/pull/117/files
 object CatInstances {
   import cats.instances.int.catsKernelStdOrderForInt
   import cats.instances.string.catsKernelStdOrderForString
