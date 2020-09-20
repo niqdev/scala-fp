@@ -9,14 +9,14 @@ final class ModelSpec extends AnyWordSpecLike with Matchers {
   "Model" should {
 
     "generate Person" in {
-      Generators.genPerson.sample.collect {
-        case person => println(person)
+      Generators.genPerson.sample.collect { case person =>
+        println(person)
       }
     }
 
     "generate Person as Json" in {
-      Generators.genJson[Person](Generators.genPerson).sample.collect {
-        case personJson => println(personJson)
+      Generators.genJson[Person](Generators.genPerson).sample.collect { case personJson =>
+        println(personJson)
       }
     }
   }

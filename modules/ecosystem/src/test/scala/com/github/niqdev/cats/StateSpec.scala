@@ -141,8 +141,8 @@ final class StateSpec extends AnyWordSpecLike with Matchers {
       program0.runA(Nil).value shouldBe 3
 
       def evaluateAll(input: List[String]): CalculatorState[Int] =
-        input.foldLeft(0.pure[CalculatorState]) {
-          case (state, symbol) => state.flatMap(_ => evaluateOne(symbol))
+        input.foldLeft(0.pure[CalculatorState]) { case (state, symbol) =>
+          state.flatMap(_ => evaluateOne(symbol))
         }
 
       evaluateAll(List("1", "2", "+", "3", "*")).runA(Nil).value shouldBe 9

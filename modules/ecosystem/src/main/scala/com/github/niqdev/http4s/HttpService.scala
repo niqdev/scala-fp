@@ -9,9 +9,8 @@ private[http4s] sealed abstract class HttpService[F[_]: Sync] extends Http4sDsl[
 
   // HttpRoutes[F] = Kleisli[OptionT[F, ?], Request[F], Response[F]]
   val helloRoute: HttpRoutes[F] =
-    HttpRoutes.of[F] {
-      case GET -> Root / "hello" / name =>
-        Ok(s"Hello $name!")
+    HttpRoutes.of[F] { case GET -> Root / "hello" / name =>
+      Ok(s"Hello $name!")
     }
 
   val endpoints: HttpApp[F] =

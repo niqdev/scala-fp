@@ -10,12 +10,11 @@ final case class StateT[F[_], S, A] private (run: S => F[(S, A)]) {
     StateT { s0: S =>
       // current state
       val fsa: F[(S, A)] = get(s0)
-      F.flatMap(fsa) {
-        case (sa, a) =>
-          val sb: StateT[F, S, B] = f(a)
-          // new state
-          val fsb: F[(S, B)] = sb.get(sa)
-          fsb
+      F.flatMap(fsa) { case (sa, a) =>
+        val sb: StateT[F, S, B] = f(a)
+        // new state
+        val fsb: F[(S, B)] = sb.get(sa)
+        fsb
       }
     }
 

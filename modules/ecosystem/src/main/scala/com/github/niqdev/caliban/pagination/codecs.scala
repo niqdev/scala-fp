@@ -64,12 +64,11 @@ object codecs {
       implicit cSchemaEncoder: SchemaEncoder[RowNumber, Cursor],
       //rniSchemaEncoder: SchemaEncoder[RepositoryId, NodeId],
       rnSchemaEncoder: SchemaEncoder[Repository, RepositoryNode[F]]
-    ): SchemaEncoder[(Repository, RowNumber), RepositoryEdge[F]] = {
-      case (model, rowNumber) =>
-        RepositoryEdge(
-          cursor = cSchemaEncoder.from(rowNumber),
-          node = rnSchemaEncoder.from(model)
-        )
+    ): SchemaEncoder[(Repository, RowNumber), RepositoryEdge[F]] = { case (model, rowNumber) =>
+      RepositoryEdge(
+        cursor = cSchemaEncoder.from(rowNumber),
+        node = rnSchemaEncoder.from(model)
+      )
     }
   }
 

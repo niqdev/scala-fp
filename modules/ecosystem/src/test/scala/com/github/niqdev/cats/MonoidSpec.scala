@@ -19,9 +19,8 @@ final class MonoidSpec extends AnyWordSpecLike with Matchers {
       implicit val containerMonoid: Monoid[Container] =
         Monoid.instance(
           Container("", 0),
-          {
-            case (Container(s0, i0), Container(s1, i1)) =>
-              Container(s0 |+| s1, i0 |+| i1)
+          { case (Container(s0, i0), Container(s1, i1)) =>
+            Container(s0 |+| s1, i0 |+| i1)
           }
         )
 

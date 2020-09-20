@@ -1,6 +1,6 @@
 package com.github.niqdev.droste
 
-import cats.{ Applicative, Functor, Traverse }
+import cats._
 import higherkindness.droste.data.Fix
 import higherkindness.droste.util.DefaultTraverse
 import higherkindness.droste.{ Algebra, Coalgebra, scheme }
@@ -33,7 +33,7 @@ object nat {
   }
 
   // required by hyloM
-  implicit val natTraverse: Traverse[Nat] = new DefaultTraverse[Nat] {
+  implicit val xnatTraverse: Traverse[Nat] = new DefaultTraverse[Nat] {
     override def traverse[G[_]: Applicative, A, B](fa: Nat[A])(f: A => G[B]): G[Nat[B]] =
       fa match {
         case Zero           => Applicative[G].pure(Zero)
