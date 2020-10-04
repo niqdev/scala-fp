@@ -15,11 +15,6 @@ sbt ecosystem/console
 
 ---
 
-# TODO
-* fix plugin example in multi-module project
-
----
-
 # tracing
 https://speakerdeck.com/kubukoz/keep-your-sanity-with-compositional-tracing
 https://github.com/kubukoz/talks/tree/master/compositional-tracing
@@ -49,14 +44,6 @@ https://www.scala-lang.org/blog/2018/06/04/scalac-profiling.html
 
 # free boolean
 https://arosien.github.io/talks/free-boolean-algebras.html
-
-# compilers
-http://www.craftinginterpreters.com
-https://the-super-tiny-compiler.glitch.me
-https://godbolt.org
-https://www.amazon.com/Compilers-Principles-Techniques-Tools-2nd-dp-0321486811/dp/0321486811
-https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871
-https://www.amazon.com/Recursive-Programming-Techniques-Systems-programming/dp/0201144506
 
 # e2e/it tests
 https://github.com/whisklabs/docker-it-scala
@@ -107,3 +94,32 @@ javaOptions ++= Seq(
   "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005",
   s"-Dconfig.resource=${Option(System.getProperty("config.resource")).getOrElse("application.conf")}"
 )
+
+--- OLD
+
+# scala tests
+https://orrsella.com/2014/09/24/integration-and-end-to-end-test-configurations-in-sbt-for-scala-java-projects
+http://www.unstablebuild.com/2017/04/13/scala-projects-and-integration-tests.html
+https://alexromanov.github.io/2016/07/15/cucumber-scala-sbt
+https://github.com/lewismj/cucumber
+https://github.com/jecklgamis/cucumber-jvm-scala-example
+https://localstack.cloud
+
+# sbt complex alias
+https://github.com/pauldijou/jwt-scala/blob/master/build.sbt#L15
+
+# java agent
+https://stackoverflow.com/questions/11898566/tutorials-about-javaagents
+
+# scala
+https://stackoverflow.com/questions/4593710/when-should-i-and-should-i-not-use-scalas-inline-annotation
+https://stackoverflow.com/questions/2709095/does-the-inline-annotation-in-scala-really-help-performance
+https://stackoverflow.com/questions/27855714/type-selection-type-projection-what-is-st-in-scala-scala-language-specifica
+https://stackoverflow.com/questions/2693067/what-is-meant-by-scalas-path-dependent-types
+https://github.com/estatico/scala-newtype
+https://medium.com/@mattroberts297/automatic-type-class-derivation-with-shapeless-part-one-a1251c5f9e16
+https://appddeevvmeanderings.blogspot.com/2019/08/functional-web-client-made-easy-dotty.html
+
+* , jmx, mbeans, jconsole, jolokia, jstat, javap, jmh
+* add notes from JVM memory course, jps
+java -XX:+PrintFlagsFinal -version
