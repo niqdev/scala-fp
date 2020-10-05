@@ -5,6 +5,7 @@ title: JVM
 
 > TODO review old devops notes
 
+* [Things you need to know about JVM (that matter in Scala)](http://leanpub.com/jvm-scala-book)
 * [Java Memory Management](https://www.udemy.com/course/java-memory-management) (Course)
 * [Multithreading and Parallel Computing in Java](https://www.udemy.com/course/multithreading-and-parallel-computing-in-java) (Course)
 * [scalac options](https://docs.scala-lang.org/overviews/compiler-options/index.html)

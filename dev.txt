@@ -49,17 +49,29 @@ https://arosien.github.io/talks/free-boolean-algebras.html
 https://github.com/whisklabs/docker-it-scala
 https://github.com/testcontainers/testcontainers-java
 
+# maths
+https://xenaproject.wordpress.com/2020/06/20/mathematics-in-type-theory
+# Recommend a maths book for a teenager?
+https://news.ycombinator.com/item?id=23711942
+https://www.quantamagazine.org
+
+---
+
+# haskell
+https://www.schoolofhaskell.com/user/bartosz/basics-of-haskell
+https://github.com/raviksharma/bartosz-basics-of-haskell
+https://kowainik.github.io
+https://chrispenner.ca/posts/wc
+
 ---
 
 ### recursion-schemas
 
-# haskell
+# in haskell
 https://www.reddit.com/r/haskell/comments/9x684a/edward_kmett_there_and_back_again_regular_and
 https://medium.com/@jaredtobin/practical-recursion-schemes-c10648ec1c29
 https://bartoszmilewski.com/2018/08/20/recursion-schemes-for-higher-algebras
 https://blog.sumtypeofway.com/posts/introduction-to-recursion-schemes.html
-https://www.schoolofhaskell.com/user/bartosz/basics-of-haskell
-https://github.com/raviksharma/bartosz-basics-of-haskell
 
 # more
 https://github.com/passy/awesome-recursion-schemes
@@ -120,6 +132,6 @@ https://github.com/estatico/scala-newtype
 https://medium.com/@mattroberts297/automatic-type-class-derivation-with-shapeless-part-one-a1251c5f9e16
 https://appddeevvmeanderings.blogspot.com/2019/08/functional-web-client-made-easy-dotty.html
 
-* , jmx, mbeans, jconsole, jolokia, jstat, javap, jmh
+* jmx, mbeans, jconsole, jolokia, jstat, javap, jmh
 * add notes from JVM memory course, jps
 java -XX:+PrintFlagsFinal -version
