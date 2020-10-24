@@ -24,6 +24,7 @@ object Database {
         .dataSource(config.connectionUrl, config.username, config.password)
         .load()
         .migrate()
+        .migrationsExecuted
     )
 
   private[this] def transactor[F[_]: Async: ContextShift](config: Config): Resource[F, H2Transactor[F]] =
