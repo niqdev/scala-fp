@@ -15,22 +15,22 @@ lazy val versions = new {
   val droste           = "0.8.0"
   val enumeratum       = "1.6.1"
   val enumeratumDoobie = "1.6.0"
-  val flyway           = "7.1.1"
+  val flyway           = "7.2.0"
   val fs2              = "2.4.4"
-  val http4s           = "0.21.8"
+  val http4s           = "0.21.9"
   val log4cats         = "1.1.1"
   val logback          = "1.2.3"
   val magnolia         = "0.17.0"
   val newtype          = "0.4.4"
-  val refined          = "0.9.17"
+  val refined          = "0.9.18"
   val shapeless        = "2.3.3"
   val squants          = "1.7.0"
   val zio              = "1.0.3"
   val zioInteropCats   = "2.2.0.1"
 
   // test
-  val scalacheck    = "1.15.1"
-  val scalatest     = "3.2.2"
+  val scalacheck    = "1.15.0"
+  val scalatest     = "3.2.3"
   val scalatestplus = "3.2.2.0"
 
   // common
