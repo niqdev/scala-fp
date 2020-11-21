@@ -54,6 +54,23 @@ https://xenaproject.wordpress.com/2020/06/20/mathematics-in-type-theory
 # Recommend a maths book for a teenager?
 https://news.ycombinator.com/item?id=23711942
 https://www.quantamagazine.org
+https://mathvault.ca/euler-formula
+https://stopa.io/post/263
+
+# Abstract Algebra
+https://m.youtube.com/playlist?list=PLi01XoE8jYoi3SgnnGorR_XOW3IcK-TP6
+# Abstract Algebra I
+https://www.youtube.com/playlist?list=PLBY4G2o7DhF0JCgapYKrqibGaJuvV4Gkb
+# Sets, Groups, Rings and Algebras
+https://www.csee.umbc.edu/portal/help/theory/group_def.shtml
+
+# Linear Algebra (free book)
+https://hefferon.net/linearalgebra/index.html
+# Introduction to Linear Algebra for Applied Machine Learning with Python
+https://pabloinsente.github.io/intro-linear-algebra
+
+# An Interactive Introduction to Fourier Transforms
+http://www.jezzamon.com/fourier/index.html
 
 ---
 
@@ -62,6 +79,12 @@ https://www.schoolofhaskell.com/user/bartosz/basics-of-haskell
 https://github.com/raviksharma/bartosz-basics-of-haskell
 https://kowainik.github.io
 https://chrispenner.ca/posts/wc
+https://sras.me/haskell/miscellaneous-enlightenments.html
+# Generalizing 'Jq' And Traversal Systems Using Optics And Standard Monads
+https://chrispenner.ca/posts/traversal-systems
+
+# CIS 194: Introduction to Haskell (Spring 2013)
+https://www.cis.upenn.edu/~cis194/spring13
 
 ---
 
@@ -135,3 +158,9 @@ https://appddeevvmeanderings.blogspot.com/2019/08/functional-web-client-made-eas
 * jmx, mbeans, jconsole, jolokia, jstat, javap, jmh
 * add notes from JVM memory course, jps
 java -XX:+PrintFlagsFinal -version
+
+# JVM
+https://zserge.com/posts/jvm
+
+# zio prelude: Reimagining Functional Type Classes
+https://www.youtube.com/watch?app=desktop&v=OwmHgL9F_9Q
