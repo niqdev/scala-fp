@@ -159,6 +159,8 @@ https://appddeevvmeanderings.blogspot.com/2019/08/functional-web-client-made-eas
 * add notes from JVM memory course, jps
 java -XX:+PrintFlagsFinal -version
 
+https://cucumbersome.net/2020/11/28/four-new-features-of-scala-2-13-releases-that-you-probably-missed
+
 # JVM
 https://zserge.com/posts/jvm
 
