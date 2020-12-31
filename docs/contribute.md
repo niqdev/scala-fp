@@ -19,10 +19,10 @@ Install Node.js using nvm
 
 ```bash
 # install or update nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
 # install node + npm (LTS)
-nvm install 12 --lts
+nvm install 14 --lts
 
 # use default version (see .nvmrc)
 cd website/
