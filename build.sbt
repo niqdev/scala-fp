@@ -1,7 +1,7 @@
 lazy val info = new {
   val organization = "com.github.niqdev"
   val name         = "scala-fp"
-  val scalaVersion = "2.13.4"
+  val scalaVersion = "2.13.5"
 }
 
 lazy val versions = new {
