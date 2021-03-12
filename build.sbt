@@ -1,7 +1,7 @@
 lazy val info = new {
   val organization = "com.github.niqdev"
   val name         = "scala-fp"
-  val scalaVersion = "2.13.4"
+  val scalaVersion = "2.13.5"
 }
 
 lazy val versions = new {
@@ -11,27 +11,27 @@ lazy val versions = new {
   val catsEffect       = "2.3.3"
   val catsRetry        = "2.1.0"
   val circe            = "0.13.0"
-  val doobie           = "0.10.0"
+  val doobie           = "0.12.1"
   val droste           = "0.8.0"
   val enumeratum       = "1.6.1"
   val enumeratumDoobie = "1.6.0"
-  val flyway           = "7.5.3"
+  val flyway           = "7.7.0"
   val fs2              = "2.5.3"
-  val http4s           = "0.21.19"
+  val http4s           = "0.21.20"
   val log4cats         = "1.2.0"
   val logback          = "1.2.3"
   val magnolia         = "0.17.0"
   val newtype          = "0.4.4"
   val refined          = "0.9.21"
   val shapeless        = "2.3.3"
-  val squants          = "1.7.0"
-  val zio              = "1.0.4-2"
+  val squants          = "1.7.4"
+  val zio              = "1.0.5"
   val zioInteropCats   = "2.3.1.0"
 
   // test
   val scalacheck    = "1.15.3"
-  val scalatest     = "3.2.5"
-  val scalatestplus = "3.2.2.0"
+  val scalatest     = "3.2.6"
+  val scalatestplus = "3.2.6.0"
 
   // common
   val kindProjector = "0.11.3"
@@ -80,7 +80,7 @@ lazy val dependencies = new {
     "org.tpolecat"      %% "doobie-scalatest"      % versions.doobie        % Test,
     "com.beachape"      %% "enumeratum-scalacheck" % versions.enumeratum    % Test,
     "org.scalacheck"    %% "scalacheck"            % versions.scalacheck    % Test,
-    "org.scalatestplus" %% "scalacheck-1-14"       % versions.scalatestplus % Test,
+    "org.scalatestplus" %% "scalacheck-1-15"       % versions.scalatestplus % Test,
     "org.scalatest"     %% "scalatest"             % versions.scalatest     % Test
   )
 }
