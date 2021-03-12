@@ -42,6 +42,13 @@ https://www.lihaoyi.com/post/MicrooptimizingyourScalacode.html
 https://www.lightbend.com/blog/profiling-jvm-applications
 https://www.scala-lang.org/blog/2018/06/04/scalac-profiling.html
 
+# optics
+https://scalac.io/blog/scala-optics-lenses-with-monocle
+https://www.optics.dev/Monocle
+
+# cats mtl
+https://guillaumebogard.dev/posts/functional-error-handling
+
 # free boolean
 https://arosien.github.io/talks/free-boolean-algebras.html
 

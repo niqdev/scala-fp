@@ -31,7 +31,7 @@ lazy val versions = new {
   // test
   val scalacheck    = "1.15.3"
   val scalatest     = "3.2.6"
-  val scalatestplus = "3.2.2.0"
+  val scalatestplus = "3.2.6.0"
 
   // common
   val kindProjector = "0.11.3"
@@ -80,7 +80,7 @@ lazy val dependencies = new {
     "org.tpolecat"      %% "doobie-scalatest"      % versions.doobie        % Test,
     "com.beachape"      %% "enumeratum-scalacheck" % versions.enumeratum    % Test,
     "org.scalacheck"    %% "scalacheck"            % versions.scalacheck    % Test,
-    "org.scalatestplus" %% "scalacheck-1-14"       % versions.scalatestplus % Test,
+    "org.scalatestplus" %% "scalacheck-1-15"       % versions.scalatestplus % Test,
     "org.scalatest"     %% "scalatest"             % versions.scalatest     % Test
   )
 }
