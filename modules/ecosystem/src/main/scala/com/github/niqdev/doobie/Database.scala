@@ -45,10 +45,10 @@ object Database {
     val config = Config("jdbc:h2:mem:example_db;DB_CLOSE_DELAY=-1", "sa", "", "example")
 
     for {
-      _       <- Resource.liftF(Logger[F].info(s"Init in-memory database..."))
-      _       <- Resource.liftF(Logger[F].info(s"config: $config"))
-      version <- Resource.liftF(migration[F](config))
-      _       <- Resource.liftF(Logger[F].info(s"migration version: $version"))
+      _       <- Resource.eval(Logger[F].info(s"Init in-memory database..."))
+      _       <- Resource.eval(Logger[F].info(s"config: $config"))
+      version <- Resource.eval(migration[F](config))
+      _       <- Resource.eval(Logger[F].info(s"migration version: $version"))
       xa      <- transactor[F](config)
     } yield xa
   }

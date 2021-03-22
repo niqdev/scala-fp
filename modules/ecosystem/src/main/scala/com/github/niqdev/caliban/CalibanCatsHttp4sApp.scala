@@ -32,13 +32,13 @@ object CalibanCatsHttp4sApp extends IOApp {
 
   private[caliban] def server[F[_]: ConcurrentEffect: ContextShift: Timer: Logger]: Resource[F, Unit] =
     for {
-      _            <- Resource.liftF(Logger[F].info("Start server..."))
+      _            <- Resource.eval(Logger[F].info("Start server..."))
       xa           <- Database.initInMemory[F]
       repositories <- Repositories.make[F](xa)
       services     <- Services.make[F](repositories)
       api = ExampleApi.api |+| Queries.api[F](services)
-      _           <- Resource.liftF(Logger[F].info(s"GraphQL Schema:\n${api.render}"))
-      interpreter <- Resource.liftF(api.interpreterAsync)
+      _           <- Resource.eval(Logger[F].info(s"GraphQL Schema:\n${api.render}"))
+      interpreter <- Resource.eval(api.interpreterAsync)
       httpApp = Router(
         "/api/graphql" -> Http4sAdapter.makeHttpServiceF(interpreter)
       ).orNotFound
