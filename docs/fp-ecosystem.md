@@ -167,6 +167,7 @@ sbt "test:testOnly *caliban*"
 * Practical Droste [ [code](https://github.com/BeniVF/practical-droste) | [video](https://www.youtube.com/watch?v=YBEc0Upntjg) ] by Beni Villa
 * Recursion schemes with Higherkindness [ [code](https://github.com/higherkindness/ersatz) | [video](https://www.youtube.com/watch?v=tP77Ryy9Qxs) ] by Oli Makhasoeva & Andy Scott
 * [Peeling the Banana: Recursion Schemes from First Principles](https://www.youtube.com/watch?v=XZ9nPZbaYfE) by Zainab Ali
+* [Recursion Schemes in Scala](https://free.cofree.io/2017/11/13/recursion)
 * Matryoshka
     - [Matryoshka](https://github.com/precog/matryoshka) (Documentation)
     - [Introduction to Recursion Schemes with Matryoshka](https://akmetiuk.com/posts/2017-03-10-matryoshka-intro.html)

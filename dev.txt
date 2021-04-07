@@ -51,6 +51,10 @@ https://guillaumebogard.dev/posts/functional-error-handling
 
 # free boolean
 https://arosien.github.io/talks/free-boolean-algebras.html
+https://engineering.wingify.com/posts/Free-objects
+
+# Interpreter for AP++ imperative language (lexer, parser, evaluator)
+https://github.com/mohammaduzair9/Interpreter
 
 # e2e/it tests
 https://github.com/whisklabs/docker-it-scala
@@ -111,6 +115,9 @@ http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.125
 https://www.youtube.com/watch?v=ngnzCv7M92c
 # Category Theory in Life
 https://www.youtube.com/watch?v=ho7oagHeqNc
+
+# Unifying Structured Recursion Schemes
+http://www.cs.ox.ac.uk/jeremy.gibbons/publications/urs.pdf
 
 ---
 
@@ -173,3 +180,6 @@ https://zserge.com/posts/jvm
 
 # zio prelude: Reimagining Functional Type Classes
 https://www.youtube.com/watch?app=desktop&v=OwmHgL9F_9Q
+
+# Ladder of Functional Programming
+https://pbs.twimg.com/media/CydL5EYUsAAI-61.jpg:large
