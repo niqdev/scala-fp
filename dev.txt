@@ -49,11 +49,6 @@ https://www.optics.dev/Monocle
 # cats mtl
 https://guillaumebogard.dev/posts/functional-error-handling
 
-# free boolean
-https://arosien.github.io/talks/free-boolean-algebras.html
-https://www.youtube.com/watch?v=6-afaw_ht80
-https://engineering.wingify.com/posts/Free-objects
-
 # Interpreter for AP++ imperative language (lexer, parser, evaluator)
 https://github.com/mohammaduzair9/Interpreter
 
