@@ -1,4 +1,4 @@
-# sbt
+dev.txt # sbt
 sbt projects
 sbt ecosystem/console
 
@@ -51,6 +51,7 @@ https://guillaumebogard.dev/posts/functional-error-handling
 
 # free boolean
 https://arosien.github.io/talks/free-boolean-algebras.html
+https://www.youtube.com/watch?v=6-afaw_ht80
 https://engineering.wingify.com/posts/Free-objects
 
 # Interpreter for AP++ imperative language (lexer, parser, evaluator)
@@ -86,6 +87,7 @@ http://www.jezzamon.com/fourier/index.html
 ---
 
 # haskell
+https://www.youtube.com/c/GrahamHuttonNotts/playlists
 https://www.schoolofhaskell.com/user/bartosz/basics-of-haskell
 https://github.com/raviksharma/bartosz-basics-of-haskell
 https://kowainik.github.io
@@ -144,7 +146,7 @@ javaOptions ++= Seq(
   s"-Dconfig.resource=${Option(System.getProperty("config.resource")).getOrElse("application.conf")}"
 )
 
---- OLD
+---
 
 # scala tests
 https://orrsella.com/2014/09/24/integration-and-end-to-end-test-configurations-in-sbt-for-scala-java-projects
@@ -168,18 +170,14 @@ https://stackoverflow.com/questions/2693067/what-is-meant-by-scalas-path-depende
 https://github.com/estatico/scala-newtype
 https://medium.com/@mattroberts297/automatic-type-class-derivation-with-shapeless-part-one-a1251c5f9e16
 https://appddeevvmeanderings.blogspot.com/2019/08/functional-web-client-made-easy-dotty.html
+https://cucumbersome.net/2020/11/28/four-new-features-of-scala-2-13-releases-that-you-probably-missed
 
 * jmx, mbeans, jconsole, jolokia, jstat, javap, jmh
 * add notes from JVM memory course, jps
 java -XX:+PrintFlagsFinal -version
 
-https://cucumbersome.net/2020/11/28/four-new-features-of-scala-2-13-releases-that-you-probably-missed
-
-# JVM
+# how to write a toy JVM
 https://zserge.com/posts/jvm
-
-# zio prelude: Reimagining Functional Type Classes
-https://www.youtube.com/watch?app=desktop&v=OwmHgL9F_9Q
 
 # Ladder of Functional Programming
 https://pbs.twimg.com/media/CydL5EYUsAAI-61.jpg:large

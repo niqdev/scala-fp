@@ -22,6 +22,8 @@ title: Ecosystem
 ### Resources
 
 * [ZIO](https://zio.dev) (Documentation)
+* [Reimagining Functional Type Classes](https://www.youtube.com/watch?v=OwmHgL9F_9Q) (video)
+* [An intro to writing native DB driver in Scala](https://kadek-marek.medium.com/a-guide-to-writing-native-db-driver-in-scala-7f5cb1cf20a0)
 
 ### Examples
 
@@ -76,6 +78,7 @@ sbt "test:testOnly *fs2*"
 
 * [doobie](https://tpolecat.github.io/doobie) (Documentation)
 * [Pure Functional Database Programming with Fixpoint Types](https://www.youtube.com/watch?v=7xSfLPD6tiQ) by Rob Norris (video)
+* [Describing Data with free applicative functors](https://www.youtube.com/watch?v=oRLkb6mqvVM) by Kris Nuttycombe (video)
 
 ### Examples
 
@@ -166,7 +169,7 @@ sbt "test:testOnly *caliban*"
 * [Recursion schemes fundamentals](https://www.47deg.com/blog/recursion-schemes-introduction)
 * Practical Droste [ [code](https://github.com/BeniVF/practical-droste) | [video](https://www.youtube.com/watch?v=YBEc0Upntjg) ] by Beni Villa
 * Recursion schemes with Higherkindness [ [code](https://github.com/higherkindness/ersatz) | [video](https://www.youtube.com/watch?v=tP77Ryy9Qxs) ] by Oli Makhasoeva & Andy Scott
-* [Peeling the Banana: Recursion Schemes from First Principles](https://www.youtube.com/watch?v=XZ9nPZbaYfE) by Zainab Ali
+* [Peeling the Banana: Recursion Schemes from First Principles](https://www.youtube.com/watch?v=XZ9nPZbaYfE) by Zainab Ali (video)
 * [Recursion Schemes in Scala](https://free.cofree.io/2017/11/13/recursion)
 * Matryoshka
     - [Matryoshka](https://github.com/precog/matryoshka) (Documentation)
