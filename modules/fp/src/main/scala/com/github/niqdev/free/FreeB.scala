@@ -1,9 +1,10 @@
-package com.github.niqdev.recursion
+package com.github.niqdev.free
 
 // Free Boolean algebra for all A
 // https://arosien.github.io/talks/free-boolean-algebras.html
 // https://www.youtube.com/watch?v=6-afaw_ht80
 // https://engineering.wingify.com/posts/Free-objects
+// https://github.com/stucchio/Oldmonk/tree/master/src/main/scala/com/vwo/oldmonk/free
 sealed trait FreeB[A]
 
 object FreeB {
@@ -45,6 +46,36 @@ final class FreeBOps[A](private val self: FreeB[A]) extends AnyVal {
       case FreeB.Or(left, right)  => s"(${left.pretty(f)} || ${right.pretty(f)})"
       case FreeB.Not(fa)          => s"!${fa.pretty(f)}"
     }
+
+  def normalize: FreeB[A] =
+    self match {
+      case FreeB.And(FreeB.True(), right) => right.normalize
+      case FreeB.And(left, FreeB.True())  => left.normalize
+      case FreeB.And(FreeB.False(), _)    => FreeB.False()
+      case FreeB.And(_, FreeB.False())    => FreeB.False()
+      case FreeB.Or(FreeB.True(), _)      => FreeB.True()
+      case FreeB.Or(_, FreeB.True())      => FreeB.True()
+      case FreeB.Or(FreeB.False(), right) => right.normalize
+      case FreeB.Or(left, FreeB.False())  => left.normalize
+      case _                              => self
+    }
+
+  /* it doesn't compile ???
+  // add these methods
+  object FreeB {
+    def pure[A](a: A): FreeB[A] = FreeB.Pure(a)
+    def `true`[A]: FreeB[A] = FreeB.True()
+    def `false`[A]: FreeB[A] = FreeB.False()
+  }
+  def runPartial(pf: PartialFunction[A, Boolean]): FreeB[A] =
+    self.run { (a: A) =>
+      pf.lift(a).fold(FreeB.pure(a)) { boolean =>
+        if (boolean) FreeB.`true` else FreeB.`false`
+      }
+    }
+   */
+
+  // evaluate FreeB[A] expressions to: Validated or other data structures
 }
 
 sealed trait Predicate
@@ -74,4 +105,7 @@ object Main extends App {
 
   println(s"${predicates.run(Predicate.eval)}")
   println(s"${predicates.pretty(Predicate.pretty)}")
+
+  println(s"${(FreeB.True() && FreeB.False()).normalize}")
+  println(s"${(FreeB.True() && FreeB.True()).normalize}")
 }
