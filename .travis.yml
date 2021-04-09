@@ -1,5 +1,3 @@
-sudo: false
-
 language: scala
 
 services:
@@ -18,6 +16,17 @@ cache:
     - $HOME/.ivy2/cache
     - $HOME/.coursier/cache
     - $HOME/.sbt
+
+install:
+  - |
+    # Migration note for Travis CI: see https://eed3si9n.com/sbt-1.4.9
+    # update this only when sbt-the-bash-script needs to be updated
+    export SBT_LAUNCHER=1.5.0
+    export SBT_OPTS="-Dfile.encoding=UTF-8"
+    curl -L --silent "https://github.com/sbt/sbt/releases/download/v$SBT_LAUNCHER/sbt-$SBT_LAUNCHER.tgz" > $HOME/sbt.tgz
+    tar zxf $HOME/sbt.tgz -C $HOME
+    sudo rm /usr/local/bin/sbt
+    sudo ln -s $HOME/sbt/bin/sbt /usr/local/bin/sbt
 
 script:
   - sbt ++$TRAVIS_SCALA_VERSION build
