@@ -27,6 +27,7 @@ final class FreeBOps[A](private val self: FreeB[A]) extends AnyVal {
   def ||(that: FreeB[A]): FreeB[A] = FreeB.Or(self, that)
   def unary_! : FreeB[A]           = FreeB.Not(self)
 
+  // alternative: `def run[B: Interpreter](f: A => B): B` see typelevel.org/algebra
   // augment the boolean algebra with a domain-specific evaluator
   def run(f: A => Boolean): Boolean =
     self match {
