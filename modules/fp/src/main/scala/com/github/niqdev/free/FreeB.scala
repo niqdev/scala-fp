@@ -1,6 +1,7 @@
 package com.github.niqdev.free
 
 // Free Boolean algebra for all A
+// Free objects are a way to build generalized interpreter patterns
 // https://arosien.github.io/talks/free-boolean-algebras.html
 // https://www.youtube.com/watch?v=6-afaw_ht80
 // https://engineering.wingify.com/posts/Free-objects
