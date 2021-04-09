@@ -43,10 +43,10 @@ object ExampleH2 extends IOApp {
   private[this] def h2Example[F[_]: Async: ContextShift: Logger]: Resource[F, Unit] =
     for {
       xa           <- Database.initInMemory[F]
-      userCount    <- Resource.liftF(countUsers[F](xa))
-      _            <- Resource.liftF(Logger[F].info(s"countUsers: $userCount"))
-      repositories <- Resource.liftF(findRepositories[F](xa))
-      _            <- Resource.liftF(Logger[F].info(s"findRepositories: $repositories"))
+      userCount    <- Resource.eval(countUsers[F](xa))
+      _            <- Resource.eval(Logger[F].info(s"countUsers: $userCount"))
+      repositories <- Resource.eval(findRepositories[F](xa))
+      _            <- Resource.eval(Logger[F].info(s"findRepositories: $repositories"))
     } yield ()
 
   def run(args: List[String]): IO[ExitCode] =

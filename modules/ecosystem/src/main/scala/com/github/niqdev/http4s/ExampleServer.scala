@@ -23,7 +23,7 @@ object ExampleServer extends IOApp {
           .map(Metrics[F](_)(helloRoute))
       allRoutes = meteredRoutes <+> prometheusService.routes
       httpApp   = Router("/" -> allRoutes).orNotFound
-      exitCode <- Resource.liftF(
+      exitCode <- Resource.eval(
         BlazeServerBuilder[F](ExecutionContext.global)
           .bindLocal(8080)
           .withHttpApp(httpApp)
