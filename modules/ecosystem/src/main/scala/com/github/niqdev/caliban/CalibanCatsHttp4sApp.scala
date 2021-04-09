@@ -7,8 +7,8 @@ import com.github.niqdev.caliban.pagination.queries.Queries
 import com.github.niqdev.caliban.pagination.repositories.Repositories
 import com.github.niqdev.caliban.pagination.services.Services
 import com.github.niqdev.doobie.Database
-import io.chrisdavenport.log4cats.Logger
-import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
+import org.typelevel.log4cats.Logger
+import org.typelevel.log4cats.slf4j.Slf4jLogger
 import org.http4s.server.Router
 import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.syntax.kleisli.http4sKleisliResponseSyntaxOptionT

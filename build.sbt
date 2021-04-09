@@ -18,7 +18,7 @@ lazy val versions = new {
   val flyway           = "7.7.3"
   val fs2              = "2.5.4"
   val http4s           = "0.21.22"
-  val log4cats         = "1.1.1"
+  val log4cats         = "1.2.2"
   val logback          = "1.2.3"
   val magnolia         = "0.17.0"
   val newtype          = "0.4.4"
@@ -63,8 +63,8 @@ lazy val dependencies = new {
     "org.http4s"            %% "http4s-blaze-server"       % versions.http4s,
     "org.http4s"            %% "http4s-dsl"                % versions.http4s,
     "org.http4s"            %% "http4s-prometheus-metrics" % versions.http4s,
-    "io.chrisdavenport"     %% "log4cats-core"             % versions.log4cats,
-    "io.chrisdavenport"     %% "log4cats-slf4j"            % versions.log4cats,
+    "org.typelevel"         %% "log4cats-core"             % versions.log4cats,
+    "org.typelevel"         %% "log4cats-slf4j"            % versions.log4cats,
     "ch.qos.logback"         % "logback-classic"           % versions.logback % Runtime,
     "com.propensive"        %% "magnolia"                  % versions.magnolia,
     "io.estatico"           %% "newtype"                   % versions.newtype,

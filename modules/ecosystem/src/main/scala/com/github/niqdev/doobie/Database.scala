@@ -3,7 +3,7 @@ package com.github.niqdev.doobie
 import cats.effect.{ Async, Blocker, ContextShift, Resource, Sync }
 import doobie.h2.H2Transactor
 import doobie.util.ExecutionContexts
-import io.chrisdavenport.log4cats.Logger
+import org.typelevel.log4cats.Logger
 import org.flywaydb.core.Flyway
 
 object Database {
