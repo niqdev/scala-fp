@@ -10,7 +10,7 @@ jdk:
   - openjdk11
 
 scala:
-  - 2.13.4
+  - 2.13.5
 
 cache:
   directories:
