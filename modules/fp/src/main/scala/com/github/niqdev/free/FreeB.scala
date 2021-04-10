@@ -99,7 +99,7 @@ object Predicate {
   }
 }
 
-object Main extends App {
+object PredicateMain extends App {
 
   val predicates: FreeB[Predicate] =
     FreeB.Pure[Predicate](Predicate.AtLeast13(13)) &&
