@@ -7,30 +7,30 @@ lazy val info = new {
 lazy val versions = new {
   // ecosystem
   val caliban          = "0.9.5"
-  val catsCore         = "2.5.0"
+  val catsCore         = "2.6.0"
   val catsEffect       = "2.4.1"
   val catsRetry        = "2.1.0"
   val circe            = "0.13.0"
-  val doobie           = "0.12.1"
+  val doobie           = "0.13.1"
   val droste           = "0.8.0"
   val enumeratum       = "1.6.1"
   val enumeratumDoobie = "1.6.0"
-  val flyway           = "7.7.3"
+  val flyway           = "7.8.2"
   val fs2              = "2.5.4"
   val http4s           = "0.21.22"
-  val log4cats         = "1.2.2"
+  val log4cats         = "1.3.0"
   val logback          = "1.2.3"
   val magnolia         = "0.17.0"
   val newtype          = "0.4.4"
-  val refined          = "0.9.23"
+  val refined          = "0.9.24"
   val shapeless        = "2.3.4"
   val squants          = "1.7.4"
   val zio              = "1.0.7"
-  val zioInteropCats   = "2.4.0.0"
+  val zioInteropCats   = "2.4.1.0"
 
   // test
   val scalacheck    = "1.15.3"
-  val scalatest     = "3.2.7"
+  val scalatest     = "3.2.8"
   val scalatestplus = "3.2.7.0"
 
   // common
