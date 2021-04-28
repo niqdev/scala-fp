@@ -1,4 +1,7 @@
 // TODO notes
+// https://www.youtube.com/watch?v=7xSfLPD6tiQ
+// https://www.youtube.com/watch?v=XZ9nPZbaYfE
+// https://free.cofree.io/2017/11/13/recursion
 
 // recursion schema
 // * generalize recursion from values to types
