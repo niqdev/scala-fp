@@ -8,7 +8,7 @@ lazy val versions = new {
   // ecosystem
   val caliban          = "0.9.5"
   val catsCore         = "2.6.0"
-  val catsEffect       = "2.4.1"
+  val catsEffect       = "2.5.0"
   val catsRetry        = "2.1.0"
   val circe            = "0.13.0"
   val doobie           = "0.13.1"
@@ -16,7 +16,7 @@ lazy val versions = new {
   val enumeratum       = "1.6.1"
   val enumeratumDoobie = "1.6.0"
   val flyway           = "7.8.2"
-  val fs2              = "2.5.4"
+  val fs2              = "2.5.5"
   val http4s           = "0.21.22"
   val log4cats         = "1.3.0"
   val logback          = "1.2.3"
@@ -26,12 +26,12 @@ lazy val versions = new {
   val shapeless        = "2.3.4"
   val squants          = "1.7.4"
   val zio              = "1.0.7"
-  val zioInteropCats   = "2.4.1.0"
+  val zioInteropCats   = "3.0.2.0"
 
   // test
   val scalacheck    = "1.15.3"
   val scalatest     = "3.2.8"
-  val scalatestplus = "3.2.7.0"
+  val scalatestplus = "3.2.8.0"
 
   // common
   val kindProjector = "0.11.3"
