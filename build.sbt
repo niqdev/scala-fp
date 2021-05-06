@@ -23,13 +23,13 @@ lazy val versions = new {
   val magnolia         = "0.17.0"
   val newtype          = "0.4.4"
   val refined          = "0.9.24"
-  val shapeless        = "2.3.4"
+  val shapeless        = "2.3.5"
   val squants          = "1.8.0"
   val zio              = "1.0.7"
   val zioInteropCats   = "2.4.1.0"
 
   // test
-  val scalacheck    = "1.15.3"
+  val scalacheck    = "1.15.4"
   val scalatest     = "3.2.8"
   val scalatestplus = "3.2.8.0"
 
