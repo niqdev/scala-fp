@@ -176,3 +176,6 @@ https://zserge.com/posts/jvm
 
 # Ladder of Functional Programming
 https://pbs.twimg.com/media/CydL5EYUsAAI-61.jpg:large
+
+# rust comparison
+https://phazer99.blogspot.com/2021/05/rust-for-seasoned-scala-developer.html
