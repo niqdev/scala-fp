@@ -34,7 +34,7 @@ lazy val versions = new {
   val scalatestplus = "3.2.8.0"
 
   // common
-  val kindProjector = "0.11.3"
+  val kindProjector = "0.12.0"
 }
 
 lazy val dependencies = new {
