@@ -1,5 +1,7 @@
 package com.github.niqdev.zio
 
+import java.io.IOException
+
 import com.github.niqdev.zio.Person.Person
 import zio._
 import zio.console._
@@ -8,18 +10,18 @@ object Person {
   type Person = Has[Person.Service]
 
   trait Service {
-    def sayHello(name: String): UIO[Unit]
-    def sayGoodbye: UIO[Unit]
+    def sayHello(name: String): IO[IOException, Unit]
+    def sayGoodbye: IO[IOException, Unit]
   }
   object Service {
     // Console service dependency
     val live: Console.Service => Service =
       console =>
         new Service {
-          override def sayHello(name: String): UIO[Unit] =
+          override def sayHello(name: String): IO[IOException, Unit] =
             console.putStrLn(s"Hello $name!")
 
-          override def sayGoodbye: UIO[Unit] =
+          override def sayGoodbye: IO[IOException, Unit] =
             console.putStrLn("Goodbye!")
         }
   }
@@ -27,10 +29,10 @@ object Person {
   val live: ZLayer[Console, Nothing, Person] =
     ZLayer.fromService(Service.live)
 
-  def sayHello(name: String): URIO[Person, Unit] =
+  def sayHello(name: String): RIO[Person, Unit] =
     ZIO.accessM[Person](_.get.sayHello(name))
 
-  def sayGoodbye: URIO[Person, Unit] =
+  def sayGoodbye: RIO[Person, Unit] =
     ZIO.accessM(_.get.sayGoodbye)
 }
 
@@ -43,7 +45,7 @@ object ExampleZLayerApp extends App {
   // dependency graph
   private[this] val env = nameLayer ++ Console.live ++ Person.live
 
-  private[this] val program: ZIO[Person with Console with Has[String], Nothing, Unit] =
+  private[this] val program: RIO[Person with Console with Has[String], Unit] =
     for {
       name <- ZIO.access[Has[String]](_.get) // access layer directly
       _    <- Person.sayHello(name) // access custom layer

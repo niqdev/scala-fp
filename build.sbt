@@ -1,40 +1,40 @@
 lazy val info = new {
   val organization = "com.github.niqdev"
   val name         = "scala-fp"
-  val scalaVersion = "2.13.5"
+  val scalaVersion = "2.13.6"
 }
 
 lazy val versions = new {
   // ecosystem
-  val caliban          = "0.9.5"
-  val catsCore         = "2.6.0"
-  val catsEffect       = "2.5.0"
-  val catsRetry        = "3.0.0"
+  val caliban          = "0.10.1"
+  val catsCore         = "2.6.1"
+  val catsEffect       = "2.5.1"
+  val catsRetry        = "2.1.1"
   val circe            = "0.13.0"
-  val doobie           = "0.13.1"
+  val doobie           = "0.13.4"
   val droste           = "0.8.0"
   val enumeratum       = "1.6.1"
   val enumeratumDoobie = "1.6.0"
-  val flyway           = "7.8.2"
-  val fs2              = "2.5.5"
-  val http4s           = "0.21.22"
-  val log4cats         = "1.3.0"
+  val flyway           = "7.9.1"
+  val fs2              = "2.5.6"
+  val http4s           = "0.21.23"
+  val log4cats         = "1.3.1"
   val logback          = "1.2.3"
   val magnolia         = "0.17.0"
   val newtype          = "0.4.4"
-  val refined          = "0.9.24"
-  val shapeless        = "2.3.5"
+  val refined          = "0.9.25"
+  val shapeless        = "2.3.7"
   val squants          = "1.8.0"
-  val zio              = "1.0.7"
-  val zioInteropCats   = "2.4.1.0"
+  val zio              = "1.0.8"
+  val zioInteropCats   = "2.5.1.0"
 
   // test
   val scalacheck    = "1.15.4"
-  val scalatest     = "3.2.8"
-  val scalatestplus = "3.2.8.0"
+  val scalatest     = "3.2.9"
+  val scalatestplus = "3.2.9.0"
 
   // common
-  val kindProjector = "0.11.3"
+  val kindProjector = "0.13.0"
 }
 
 lazy val dependencies = new {

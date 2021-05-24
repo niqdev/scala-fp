@@ -5,6 +5,7 @@ import sbt._
  * https://www.scala-sbt.org/1.x/docs/Plugins-Best-Practices.html
  * https://leobenkel.com/2018/11/make-sbt-plugin
  * https://github.com/freewind/my-sbt-plugin
+ * https://github.com/ThoughtWorksInc/sbt-example
  *
  * sbt 'set logLevel := Level.Debug' hello
  */
