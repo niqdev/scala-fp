@@ -1,0 +1,15 @@
+# https://github.com/scala-steward-org/scala-steward/blob/master/docs/faq.md#how-can-scala-stewards-prs-be-merged-automatically
+pull_request_rules:
+  - name: label scala-steward's PRs
+    conditions:
+      - author=scala-steward
+    actions:
+      label:
+        add: [dependency-update]
+  - name: automatically merge scala-steward's PRs
+    conditions:
+      - author=scala-steward
+    actions:
+      merge:
+        method: squash
+        strict: true
