@@ -179,3 +179,8 @@ https://pbs.twimg.com/media/CydL5EYUsAAI-61.jpg:large
 
 # rust comparison
 https://phazer99.blogspot.com/2021/05/rust-for-seasoned-scala-developer.html
+
+---
+
+# scala-3
+https://msitko.pl/blog/build-your-own-refinement-types-in-scala3.html
