@@ -1,6 +1,6 @@
 package com.github.niqdev.doobie
 
-import cats.effect.{ Async, Resource, Sync }
+import cats.effect.{ Async, Blocker, ContextShift, Resource, Sync }
 import doobie.h2.H2Transactor
 import doobie.util.ExecutionContexts
 import org.typelevel.log4cats.Logger
@@ -30,7 +30,7 @@ object Database {
   private[this] def transactor[F[_]: Async: ContextShift](config: Config): Resource[F, H2Transactor[F]] =
     for {
       ec         <- ExecutionContexts.fixedThreadPool[F](32)
-      blockingEC <- Resource.unit[F]
+      blockingEC <- Blocker[F]
       xa <- H2Transactor.newH2Transactor[F](
         url = config.connectionUrl,
         user = config.username,
