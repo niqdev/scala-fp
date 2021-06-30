@@ -5,7 +5,7 @@ pull_request_rules:
       - author=scala-steward
     actions:
       label:
-        add: [dependency-update]
+        add: [dependencies]
   - name: automatically merge PRs
     conditions:
       - or:
