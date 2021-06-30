@@ -20,10 +20,3 @@ jobs:
 
       - name: Run tests
         run: sbt clean test
-
-      - name: Status check
-        uses: LouisBrunner/checks-action@v1.1.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: github-action-ci
-          conclusion: success
