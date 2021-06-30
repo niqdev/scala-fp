@@ -1,6 +1,6 @@
 package com.github.niqdev.http4s
 
-import cats.effect.{ ConcurrentEffect, ExitCode, IO, IOApp, Resource }
+import cats.effect.{ ConcurrentEffect, ExitCode, IO, IOApp, Resource, Timer }
 import cats.syntax.all._
 import org.http4s.HttpRoutes
 import org.http4s.syntax.kleisli.http4sKleisliResponseSyntaxOptionT
@@ -10,11 +10,10 @@ import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.server.middleware.Metrics
 
 import scala.concurrent.ExecutionContext
-import cats.effect.Temporal
 
 object ExampleServer extends IOApp {
 
-  def server[F[_]: ConcurrentEffect: Temporal]: Resource[F, ExitCode] =
+  def server[F[_]: ConcurrentEffect: Timer]: Resource[F, ExitCode] =
     for {
       prometheusService <- PrometheusExportService.build[F]
       helloRoute: HttpRoutes[F] = HttpService[F].helloRoute
