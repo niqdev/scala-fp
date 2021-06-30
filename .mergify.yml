@@ -6,15 +6,11 @@ pull_request_rules:
     actions:
       label:
         add: [dependency-update]
-  - name: automatically merge labelled PRs
+  - name: automatically merge PRs
     conditions:
       - or:
-        - and:
-            author=dependabot
-            label=dependencies
-        - and:
-            author=scala-steward
-            label=dependency-update
+        - author=dependabot
+        - author=scala-steward
     actions:
       merge:
         method: squash
