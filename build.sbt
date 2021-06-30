@@ -13,19 +13,20 @@ lazy val versions = new {
   val circe            = "0.13.0"
   val doobie           = "0.13.4"
   val droste           = "0.8.0"
-  val enumeratum       = "1.6.1"
+  val enumeratum       = "1.7.0"
   val enumeratumDoobie = "1.7.0"
   val flyway           = "7.9.1"
   val fs2              = "2.5.7"
+  val fs2Data          = "0.10.0"
   val http4s           = "0.21.23"
   val log4cats         = "1.3.1"
   val logback          = "1.2.3"
   val magnolia         = "0.17.0"
   val newtype          = "0.4.4"
-  val refined          = "0.9.25"
+  val refined          = "0.9.26"
   val shapeless        = "2.3.7"
   val squants          = "1.8.0"
-  val zio              = "1.0.8"
+  val zio              = "1.0.9"
   val zioInteropCats   = "3.1.1.0"
 
   // test
@@ -49,6 +50,7 @@ lazy val dependencies = new {
     "io.circe"              %% "circe-generic"             % versions.circe,
     "io.circe"              %% "circe-parser"              % versions.circe,
     "io.circe"              %% "circe-refined"             % versions.circe,
+    "io.circe"              %% "circe-fs2"                 % versions.circe,
     "org.tpolecat"          %% "doobie-core"               % versions.doobie,
     "org.tpolecat"          %% "doobie-h2"                 % versions.doobie,
     "org.tpolecat"          %% "doobie-refined"            % versions.doobie,
@@ -59,6 +61,7 @@ lazy val dependencies = new {
     "org.flywaydb"           % "flyway-core"               % versions.flyway,
     "co.fs2"                %% "fs2-core"                  % versions.fs2,
     "co.fs2"                %% "fs2-io"                    % versions.fs2,
+    "org.gnieh"             %% "fs2-data-json"             % versions.fs2Data,
     "org.http4s"            %% "http4s-blaze-client"       % versions.http4s,
     "org.http4s"            %% "http4s-blaze-server"       % versions.http4s,
     "org.http4s"            %% "http4s-dsl"                % versions.http4s,
