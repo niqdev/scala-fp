@@ -1,7 +1,12 @@
-name: CI
+name: Continuous Integration
 
 on:
+  pull_request:
+    branches:
+      - '*'
   push:
+    branches:
+      - master
 
 jobs:
   build:
