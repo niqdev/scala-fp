@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup scala
+        uses: olafurpg/setup-scala@v11
+
+      - name: Run tests
+        run: sbt clean test
+
+      - name: Status check
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: github-action-ci
+          conclusion: success
