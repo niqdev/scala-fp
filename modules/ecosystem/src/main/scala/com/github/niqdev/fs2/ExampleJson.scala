@@ -7,7 +7,7 @@ import _root_.io.circe.fs2.stringArrayParser
 import cats.effect.{ Blocker, ExitCode, IO, IOApp }
 import fs2.data.json.circe._
 import fs2.data.json.selector.root
-import fs2.data.json.{ filter, tokens, transform, values, wrap }
+import fs2.data.json.{ filter, render, tokenize, tokens, transform, values, wrap }
 import fs2.{ Stream, io, text }
 
 // http://web.archive.org/web/20201111215332/https://fs2.io
@@ -51,7 +51,7 @@ object ExampleJson extends IOApp {
   }
   // output: [{},{},{}]
   // ".through(wrap.asArrayInObject(at = "events"))" output: {"events":[{},{},{}]}
-  val jsonArrayParser: Stream[IO, Json] = Stream.resource(Blocker[IO]).flatMap { blocker =>
+  val jsonArrayParser: Stream[IO, Unit] = Stream.resource(Blocker[IO]).flatMap { blocker =>
     io.file
       .readAll[IO](pathNested, blocker, 4096)
       .through(text.utf8Decode)
@@ -64,9 +64,13 @@ object ExampleJson extends IOApp {
           json => json.deepMerge(Json.obj("newField" -> Json.fromString(s"${java.util.UUID.randomUUID()}")))
         )
       )
-      .through(wrap.asTopLevelArray)
       .through(values)
       .evalMap(json => IO.delay { println(s"$json"); json })
+      .through(tokenize)
+      .through(wrap.asTopLevelArray)
+      .through(render.pretty())
+      .through(text.utf8Encode)
+      .through(io.file.writeAll(Paths.get("fs2-example-output.json"), blocker))
   }
 
   def run(args: List[String]): IO[ExitCode] =
