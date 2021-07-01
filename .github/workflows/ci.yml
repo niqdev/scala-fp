@@ -1,5 +1,8 @@
 name: Continuous Integration
 
+# TODO deploy/release gh-pages
+# TODO jdk11
+
 on:
   pull_request:
     branches:
@@ -16,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup scala
-        uses: olafurpg/setup-scala@v11
+        uses: olafurpg/setup-scala@v12
 
       - name: Run tests
         run: sbt clean test
