@@ -25,7 +25,7 @@ lazy val versions = new {
   val newtype          = "0.4.4"
   val refined          = "0.9.27"
   val shapeless        = "2.3.7"
-  val squants          = "1.8.1"
+  val squants          = "1.8.2"
   val zio              = "1.0.10"
   val zioInteropCats   = "2.5.1.0"
 
