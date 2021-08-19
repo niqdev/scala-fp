@@ -41,7 +41,7 @@ Recursion Schemes:
 - Apomorphism (more powerful generalized unfold)
 - Histomorphism (yet more powerful generalized unfold): Cofree
 - Futumorphism (yet more powerful generalized fold): Free
-*/
+ */
 
 trait M[A] {
   def flatMap[B](f: A => M[B]): M[B]
@@ -57,7 +57,7 @@ trait Comonad[F[_]] {
 NonEmptyList
 `extract` == Nel.head
 `coflatMap` == coflatMap(NonEmptyList(1,2,3))(nel => nel.head + 1) == NonEmptyList(2, 3, 4)
-*/
+ */
 
 // >>> TODO
 // http://blog.higher-order.com/blog/2015/06/23/a-scala-comonad-tutorial
@@ -97,5 +97,5 @@ case class Cofree[F[_], A](head: A, tail: F[Cofree[F, A]])
 // if you have an F you can always construct Fix and Free: called recursive type
 // corecursive in the other case
 
-type Prof = Fix[Prof]
+type Prof   = Fix[Prof]
 type IdProf = Cofree[IdProf, Int]

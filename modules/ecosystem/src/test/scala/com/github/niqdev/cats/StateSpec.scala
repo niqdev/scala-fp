@@ -88,14 +88,9 @@ final class StateSpec extends AnyWordSpecLike with Matchers {
     /**
       * (1 + 2) * 3)
       *
-      * 1 2 + 3 *  // see 1, push onto stack
-      * 2 + 3 *    // see 2, push onto stack
-      * + 3 *      // see +, pop 1 and 2 off of stack,
-      * // push (1 + 2) = 3 in their place
-      * 3 3 *      // see 3, push onto stack
-      * 3 *        // see 3, push onto stack
-      * *          // see *, pop 3 and 3 off of stack,
-      * // push (3 * 3) = 9 in their place
+      * 1 2 + 3 * // see 1, push onto stack 2 + 3 * // see 2, push onto stack + 3 * // see +, pop 1 and 2 off
+      * of stack, // push (1 + 2) = 3 in their place 3 3 * // see 3, push onto stack 3 * // see 3, push onto
+      * stack * // see *, pop 3 and 3 off of stack, // push (3 * 3) = 9 in their place
       */
     "verify Post-Order Calculator" in {
       import cats.syntax.applicative.catsSyntaxApplicativeId
