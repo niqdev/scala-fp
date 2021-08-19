@@ -102,11 +102,11 @@ lazy val commonSettings = Seq(
   // https://alexn.org/blog/2020/05/26/scala-fatal-warnings.html
   scalacOptions ++= Seq(
     "-encoding",
-    "UTF-8",                         // source files are in UTF-8
-    "-unchecked",                    // Enable additional warnings where generated code depends on assumptions.
-    "-explaintypes",                 // explain type errors in more detail
-    "-language:existentials",        // existential types (besides wildcard types) can be written and inferred
-    "-language:higherKinds",         // allow higher kinded types without `import scala.language.higherKinds`
+    "UTF-8",                  // source files are in UTF-8
+    "-unchecked",             // Enable additional warnings where generated code depends on assumptions.
+    "-explaintypes",          // explain type errors in more detail
+    "-language:existentials", // existential types (besides wildcard types) can be written and inferred
+    "-language:higherKinds",  // allow higher kinded types without `import scala.language.higherKinds`
     "-language:implicitConversions", // allow definition of implicit functions called views
     "-Xlint",                        // enable handy linter warnings
     "-Wconf:any:error",              // configurable warnings see https://github.com/scala/scala/pull/8373

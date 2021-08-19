@@ -112,7 +112,7 @@ object repositories {
       private[this] val schemaName = "example"
       private[this] val tableName  = "repository"
       private[this] val tableFrom  = Fragment.const(s" FROM $schemaName.$tableName ")
-      private[this] val columns    = Fragment.const(s"id, user_id, name, url, is_fork, created_at, updated_at")
+      private[this] val columns = Fragment.const(s"id, user_id, name, url, is_fork, created_at, updated_at")
 
       private[this] def findAll(
         extraColumns: Option[Fragment] = None,
