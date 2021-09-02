@@ -15,17 +15,17 @@ lazy val versions = new {
   val droste           = "0.8.0"
   val enumeratum       = "1.7.0"
   val enumeratumDoobie = "1.7.0"
-  val flyway           = "7.14.0"
-  val fs2              = "3.1.1"
+  val flyway           = "7.14.1"
+  val fs2              = "2.5.9"
   val fs2Data          = "0.10.0"
-  val http4s           = "0.21.26"
+  val http4s           = "0.21.27"
   val log4cats         = "1.3.1"
   val logback          = "1.2.5"
   val magnolia         = "0.17.0"
   val newtype          = "0.4.4"
   val refined          = "0.9.27"
   val shapeless        = "2.3.7"
-  val squants          = "1.8.2"
+  val squants          = "1.8.3"
   val zio              = "1.0.11"
   val zioInteropCats   = "2.5.1.0"
 
@@ -35,7 +35,7 @@ lazy val versions = new {
   val scalatestplus = "3.2.9.0"
 
   // common
-  val kindProjector = "0.13.0"
+  val kindProjector = "0.13.1"
 }
 
 lazy val dependencies = new {
