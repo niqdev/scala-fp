@@ -52,6 +52,9 @@ https://guillaumebogard.dev/posts/functional-error-handling
 # Interpreter for AP++ imperative language (lexer, parser, evaluator)
 https://github.com/mohammaduzair9/Interpreter
 
+# Parsing S-Expressions in Scala
+https://matt.might.net/articles/parsing-s-expressions-scala
+
 # e2e/it tests
 https://github.com/whisklabs/docker-it-scala
 https://github.com/testcontainers/testcontainers-java
