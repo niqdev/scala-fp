@@ -52,6 +52,9 @@ https://guillaumebogard.dev/posts/functional-error-handling
 # Interpreter for AP++ imperative language (lexer, parser, evaluator)
 https://github.com/mohammaduzair9/Interpreter
 
+# Parsing S-Expressions in Scala
+https://matt.might.net/articles/parsing-s-expressions-scala
+
 # e2e/it tests
 https://github.com/whisklabs/docker-it-scala
 https://github.com/testcontainers/testcontainers-java
@@ -75,9 +78,19 @@ https://www.csee.umbc.edu/portal/help/theory/group_def.shtml
 https://hefferon.net/linearalgebra/index.html
 # Introduction to Linear Algebra for Applied Machine Learning with Python
 https://pabloinsente.github.io/intro-linear-algebra
+# Intermediate Algebra
+https://saylordotorg.github.io/text_intermediate-algebra/index.html
 
 # An Interactive Introduction to Fourier Transforms
 http://www.jezzamon.com/fourier/index.html
+
+# fp books
+https://www.amazon.co.uk/Purely-Functional-Data-Structures-Okasaki/dp/0521663504
+https://www.amazon.co.uk/Pearls-Functional-Algorithm-Design-Richard/dp/0521513383
+
+# Introduction to Algorithms
+https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005
+https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011
 
 ---
 
