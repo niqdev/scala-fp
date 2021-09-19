@@ -49,23 +49,47 @@ https://www.optics.dev/Monocle
 # cats mtl
 https://guillaumebogard.dev/posts/functional-error-handling
 
+# e2e/it tests
+https://github.com/whisklabs/docker-it-scala
+https://github.com/testcontainers/testcontainers-java
+
+# scala tests
+https://orrsella.com/2014/09/24/integration-and-end-to-end-test-configurations-in-sbt-for-scala-java-projects
+http://www.unstablebuild.com/2017/04/13/scala-projects-and-integration-tests.html
+https://alexromanov.github.io/2016/07/15/cucumber-scala-sbt
+https://github.com/lewismj/cucumber
+https://github.com/jecklgamis/cucumber-jvm-scala-example
+https://localstack.cloud
+
+---
+
+### interpreter/compiler
+
 # Interpreter for AP++ imperative language (lexer, parser, evaluator)
 https://github.com/mohammaduzair9/Interpreter
 
 # Parsing S-Expressions in Scala
 https://matt.might.net/articles/parsing-s-expressions-scala
 
-# e2e/it tests
-https://github.com/whisklabs/docker-it-scala
-https://github.com/testcontainers/testcontainers-java
+# How to Approach Writing an Interpreter From Scratch
+https://www.toptal.com/scala/writing-an-interpreter
 
-# maths
+# Compilers are hard
+https://blog.shipreq.com/post/compilers_are_hard
+
+---
+
+### math
+
 https://xenaproject.wordpress.com/2020/06/20/mathematics-in-type-theory
 # Recommend a maths book for a teenager?
 https://news.ycombinator.com/item?id=23711942
 https://www.quantamagazine.org
 https://mathvault.ca/euler-formula
 https://stopa.io/post/263
+
+# The n-Category Café
+https://golem.ph.utexas.edu/category
 
 # Abstract Algebra
 https://m.youtube.com/playlist?list=PLi01XoE8jYoi3SgnnGorR_XOW3IcK-TP6
@@ -91,21 +115,6 @@ https://www.amazon.co.uk/Pearls-Functional-Algorithm-Design-Richard/dp/052151338
 # Introduction to Algorithms
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011
-
----
-
-# haskell
-https://www.youtube.com/c/GrahamHuttonNotts/playlists
-https://www.schoolofhaskell.com/user/bartosz/basics-of-haskell
-https://github.com/raviksharma/bartosz-basics-of-haskell
-https://kowainik.github.io
-https://chrispenner.ca/posts/wc
-https://sras.me/haskell/miscellaneous-enlightenments.html
-# Generalizing 'Jq' And Traversal Systems Using Optics And Standard Monads
-https://chrispenner.ca/posts/traversal-systems
-
-# CIS 194: Introduction to Haskell (Spring 2013)
-https://www.cis.upenn.edu/~cis194/spring13
 
 ---
 
@@ -154,21 +163,20 @@ javaOptions ++= Seq(
   s"-Dconfig.resource=${Option(System.getProperty("config.resource")).getOrElse("application.conf")}"
 )
 
----
+* jmx, mbeans, jconsole, jolokia, jstat, javap, jmh
+* add notes from JVM memory course, jps
+java -XX:+PrintFlagsFinal -version
 
-# scala tests
-https://orrsella.com/2014/09/24/integration-and-end-to-end-test-configurations-in-sbt-for-scala-java-projects
-http://www.unstablebuild.com/2017/04/13/scala-projects-and-integration-tests.html
-https://alexromanov.github.io/2016/07/15/cucumber-scala-sbt
-https://github.com/lewismj/cucumber
-https://github.com/jecklgamis/cucumber-jvm-scala-example
-https://localstack.cloud
+---
 
 # sbt complex alias
 https://github.com/pauldijou/jwt-scala/blob/master/build.sbt#L15
 
 # java agent
 https://stackoverflow.com/questions/11898566/tutorials-about-javaagents
+
+# rule engine
+https://github.com/j-easy/easy-rules
 
 # scala
 https://stackoverflow.com/questions/4593710/when-should-i-and-should-i-not-use-scalas-inline-annotation
@@ -180,20 +188,9 @@ https://medium.com/@mattroberts297/automatic-type-class-derivation-with-shapeles
 https://appddeevvmeanderings.blogspot.com/2019/08/functional-web-client-made-easy-dotty.html
 https://cucumbersome.net/2020/11/28/four-new-features-of-scala-2-13-releases-that-you-probably-missed
 
-* jmx, mbeans, jconsole, jolokia, jstat, javap, jmh
-* add notes from JVM memory course, jps
-java -XX:+PrintFlagsFinal -version
-
-# how to write a toy JVM
-https://zserge.com/posts/jvm
-
-# Ladder of Functional Programming
-https://pbs.twimg.com/media/CydL5EYUsAAI-61.jpg:large
+# scala-3
+https://msitko.pl/blog/build-your-own-refinement-types-in-scala3.html
 
 # rust comparison
 https://phazer99.blogspot.com/2021/05/rust-for-seasoned-scala-developer.html
 
----
-
-# scala-3
-https://msitko.pl/blog/build-your-own-refinement-types-in-scala3.html

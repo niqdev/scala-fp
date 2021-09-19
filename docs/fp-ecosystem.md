@@ -16,6 +16,7 @@ title: Ecosystem
 * [Scala Cats library for dummies](https://medium.com/@abu_nadhr/scala-cats-library-for-dummies-part-1-8ec47af7a144)
 * [A comprehensive introduction to Cats-mtl](https://typelevel.org/blog/2018/10/06/intro-to-mtl.html)
 * [Law Enforcement using Discipline](https://typelevel.org/blog/2013/11/17/discipline.html)
+* [Cats: Essential Type Class Hierarchy, Explained](https://blog.rockthejvm.com/cats-typeclass-hierarchy)
 
 ## ZIO
 
@@ -24,6 +25,7 @@ title: Ecosystem
 * [ZIO](https://zio.dev) (Documentation)
 * [Reimagining Functional Type Classes](https://www.youtube.com/watch?v=OwmHgL9F_9Q) (video)
 * [An intro to writing native DB driver in Scala](https://kadek-marek.medium.com/a-guide-to-writing-native-db-driver-in-scala-7f5cb1cf20a0)
+* [What's Ap with zio-prelude?](https://justinhj.github.io/2020/08/02/whats-ap-with-zio-prelude.html)
 
 ### Examples
 

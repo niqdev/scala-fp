@@ -12,6 +12,7 @@ title: Advanced
 * [Scalaz Presentation](https://vimeo.com/10482466) by Nick Partridge (Video)
 * **TODO** [Functional Structures in Scala](https://www.youtube.com/playlist?list=PLFrwDVdSrYE6dy14XCmUtRAJuhCxuzJp0) by Michael Pilquist (Video)
 * [Functional Programming with Effects](https://www.youtube.com/watch?v=po3wmq4S15A) by Rob Norris (Video)
+* [Ladder of Functional Programming](https://pbs.twimg.com/media/CydL5EYUsAAI-61.jpg:large)
 
 ## Type Classes
 
