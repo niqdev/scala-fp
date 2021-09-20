@@ -77,6 +77,9 @@ https://www.toptal.com/scala/writing-an-interpreter
 # Compilers are hard
 https://blog.shipreq.com/post/compilers_are_hard
 
+# Applicative parsing
+https://jobjo.github.io/2019/05/19/applicative-parsing.html
+
 ---
 
 ### math
@@ -115,6 +118,9 @@ https://www.amazon.co.uk/Pearls-Functional-Algorithm-Design-Richard/dp/052151338
 # Introduction to Algorithms
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005
 https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011
+
+# Probability, Mathematical Statistics, Stochastic Processes
+http://www.randomservices.org/random
 
 ---
 
