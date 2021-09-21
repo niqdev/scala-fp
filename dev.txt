@@ -147,6 +147,9 @@ http://www.cs.ox.ac.uk/jeremy.gibbons/publications/urs.pdf
 # Catamorphisms aka folds explained
 https://www.works-hub.com/learn/catamorphisms-aka-folds-explained-a5524
 
+# Recursive Programming Techniques
+https://www.amazon.com/Recursive-Programming-Techniques-Systems-programming/dp/0201144506
+
 ---
 
 # settings example
