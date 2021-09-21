@@ -144,6 +144,9 @@ https://www.youtube.com/watch?v=ho7oagHeqNc
 # Unifying Structured Recursion Schemes
 http://www.cs.ox.ac.uk/jeremy.gibbons/publications/urs.pdf
 
+# Catamorphisms aka folds explained
+https://www.works-hub.com/learn/catamorphisms-aka-folds-explained-a5524
+
 ---
 
 # settings example
