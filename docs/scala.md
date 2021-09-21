@@ -17,6 +17,7 @@ title: Introduction
 * [Scala Collections performance characteristics](https://docs.scala-lang.org/overviews/collections/performance-characteristics.html)
 * [The Neophyte's Guide to Scala](https://danielwestheide.com/scala/neophytes.html)
 * [Scala Compiler Phases with Pictures](https://www.iteratorshq.com/blog/scala-compiler-phases-with-pictures)
+* [Most Useful Resources For Learning Scala](https://functional.works-hub.com/learn/resources-for-learning-scala-c4dca)
 
 ## Related projects
 

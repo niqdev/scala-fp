@@ -18,6 +18,7 @@ title: Introduction
 * [The Downfall of Imperative Programming](https://www.fpcomplete.com/blog/2012/04/the-downfall-of-imperative-programming)
 * [Parallelism and concurrency need different tools](http://yosefk.com/blog/parallelism-and-concurrency-need-different-tools.html)
 * [Benefits of Functional Programming](https://alvinalexander.com/scala/fp-book/benefits-of-functional-programming)
+* [Programming with Functions](https://makingthematrix.wordpress.com/2020/12/08/programming-with-functions-1-introduction)
 
 TL;DR
 

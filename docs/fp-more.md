@@ -57,12 +57,29 @@ title: More
     * [barambani/http4s-poc-api](https://github.com/barambani/http4s-poc-api/blob/master/src/main/scala/external/library/newtype.scala)
 * [Scala and the visitor pattern](https://meta.plasm.us/posts/2019/09/23/scala-and-the-visitor-pattern)
 
-### Other FP languages
+### Haskell
 
 * [A practical introduction to functional programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming)
 * [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
 * [A Quick Tour of Haskell Syntax](http://prajitr.github.io/quick-haskell-syntax)
+* Functional Programming Course [ [course](https://github.com/system-f/fp-course) | [unofficial video](https://www.youtube.com/playlist?list=PLZqpe_tIW25cOo7CKhbCgov7EFqd4ltVM) ]
+* [Graham Hutton playlists](https://www.youtube.com/c/GrahamHuttonNotts/playlists) (video)
+* Basics of Haskell [ [book](https://www.schoolofhaskell.com/user/bartosz/basics-of-haskell) | [exercises](https://github.com/raviksharma/bartosz-basics-of-haskell) ]
+* [CIS 194: Introduction to Haskell (Spring 2013)](https://www.cis.upenn.edu/~cis194/spring13)
+* [The Simple Haskell Handbook](https://marcosampellegrini.com/simple-haskell-book)
+* [Thoughts on Haskell](https://www.youtube.com/playlist?app=desktop&list=PLyzwHTVJlRc9QcF_tdqc9RdxJED8Mvyh1) (video)
+* More
+    - [Kowainik](https://kowainik.github.io)
+    - [Chris Penner](https://chrispenner.ca/tag/haskell)
+    - [Learning Haskell - Miscellaneous Enlightenments](https://sras.me/haskell/miscellaneous-enlightenments.html)
+    - [Why Haskell is our first choice for building production software systems](https://www.foxhound.systems/blog/why-haskell-for-production)
+    - [Maintainable configuration files](https://github.com/dhall-lang)
+    - [Type Families in Haskell: The Definitive Guide](https://serokell.io/blog/type-families-haskell)
+
+### Other FP languages
+
 * [OCaml taste](https://ocaml.org/learn/taste.html)
+* [F# for Fun and Profit](https://fsharpforfunandprofit.com)
 
 ### Blogs
 
