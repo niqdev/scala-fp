@@ -33,7 +33,7 @@ final class WriterSpec extends AnyWordSpecLike with Matchers {
 
       // requires semigroup
       val writerFor = for {
-        a <- 2.pure[Logged] // only result, no log
+        a <- 2.pure[Logged]       // only result, no log
         _ <- Vector("add-2").tell // append only log, no result
         b <- 3.pure[Logged]
         _ <- Vector("add-3").tell
