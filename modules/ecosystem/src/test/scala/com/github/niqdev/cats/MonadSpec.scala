@@ -28,8 +28,8 @@ final class MonadSpec extends AnyWordSpecLike with Matchers {
       // context bound
       def sumSquareFor[F[_]: Monad](a: F[Int], b: F[Int]): F[Int] =
         for {
-          a0 <- a // flatMap
-          b0 <- b // flatMap
+          a0 <- a                 // flatMap
+          b0 <- b                 // flatMap
         } yield a0 * a0 + b0 * b0 // map
 
       val expected = Some(13)

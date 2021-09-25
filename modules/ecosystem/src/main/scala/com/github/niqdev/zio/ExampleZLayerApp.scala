@@ -48,9 +48,9 @@ object ExampleZLayerApp extends App {
   private[this] val program: RIO[Person with Console with Has[String], Unit] =
     for {
       name <- ZIO.access[Has[String]](_.get) // access layer directly
-      _    <- Person.sayHello(name) // access custom layer
-      _    <- putStrLn("TODO") // access existing layer
-      _    <- Person.sayGoodbye
+      _ <- Person.sayHello(name)             // access custom layer
+      _ <- putStrLn("TODO")                  // access existing layer
+      _ <- Person.sayGoodbye
     } yield ()
 
   override def run(args: List[String]): URIO[ZEnv, ExitCode] =
