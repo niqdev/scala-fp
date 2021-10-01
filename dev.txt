@@ -56,6 +56,11 @@ visualvm_jdkhome="/Users/<USERNAME>/.sdkman/candidates/java/current/"
 https://stackoverflow.com/questions/35531548/where-to-find-groovy-library-on-intellijmac-when-installed-groovy-through-sdkm
 ```
 
+# TODO benchmarks
+https://gist.github.com/kubukoz/f32347ce711d65fb70752bb408f3d65c
+https://gist.github.com/djspiewak/f4cfc08e0827088f17032e0e9099d292
+https://github.com/djspiewak/async-runtime-benchmarks
+
 # optics
 https://scalac.io/blog/scala-optics-lenses-with-monocle
 https://www.optics.dev/Monocle
