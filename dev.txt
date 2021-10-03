@@ -107,6 +107,8 @@ https://hefferon.net/linearalgebra/index.html
 https://pabloinsente.github.io/intro-linear-algebra
 # Intermediate Algebra
 https://saylordotorg.github.io/text_intermediate-algebra/index.html
+# Linear Algebra for Everyone
+https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra
 
 # An Interactive Introduction to Fourier Transforms
 http://www.jezzamon.com/fourier/index.html
