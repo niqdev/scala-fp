@@ -37,10 +37,29 @@ https://github.com/implmnt/scalacheck-magnolia
 https://github.com/spotify/magnolify
 https://github.com/laurence-bird/scalacheck-magnolia
 
-# profiling
+# JVM profiler
 https://www.lihaoyi.com/post/MicrooptimizingyourScalacode.html
 https://www.lightbend.com/blog/profiling-jvm-applications
 https://www.scala-lang.org/blog/2018/06/04/scalac-profiling.html
+https://blog.jetbrains.com/idea/tag/jvm-profiler
+https://www.yourkit.com/java/profiler/features
+https://github.com/eprst/yourkit_docker
+```
+# AdoptOpenJDK (macos)
+sdk install java 11.0.2-open
+# JDK path
+/Users/<USERNAME>/.sdkman/candidates/sbt/current/
+sdk install visualvm
+vim /Users/<USERNAME>/.sdkman/candidates/visualvm/current/etc/visualvm.conf
+visualvm_jdkhome="/Users/<USERNAME>/.sdkman/candidates/java/current/"
+# setup intellij with sdkman on macos (show hidden files): CMD + SHIFT + .
+https://stackoverflow.com/questions/35531548/where-to-find-groovy-library-on-intellijmac-when-installed-groovy-through-sdkm
+```
+
+# TODO benchmarks
+https://gist.github.com/kubukoz/f32347ce711d65fb70752bb408f3d65c
+https://gist.github.com/djspiewak/f4cfc08e0827088f17032e0e9099d292
+https://github.com/djspiewak/async-runtime-benchmarks
 
 # optics
 https://scalac.io/blog/scala-optics-lenses-with-monocle
