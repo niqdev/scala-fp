@@ -1,7 +1,4 @@
-name: Continuous Integration
-
-# TODO deploy/release gh-pages
-# TODO jdk11
+name: CI
 
 on:
   pull_request:
@@ -12,14 +9,34 @@ on:
       - master
 
 jobs:
-  build:
+  checks:
+    name: Scalafmt
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
       - name: Setup scala
-        uses: olafurpg/setup-scala@v12
-
-      - name: Run tests
-        run: sbt clean test
+        uses: olafurpg/setup-scala@v13
+      - name: Verify format
+        run: ./bin/scalafmt --test
+  test:
+    name: Test
+    strategy:
+      matrix:
+        scala:
+          - 2.13.6
+        java:
+          - adopt@1.11
+          - adopt@1.15
+        os:
+          - ubuntu-20.04
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup scala
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Run tests (${{ matrix.scala }}, ${{ matrix.java }})
+        run: sbt ++${{ matrix.scala }} clean test
