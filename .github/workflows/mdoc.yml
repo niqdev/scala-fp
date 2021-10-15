@@ -14,9 +14,9 @@ jobs:
           fetch-depth: 0
       - uses: olafurpg/setup-scala@v13
       - uses: olafurpg/setup-gpg@v3
-      - run: sbt '++2.12.14 docs/docusaurusPublishGhpages'
+      - run: sbt publish
         env:
-          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
+          GIT_DEPLOY_KEY: ${{ secrets.GITHUB_TOKEN }}
       - name: Check git diff
         if: ${{ failure() }}
         run: git diff
