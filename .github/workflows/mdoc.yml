@@ -16,7 +16,7 @@ jobs:
       - uses: olafurpg/setup-gpg@v3
       - run: sbt publish
         env:
-          GIT_DEPLOY_KEY: ${{ secrets.GITHUB_TOKEN }}
+          GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
       - name: Check git diff
         if: ${{ failure() }}
         run: git diff
