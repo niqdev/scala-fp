@@ -9,25 +9,15 @@ on:
       - master
 
 jobs:
-  checks:
-    name: Scalafmt
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup scala
-        uses: olafurpg/setup-scala@v13
-      - name: Verify format
-        run: ./bin/scalafmt --test
-  test:
-    name: Test
+  build:
+    name: Build
     strategy:
       matrix:
         scala:
           - 2.13.6
         java:
           - adopt@1.11
-          - adopt@1.15
+          - openjdk@1.17
         os:
           - ubuntu-20.04
     runs-on: ${{ matrix.os }}
@@ -39,4 +29,4 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
       - name: Run tests (${{ matrix.scala }}, ${{ matrix.java }})
-        run: sbt ++${{ matrix.scala }} clean test
+        run: sbt ++${{ matrix.scala }} build

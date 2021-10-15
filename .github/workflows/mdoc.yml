@@ -6,6 +6,7 @@ on:
 
 jobs:
   publish:
+    name: Publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,7 +14,7 @@ jobs:
           fetch-depth: 0
       - uses: olafurpg/setup-scala@v13
       - uses: olafurpg/setup-gpg@v3
-      - run: sbt '++2.12.14 docs/docusaurusPublishGhpages'
+      - run: sbt '++2.13.6 publish'
         env:
           GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
       - name: Check git diff

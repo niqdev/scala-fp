@@ -14,5 +14,3 @@
 [scala-steward-url]: https://scala-steward.org
 [tag-image]: https://img.shields.io/github/tag/niqdev/scala-fp.svg?style=popout-square&color=orange&label=book-version
 [tag-url]: https://niqdev.github.io/scala-fp
-
-> TODO fix gh-pages release
