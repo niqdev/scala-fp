@@ -103,9 +103,29 @@ sbt "test:testOnly *ShowSpec"
 
 ## Publish
 
-* [Travis integration](https://scalameta.org/mdoc/docs/docusaurus.html#publish-to-github-pages-from-ci)
+* [CI integration](https://scalameta.org/mdoc/docs/docusaurus.html#publish-to-github-pages-from-ci)
 
 First time only
+
+```bash
+# generate ssh keys
+ssh-keygen -t rsa -b 4096 -C "hello@mail.com" -N '' -f /tmp/github-gh-pages
+
+# add deploy key
+# https://github.com/niqdev/scala-fp/settings/keys
+# name: github-gh-pages
+# write access: yes
+# copy public key (Ubuntu)
+cat /tmp/github-gh-pages.pub | xclip
+
+# add environment variable
+# https://github.com/niqdev/scala-fp/settings/secrets/actions
+# name: GIT_DEPLOY_KEY
+# copy base64 encoded secret key (Ubuntu)
+cat /tmp/github-gh-pages | base64 -w0 | xclip
+```
+
+> OLD Travis
 
 ```bash
 # generate ssh keys
