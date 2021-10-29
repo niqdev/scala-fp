@@ -11,8 +11,8 @@ object models {
 
   case class Person(
     name: NonEmptyString,
-    //height: Length,
-    //weight: Mass,
+    // height: Length,
+    // weight: Mass,
     gender: Gender,
     continent: Continent,
     motto: String,
