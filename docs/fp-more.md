@@ -7,8 +7,6 @@ title: More
 
 ### Tagless Final Encoding
 
-> TODO 
-
 * [Finally Tagless, Partially Evaluated](http://okmij.org/ftp/tagless-final/JFP.pdf) (Paper)
 * [Typed Tagless Final Interpreters](http://okmij.org/ftp/tagless-final/course/lecture.pdf) (Paper)
 * [Exploring Tagless Final pattern for extensive and readable Scala code](https://blog.scalac.io/exploring-tagless-final.html)
@@ -33,14 +31,6 @@ title: More
 * [Functional Programming for Mortals with Scalaz](https://leanpub.com/fpmortals) (2018) by Sam Halliday (Book)
 * [Streams for (Co)Free!](https://www.slideshare.net/jdegoes/streams-for-cofree)
 
-### Category Theory
-
-* [Category Theory](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_) by Bartosz Milewski (Video)
-* Category Theory for Programmers [[Blog](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface) | [PDF](https://github.com/hmemcpy/milewski-ctfp-pdf)]
-* [Programming with Categories](http://brendanfong.com/programmingcats.html) (Course)
-* [A Crash Course in Categories](https://www.youtube.com/watch?v=5S03zTekRJc) by Rúnar Bjarnason
-* [Hands-on category theory](https://earldouglas.com/talks/scala-cats/tutorial.html)
-
 ### Patterns
 
 * [The Aux Pattern](https://gigiigig.github.io/posts/2015/09/13/aux-pattern.html)
@@ -56,25 +46,6 @@ title: More
     * [softwaremill/tagging](https://github.com/softwaremill/scala-common/tree/master/tagging/src/main/scala/com/softwaremill/tagging)
     * [barambani/http4s-poc-api](https://github.com/barambani/http4s-poc-api/blob/master/src/main/scala/external/library/newtype.scala)
 * [Scala and the visitor pattern](https://meta.plasm.us/posts/2019/09/23/scala-and-the-visitor-pattern)
-
-### Haskell
-
-* [A practical introduction to functional programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming)
-* [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
-* [A Quick Tour of Haskell Syntax](http://prajitr.github.io/quick-haskell-syntax)
-* Functional Programming Course [ [course](https://github.com/system-f/fp-course) | [unofficial video](https://www.youtube.com/playlist?list=PLZqpe_tIW25cOo7CKhbCgov7EFqd4ltVM) ]
-* [Graham Hutton playlists](https://www.youtube.com/c/GrahamHuttonNotts/playlists) (video)
-* Basics of Haskell [ [book](https://www.schoolofhaskell.com/user/bartosz/basics-of-haskell) | [exercises](https://github.com/raviksharma/bartosz-basics-of-haskell) ]
-* [CIS 194: Introduction to Haskell (Spring 2013)](https://www.cis.upenn.edu/~cis194/spring13)
-* [The Simple Haskell Handbook](https://marcosampellegrini.com/simple-haskell-book)
-* [Thoughts on Haskell](https://www.youtube.com/playlist?app=desktop&list=PLyzwHTVJlRc9QcF_tdqc9RdxJED8Mvyh1) (video)
-* More
-    - [Kowainik](https://kowainik.github.io)
-    - [Chris Penner](https://chrispenner.ca/tag/haskell)
-    - [Learning Haskell - Miscellaneous Enlightenments](https://sras.me/haskell/miscellaneous-enlightenments.html)
-    - [Why Haskell is our first choice for building production software systems](https://www.foxhound.systems/blog/why-haskell-for-production)
-    - [Maintainable configuration files](https://github.com/dhall-lang)
-    - [Type Families in Haskell: The Definitive Guide](https://serokell.io/blog/type-families-haskell)
 
 ### Other FP languages
 

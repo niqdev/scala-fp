@@ -2,7 +2,8 @@
   "book": {
     "Book": ["book"],
     "Scala": ["scala", "jvm", "scala-todo"],
-    "Functional Programming": ["fp-intro", "fp-advanced", "fp-ecosystem", "fp-more"]
+    "Functional Programming": ["fp-intro", "fp-advanced", "fp-ecosystem", "fp-more"],
+    "Other": ["haskell", "math"]
   },
   "contribute": {
     "Contribute": ["contribute"]

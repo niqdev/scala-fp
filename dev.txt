@@ -101,50 +101,6 @@ https://jobjo.github.io/2019/05/19/applicative-parsing.html
 
 ---
 
-### math
-
-https://xenaproject.wordpress.com/2020/06/20/mathematics-in-type-theory
-# Recommend a maths book for a teenager?
-https://news.ycombinator.com/item?id=23711942
-https://www.quantamagazine.org
-https://mathvault.ca/euler-formula
-https://stopa.io/post/263
-
-# The n-Category Café
-https://golem.ph.utexas.edu/category
-
-# Abstract Algebra
-https://m.youtube.com/playlist?list=PLi01XoE8jYoi3SgnnGorR_XOW3IcK-TP6
-# Abstract Algebra I
-https://www.youtube.com/playlist?list=PLBY4G2o7DhF0JCgapYKrqibGaJuvV4Gkb
-# Sets, Groups, Rings and Algebras
-https://www.csee.umbc.edu/portal/help/theory/group_def.shtml
-
-# Linear Algebra (free book)
-https://hefferon.net/linearalgebra/index.html
-# Introduction to Linear Algebra for Applied Machine Learning with Python
-https://pabloinsente.github.io/intro-linear-algebra
-# Intermediate Algebra
-https://saylordotorg.github.io/text_intermediate-algebra/index.html
-# Linear Algebra for Everyone
-https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra
-
-# An Interactive Introduction to Fourier Transforms
-http://www.jezzamon.com/fourier/index.html
-
-# fp books
-https://www.amazon.co.uk/Purely-Functional-Data-Structures-Okasaki/dp/0521663504
-https://www.amazon.co.uk/Pearls-Functional-Algorithm-Design-Richard/dp/0521513383
-
-# Introduction to Algorithms
-https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005
-https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011
-
-# Probability, Mathematical Statistics, Stochastic Processes
-http://www.randomservices.org/random
-
----
-
 ### recursion-schemas
 
 # in haskell
@@ -226,4 +182,3 @@ https://msitko.pl/blog/build-your-own-refinement-types-in-scala3.html
 
 # rust comparison
 https://phazer99.blogspot.com/2021/05/rust-for-seasoned-scala-developer.html
-
