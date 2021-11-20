@@ -22,6 +22,11 @@ Functional Programming
 * [Ecosystem](https://niqdev.github.io/scala-fp/docs/fp-ecosystem)
 * [More](https://niqdev.github.io/scala-fp/docs/fp-more)
 
+Other
+
+* [Haskell](https://niqdev.github.io/scala-fp/docs/haskell)
+* [Math](https://niqdev.github.io/scala-fp/docs/math)
+
 Contribute
 
 * [How to](https://niqdev.github.io/scala-fp/docs/contribute)
