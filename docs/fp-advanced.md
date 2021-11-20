@@ -158,6 +158,7 @@ trait Monad[F[_]] extends Applicative[F] {
 * [Cooking with Monads](https://www.becompany.ch/en/blog/2016/11/08/cooking-with-monads)
 * [Refactoring with Monads](https://typelevel.org/blog/2018/08/07/refactoring-monads.html)
 * [Monad laws in Scala](https://devth.com/2015/monad-laws-in-scala)
+* [Monad Tutorial](https://cuddly-octo-palm-tree.com/tags/monad-tutorial)
 
 Everyday monads
 

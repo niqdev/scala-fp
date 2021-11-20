@@ -25,10 +25,11 @@ title: Math
 
 ### Books
 
+* [Math's books](https://klkuttler.com)
 * [Mathematics for programmers](https://yurichev.com/writings/Math-for-programmers.pdf)
 * [Math Foundations from Scratch](https://learnaifromscratch.github.io/math.html)
 * [Probability, Mathematical Statistics, Stochastic Processes](http://www.randomservices.org/random)
-* [Math's books](https://klkuttler.com)
+* [Book of Proof](https://www.people.vcu.edu/~rhammack/BookOfProof)
 
 ### FP Books
 
@@ -43,8 +44,10 @@ title: Math
 
 ### Random
 
+* [Coding Math](https://www.youtube.com/playlist?app=desktop&list=PL7wAPgl1JVvUEb0dIygHzO4698tmcwLk9) (Video)
 * [Mathematics in type theory](https://xenaproject.wordpress.com/2020/06/20/mathematics-in-type-theory)
 * [Recommend a maths book for a teenager?](https://news.ycombinator.com/item?id=23711942) (HN)
 * [Euler's Formula: A Complete Guide](https://mathvault.ca/euler-formula)
 * [Fun with Lambda Calculus](https://stopa.io/post/263)
 * [An Interactive Introduction to Fourier Transforms](http://www.jezzamon.com/fourier/index.html)
+* [MIT Mathlets](https://mathlets.org/mathlets)
