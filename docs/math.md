@@ -50,4 +50,7 @@ title: Math
 * [Euler's Formula: A Complete Guide](https://mathvault.ca/euler-formula)
 * [Fun with Lambda Calculus](https://stopa.io/post/263)
 * [An Interactive Introduction to Fourier Transforms](http://www.jezzamon.com/fourier/index.html)
+* [Fourier](https://static.laszlokorte.de/fourier) (tool)
 * [MIT Mathlets](https://mathlets.org/mathlets)
+* [The Fibonacci Sequence as a Functor](https://www.math3ma.com/blog/fibonacci-sequence)
+* [So You Want to Study Mathematics](https://www.susanrigetti.com/math)

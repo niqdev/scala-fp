@@ -26,3 +26,4 @@ title: Haskell
 * [Why Haskell is our first choice for building production software systems](https://www.foxhound.systems/blog/why-haskell-for-production)
 * [Type Families in Haskell: The Definitive Guide](https://serokell.io/blog/type-families-haskell)
 * [Maintainable configuration files](https://github.com/dhall-lang)
+* [Introduction to Free Monads](https://serokell.io/blog/introduction-to-free-monads)
