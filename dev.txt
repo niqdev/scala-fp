@@ -152,6 +152,19 @@ javaOptions ++= Seq(
   s"-Dconfig.resource=${Option(System.getProperty("config.resource")).getOrElse("application.conf")}"
 )
 
+# containers
+https://www.atamanroman.dev/development/2018/11/10/jvm-memory-settings-container-environment.html
+
+# common options
+"-XX:MinRAMPercentage=75.0",
+"-XX:MaxRAMPercentage=75.0",
+"-Djava.net.preferIPv4Stack=true",
+"-Djava.security.egd=file:/dev/urandom",
+"-XX:+UseG1GC",
+"-XX:+HeapDumpOnOutOfMemoryError",
+"-XX:+ExitOnOutOfMemoryError",
+"-XX:+UseStringDeduplication"
+
 * jmx, mbeans, jconsole, jolokia, jstat, javap, jmh
 * add notes from JVM memory course, jps
 java -XX:+PrintFlagsFinal -version
