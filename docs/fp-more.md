@@ -50,6 +50,7 @@ title: More
 ### Other FP languages
 
 * [OCaml taste](https://ocaml.org/learn/taste.html)
+* [OCaml Programming](https://cs3110.github.io/textbook/cover.html) (book)
 * [F# for Fun and Profit](https://fsharpforfunandprofit.com)
 
 ### Blogs

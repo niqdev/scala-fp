@@ -22,6 +22,7 @@ title: Math
 * [Abstract Algebra I](https://www.youtube.com/playlist?list=PLBY4G2o7DhF0JCgapYKrqibGaJuvV4Gkb) (Video)
 * [Sets, Groups, Rings and Algebras](https://www.csee.umbc.edu/portal/help/theory/group_def.shtml)
 * [Introduction to Linear Algebra for Applied Machine Learning with Python](https://pabloinsente.github.io/intro-linear-algebra)
+* [An Intuitive Guide to Linear Algebra](https://betterexplained.com/articles/linear-algebra-guide)
 
 ### Books
 
@@ -30,6 +31,8 @@ title: Math
 * [Math Foundations from Scratch](https://learnaifromscratch.github.io/math.html)
 * [Probability, Mathematical Statistics, Stochastic Processes](http://www.randomservices.org/random)
 * [Book of Proof](https://www.people.vcu.edu/~rhammack/BookOfProof)
+* [The Feynman Lectures on Physics](https://www.feynmanlectures.caltech.edu)
+* [Probability and Statistics cookbook](https://github.com/mavam/stat-cookbook)
 
 ### FP Books
 

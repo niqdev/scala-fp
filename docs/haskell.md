@@ -12,11 +12,13 @@ title: Haskell
 * [CIS 194: Introduction to Haskell (Spring 2013)](https://www.cis.upenn.edu/~cis194/spring13)
 * [The Simple Haskell Handbook](https://marcosampellegrini.com/simple-haskell-book) (Book)
 * [Thoughts on Haskell](https://www.youtube.com/playlist?app=desktop&list=PLyzwHTVJlRc9QcF_tdqc9RdxJED8Mvyh1) (video)
+* [Learn Haskell by building a blog generator](https://lhbg-book.link)
 
 ### Blogs
 
 * [Kowainik](https://kowainik.github.io)
 * [Chris Penner](https://chrispenner.ca/tag/haskell)
+* [Haskell In Production](https://serokell.io/blog/haskell-in-production)
 
 ### Random
 
@@ -27,3 +29,5 @@ title: Haskell
 * [Type Families in Haskell: The Definitive Guide](https://serokell.io/blog/type-families-haskell)
 * [Maintainable configuration files](https://github.com/dhall-lang)
 * [Introduction to Free Monads](https://serokell.io/blog/introduction-to-free-monads)
+* [Software Development Languages: Haskell](https://www.fosskers.ca/en/blog/haskell-software-dev)
+* [Existential Optics](https://www.tweag.io/blog/2022-05-05-existential-optics)
