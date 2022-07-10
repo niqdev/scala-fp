@@ -7,7 +7,7 @@ lazy val info = new {
 lazy val versions = new {
   // ecosystem
   val caliban          = "1.1.0"
-  val catsCore         = "2.6.1"
+  val catsCore         = "2.8.0"
   val catsEffect       = "2.5.4"
   val catsRetry        = "2.1.1"
   val circe            = "0.13.0"
