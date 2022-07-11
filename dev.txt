@@ -196,6 +196,10 @@ https://msitko.pl/blog/build-your-own-refinement-types-in-scala3.html
 # language features since Java 8 to 17
 https://advancedweb.hu/new-language-features-since-java-8-to-17
 
+# rust
+https://danso.ca/blog/higher-kinded-types
+https://hugopeters.me/posts/14
 # scala-rust
 https://phazer99.blogspot.com/2021/05/rust-for-seasoned-scala-developer.html
 https://engineering.avast.io/scala-and-rust-interoperability-via-jni
+
