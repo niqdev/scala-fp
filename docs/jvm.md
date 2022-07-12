@@ -19,6 +19,7 @@ title: JVM
 * strong, soft, weak, phantom references
 * [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
 * [Speeding up compilation time with scalac-profiling](https://www.scala-lang.org/blog/2018/06/04/scalac-profiling.html)
+* [JVM Anatomy Quarks](https://shipilev.net/jvm/anatomy-quarks) (Book)
 
 ## Java Memory Management
 
