@@ -24,15 +24,19 @@ title: Math
 * [Introduction to Linear Algebra for Applied Machine Learning with Python](https://pabloinsente.github.io/intro-linear-algebra)
 * [An Intuitive Guide to Linear Algebra](https://betterexplained.com/articles/linear-algebra-guide)
 
+### Statistics
+
+* [A visual introduction to probability and statistics](https://seeing-theory.brown.edu/index.html)
+* [Probability, Mathematical Statistics, Stochastic Processes](http://www.randomservices.org/random)
+* [Probability and Statistics cookbook](https://github.com/mavam/stat-cookbook)
+
 ### Books
 
 * [Math's books](https://klkuttler.com)
 * [Mathematics for programmers](https://yurichev.com/writings/Math-for-programmers.pdf)
 * [Math Foundations from Scratch](https://learnaifromscratch.github.io/math.html)
-* [Probability, Mathematical Statistics, Stochastic Processes](http://www.randomservices.org/random)
 * [Book of Proof](https://www.people.vcu.edu/~rhammack/BookOfProof)
 * [The Feynman Lectures on Physics](https://www.feynmanlectures.caltech.edu)
-* [Probability and Statistics cookbook](https://github.com/mavam/stat-cookbook)
 
 ### FP Books
 

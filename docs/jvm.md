@@ -3,9 +3,18 @@ id: jvm
 title: JVM
 ---
 
-> TODO review old devops notes
+* [Write your own Virtual Machine](https://justinmeiners.github.io/lc3-vm)
+* [How to write a toy JVM](https://zserge.com/posts/jvm)
+* [JVM Anatomy Quarks](https://shipilev.net/jvm/anatomy-quarks)
+* [Cliff Click @ VMSS16: Bits of Advice For the VM Writer](https://www.youtube.com/watch?v=Hqw57GJSrac) (video)
+* [Best Books on the JVM?](https://news.ycombinator.com/item?id=29309902) (hn)
+* [A JVM Assembler for the modern age](https://github.com/roscopeco/jasm)
+* [JVM Anatomy Quarks](https://shipilev.net/jvm/anatomy-quarks) (Book)
+
+> TODO review old devops notes below
 
 * [Things you need to know about JVM (that matter in Scala)](http://leanpub.com/jvm-scala-book) by Mateusz Kubuszok (Book)
+* [Speeding up compilation time with scalac-profiling](https://www.scala-lang.org/blog/2018/06/04/scalac-profiling.html)
 * [Java Memory Management](https://www.udemy.com/course/java-memory-management) (Course)
 * [Multithreading and Parallel Computing in Java](https://www.udemy.com/course/multithreading-and-parallel-computing-in-java) (Course)
 * [scalac options](https://docs.scala-lang.org/overviews/compiler-options/index.html)
@@ -18,8 +27,6 @@ title: JVM
 * diamond inheritance problem
 * strong, soft, weak, phantom references
 * [What Every Computer Scientist Should Know About Floating-Point Arithmetic](https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html)
-* [Speeding up compilation time with scalac-profiling](https://www.scala-lang.org/blog/2018/06/04/scalac-profiling.html)
-* [JVM Anatomy Quarks](https://shipilev.net/jvm/anatomy-quarks) (Book)
 
 ## Java Memory Management
 
