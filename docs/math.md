@@ -29,6 +29,7 @@ title: Math
 * [A visual introduction to probability and statistics](https://seeing-theory.brown.edu/index.html)
 * [Probability, Mathematical Statistics, Stochastic Processes](http://www.randomservices.org/random)
 * [Probability and Statistics cookbook](https://github.com/mavam/stat-cookbook)
+* [Markov Chains for programmers](https://czekster.github.io/markov) (Book)
 
 ### Books
 
