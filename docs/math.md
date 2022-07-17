@@ -50,6 +50,13 @@ title: Math
 * [Quantamagazine](https://www.quantamagazine.org)
 * [The n-Category Café](https://golem.ph.utexas.edu/category)
 
+### Hacker News
+
+* [The book that did it for you in math and/or CS?](https://news.ycombinator.com/item?id=30485544)
+* [How to learn math from zero for adults?](https://news.ycombinator.com/item?id=31539549)
+* [Serious mathematics books that can replace a good teacher?](https://news.ycombinator.com/item?id=31488608)
+* [Lambda Calculus in 400 Bytes](https://news.ycombinator.com/item?id=30493713)
+
 ### Random
 
 * [Coding Math](https://www.youtube.com/playlist?app=desktop&list=PL7wAPgl1JVvUEb0dIygHzO4698tmcwLk9) (Video)
