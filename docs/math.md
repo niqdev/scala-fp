@@ -34,6 +34,7 @@ title: Math
 ### Books
 
 * [Math's books](https://klkuttler.com)
+* [American Institute of Mathematics](https://aimath.org/textbooks)
 * [Mathematics for programmers](https://yurichev.com/writings/Math-for-programmers.pdf)
 * [Math Foundations from Scratch](https://learnaifromscratch.github.io/math.html)
 * [Book of Proof](https://www.people.vcu.edu/~rhammack/BookOfProof)
