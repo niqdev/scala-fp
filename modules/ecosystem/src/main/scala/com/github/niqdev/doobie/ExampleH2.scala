@@ -12,6 +12,7 @@ import eu.timepit.refined.types.numeric.PosLong
 import eu.timepit.refined.types.string.NonEmptyString
 import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
+import cats.effect.MonadCancel
 
 // https://tpolecat.github.io/doobie/book
 object ExampleH2 extends IOApp {
@@ -24,7 +25,7 @@ object ExampleH2 extends IOApp {
   implicit val urlMeta    = Meta.StringMeta.timap(new URL(_))(_.toString)
 
   private[this] def countUsers[F[_]](xa: Transactor[F])(
-    implicit ev: Bracket[F, Throwable]
+    implicit ev: MonadCancel[F, Throwable]
   ): F[Int] =
     sql"select count(*) from example.user"
       .query[Int]
@@ -33,7 +34,7 @@ object ExampleH2 extends IOApp {
 
   @scala.annotation.nowarn
   private[this] def findRepositories[F[_]](xa: Transactor[F])(
-    implicit ev: Bracket[F, Throwable]
+    implicit ev: MonadCancel[F, Throwable]
   ): F[List[(PosLong, UUID, UUID, NonEmptyString, URL, Boolean, Instant, Instant)]] =
     sql"select ROWNUM(), id, user_id, name, url, is_fork, created_at, updated_at from example.repository"
       .query[(PosLong, UUID, UUID, NonEmptyString, URL, Boolean, Instant, Instant)]
