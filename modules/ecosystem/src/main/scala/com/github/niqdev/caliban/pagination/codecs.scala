@@ -62,7 +62,7 @@ object codecs {
 
     implicit def repositoryEdgeSchemaEncoder[F[_]](
       implicit cSchemaEncoder: SchemaEncoder[RowNumber, Cursor],
-      //rniSchemaEncoder: SchemaEncoder[RepositoryId, NodeId],
+      // rniSchemaEncoder: SchemaEncoder[RepositoryId, NodeId],
       rnSchemaEncoder: SchemaEncoder[Repository, RepositoryNode[F]]
     ): SchemaEncoder[(Repository, RowNumber), RepositoryEdge[F]] = { case (model, rowNumber) =>
       RepositoryEdge(
