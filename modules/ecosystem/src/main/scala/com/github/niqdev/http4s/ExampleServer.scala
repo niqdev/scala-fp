@@ -6,7 +6,7 @@ import org.http4s.HttpRoutes
 import org.http4s.syntax.kleisli.http4sKleisliResponseSyntaxOptionT
 import org.http4s.metrics.prometheus.{ Prometheus, PrometheusExportService }
 import org.http4s.server.Router
-import org.http4s.server.blaze.BlazeServerBuilder
+import org.http4s.blaze.server.BlazeServerBuilder
 import org.http4s.server.middleware.Metrics
 
 import scala.concurrent.ExecutionContext

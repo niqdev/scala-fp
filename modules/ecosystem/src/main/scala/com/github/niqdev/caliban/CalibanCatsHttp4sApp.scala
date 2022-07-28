@@ -10,7 +10,7 @@ import com.github.niqdev.doobie.Database
 import org.typelevel.log4cats.Logger
 import org.typelevel.log4cats.slf4j.Slf4jLogger
 import org.http4s.server.Router
-import org.http4s.server.blaze.BlazeServerBuilder
+import org.http4s.blaze.server.BlazeServerBuilder
 import org.http4s.syntax.kleisli.http4sKleisliResponseSyntaxOptionT
 import zio.Runtime
 
