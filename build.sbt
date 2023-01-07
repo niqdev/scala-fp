@@ -31,7 +31,7 @@ lazy val versions = new {
 
   // test
   val scalacheck    = "1.15.4"
-  val scalatest     = "3.2.10"
+  val scalatest     = "3.2.15"
   val scalatestplus = "3.2.10.0"
 
   // common
