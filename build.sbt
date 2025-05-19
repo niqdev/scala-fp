@@ -80,6 +80,15 @@ lazy val dependencies = new {
     "dev.zio"               %% "zio-streams"               % versions.zio
   )
 
+  lazy val parserAll = Seq(
+    "org.typelevel" %% "cats-core"        % "2.13.0",
+    "org.typelevel" %% "cats-effect"      % "3.5.7",
+    "org.typelevel" %% "cats-parse"       % "1.0.0",
+    "org.parboiled" %% "parboiled"        % "2.5.0",
+    "org.scalameta" %% "munit"            % "1.1.0" % Test,
+    "org.scalameta" %% "munit-scalacheck" % "1.1.0" % Test
+  )
+
   lazy val test = Seq(
     "org.tpolecat"      %% "doobie-scalatest"      % versions.doobie        % Test,
     "com.beachape"      %% "enumeratum-scalacheck" % versions.enumeratum    % Test,
@@ -146,6 +155,16 @@ lazy val ecosystem = (project in file("modules/ecosystem"))
       .map(_.withJavadoc)
   )
 
+lazy val parser = (project in file("modules/parser"))
+  .settings(commonSettings)
+  .settings(
+    name := s"${info.name}-parser",
+    libraryDependencies ++= dependencies
+      .parserAll
+      .map(_.withSources)
+      .map(_.withJavadoc)
+  )
+
 lazy val docs = (project in file("modules/docs"))
   .settings(commonSettings)
   .enablePlugins(MdocPlugin, DocusaurusPlugin)
@@ -158,7 +177,7 @@ lazy val docs = (project in file("modules/docs"))
 
 lazy val root = project
   .in(file("."))
-  .aggregate(common, fp, ecosystem, docs)
+  .aggregate(common, fp, ecosystem, parser, docs)
   .settings(
     name := info.name,
     addCommandAlias("checkFormat", ";scalafmtCheckAll;scalafmtSbtCheck"),
