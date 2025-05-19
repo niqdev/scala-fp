@@ -21,7 +21,6 @@ object models {
   )
   object Person extends PersonCodec
 
-  @scala.annotation.nowarn
   trait PersonCodec {
     import io.circe.refined.{ refinedDecoder, refinedEncoder }
 

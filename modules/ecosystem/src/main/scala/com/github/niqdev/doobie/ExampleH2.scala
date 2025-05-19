@@ -3,9 +3,9 @@ package com.github.niqdev.doobie
 import java.net.URL
 import java.time.Instant
 import java.util.UUID
-
 import cats.effect._
 import doobie.syntax.all._
+import doobie.util.log
 import doobie.util.meta.Meta
 import doobie.util.transactor.Transactor
 import eu.timepit.refined.types.numeric.PosLong
@@ -19,9 +19,9 @@ object ExampleH2 extends IOApp {
   import doobie.implicits.legacy.instant.JavaTimeInstantMeta
   import doobie.refined.implicits.refinedMeta
 
-  implicit val logHandler = doobie.util.log.LogHandler.jdkLogHandler
-  implicit val idMeta     = Meta.Advanced.other[UUID]("id")
-  implicit val urlMeta    = Meta.StringMeta.timap(new URL(_))(_.toString)
+  implicit val logHandler: log.LogHandler = doobie.util.log.LogHandler.jdkLogHandler
+  implicit val idMeta: Meta[UUID]         = Meta.Advanced.other[UUID]("id")
+  implicit val urlMeta: Meta[URL]         = Meta.StringMeta.timap(new URL(_))(_.toString)
 
   private[this] def countUsers[F[_]](xa: Transactor[F])(
     implicit ev: Bracket[F, Throwable]
@@ -31,7 +31,6 @@ object ExampleH2 extends IOApp {
       .unique
       .transact(xa)
 
-  @scala.annotation.nowarn
   private[this] def findRepositories[F[_]](xa: Transactor[F])(
     implicit ev: Bracket[F, Throwable]
   ): F[List[(PosLong, UUID, UUID, NonEmptyString, URL, Boolean, Instant, Instant)]] =

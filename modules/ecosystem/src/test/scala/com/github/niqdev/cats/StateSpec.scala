@@ -114,6 +114,7 @@ final class StateSpec extends AnyWordSpecLike with Matchers {
             ???
         }
 
+      @scala.annotation.nowarn
       def evaluateOne(symbol: String): CalculatorState[Int] =
         symbol.trim match {
           case "+"   => operator(_ + _)

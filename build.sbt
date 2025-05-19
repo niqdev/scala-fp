@@ -1,7 +1,7 @@
 lazy val info = new {
   val organization = "com.github.niqdev"
   val name         = "scala-fp"
-  val scalaVersion = "2.13.8"
+  val scalaVersion = "2.13.16"
 }
 
 lazy val versions = new {
@@ -35,7 +35,7 @@ lazy val versions = new {
   val scalatestplus = "3.2.10.0"
 
   // common
-  val kindProjector = "0.13.2"
+  val kindProjector = "0.13.3"
 }
 
 lazy val dependencies = new {

@@ -9,6 +9,7 @@ import com.github.niqdev.Semigroup.instances.{
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpecLike
 
+@scala.annotation.nowarn
 final class SemigroupSpec extends AnyWordSpecLike with Matchers {
 
   "Semigroup" should {
