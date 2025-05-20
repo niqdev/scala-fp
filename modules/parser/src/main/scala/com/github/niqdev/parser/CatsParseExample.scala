@@ -6,7 +6,7 @@ import cats.syntax.apply._
 import cats.syntax.either._
 
 // https://typelevel.org/cats-parse
-object CatsParse {
+object CatsParseExample {
 
   private val dash: Parser[Unit]       = Parser.char('-')
   private val colon: Parser[Unit]      = Parser.char(':')
@@ -34,7 +34,7 @@ object CatsParse {
         .toOption
     )
 
-  val exampleParser: Parser0[LogExample] = (
+  val parser: Parser0[LogExample] = (
     dateTimeParser <* dropSpaces,
     Parser.until(dropSpaces).map(Http.Method.apply)
   ).mapN(LogExample.apply)
