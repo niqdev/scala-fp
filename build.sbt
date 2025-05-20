@@ -81,13 +81,15 @@ lazy val dependencies = new {
   )
 
   lazy val parserAll = Seq(
-    "org.typelevel" %% "cats-core"        % "2.13.0",
-    "org.typelevel" %% "cats-effect"      % "3.5.7",
-    "org.typelevel" %% "cats-parse"       % "1.0.0",
-    "org.parboiled" %% "parboiled"        % "2.5.0",
-    "io.monix"      %% "newtypes-core"    % "0.3.0",
-    "org.scalameta" %% "munit"            % "1.1.0" % Test,
-    "org.scalameta" %% "munit-scalacheck" % "1.1.0" % Test
+    "org.typelevel" %% "cats-core"          % "2.13.0",
+    "org.typelevel" %% "cats-effect"        % "3.5.7",
+    "org.typelevel" %% "cats-parse"         % "1.0.0",
+    "org.parboiled" %% "parboiled"          % "2.5.0",
+    "io.monix"      %% "newtypes-core"      % "0.3.0",
+    "eu.timepit"    %% "refined"            % "0.11.3",
+    "eu.timepit"    %% "refined-scalacheck" % "0.11.3",
+    "org.scalameta" %% "munit"              % "1.1.0" % Test,
+    "org.scalameta" %% "munit-scalacheck"   % "1.1.0" % Test
   )
 
   lazy val test = Seq(
