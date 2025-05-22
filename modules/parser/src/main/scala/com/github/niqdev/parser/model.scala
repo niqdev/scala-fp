@@ -2,6 +2,7 @@ package com.github.niqdev.parser
 
 import monix.newtypes.NewtypeWrapped
 
+// https://httpd.apache.org/docs/current/logs.html#accesslog
 case class LogExample(
   dateTime: java.time.OffsetDateTime,
   method: Http.Method

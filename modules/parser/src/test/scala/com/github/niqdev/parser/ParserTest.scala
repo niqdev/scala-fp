@@ -15,7 +15,7 @@ class ParserTest extends munit.ScalaCheckSuite {
   // TODO fix dateTime generator
 //  test("parse generated example with cats-parse") {
 //    org.scalacheck.Prop.forAll(Generators.example) { case (in, expected) =>
-//      val result = CatsParse.exampleParser.parseAll(in).map(out => (in, out))
+//      val result = CatsParseExample.parser.parseAll(in).map(out => (in, out))
 //      assertEquals(result, Right((in, expected)))
 //    }
 //  }

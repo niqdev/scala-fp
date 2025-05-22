@@ -58,14 +58,17 @@ object CommonGenerators {
 
 object Generators {
 
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods
   val genHttpMethod: Gen[Http.Method] = Gen
     .oneOf(
-      "POST",
-      "GET",
+      "CONNECT",
       "DELETE",
-      "PUT",
-      "OPTIONS",
+      "GET",
       "HEAD",
+      "OPTIONS",
+      "PATCH",
+      "POST",
+      "PUT",
       "TRACE"
     )
     .map(Http.Method.apply)
