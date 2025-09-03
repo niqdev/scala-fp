@@ -3,7 +3,6 @@ package com.github.niqdev.pipeline.opensearch
 import cats.effect.{ Async, Resource }
 import cats.syntax.functor._
 import org.apache.hc.core5.http.HttpHost
-import org.opensearch.client.json.jackson.JacksonJsonpMapper
 import org.opensearch.client.opensearch.OpenSearchAsyncClient
 import org.opensearch.client.transport.httpclient5.ApacheHttpClient5TransportBuilder
 
@@ -40,7 +39,6 @@ object OpenSearchClient {
     val transportF = Async[F].delay {
       ApacheHttpClient5TransportBuilder
         .builder(new HttpHost("http", "localhost", 9200))
-        .setMapper(new JacksonJsonpMapper())
         .build()
     }
     for {
