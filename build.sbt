@@ -80,16 +80,25 @@ lazy val dependencies = new {
     "dev.zio"               %% "zio-streams"               % versions.zio
   )
 
-  lazy val parserAll = Seq(
+  lazy val parser = Seq(
     "org.typelevel" %% "cats-core"          % "2.13.0",
-    "org.typelevel" %% "cats-effect"        % "3.5.7",
+    "org.typelevel" %% "cats-effect"        % "3.6.3",
     "org.typelevel" %% "cats-parse"         % "1.0.0",
     "org.parboiled" %% "parboiled"          % "2.5.0",
     "io.monix"      %% "newtypes-core"      % "0.3.0",
     "eu.timepit"    %% "refined"            % "0.11.3",
     "eu.timepit"    %% "refined-scalacheck" % "0.11.3",
-    "org.scalameta" %% "munit"              % "1.1.0" % Test,
+    "org.scalameta" %% "munit"              % "1.1.1" % Test,
     "org.scalameta" %% "munit-scalacheck"   % "1.1.0" % Test
+  )
+
+  lazy val pipeline = Seq(
+    "org.typelevel"                    %% "cats-core"       % "2.13.0",
+    "org.typelevel"                    %% "cats-effect"     % "3.6.3",
+    "org.opensearch.client"             % "opensearch-java" % "3.2.0",
+    "org.apache.httpcomponents.client5" % "httpclient5"     % "5.5",
+    "org.slf4j"                         % "slf4j-api"       % "2.0.17",
+    "ch.qos.logback"                    % "logback-classic" % "1.5.18" % Runtime
   )
 
   lazy val test = Seq(
@@ -163,7 +172,17 @@ lazy val parser = (project in file("modules/parser"))
   .settings(
     name := s"${info.name}-parser",
     libraryDependencies ++= dependencies
-      .parserAll
+      .parser
+      .map(_.withSources)
+      .map(_.withJavadoc)
+  )
+
+lazy val pipeline = (project in file("modules/pipeline"))
+  .settings(commonSettings)
+  .settings(
+    name := s"${info.name}-pipeline",
+    libraryDependencies ++= dependencies
+      .pipeline
       .map(_.withSources)
       .map(_.withJavadoc)
   )
@@ -180,7 +199,7 @@ lazy val docs = (project in file("modules/docs"))
 
 lazy val root = project
   .in(file("."))
-  .aggregate(common, fp, ecosystem, parser, docs)
+  .aggregate(common, fp, ecosystem, parser, pipeline, docs)
   .settings(
     name := info.name,
     addCommandAlias("checkFormat", ";scalafmtCheckAll;scalafmtSbtCheck"),
