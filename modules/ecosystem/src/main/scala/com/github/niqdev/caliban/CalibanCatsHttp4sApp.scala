@@ -2,7 +2,7 @@ package com.github.niqdev.caliban
 
 import caliban.Http4sAdapter
 import caliban.interop.cats.implicits.CatsEffectGraphQL
-import cats.effect.{ ConcurrentEffect, ContextShift, ExitCode, IO, IOApp, Resource, Timer }
+import cats.effect.{ ConcurrentEffect, ExitCode, IO, IOApp, Resource }
 import com.github.niqdev.caliban.pagination.queries.Queries
 import com.github.niqdev.caliban.pagination.repositories.Repositories
 import com.github.niqdev.caliban.pagination.services.Services
@@ -15,6 +15,7 @@ import org.http4s.syntax.kleisli.http4sKleisliResponseSyntaxOptionT
 import zio.Runtime
 
 import scala.concurrent.ExecutionContext
+import cats.effect.Temporal
 
 // sbt -jvm-debug 5005 "ecosystem/runMain com.github.niqdev.caliban.CalibanCatsHttp4sApp"
 object CalibanCatsHttp4sApp extends IOApp {
@@ -30,7 +31,7 @@ object CalibanCatsHttp4sApp extends IOApp {
           .as(ExitCode.Success)
       )
 
-  private[caliban] def server[F[_]: ConcurrentEffect: ContextShift: Timer: Logger]: Resource[F, Unit] =
+  private[caliban] def server[F[_]: ConcurrentEffect: ContextShift: Temporal: Logger]: Resource[F, Unit] =
     for {
       _            <- Resource.eval(Logger[F].info("Start server..."))
       xa           <- Database.initInMemory[F]
