@@ -67,7 +67,7 @@ object schema extends CommonSchemaInstances with CommonArgInstances {
     name: NonEmptyString,
     createdAt: Instant,
     updatedAt: Instant,
-    //repository: Repository,
+    // repository: Repository,
     repositories: ForwardPaginationArg => F[RepositoryConnection[F]]
   ) extends Node[F]
   object UserNode {

@@ -53,7 +53,7 @@ final class ExampleApiSpec extends AnyWordSpecLike with Matchers {
 
       // TODO use zio tests - no scalatest
       // https://zio.dev/docs/howto/howto_test_effects
-      //data.provideLayer(zio.console.Console.live) shouldBe "FIXME"
+      // data.provideLayer(zio.console.Console.live) shouldBe "FIXME"
     }
   }
 }
