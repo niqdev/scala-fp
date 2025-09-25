@@ -30,7 +30,7 @@ lazy val versions = new {
   val zioInteropCats   = "2.5.1.0"
 
   // test
-  val scalacheck    = "1.15.4"
+  val scalacheck    = "1.18.1"
   val scalatest     = "3.2.10"
   val scalatestplus = "3.2.10.0"
 
